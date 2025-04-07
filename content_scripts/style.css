@@ -1,0 +1,22 @@
+html {
+    scroll-behavior: smooth;
+    overflow-y: overlay;
+    scrollbar-gutter: auto;
+}
+#webAlertDiv {
+    width: 300px !important;
+    height: 100px !important;
+    background: #fff;
+    position: fixed;
+    top: 150px;
+    right: 1em;
+    left: auto;
+    z-index: 99999999999999999;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    color: black;
+}

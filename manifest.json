@@ -1,0 +1,34 @@
+{
+
+    "description": "Een hulpmiddel om je te helpen om mogelijke online oplichting eerder te herkennen of juist gerust te stellen dat er niks kan gebeuren.",
+    "manifest_version": 3,
+    "name": "Borderify",
+    "version": "1.0",
+    "homepage_url": "https://github.com/JopMolenaar/webAlert-extension",
+    "icons": {
+      "48": "icons/border-48.png"
+    },
+    "action": {
+         "default_popup": "popup/popup.html",
+        "default_title": "WebAlert Settings"
+     },
+     
+    "options_page": "options.html",
+    "permissions": [],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+        "service_worker": "background_scripts/background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content_scripts/scan.js"]
+      }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["content_scripts/ui.html", "content_scripts/style.css", "index.html"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+  }

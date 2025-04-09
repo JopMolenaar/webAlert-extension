@@ -1,22 +1,33 @@
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth;
     overflow-y: overlay;
-    scrollbar-gutter: auto;
+    scrollbar-gutter: auto; */
 }
 #webAlertDiv {
-    width: 300px !important;
-    height: 100px !important;
+    width: 25rem !important;
+    height: fit-content !important;
     background: #fff;
+    border: dashed black 2px;
     position: fixed;
-    top: 150px;
+    top: 50px;
     right: 1em;
     left: auto;
     z-index: 99999999999999999;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 3px;
+    padding: 0.5rem;
     color: black;
+    & h2 {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+    & li {
+        font-weight: 700;
+        & span {
+            font-weight: 400;
+        }
+    }
+    & button {
+        background-color: black;
+        color: white;
+        padding: 0.5rem;
+    }
 }

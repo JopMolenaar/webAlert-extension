@@ -1,16 +1,16 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     
-    if (message.action === "open_settings") {
-        chrome.runtime.openOptionsPage();
-    }
+    // if (message.action === "open_settings") {
+    //     chrome.runtime.openOptionsPage();
+    // }
 
-    if (message.type === "sendDataToBackend") {
-        fetch("https://your-api.com/endpoint", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(message.payload)
-        });
-    }
+    // if (message.type === "sendDataToBackend") {
+    //     fetch("https://your-api.com/endpoint", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(message.payload)
+    //     });
+    // }
 
     if (message.type === "checkVeiliginternetten") {
         const url = `https://check.veiliginternetten.nl/controleer/${message.url}`;
@@ -43,8 +43,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             console.error("Fout bij ophalen:", err);
             sendResponse({ error: err.toString() });
         });
-
-        // Return true zorgt ervoor dat sendResponse async mag zijn
         return true;
     }
 
@@ -77,13 +75,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             console.error("Fout bij ophalen:", err);
             sendResponse({ error: err.toString() });
         });
-
-        // Return true zorgt ervoor dat sendResponse async mag zijn
         return true;
     }
-
 });
-// chrome.action.onClicked.addListener((tab) => {
-//     const url = chrome.runtime.getURL("index.html"); // or whatever your internal page is
-//     chrome.tabs.create({ url });
-// });

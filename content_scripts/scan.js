@@ -25,6 +25,7 @@ async function injectUI() {
     // Check safety of the domain
     const checkButton = wrapper.querySelector("#check");
     checkButton.addEventListener("click", () => {
+        // TODO als de domein naam hetzelfde is als wat er al eerder is gefetched dan gewoon de data ophalen
         checkSafetyDomain("checkVeiliginternetten", wrapper);
         checkSafetyDomain("politieControleerHandelspartij", wrapper);
     });
@@ -51,12 +52,12 @@ function checkSafetyDomain(source, wrapper) {
     const resultDiv = document.createElement("li");
 
     chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
-        console.log(domain, getRootDomain(source));
+        // console.log("response", response);
         wrapper.querySelector("#safety").style.display = "list-item";
 
         // Add the result to the popup
         const resultSpan = document.createElement("span");
-        resultSpan.textContent = response.result + " Bron: ";
+        resultSpan.textContent = response.result + " | Bron: ";
 
         // Add the source link
         const anchorSource = document.createElement("a");

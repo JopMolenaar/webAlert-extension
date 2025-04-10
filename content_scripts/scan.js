@@ -62,7 +62,9 @@ function checkSafetyDomain(source, wrapper) {
 
         // Add the source link
         const anchorSource = document.createElement("a");
-        anchorSource.href = getRootDomain(source);
+        anchorSource.href = response.source;
+        console.log("resp source", response.source);
+        
         anchorSource.target = "_blank";
         anchorSource.textContent = getRootDomain(source);
         anchorSource.style.display = "block";
@@ -73,6 +75,8 @@ function checkSafetyDomain(source, wrapper) {
         safetySpan.appendChild(resultDiv);
     });
 }
+
+
 
 function checkWebContents() {
     const forms = document.body.querySelectorAll("form");

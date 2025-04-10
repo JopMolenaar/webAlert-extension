@@ -13,7 +13,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
 
     if (message.type === "checkVeiliginternetten") {
-        fetch(`https://check.veiliginternetten.nl/controleer/${message.url}`, {
+        const url = `https://check.veiliginternetten.nl/controleer/${message.url}`;
+        fetch(url, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         })
@@ -34,7 +35,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({
                 result,
                 matched: isBetrouwbaar,
-                rawHtml: html // optioneel, alleen als je dat wil gebruiken
+                rawHtml: html,
+                source: url,
             });
         })
         .catch(err => {
@@ -48,7 +50,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
     if (message.type === "politieControleerHandelspartij") {
-        fetch(`https://www.politie.nl/aangifte-of-melding-doen/controleer-handelspartij.html?_hn:type=action&_hn:ref=r198_r1_r1_r1&query=${message.url}`, {
+        const url = "https://www.politie.nl/aangifte-of-melding-doen/controleer-handelspartij.html";
+        fetch(`${url}?_hn:type=action&_hn:ref=r198_r1_r1_r1&query=${message.url}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" }
         })
@@ -66,7 +69,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({
                 result,
                 matched: isBetrouwbaar,
-                rawHtml: html // optioneel, alleen als je dat wil gebruiken
+                rawHtml: html,
+                source: url,
             });
         })
         .catch(err => {

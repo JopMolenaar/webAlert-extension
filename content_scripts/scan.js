@@ -1,9 +1,7 @@
 const hostname = window.location.hostname;
 const domain = getRootDomain(hostname);
 
-async function injectUI() {
-    document.body.style.border = "5px solid red"; // testing purposes
-    
+async function injectUI() {    
     // Popup HTML
     const html = await fetch(chrome.runtime.getURL("content_scripts/ui.html")).then(r => r.text());
     const wrapper = document.createElement("div");
@@ -20,7 +18,7 @@ async function injectUI() {
     // Open settings page
     const homeButton = wrapper.querySelector("#openHomeBtn");
     homeButton.addEventListener("click", () => {
-        const url = chrome.runtime.getURL("index.html");
+        const url = chrome.runtime.getURL("homePage/index.html");
         window.open(url, "_blank");
     });
 
@@ -73,6 +71,11 @@ function checkSafetyDomain(source, wrapper) {
         resultDiv.appendChild(resultSpan);
         resultDiv.appendChild(anchorSource);
         safetySpan.appendChild(resultDiv);
+
+        // Save the result to chrome.storage.local
+        chrome.storage.local.set({ [source]: response }, () => {
+            console.log(`Saved ${source} result to storage.`);
+        });
     });
 }
 

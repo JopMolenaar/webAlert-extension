@@ -1,4 +1,5 @@
-const domain = getRootDomain();
+const hostname = window.location.hostname;
+const domain = getRootDomain(hostname);
 
 async function injectUI() {
     document.body.style.border = "5px solid red"; // testing purposes
@@ -8,7 +9,7 @@ async function injectUI() {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = html;
     document.body.appendChild(wrapper);
-    wrapper.querySelector("#domainSpan").textContent = domain;
+    wrapper.querySelector("#domain span").textContent = domain;
     
     // Popup CSS
     const css = await fetch(chrome.runtime.getURL("content_scripts/style.css")).then(r => r.text());
@@ -25,39 +26,51 @@ async function injectUI() {
 
     // Check safety of the domain
     const checkButton = wrapper.querySelector("#check");
-    checkButton.addEventListener("click", checkSafetyDomain("checkVeiliginternetten", wrapper));
-
+    checkButton.addEventListener("click", () => {
+        checkSafetyDomain("checkVeiliginternetten", wrapper);
+        checkSafetyDomain("politieControleerHandelspartij", wrapper);
+    });
 
     // Check all links, form actions and inputs of the webpage
-    const dangerousContent = checkWebContents();
-    if(dangerousContent){
-        console.log("Pas op! Er zijn verdachte elementen op deze pagina gevonden.");
-        // TODO markeer de elementen die verdacht zijn
-    }
+    // const dangerousContent = checkWebContents();
+    // if(dangerousContent){
+    //     console.log("Pas op! Er zijn verdachte elementen op deze pagina gevonden.");
+    //     // TODO markeer de elementen die verdacht zijn
+    // }
 }
 
-function getRootDomain() {
-    const hostname = window.location.hostname;
+function getRootDomain(hostname) {
     const parts = hostname.split('.');
-
     if (parts.length <= 2 || /^[0-9.]+$/.test(hostname) || hostname === 'localhost') {
       return hostname;
     }
-    
     // Return the last two parts of the domain
     return parts.slice(-2).join('.');
 }
 
 function checkSafetyDomain(source, wrapper) {
-    chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
-        wrapper.querySelector("#safety").textContent = domain + " is " + response.result;
+    const safetySpan = wrapper.querySelector("#safety ul");
+    const resultDiv = document.createElement("li");
 
+    chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
+        console.log(domain, getRootDomain(source));
+        wrapper.querySelector("#safety").style.display = "list-item";
+
+        // Add the result to the popup
+        const resultSpan = document.createElement("span");
+        resultSpan.textContent = response.result + " Bron: ";
+
+        // Add the source link
         const anchorSource = document.createElement("a");
-        anchorSource.href = "https://check.veiliginternetten.nl/controleer/" + domain;
+        anchorSource.href = getRootDomain(source);
         anchorSource.target = "_blank";
-        anchorSource.textContent = "check.veiliginternetten.nl";
-        wrapper.querySelector("#source").textContent = "";
-        wrapper.querySelector("#source").appendChild(anchorSource);
+        anchorSource.textContent = getRootDomain(source);
+        anchorSource.style.display = "block";
+
+        // Add the result to the list
+        resultDiv.appendChild(resultSpan);
+        resultDiv.appendChild(anchorSource);
+        safetySpan.appendChild(resultDiv);
     });
 }
 

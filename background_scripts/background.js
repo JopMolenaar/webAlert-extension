@@ -46,6 +46,38 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return true;
     }
 
+
+    if (message.type === "politieControleerHandelspartij") {
+        fetch(`https://www.politie.nl/aangifte-of-melding-doen/controleer-handelspartij.html?_hn:type=action&_hn:ref=r198_r1_r1_r1&query=${message.url}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(res => res.text())
+        .then(html => {
+            const isBetrouwbaar = html.includes("Er zijn geen meldingen over deze verkoper.");
+            const isOnbetrouwbaar = html.includes("Er zijn meldingen over deze verkoper!");
+            let result = "❓ Onbekend";
+
+            if (isOnbetrouwbaar) {
+                result = "❌ Mogelijk onbetrouwbaar";
+            } else if (isBetrouwbaar) {
+                result = "✅ Betrouwbaar";
+            }
+            sendResponse({
+                result,
+                matched: isBetrouwbaar,
+                rawHtml: html // optioneel, alleen als je dat wil gebruiken
+            });
+        })
+        .catch(err => {
+            console.error("Fout bij ophalen:", err);
+            sendResponse({ error: err.toString() });
+        });
+
+        // Return true zorgt ervoor dat sendResponse async mag zijn
+        return true;
+    }
+
 });
 // chrome.action.onClicked.addListener((tab) => {
 //     const url = chrome.runtime.getURL("index.html"); // or whatever your internal page is

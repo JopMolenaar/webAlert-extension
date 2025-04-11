@@ -55,15 +55,16 @@ function checkSafetyDomain(source, wrapper) {
         wrapper.querySelector("#safety").style.display = "list-item";
 
         if(source === "checkVeiliginternetten") {
-            const dateSpan = wrapper.querySelector("#date");
+            const html =  getWebsiteElementsInDom(response.rawHtml);
 
-            const date = getWebsiteDate(response.rawHtml);   
-            const dateDiv = document.createElement("div");
-            dateDiv.textContent = date;
-            console.log(dateSpan);
-
-            dateSpan.appendChild(dateDiv);
-            dateSpan.style.display = "block";
+            const date = getWebsiteDate(html);   
+            displayData(wrapper, "#date", date);
+            
+            const monthsDifference = getMonthDifference(date);
+            console.log(`Deze website is ${monthsDifference} maanden uit.`);
+            
+            const kvkStatus = getWebsiteKvk(html);   
+            displayData(wrapper, "#KVK", kvkStatus);
         }
 
         // Add the result to the popup
@@ -91,13 +92,25 @@ function checkSafetyDomain(source, wrapper) {
     });
 }
 
-function getWebsiteDate(html) {
+function displayData(wrapper, id, info) {
+    const infoDiv = wrapper.querySelector(`${id}`);
+    const newDiv = document.createElement("div");
+    newDiv.textContent = info;
+    infoDiv.appendChild(newDiv);
+    infoDiv.style.display = "block";
+}
+
+function getWebsiteElementsInDom(html) {
     const parser = new DOMParser();
     html = html.replace(/<!DOCTYPE[^>]*>/i, ''); // Verwijdert de DOCTYPE
     html = html.replace(/<html[^>]*>[\s\S]*?<body[^>]*>/i, '<body>'); // Verwijdert alles tot aan de eerste <body> tag
     html = html.replace(/<\/body>[\s\S]*<\/html>/i, '</body>'); // Verwijdert alles van de laatste </body> tot de laatste </html>
     html = html.replace(/<script[^>]*id="app-script"[^>]*>[\s\S]*?<\/script>/gi, '');
     const doc = parser.parseFromString(html, "text/html");
+    return doc;
+}
+
+function getWebsiteDate(doc) {
     const allDivs = doc.querySelectorAll("div");
     for (const div of allDivs) {
         if (div.textContent.trim().includes("Website bestaat sinds:")) {
@@ -113,7 +126,65 @@ function getWebsiteDate(html) {
     return "Website bestaat sinds: onbekend";
 }
 
+function getWebsiteKvk(doc) {
+    const allDivs = doc.querySelectorAll("a");
+    for (const div of allDivs) {
+        if (div.textContent.trim().includes("Kamer van Koophandel:")) {
+            const parentEle1 = div.parentElement;
+            const parentEle = parentEle1.parentElement;
+            const innerDiv = parentEle.querySelector("div:nth-child(2).flex.gap-2.w-full div:nth-child(2) p");
+            if (innerDiv && innerDiv.classList.length === 0) {
+                const kvkStatus = innerDiv.textContent.trim();
+                return "Kamer van Koophandel: " + kvkStatus;
+            }
+        }
+    }
 
+    return "Kamer van Koophandel: onbekend";
+}
+
+
+function getMonthDifference(dateString) {
+    // Maanden vertalen van Nederlandse maand naar numerieke waarde
+    const monthMap = {
+        'januari': 0,
+        'februari': 1,
+        'maart': 2,
+        'april': 3,
+        'mei': 4,
+        'juni': 5,
+        'juli': 6,
+        'augustus': 7,
+        'september': 8,
+        'oktober': 9,
+        'november': 10,
+        'december': 11
+    };
+
+    // Extract de dag, maand en jaar uit de tekst (bijv. "6 oktober 2021")
+    const regex = /(\d+)\s([a-zA-Z]+)\s(\d{4})/;
+    const match = dateString.match(regex);
+    
+    if (match) {
+        const day = parseInt(match[1]);
+        const month = monthMap[match[2].toLowerCase()];
+        const year = parseInt(match[3]);
+
+        // Maak een Date object van de opgegeven datum
+        const inputDate = new Date(year, month, day);
+
+        // Haal de huidige datum op
+        const currentDate = new Date();
+
+        // Bereken het verschil in maanden
+        const monthDifference = (currentDate.getFullYear() - inputDate.getFullYear()) * 12 + currentDate.getMonth() - inputDate.getMonth();
+
+        // Return het resultaat
+        return monthDifference;
+    }
+
+    return null; // Als de datum niet goed is geparsed
+}
 
 function checkWebContents() {
     const forms = document.body.querySelectorAll("form");

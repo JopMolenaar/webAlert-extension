@@ -52,8 +52,19 @@ function checkSafetyDomain(source, wrapper) {
     const resultDiv = document.createElement("li");
 
     chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
-        // console.log("response", response);
         wrapper.querySelector("#safety").style.display = "list-item";
+
+        if(source === "checkVeiliginternetten") {
+            const dateSpan = wrapper.querySelector("#date");
+
+            const date = getWebsiteDate(response.rawHtml);   
+            const dateDiv = document.createElement("div");
+            dateDiv.textContent = date;
+            console.log(dateSpan);
+
+            dateSpan.appendChild(dateDiv);
+            dateSpan.style.display = "block";
+        }
 
         // Add the result to the popup
         const resultSpan = document.createElement("span");
@@ -62,7 +73,6 @@ function checkSafetyDomain(source, wrapper) {
         // Add the source link
         const anchorSource = document.createElement("a");
         anchorSource.href = response.source;
-        console.log("resp source", response.source);
         
         anchorSource.target = "_blank";
         anchorSource.textContent = getRootDomain(source);
@@ -71,6 +81,7 @@ function checkSafetyDomain(source, wrapper) {
         // Add the result to the list
         resultDiv.appendChild(resultSpan);
         resultDiv.appendChild(anchorSource);
+        
         safetySpan.appendChild(resultDiv);
 
         // Save the result to chrome.storage.local
@@ -78,6 +89,28 @@ function checkSafetyDomain(source, wrapper) {
             console.log(`Saved ${source} result to storage.`);
         });
     });
+}
+
+function getWebsiteDate(html) {
+    const parser = new DOMParser();
+    html = html.replace(/<!DOCTYPE[^>]*>/i, ''); // Verwijdert de DOCTYPE
+    html = html.replace(/<html[^>]*>[\s\S]*?<body[^>]*>/i, '<body>'); // Verwijdert alles tot aan de eerste <body> tag
+    html = html.replace(/<\/body>[\s\S]*<\/html>/i, '</body>'); // Verwijdert alles van de laatste </body> tot de laatste </html>
+    html = html.replace(/<script[^>]*id="app-script"[^>]*>[\s\S]*?<\/script>/gi, '');
+    const doc = parser.parseFromString(html, "text/html");
+    const allDivs = doc.querySelectorAll("div");
+    for (const div of allDivs) {
+        if (div.textContent.trim().includes("Website bestaat sinds:")) {
+            const parentEle = div.parentElement;
+            const innerDiv = parentEle.querySelector("div:nth-child(2).flex.gap-2.w-full div");
+            if (innerDiv && innerDiv.classList.length === 0) {
+                const date = innerDiv.textContent.trim();
+                return "Website bestaat sinds: " + date;
+            }
+        }
+    }
+
+    return "Website bestaat sinds: onbekend";
 }
 
 

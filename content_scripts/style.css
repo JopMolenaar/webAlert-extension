@@ -30,7 +30,10 @@ html {
         color: white;
         padding: 0.5rem;
     }
-    #source, #safety {
+    & > ul li:not(:nth-child(1)){
         display: none;
+        & ul li {
+            display: block;
+        }
     }
 }

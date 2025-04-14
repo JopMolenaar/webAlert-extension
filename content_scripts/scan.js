@@ -10,6 +10,7 @@ async function injectUI() {
     document.body.insertBefore(wrapper, document.body.firstChild);
     wrapper.querySelector("#domain span").textContent = domain;
 
+    // add colored line for feedback
     const coloredLine = document.createElement("div");
     coloredLine.setAttribute("id", "coloredLine");
     document.body.insertBefore(coloredLine, document.body.firstChild);
@@ -44,11 +45,9 @@ async function injectUI() {
                         matched: responseVeiligInternetten.matched,
                         unknown: responseVeiligInternetten.unknown,
                         source: responseVeiligInternetten.source,
-                        htmlSources: {
-                            date: responseVeiligInternetten.date,
-                            kvkStatus: responseVeiligInternetten.kvkStatus,
-                            monthsDifference: responseVeiligInternetten.monthsDifference
-                        }
+                        date: responseVeiligInternetten.date,
+                        kvkStatus: responseVeiligInternetten.kvkStatus,
+                        monthsDifference: responseVeiligInternetten.monthsDifference  
                     },
                     politie: {
                         result: responsePolitie.result,
@@ -62,6 +61,8 @@ async function injectUI() {
             });
         } else {
             console.log("stored:", data);
+            fillExtensionFeedback(data.politie, "politieControleerHandelspartij", wrapper);
+            fillExtensionFeedback(data.veiligInternetten, "checkVeiliginternetten", wrapper);
         }      
     });
 
@@ -96,45 +97,19 @@ function getRootDomain(hostname) {
 }
 
 async function checkSafetyDomain(source, wrapper) {
-    const safetySpan = wrapper.querySelector("#safety ul");
-    const resultDiv = document.createElement("li");
-
     const response = await new Promise((resolve) => {
         chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
-            wrapper.querySelector("#safety").style.display = "list-item";
-
             if(source === "checkVeiliginternetten") {
-                const html =  getWebsiteElementsInDom(response.rawHtml);
+                const html =  cleanDom(response.rawHtml);
                 const date = getWebsiteDate(html);   
                 const monthsDifference = getMonthDifference(date);
                 const kvkStatus = getWebsiteKvk(html);
-
-                displayData(wrapper, "#date", date);
-                displayData(wrapper, "#KVK", kvkStatus);
 
                 response.date = date;
                 response.kvkStatus = kvkStatus;
                 response.monthsDifference = monthsDifference;
             }
-
-            // Add the result to the popup
-            const resultSpan = document.createElement("span");
-            resultSpan.textContent = response.result + " | Bron: ";
-            document.body.querySelector("#coloredLine").style.backgroundColor = response.matched ? "green" : (response.unknown ? "yellow" : "red");
-
-            // Add the source link
-            const anchorSource = document.createElement("a");
-            anchorSource.href = response.source;
-            
-            anchorSource.target = "_blank";
-            anchorSource.textContent = getRootDomain(source);
-            anchorSource.style.display = "block";
-
-            // Add the result to the list
-            resultDiv.appendChild(resultSpan);
-            resultDiv.appendChild(anchorSource);
-            safetySpan.appendChild(resultDiv);
-
+            fillExtensionFeedback(response, source, wrapper);
             resolve(response);
         });
     });
@@ -142,6 +117,34 @@ async function checkSafetyDomain(source, wrapper) {
     return response;
 }
 
+function fillExtensionFeedback(response, source, wrapper) {
+    const safetySpan = wrapper.querySelector("#safety ul");
+    const resultDiv = document.createElement("li");
+
+    // Add the result to the popup
+    const resultSpan = document.createElement("span");
+    resultSpan.textContent = response.result + " | Bron: ";
+    document.body.querySelector("#coloredLine").style.backgroundColor = response.matched ? "green" : (response.unknown ? "yellow" : "red");
+
+    // Add the source link
+    const anchorSource = document.createElement("a");
+    anchorSource.href = response.source;
+
+    anchorSource.target = "_blank";
+    anchorSource.textContent = getRootDomain(source);
+    anchorSource.style.display = "block";
+
+    // Add the result to the list
+    resultDiv.appendChild(resultSpan);
+    resultDiv.appendChild(anchorSource);
+    safetySpan.appendChild(resultDiv);
+    wrapper.querySelector("#safety").style.display = "list-item";
+
+    if(source === "checkVeiliginternetten") {
+        displayData(wrapper, "#date", response.date);
+        displayData(wrapper, "#KVK", response.kvkStatus);
+    }
+}
 function displayData(wrapper, id, info) {
     const infoDiv = wrapper.querySelector(`${id}`);
     const newDiv = document.createElement("div");
@@ -150,7 +153,7 @@ function displayData(wrapper, id, info) {
     infoDiv.style.display = "block";
 }
 
-function getWebsiteElementsInDom(html) {
+function cleanDom(html) {
     const parser = new DOMParser();
     html = html.replace(/<!DOCTYPE[^>]*>/i, ''); // Verwijdert de DOCTYPE
     html = html.replace(/<html[^>]*>[\s\S]*?<body[^>]*>/i, '<body>'); // Verwijdert alles tot aan de eerste <body> tag

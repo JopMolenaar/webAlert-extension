@@ -33,12 +33,8 @@ function injectUI() {
 function addExtraInfo(data) {
     const expResultContainer = document.querySelector("#expResult");
     const extraInfoDiv = document.createElement("div");
-    extraInfoDiv.innerHTML = `
-        <p>Result: ${data.result}</p>
-        <a href="${data.source}" target="_blank">Source: ${data.source}</a>
-    `;
 
-    for (const [key, object] of Object.entries(data.htmlSources)) {
+    for (const [key, object] of Object.entries(data)) {
         extraInfoDiv.innerHTML += `<p>${key}: ${object}</p>`       
     }
     expResultContainer.appendChild(extraInfoDiv);

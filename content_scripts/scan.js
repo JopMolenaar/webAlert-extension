@@ -6,8 +6,13 @@ async function injectUI() {
     const html = await fetch(chrome.runtime.getURL("content_scripts/ui.html")).then(r => r.text());
     const wrapper = document.createElement("div");
     wrapper.innerHTML = html;
-    document.body.appendChild(wrapper);
+    wrapper.setAttribute("id", "webAlertDiv");
+    document.body.insertBefore(wrapper, document.body.firstChild);
     wrapper.querySelector("#domain span").textContent = domain;
+
+    const coloredLine = document.createElement("div");
+    coloredLine.setAttribute("id", "coloredLine");
+    document.body.insertBefore(coloredLine, document.body.firstChild);
     
     // Popup CSS
     const css = await fetch(chrome.runtime.getURL("content_scripts/style.css")).then(r => r.text());
@@ -18,16 +23,46 @@ async function injectUI() {
     // Open settings page
     const homeButton = wrapper.querySelector("#openHomeBtn");
     homeButton.addEventListener("click", () => {
-        const url = chrome.runtime.getURL("homePage/index.html");
+        const url = chrome.runtime.getURL("homePage/index.html?domain=" + encodeURIComponent(domain));
         window.open(url, "_blank");
     });
 
     // Check safety of the domain
     const checkButton = wrapper.querySelector("#check");
-    checkButton.addEventListener("click", () => {
-        // TODO als de domein naam hetzelfde is als wat er al eerder is gefetched dan gewoon de data ophalen
-        checkSafetyDomain("checkVeiliginternetten", wrapper);
-        checkSafetyDomain("politieControleerHandelspartij", wrapper);
+    checkButton.addEventListener("click", async () => {
+        const data = await getStoredData(domain);
+        
+        if(data === null) {
+            const responseVeiligInternetten = await checkSafetyDomain("checkVeiliginternetten", wrapper);
+            const responsePolitie = await checkSafetyDomain("politieControleerHandelspartij", wrapper);
+
+            // Save the responses in storage
+            chrome.storage.local.set({
+                [domain]: {
+                    veiligInternetten: {
+                        result: responseVeiligInternetten.result,
+                        matched: responseVeiligInternetten.matched,
+                        unknown: responseVeiligInternetten.unknown,
+                        source: responseVeiligInternetten.source,
+                        htmlSources: {
+                            date: responseVeiligInternetten.date,
+                            kvkStatus: responseVeiligInternetten.kvkStatus,
+                            monthsDifference: responseVeiligInternetten.monthsDifference
+                        }
+                    },
+                    politie: {
+                        result: responsePolitie.result,
+                        matched: responsePolitie.matched,
+                        unknown: responsePolitie.unknown,
+                        source: responsePolitie.source
+                    }
+                }
+            }, () => {
+                console.log(`Saved ${domain} result to storage.`);
+            });
+        } else {
+            console.log("stored:", data);
+        }      
     });
 
     // Check all links, form actions and inputs of the webpage
@@ -36,6 +71,19 @@ async function injectUI() {
     //     console.log("Pas op! Er zijn verdachte elementen op deze pagina gevonden.");
     //     // TODO markeer de elementen die verdacht zijn
     // }
+}
+
+async function getStoredData(domain) {
+    return new Promise((resolve) => {
+        chrome.storage.local.get([domain], (result) => {
+            if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError);
+                resolve(null);
+            } else {
+                resolve(result[domain] ?? null); // return value OR null if undefined
+            }
+        });
+    });
 }
 
 function getRootDomain(hostname) {
@@ -47,49 +95,51 @@ function getRootDomain(hostname) {
     return parts.slice(-2).join('.');
 }
 
-function checkSafetyDomain(source, wrapper) {
+async function checkSafetyDomain(source, wrapper) {
     const safetySpan = wrapper.querySelector("#safety ul");
     const resultDiv = document.createElement("li");
 
-    chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
-        wrapper.querySelector("#safety").style.display = "list-item";
+    const response = await new Promise((resolve) => {
+        chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
+            wrapper.querySelector("#safety").style.display = "list-item";
 
-        if(source === "checkVeiliginternetten") {
-            const html =  getWebsiteElementsInDom(response.rawHtml);
+            if(source === "checkVeiliginternetten") {
+                const html =  getWebsiteElementsInDom(response.rawHtml);
+                const date = getWebsiteDate(html);   
+                const monthsDifference = getMonthDifference(date);
+                const kvkStatus = getWebsiteKvk(html);
 
-            const date = getWebsiteDate(html);   
-            displayData(wrapper, "#date", date);
+                displayData(wrapper, "#date", date);
+                displayData(wrapper, "#KVK", kvkStatus);
+
+                response.date = date;
+                response.kvkStatus = kvkStatus;
+                response.monthsDifference = monthsDifference;
+            }
+
+            // Add the result to the popup
+            const resultSpan = document.createElement("span");
+            resultSpan.textContent = response.result + " | Bron: ";
+            document.body.querySelector("#coloredLine").style.backgroundColor = response.matched ? "green" : (response.unknown ? "yellow" : "red");
+
+            // Add the source link
+            const anchorSource = document.createElement("a");
+            anchorSource.href = response.source;
             
-            const monthsDifference = getMonthDifference(date);
-            console.log(`Deze website is ${monthsDifference} maanden uit.`);
-            
-            const kvkStatus = getWebsiteKvk(html);   
-            displayData(wrapper, "#KVK", kvkStatus);
-        }
+            anchorSource.target = "_blank";
+            anchorSource.textContent = getRootDomain(source);
+            anchorSource.style.display = "block";
 
-        // Add the result to the popup
-        const resultSpan = document.createElement("span");
-        resultSpan.textContent = response.result + " | Bron: ";
+            // Add the result to the list
+            resultDiv.appendChild(resultSpan);
+            resultDiv.appendChild(anchorSource);
+            safetySpan.appendChild(resultDiv);
 
-        // Add the source link
-        const anchorSource = document.createElement("a");
-        anchorSource.href = response.source;
-        
-        anchorSource.target = "_blank";
-        anchorSource.textContent = getRootDomain(source);
-        anchorSource.style.display = "block";
-
-        // Add the result to the list
-        resultDiv.appendChild(resultSpan);
-        resultDiv.appendChild(anchorSource);
-        
-        safetySpan.appendChild(resultDiv);
-
-        // Save the result to chrome.storage.local
-        chrome.storage.local.set({ [source]: response }, () => {
-            console.log(`Saved ${source} result to storage.`);
+            resolve(response);
         });
     });
+
+    return response;
 }
 
 function displayData(wrapper, id, info) {
@@ -110,6 +160,7 @@ function getWebsiteElementsInDom(html) {
     return doc;
 }
 
+// functies in 1 functie, alles pakken van de pagina -> in json zetten, kijken wat je wel of niet nodig hebt. 
 function getWebsiteDate(doc) {
     const allDivs = doc.querySelectorAll("div");
     for (const div of allDivs) {
@@ -125,7 +176,6 @@ function getWebsiteDate(doc) {
 
     return "Website bestaat sinds: onbekend";
 }
-
 function getWebsiteKvk(doc) {
     const allDivs = doc.querySelectorAll("a");
     for (const div of allDivs) {
@@ -142,8 +192,6 @@ function getWebsiteKvk(doc) {
 
     return "Kamer van Koophandel: onbekend";
 }
-
-
 function getMonthDifference(dateString) {
     // Maanden vertalen van Nederlandse maand naar numerieke waarde
     const monthMap = {
@@ -186,6 +234,7 @@ function getMonthDifference(dateString) {
     return null; // Als de datum niet goed is geparsed
 }
 
+// 
 function checkWebContents() {
     const forms = document.body.querySelectorAll("form");
     // console.log("Found forms:", forms);
@@ -215,6 +264,5 @@ function checkWebContents() {
         // console.log("Anchor text:", anchor.textContent);
     });
 }
-
 
 window.onload = injectUI;

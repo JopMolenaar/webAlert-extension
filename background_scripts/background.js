@@ -35,6 +35,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({
                 result,
                 matched: isBetrouwbaar,
+                unknown: jeMoetDrukken,
                 rawHtml: html,
                 source: url,
             });
@@ -45,7 +46,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         });
         return true;
     }
-
 
     if (message.type === "politieControleerHandelspartij") {
         const url = "https://www.politie.nl/aangifte-of-melding-doen/controleer-handelspartij.html";
@@ -67,6 +67,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({
                 result,
                 matched: isBetrouwbaar,
+                unknown: !isBetrouwbaar && !isOnbetrouwbaar,
                 rawHtml: html,
                 source: url,
             });
@@ -75,6 +76,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             console.error("Fout bij ophalen:", err);
             sendResponse({ error: err.toString() });
         });
+        return true;
+    }
+
+    if (message.type === "getStoredData") {
+        chrome.storage.local.get(null, (items) => {
+            sendResponse({ data: items });
+        });
+        // true to indicate asynchronously response 
         return true;
     }
 });

@@ -35,7 +35,7 @@ function addExtraInfo(data) {
     const extraInfoDiv = document.createElement("div");
 
     for (const [key, object] of Object.entries(data)) {
-        extraInfoDiv.innerHTML += `<p>${key}: ${object}</p>`       
+        extraInfoDiv.innerHTML += `<p>${key}: ${object}</p>`;
     }
     expResultContainer.appendChild(extraInfoDiv);
 }

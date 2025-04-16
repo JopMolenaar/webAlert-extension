@@ -40,7 +40,6 @@ async function injectUI() {
         wrapper.querySelector("#moveWebExtensionButtons span").textContent = right ? "<" : ">";
         document.body.querySelector("#coloredLine").classList.toggle("right");
         document.body.querySelector("#visualStatus").classList.toggle("right");
-        wrapper.querySelector("#visualStatus").classList.toggle("right");
         wrapper.classList.toggle("right");
         right = !right;
     });

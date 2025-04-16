@@ -41,8 +41,10 @@ body {
         padding: 0.5rem !important;
         border: solid black 1px !important;
         text-align: center !important;
-        width: 2em !important;
+        /* width: 1em !important; */
         aspect-ratio: 1 !important;
+        border-radius: 3px !important;
+        font-size: 1rem !important;
     }
     & div{
         display: flex;
@@ -94,6 +96,7 @@ body {
     top: 0;
     left: 0;
     transform: translate(45%, -45%);
+    pointer-events: none;
     &.right {
         transform: translate(-45%, -45%);
     }

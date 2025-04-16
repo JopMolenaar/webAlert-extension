@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="125" height="125" viewBox="0 0 125 125">
+  <defs>
+    <filter id="Ellipse_9" x="0" y="0" width="125" height="125" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_3" data-name="Group 3" transform="translate(-230 -396)">
+    <g transform="matrix(1, 0, 0, 1, 230, 396)" filter="url(#Ellipse_9)">
+      <g id="Ellipse_9-2" data-name="Ellipse 9" transform="translate(9 6)" fill="#ffc033" stroke="#000" stroke-width="1">
+        <circle cx="53.5" cy="53.5" r="53.5" stroke="none"/>
+        <circle cx="53.5" cy="53.5" r="53" fill="none"/>
+      </g>
+    </g>
+    <path id="Icon_awesome-question" data-name="Icon awesome-question" d="M23.859,0C13.879,0,7.415,3.957,2.34,11.015a2.846,2.846,0,0,0,.647,3.978l5.394,3.958a3.069,3.069,0,0,0,4.158-.5c3.132-3.8,5.455-5.984,10.347-5.984,3.847,0,8.6,2.4,8.6,6.006,0,2.729-2.328,4.13-6.126,6.191-4.429,2.4-10.29,5.394-10.29,12.876v1.184a2.954,2.954,0,0,0,3,2.9h9.061a2.954,2.954,0,0,0,3-2.9v-.7c0-5.186,15.663-5.4,15.663-19.437C45.8,8.017,34.472,0,23.859,0ZM22.606,45.191a8.387,8.387,0,1,0,0,16.764,8.387,8.387,0,1,0,0-16.764Z" transform="translate(268.7 424.522)"/>
+  </g>
+</svg>

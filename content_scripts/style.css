@@ -4,8 +4,18 @@ body {
     width: calc(100% - 10px) !important;
 }
 
+.v-h {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
 :root {
-    --color-danger: #ff0000;
+    --color-danger: #DB0200;
     --color-danger-btn: rgb(99, 3, 3);
     --color-danger-btn-hvr: rgb(99, 3, 3, 0.8);
 
@@ -13,7 +23,7 @@ body {
     --color-success-btn: rgb(3, 99, 14);
     --color-success-btn-hvr: rgb(3, 99, 14, 0.8);
 
-    --color-warning: #ffff00;
+    --color-warning: #FFC033;
     --color-warning-btn: rgb(99, 99, 3);
     --color-warning-btn-hvr: rgb(99, 99, 3, 0.8);
 
@@ -25,11 +35,70 @@ body {
     --color-status-btn: var(--color-default-btn);
     --color-status-btn-hvr: var(--color-default-btn-hvr);
 }
+
+@keyframes alertUser {
+    from {
+        width: 0;
+    }
+    to {
+        width: 250px;
+    }
+}
+
+@keyframes jumpingVisualStatus {
+    0% {
+        scale: 1;
+    }
+    50%{
+        scale: 1.1;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+body {
+    &.danger {
+        --color-status: var(--color-danger);
+        --color-status-btn: var(--color-danger-btn);
+        --color-status-btn-hvr: var(--color-danger-btn-hvr);
+        & #visualStatus {
+            animation: jumpingVisualStatus 1s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+    }
+    &.success {
+        --color-status: var(--color-success);
+        --color-status-btn: var(--color-success-btn);
+        --color-status-btn-hvr: var(--color-success-btn-hvr);
+    }
+    &.warning {
+        --color-status: var(--color-warning);
+        --color-status-btn: var(--color-warning-btn);
+        --color-status-btn-hvr: var(--color-warning-btn-hvr);
+        & #webAlertDiv > div {
+            animation: alertUser 300ms ease-in-out forwards;
+        }
+    }
+
+    &.danger, &.warning {
+        & #webAlertDiv > div {
+            justify-content: space-between;
+            animation: alertUser 300ms ease-in-out forwards;
+            & > div:nth-of-type(1) {
+                display: flex;
+                & p {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
 #webAlertDiv {
     width: fit-content !important; 
     height: fit-content !important;
     background-color: var(--color-status);
-    /* border: dashed black 1px; */
     position: fixed;
     top: 50%;
     translate: 0% -50%;
@@ -38,49 +107,68 @@ body {
     z-index: 99999999999999999;
     color: white;
     padding : 0.25rem;
+    padding-top: 1.25rem;
+    padding-bottom: 0.5rem;
     &.right {
         right: 0.125em;
         left: auto;
-    }
-    & h2 {
-        font-size: 1.2rem;
-        margin: 0;
-    }
-    & li {
-        font-weight: 700;
-        & span {
-            font-weight: 400;
+        button {
+            align-self: end !important;
+        }
+        #visualStatus {
+            left: 0;
+            right: auto;
+            transform: translate(-45%, -45%);
         }
     }
-    & button {
-        all: unset !important;
-        background-color: var(--color-status-btn) !important;
-        color: white !important;
-        padding: 0.5rem !important;
-        border: solid black 1px !important;
-        text-align: center !important;
-        aspect-ratio: 1 !important;
-        border-radius: 3px !important;
-        font-size: 1rem !important;
-        &:hover {
-            background-color: var(--color-status-btn-hvr) !important;
-            cursor: pointer !important;
-            transition: all 0.2s ease-in-out !important;
-        }
-    }
-    & div{
+    & > div{
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
         
-        > ul li:not(:nth-child(1)){
+        & > div:nth-of-type(1) {
             display: none;
-            & ul li {
-                display: block;
+            & p {
+                font-size: 1rem;
             }
-        } 
+        }
+
+        & > div:nth-of-type(2) {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            & button {
+                all: unset !important;
+                background-color: var(--color-status-btn) !important;
+                color: white !important;
+                padding: 0.5rem !important;
+                border: solid black 1px !important;
+                text-align: center !important;
+                width: 1rem !important;
+                aspect-ratio: 1 !important;
+                border-radius: 3px !important;
+                font-size: 1rem !important;
+                align-self: start !important;
+                &:hover {
+                    background-color: var(--color-status-btn-hvr) !important;
+                    cursor: pointer !important;
+                    transition: all 0.2s ease-in-out !important;
+                }
+            }
+        }
+    }
+    #visualStatus {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: auto;
+        transform: translate(45%, -45%);
+        pointer-events: none;
+        svg {
+            width: 3rem;
+            height: 3rem;
+        }
     }
 }
+
 #coloredLine {
     width: 10px;
     height: 100%;
@@ -93,33 +181,5 @@ body {
     &.right {
         right: 0;
         left: auto;
-    }
-}
-
-#getHelp, #openHomeBtn {
-    width: 2rem;
-    height: 2rem;
-    background-color: var(--color-status);
-    color: white;
-    border-radius: 50%;
-    span {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
-    }
-}
-
-#visualStatus {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(45%, -45%);
-    pointer-events: none;
-    &.right {
-        transform: translate(-45%, -45%);
     }
 }

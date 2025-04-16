@@ -34,9 +34,8 @@ async function injectUI() {
     const moveBtn = document.body.querySelector("#moveWebExtensionButtons");
     let right = false;
     moveBtn.addEventListener("click", () => {        
-        wrapper.querySelector("#moveWebExtensionButtons span").textContent = right ? "<" : ">";
+        wrapper.querySelector("#moveWebExtensionButtons").textContent = right ? "<" : ">";
         document.body.querySelector("#coloredLine").classList.toggle("right");
-        document.body.querySelector("#visualStatus").classList.toggle("right");
         wrapper.classList.toggle("right");
         right = !right;
     });
@@ -136,13 +135,16 @@ async function fillExtensionFeedback(response, source, wrapper) {
     const resultSpan = document.createElement("span");
     resultSpan.textContent = response.result + " | Bron: ";
 
-    const statusColor = response.matched ? 'success' : (response.unknown ? "warning" : "danger");
-    document.documentElement.style.setProperty('--color-status', `var(--color-${statusColor})`);
-    document.documentElement.style.setProperty('--color-status-btn', `var(--color-${statusColor}-btn)`);
-    document.documentElement.style.setProperty('--color-status-btn-hvr', `var(--color-${statusColor}-hvr)`);
+    const status = response.matched ? 'success' : (response.unknown ? "warning" : "danger");
+    document.body.classList.add(`${status}`);
 
-    wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${statusColor}.svg`)).then(r => r.text());
-    wrapper.querySelector("#visualStatus").classList.add("right");
+    // document.documentElement.style.setProperty('--color-status', `var(--color-${status})`);
+    // document.documentElement.style.setProperty('--color-status-btn', `var(--color-${status}-btn)`);
+    // document.documentElement.style.setProperty('--color-status-btn-hvr', `var(--color-${status}-hvr)`);
+
+    wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text());
+
+
 
     // // Add the source link
     // const anchorSource = document.createElement("a");

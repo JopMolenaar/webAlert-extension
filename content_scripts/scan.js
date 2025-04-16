@@ -1,8 +1,6 @@
 const hostname = window.location.hostname;
 const domain = getRootDomain(hostname);
 
-const green = "#0FA52C";
-
 async function injectUI() {    
     // Popup HTML
     const html = await fetch(chrome.runtime.getURL("content_scripts/ui.html")).then(r => r.text());
@@ -11,7 +9,6 @@ async function injectUI() {
     wrapper.setAttribute("id", "webAlertDiv");
     wrapper.classList.add("right");
     document.body.insertBefore(wrapper, document.body.firstChild);
-    // wrapper.querySelector("#domain span").textContent = domain;
 
     // add colored line for feedback
     const coloredLine = document.createElement("div");
@@ -139,14 +136,12 @@ async function fillExtensionFeedback(response, source, wrapper) {
     const resultSpan = document.createElement("span");
     resultSpan.textContent = response.result + " | Bron: ";
 
-    const statusColor = response.matched ? green : (response.unknown ? "yellow" : "red");
-    document.body.querySelector("#coloredLine").style.backgroundColor = statusColor;
-    wrapper.style.background = statusColor;
- 
-    // wrapper.querySelector("#visualStatus").src =
-    // wrapper.querySelector("#visualStatus").src = chrome.runtime.getURL(`icons/${statusColor}.svg`);
-    const visualColor = response.matched ? "green" : (response.unknown ? "yellow" : "red");
-    wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${visualColor}.svg`)).then(r => r.text());
+    const statusColor = response.matched ? 'success' : (response.unknown ? "warning" : "danger");
+    document.documentElement.style.setProperty('--color-status', `var(--color-${statusColor})`);
+    document.documentElement.style.setProperty('--color-status-btn', `var(--color-${statusColor}-btn)`);
+    document.documentElement.style.setProperty('--color-status-btn-hvr', `var(--color-${statusColor}-hvr)`);
+
+    wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${statusColor}.svg`)).then(r => r.text());
     wrapper.querySelector("#visualStatus").classList.add("right");
 
     // // Add the source link
@@ -260,7 +255,7 @@ function getMonthDifference(dateString) {
     return null; // Als de datum niet goed is geparsed
 }
 
-// 
+// todo
 function checkWebContents() {
     const forms = document.body.querySelectorAll("form");
     // console.log("Found forms:", forms);

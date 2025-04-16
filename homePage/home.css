@@ -1,16 +1,139 @@
+:root {
+    --color-danger: #ffd9d8;
+    --color-danger-text: rgb(113, 13, 13);
+
+    --color-success: #e7ffec;
+    --color-success-text: rgb(3, 99, 14);
+
+    --color-warning: #fff2d5;
+    --color-warning-text: rgb(189, 117, 0);
+}
+
 body {
     background-color: lightgrey;
-    & section {
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin: 20px;
+
+    main {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin: 7em auto 0 auto;
+
+        & > div {
+            gap: 2em;
+            & section {
+                background-color: white;
+                padding: 1em;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                max-width: 60em;
+            }
+        }
+        & > div:nth-of-type(1) {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            section {
+                width: 100%;
+            }
+        }
+
+        & > div:nth-of-type(2) {
+            display: flex;
+            flex-direction: column;
+            max-height: calc(100dvh - 9em);
+            section {
+                width: 33em;
+            }
+        }
+
+        .explDomain {
+       
+        }
+
+        .settings {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .history {
+            display: flex;
+            flex-direction: column;
+            max-height: 60%;
+            & > div {
+                overflow-y: scroll;
+                gap: 0.5em;
+                display: flex;
+                flex-direction: column;
+                & details {
+                    padding-block: 0.5rem;
+                    transition: 0.2s linear;
+                    width: 96%;
+                    background: #c5c5c5;
+                    border-radius: 5px;
+                    &.success {
+                        background-color: var(--color-success);
+                        & summary {
+                            color: var(--color-success-text);
+                        }
+                    }
+                    &.warning {
+                        background-color: var(--color-warning);
+                        & summary {
+                            color: var(--color-warning-text);
+                        }
+                    }
+                    &.danger {
+                        background-color: var(--color-danger);
+                        & summary {
+                            color: var(--color-danger-text);
+                        }
+                    }
+                    & summary {
+                        transition: color 1s;
+                        list-style: none;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px 15px;
+                        font-weight: bold;
+                        overflow-x: hidden;
+                        border-radius: 5px;
+                        color: #30353b;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                        &::-webkit-details-marker {
+                            display: none;
+                        }
+                        &::after {
+                            content: '';
+                            width: 0; 
+                            height: 0; 
+                            border-top: 10px solid #15171b;
+                            border-inline: 7px solid transparent;
+                            transition: 0.2s;
+                        } 
+                    }
+                    & div {
+                        padding: 10px 15px;
+                        overflow-x: hidden;
+                    } 
+                }         
+                details[open] > summary {
+                    border-bottom: 2px solid #525252;
+                    border-radius: 5px 5px 0 0;
+                    &::after {
+                        transform: rotate(-180deg);
+                    }
+                }
+            }
+        }
     }
-    #results > div {
-        padding-block: 1rem;
-    }
-    #results > div:not(:last-child) {
-        border-bottom: 1px solid black;
-    }
+}
+
+header nav button {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
 }

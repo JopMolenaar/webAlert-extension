@@ -7,21 +7,36 @@ function injectUI() {
 
     chrome.runtime.sendMessage({ type: "getStoredData" }, (response) => {
         const resultsContainer = document.querySelector("#results");
-        const expResultContainer = document.querySelector("#expResult");
         const items = response.data;
     
         for (const [domain, response] of Object.entries(items)) {
             if(response.politie && response.veiligInternetten){
-                const resultAndSourcesDiv = document.createElement("div");
-                resultAndSourcesDiv.innerHTML = `<p><strong>${domain}</strong>:</p>`;
+                const resultAndSourcesDiv = document.createElement("details");
+                const summary = document.createElement("summary");
+                summary.textContent = `${domain}`;
+                resultAndSourcesDiv.appendChild(summary);
+                const resultDiv = document.createElement("div");
                 for (const [key, object] of Object.entries(response)) {
-                        const resultDiv = document.createElement("div");
-                        resultDiv.innerHTML = `
+                        const status = object.matched ? 'success' : (object.unknown ? "warning" : "danger");
+                        resultAndSourcesDiv.classList.add(status);
+
+                        if(key === "veiligInternetten"){
+                            for (const [key, obj] of Object.entries(object)) {
+                                if(key != "matched" && key != "unknown" && key != "monthsDifference"){
+                                    resultDiv.innerHTML += `<p>${obj}</p>`;
+                                }
+                                // TODO zet het mooi neer zodat de gebruiker het mooi kan lezen. 
+                            }
+                        } else {
+                            resultDiv.innerHTML += `
                             <p>Result: ${object.result}</p>
                             <a href="${object.source}" target="_blank">Source: ${object.source}</a>
                             `;
+                        }
+                       
                         resultAndSourcesDiv.appendChild(resultDiv);  
                         resultsContainer.appendChild(resultAndSourcesDiv);  
+
                         // add extra info if the domain matches and key is "veiligInternetten"
                         domainParam === domain && key === "veiligInternetten" ? addExtraInfo(object) : null; 
                     }

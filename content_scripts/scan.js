@@ -135,7 +135,9 @@ async function fillExtensionFeedback(response, source, wrapper) {
     const resultSpan = document.createElement("span");
     resultSpan.textContent = response.result + " | Bron: ";
 
-    const status = response.matched ? 'success' : (response.unknown ? "warning" : "danger");
+    // const status = response.matched ? 'success' : (response.unknown ? "warning" : "danger");
+    const status =  "success";
+
     document.body.classList.add(`${status}`);
 
     // document.documentElement.style.setProperty('--color-status', `var(--color-${status})`);
@@ -143,7 +145,6 @@ async function fillExtensionFeedback(response, source, wrapper) {
     // document.documentElement.style.setProperty('--color-status-btn-hvr', `var(--color-${status}-hvr)`);
 
     wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text());
-
 
 
     // // Add the source link

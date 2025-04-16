@@ -105,13 +105,12 @@ body {
     left: 0.125em;
     right: auto;
     z-index: 99999999999999999;
-    color: white;
-    padding : 0.25rem;
-    padding-top: 1.25rem;
-    padding-bottom: 0.5rem;
+    color: white; 
+    padding: 1.25rem 0.5rem 0.5rem 0.25rem;
     &.right {
         right: 0.125em;
         left: auto;
+        padding: 1.25rem 0.25rem 0.5rem 0.5rem;
         button {
             align-self: end !important;
         }

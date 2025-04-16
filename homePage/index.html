@@ -8,23 +8,53 @@
     <script src="home.js" defer></script>
 </head>
 <body>
-    <h1>Home page</h1>
-    <section>
-        <h2>Meer uitleg over de bronnen die zijn gebruikt voor dit advies:</h2>
-    </section>
-
-    <section>
-        <h2>Eerder gefetchte bronnen (logboek):</h2>
-        <div id="results"></div>
-    </section>
-
-    <section>
-        <h2 id="domain">Meer uitleg over <strong></strong>:</h2>
-        <div id="expResult"></div>
-    </section>
-   
-    <section>
-        <h2>Features van de webextensie:</h2>
-    </section>
+<!-- <h1>Home page</h1> -->
+    <header>
+        <nav>
+            <button>Back</button>
+        </nav>
+    </header>
+     
+    <main>
+        <div>
+            <section class="explDomain">
+                <h2 id="domain">Meer uitleg over <strong></strong>:</h2>
+                <div id="expResult"></div>
+            </section>
+    
+            <section class="explExtension">
+                <h2>Meer uitleg over de bronnen die zijn gebruikt voor dit advies:</h2>
+                <p>+features</p>
+            </section>
+        </div>
+ 
+        <div>
+            <section class="settings">
+                <h2>Instellingen</h2>
+                <!-- <label for="settings">De manier van feedback</label>
+                <div id="settings">
+                    <input type="radio" id="option1" name="settings" value="option1">
+                    <label for="option1">Optie 1</label><br>
+                    <input type="radio" id="option2" name="settings" value="option2">
+                    <label for="option2">Optie 2</label><br>
+                    <input type="radio" id="option3" name="settings" value="option3">
+                    <label for="option3">Optie 3</label>
+                </div> -->
+                <label for="saveHistory">Sla geschiedenis op
+                    <input type="checkbox" name="saveHistory" id="saveHistory">
+                </label>
+                <label for="getHelpFunction">Om hulp kunnen vragen
+                    <input type="checkbox" name="getHelpFunction" id="getHelpFunction">
+                </label>
+                <label for="sendScreenshot">Schermafbeelding meesturen
+                    <input type="checkbox" name="sendScreenshot" id="sendScreenshot">
+                </label>
+            </section>
+            <section class="history">
+                <h2>Eerder gefetchte bronnen (logboek):</h2>
+                <div id="results"></div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

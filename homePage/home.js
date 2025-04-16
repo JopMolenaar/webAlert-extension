@@ -45,6 +45,11 @@ function injectUI() {
     });
 }
 
+document.querySelector("header nav button").addEventListener("click", (e) => {
+    // close this tab
+    window.close();
+})
+
 function addExtraInfo(data) {
     const expResultContainer = document.querySelector("#expResult");
     const extraInfoDiv = document.createElement("div");

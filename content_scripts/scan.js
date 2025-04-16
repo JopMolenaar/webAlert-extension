@@ -111,9 +111,14 @@ async function checkSafetyDomain(source, wrapper) {
         chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
             if(source === "checkVeiliginternetten") {
                 const html =  cleanDom(response.rawHtml);
+                console.log(response.rawHtml);
+                console.log(response.result);
+                
+                
                 const date = getWebsiteDate(html);   
                 const monthsDifference = getMonthDifference(date);
                 const kvkStatus = getWebsiteKvk(html);
+                getWebsiteResults(html);
 
                 response.date = date;
                 response.kvkStatus = kvkStatus;
@@ -132,11 +137,10 @@ async function fillExtensionFeedback(response, source, wrapper) {
     // const resultDiv = document.createElement("li");
 
     // Add the result to the popup
-    const resultSpan = document.createElement("span");
-    resultSpan.textContent = response.result + " | Bron: ";
+    // const resultSpan = document.createElement("span");
+    // resultSpan.textContent = response.result + " | Bron: ";
 
-    // const status = response.matched ? 'success' : (response.unknown ? "warning" : "danger");
-    const status =  "success";
+    const status = response.matched ? 'success' : (response.unknown ? "warning" : "danger");
 
     document.body.classList.add(`${status}`);
 
@@ -216,6 +220,50 @@ function getWebsiteKvk(doc) {
 
     return "Kamer van Koophandel: onbekend";
 }
+
+
+
+function getWebsiteResults(doc) {
+    console.log(doc);
+    
+    let content = doc.querySelectorAll(".w-check-content");
+    if(content === null){
+        console.log("No content found, probably on downtime");
+        return
+    }
+    content.forEach((ele) => {
+        if (ele.classList.contains("w-check-content") && ele.classList.length === 1) {
+            content = ele;
+        }
+    });
+    console.log(content);
+    
+    const allDivs = content.querySelectorAll("div.flex.flex-col.gap-4");
+    for (const div of allDivs) {
+        let topic = div.querySelector("a")
+        topic ? topic = topic.textContent.trim() : "No topic found";
+
+        let result = div.querySelector("div:nth-child(2).flex.gap-2.w-full div:nth-child(2) p")
+        result ? result = result.textContent.trim() : "No result found";
+    
+        console.log(topic, result);
+
+        // if (div.textContent.trim().includes("Kamer van Koophandel:")) {
+        //     const parentEle1 = div.parentElement;
+        //     const parentEle = parentEle1.parentElement;
+        //     const innerDiv = parentEle.querySelector("div:nth-child(2).flex.gap-2.w-full div:nth-child(2) p");
+        //     if (innerDiv && innerDiv.classList.length === 0) {
+        //         const kvkStatus = innerDiv.textContent.trim();
+        //         return "Kamer van Koophandel: " + kvkStatus;
+        //     }
+        // }
+    }
+
+    return "Kamer van Koophandel: onbekend";
+}
+
+
+
 function getMonthDifference(dateString) {
     // Maanden vertalen van Nederlandse maand naar numerieke waarde
     const monthMap = {

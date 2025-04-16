@@ -23,9 +23,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             const isBetrouwbaar = html.includes("betrouwbaar");
             const isOnbetrouwbaar = html.includes("niet veilig");
             const jeMoetDrukken = html.includes("PLEASE PRESS THE BUTTON");
+            const jeMoetDrukken2 = html.includes("DRUK OP DE KNOP");
+
             let result = "❓ Onbekend";
 
-            if (jeMoetDrukken) {
+            if (jeMoetDrukken || jeMoetDrukken2) {
                 result = "❗️ Onbekend (downtime)";
             } else if (isOnbetrouwbaar) {
                 result = "❌ Mogelijk onbetrouwbaar";

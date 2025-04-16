@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="57" height="57" viewBox="0 0 57 57">
+  <defs>
+    <filter id="Ellipse_20" x="0" y="0" width="57" height="57" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1" data-name="Group 1" transform="translate(-1481 -573)">
+    <g transform="matrix(1, 0, 0, 1, 1481, 573)" filter="url(#Ellipse_20)">
+      <g id="Ellipse_20-2" data-name="Ellipse 20" transform="translate(9 6)" fill="#0bd933" stroke="#000" stroke-width="1">
+        <circle cx="19.5" cy="19.5" r="19.5" stroke="none"/>
+        <circle cx="19.5" cy="19.5" r="19" fill="none"/>
+      </g>
+    </g>
+    <path id="Icon_awesome-check" data-name="Icon awesome-check" d="M9.025,24,.389,15.367a1.329,1.329,0,0,1,0-1.879l1.879-1.879a1.329,1.329,0,0,1,1.879,0l5.818,5.818L22.425,4.966a1.329,1.329,0,0,1,1.879,0l1.879,1.879a1.329,1.329,0,0,1,0,1.879L10.9,24A1.329,1.329,0,0,1,9.025,24Z" transform="translate(1496.213 584.015)"/>
+  </g>
+</svg>

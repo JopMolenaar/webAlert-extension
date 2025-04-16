@@ -1,6 +1,8 @@
 const hostname = window.location.hostname;
 const domain = getRootDomain(hostname);
 
+const green = "#0FA52C";
+
 async function injectUI() {    
     // Popup HTML
     const html = await fetch(chrome.runtime.getURL("content_scripts/ui.html")).then(r => r.text());
@@ -37,6 +39,8 @@ async function injectUI() {
     moveBtn.addEventListener("click", () => {        
         wrapper.querySelector("#moveWebExtensionButtons span").textContent = right ? "<" : ">";
         document.body.querySelector("#coloredLine").classList.toggle("right");
+        document.body.querySelector("#visualStatus").classList.toggle("right");
+        wrapper.querySelector("#visualStatus").classList.toggle("right");
         wrapper.classList.toggle("right");
         right = !right;
     });
@@ -128,7 +132,7 @@ async function checkSafetyDomain(source, wrapper) {
     return response;
 }
 
-function fillExtensionFeedback(response, source, wrapper) {
+async function fillExtensionFeedback(response, source, wrapper) {
     // const safetySpan = wrapper.querySelector("#safety ul");
     // const resultDiv = document.createElement("li");
 
@@ -136,9 +140,15 @@ function fillExtensionFeedback(response, source, wrapper) {
     const resultSpan = document.createElement("span");
     resultSpan.textContent = response.result + " | Bron: ";
 
-    const statusColor = response.matched ? "green" : (response.unknown ? "yellow" : "red");
+    const statusColor = response.matched ? green : (response.unknown ? "yellow" : "red");
     document.body.querySelector("#coloredLine").style.backgroundColor = statusColor;
     wrapper.style.background = statusColor;
+ 
+    // wrapper.querySelector("#visualStatus").src =
+    // wrapper.querySelector("#visualStatus").src = chrome.runtime.getURL(`icons/${statusColor}.svg`);
+    const visualColor = response.matched ? "green" : (response.unknown ? "yellow" : "red");
+    wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${visualColor}.svg`)).then(r => r.text());
+    wrapper.querySelector("#visualStatus").classList.add("right");
 
     // // Add the source link
     // const anchorSource = document.createElement("a");

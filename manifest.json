@@ -25,7 +25,7 @@
     ],
     "web_accessible_resources": [
         {
-            "resources": ["content_scripts/ui.html", "content_scripts/style.css", "homePage/index.html"],
+            "resources": ["content_scripts/ui.html", "content_scripts/style.css", "homePage/index.html", "icons/*"],
             "matches": ["<all_urls>"]
         }
     ]

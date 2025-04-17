@@ -107,6 +107,9 @@ body {
     z-index: 99999999999999999;
     color: white; 
     padding: 1.25rem 0.5rem 0.5rem 0.25rem;
+    & button {
+        all: unset;
+    }
     &.right {
         right: 0.125em;
         left: auto;
@@ -144,7 +147,6 @@ body {
             gap: 0.5rem;
             order: -1;
             & button {
-                all: unset !important;
                 background-color: var(--color-status-btn) !important;
                 color: white !important;
                 padding: 0.5rem !important;

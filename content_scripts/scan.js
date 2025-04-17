@@ -274,7 +274,7 @@ function getWebsiteResults(doc) {
     const results = {};
     for (const div of allDivs) {
         let topic = div.querySelector("a");
-        topic = topic ? topic.textContent.trim().replace(/:$/, "") : "No topic found";
+        topic = topic ? topic.textContent.trim().replace(/\s+/g, "").replace(/:$/, "") : "No topic found";
 
         let result = div.querySelector("div:nth-child(2).flex.gap-2.w-full div:nth-child(2) p");
         result = result ? result.textContent.trim() : "No result found";

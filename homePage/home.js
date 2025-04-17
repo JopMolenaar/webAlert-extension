@@ -20,6 +20,8 @@ function injectUI() {
                 const status = response.status === 'unknown' ? 'default' : response.status;
                 resultAndSourcesDiv.classList.add(status);
 
+                domainParam === domain ? addExtraInfo(response) : null; 
+
                 for (const [key, object] of Object.entries(response)) {
                         if(key === "veiligInternetten"){
                             for (const [key, obj] of Object.entries(object)) {
@@ -37,9 +39,6 @@ function injectUI() {
                        
                         resultAndSourcesDiv.appendChild(resultDiv);  
                         resultsContainer.appendChild(resultAndSourcesDiv);  
-
-                        // add extra info if the domain matches and key is "veiligInternetten"
-                        domainParam === domain && key === "veiligInternetten" ? addExtraInfo(object) : null; 
                     }
             }
         }
@@ -47,17 +46,22 @@ function injectUI() {
 }
 
 document.querySelector("header nav button").addEventListener("click", (e) => {
-    // close this tab
     window.close();
 })
 
 function addExtraInfo(data) {
     const expResultContainer = document.querySelector("#expResult");
     const extraInfoDiv = document.createElement("div");
+    extraInfoDiv.innerHTML = `
+    <h3>Extra informatie</h3>
+    <p>${data.message}</p>
+    <p>${data.veiligInternetten.date}</p>
+    <p>KvK: ${data.veiligInternetten.KamervanKoophandel}</p>
+    <p>Malware gevonden: ${data.veiligInternetten.Quad9}</p>
+    <p>Gerapporteerd voor phishing: ${data.veiligInternetten.APWG}</p>
+    <p>${data.veiligInternetten.Scamadviser}</p>
+    `;
 
-    for (const [key, object] of Object.entries(data)) {
-        extraInfoDiv.innerHTML += `<p>${key}: ${object}</p>`;
-    }
     expResultContainer.appendChild(extraInfoDiv);
 }
 

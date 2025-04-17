@@ -76,13 +76,13 @@ body {
         --color-status: var(--color-warning);
         --color-status-btn: var(--color-warning-btn);
         --color-status-btn-hvr: var(--color-warning-btn-hvr);
-        & #webAlertDiv > div {
-            animation: alertUser 300ms ease-in-out forwards;
+        & #statusText {
+            color: black !important;
         }
     }
 
-    &.danger, &.warning {
-        & #webAlertDiv > div {
+    &.danger, &.warning, &.default {
+        & #webAlertDiv > div.open {
             justify-content: space-between;
             animation: alertUser 300ms ease-in-out forwards;
             & > div:nth-of-type(1) {
@@ -111,8 +111,14 @@ body {
         right: 0.125em;
         left: auto;
         padding: 1.25rem 0.25rem 0.5rem 0.5rem;
-        button {
+        > button {
             align-self: end !important;
+        }
+        & > div > div:nth-of-type(2) {
+            order: 1;
+        }
+        & .responseDiv button {
+            align-self: start;
         }
         #visualStatus {
             left: 0;
@@ -122,7 +128,9 @@ body {
     }
     & > div{
         display: flex;
-        
+        gap: 0.5rem;
+        width: fit-content !important;
+        max-width: 250px !important;
         & > div:nth-of-type(1) {
             display: none;
             & p {
@@ -134,6 +142,7 @@ body {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            order: -1;
             & button {
                 all: unset !important;
                 background-color: var(--color-status-btn) !important;
@@ -152,6 +161,18 @@ body {
                     transition: all 0.2s ease-in-out !important;
                 }
             }
+        }
+    }
+    & .responseDiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        button {
+            width: fit-content;
+            padding: 0.25rem;
+            background-color: black;
+            align-self: end;
+            color: white;
         }
     }
     #visualStatus {

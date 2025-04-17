@@ -16,10 +16,11 @@ function injectUI() {
                 summary.textContent = `${domain}`;
                 resultAndSourcesDiv.appendChild(summary);
                 const resultDiv = document.createElement("div");
-                for (const [key, object] of Object.entries(response)) {
-                        const status = object.matched ? 'success' : (object.unknown ? "warning" : "danger");
-                        resultAndSourcesDiv.classList.add(status);
 
+                const status = response.status === 'unknown' ? 'default' : response.status;
+                resultAndSourcesDiv.classList.add(status);
+
+                for (const [key, object] of Object.entries(response)) {
                         if(key === "veiligInternetten"){
                             for (const [key, obj] of Object.entries(object)) {
                                 if(key != "matched" && key != "unknown" && key != "monthsDifference"){

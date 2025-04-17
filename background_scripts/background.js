@@ -20,15 +20,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         })
         .then(res => res.text())
         .then(html => {
-            const isBetrouwbaar = html.includes("betrouwbaar");
+            let isBetrouwbaar = html.includes("betrouwbaar");
             const isOnbetrouwbaar = html.includes("niet veilig");
             const jeMoetDrukken = html.includes("PLEASE PRESS THE BUTTON");
             const jeMoetDrukken2 = html.includes("DRUK OP DE KNOP");
-
+            const downtime = jeMoetDrukken || jeMoetDrukken2;
             let result = "❓ Onbekend";
 
-            if (jeMoetDrukken || jeMoetDrukken2) {
+            if (downtime) {
                 result = "❗️ Onbekend (downtime)";
+                isBetrouwbaar = false;
             } else if (isOnbetrouwbaar) {
                 result = "❌ Mogelijk onbetrouwbaar";
             } else if (isBetrouwbaar) {
@@ -37,7 +38,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({
                 result,
                 matched: isBetrouwbaar,
-                unknown: jeMoetDrukken,
+                danger: isOnbetrouwbaar,
+                unknown: downtime,
                 rawHtml: html,
                 source: url,
             });
@@ -69,6 +71,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({
                 result,
                 matched: isBetrouwbaar,
+                danger: isOnbetrouwbaar,
                 unknown: !isBetrouwbaar && !isOnbetrouwbaar,
                 rawHtml: html,
                 source: url,

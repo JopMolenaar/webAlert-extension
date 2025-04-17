@@ -40,6 +40,11 @@ async function injectUI() {
         right = !right;
     });
 
+    const closebtn = wrapper.querySelector("#closeBtn");
+    closebtn.addEventListener("click", () => {
+        wrapper.querySelector("div").classList.toggle("open");
+    });
+
     // Check all links, form actions and inputs of the webpage
     // const dangerousContent = checkWebContents();
     // if(dangerousContent){
@@ -50,37 +55,80 @@ async function injectUI() {
 
 async function getAndStoreSafetyDomain(wrapper) {
     const data = await getStoredData(domain);
-        
+    let responseMessage;
+    let status;
+
     if(data === null) {
         const responseVeiligInternetten = await checkSafetyDomain("checkVeiliginternetten", wrapper);
         const responsePolitie = await checkSafetyDomain("politieControleerHandelspartij", wrapper);
 
-        // Save the responses in storage
-        chrome.storage.local.set({
-            [domain]: {
-                veiligInternetten: {
-                    result: responseVeiligInternetten.result,
-                    matched: responseVeiligInternetten.matched,
-                    unknown: responseVeiligInternetten.unknown,
-                    source: responseVeiligInternetten.source,
-                    date: responseVeiligInternetten.date,
-                    kvkStatus: responseVeiligInternetten.kvkStatus,
-                    monthsDifference: responseVeiligInternetten.monthsDifference  
-                },
-                politie: {
-                    result: responsePolitie.result,
-                    matched: responsePolitie.matched,
-                    unknown: responsePolitie.unknown,
-                    source: responsePolitie.source
-                }
+// TODO get text from externe json
+
+        // conclusie if statement structuur
+        if(responseVeiligInternetten.monthsDifference < 3 && responseVeiligInternetten.matched && responsePolitie.matched && !responseVeiligInternetten.kvkStatus){
+            status = "warning";
+            responseMessage = "De website bestaat nog niet zo lang, pas op!";
+        } else if(responseVeiligInternetten.matched && responsePolitie.matched){
+            status = "success";
+            responseMessage = "Betrouwbaar bevonden door beide bronnen";
+            // Check de veiliginternetten data
+        } else if (responseVeiligInternetten.unknown && responsePolitie.matched) {
+            status = "warning";
+            responseMessage = "Het is mislukt om een advies te krijgen over deze website bij Veilig Internetten, hij komt echter niet voor als oplichting in de database van de politie. Wees wel voorzichtig met het klikken op linkjes en het invullen van gegevens.";
+        } else if (responseVeiligInternetten.unknown && responsePolitie.unknown) {
+            status = "warning";
+            responseMessage = "Het is mislukt om een advies te krijgen over deze website bij beide bronnen. Wees voorzichtig met het klikken op linkjes en het invullen van gegevens.";
+        } else if (responseVeiligInternetten.matched && responsePolitie.unknown) {
+            status = "success";
+            responseMessage = "Veilig bevonden door Veilig Internetten";
+            // Check de veiliginternetten data
+        } else if (responseVeiligInternetten.danger || responsePolitie.danger) {
+            status = "danger";
+            responseMessage = "Mogelijk onbetrouwbaar bevonden door minimaal een van beide bronnen";
+            // Check de veiliginternetten data als deze bekend is
+        } else {
+            if(responseVeiligInternetten.error){
+                console.error(responseVeiligInternetten.error);
+                responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens van Veilig Internetten.";
+            } else if (responsePolitie.error){
+                console.error(responsePolitie.error);
+                responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens van de Politie.";
+            } else {
+                responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens.";
             }
+            status = "unknown";
+        }
+
+        responseVeiligInternetten.rawHtml = "";
+        responsePolitie.rawHtml = "";
+
+        // Create a JSON structure for the responses
+        const responseData = {
+            veiligInternetten: responseVeiligInternetten,
+            politie: responsePolitie,
+            message: responseMessage,
+            status: status,
+        };
+
+        // Pass the JSON structure and response message to the feedback function
+        fillExtensionFeedback(responseData, wrapper);
+
+        // Save the JSON structure in storage
+        chrome.storage.local.set({
+            [domain]: responseData
         }, () => {
             console.log(`Saved ${domain} result to storage.`);
         });
     } else {
         console.log("stored:", data);
-        fillExtensionFeedback(data.politie, "politieControleerHandelspartij", wrapper);
-        fillExtensionFeedback(data.veiligInternetten, "checkVeiliginternetten", wrapper);
+        // TODO Check if the data is still valid
+        // TODO get conclusie van data en geef die en keer door 
+        // fillExtensionFeedback(data.politie, "politieControleerHandelspartij", wrapper);
+        // fillExtensionFeedback(data.veiligInternetten, "checkVeiliginternetten", wrapper);
+        // const responseData = {
+        //     message: "from stored data",
+        // };
+        fillExtensionFeedback(data, wrapper);
     }   
 }
 
@@ -106,25 +154,26 @@ function getRootDomain(hostname) {
     return parts.slice(-2).join('.');
 }
 
+// updatye this
 async function checkSafetyDomain(source, wrapper) {
     const response = await new Promise((resolve) => {
         chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
             if(source === "checkVeiliginternetten") {
                 const html =  cleanDom(response.rawHtml);
-                console.log(response.rawHtml);
-                console.log(response.result);
-                
-                
-                const date = getWebsiteDate(html);   
-                const monthsDifference = getMonthDifference(date);
-                const kvkStatus = getWebsiteKvk(html);
-                getWebsiteResults(html);
+                console.log(response.unknown);
+                if(!response.unknown){
+                    const date = getWebsiteDate(html);   
+                    const monthsDifference = getMonthDifference(date);
+                    const kvkStatus = getWebsiteKvk(html);
+                    const contentJson = getWebsiteResults(html);
+                    Object.assign(response, contentJson);
 
-                response.date = date;
-                response.kvkStatus = kvkStatus;
-                response.monthsDifference = monthsDifference;
+                    response.date = date;
+                    response.kvkStatus = kvkStatus;
+                    response.monthsDifference = monthsDifference;
+                }
             }
-            fillExtensionFeedback(response, source, wrapper);
+         
             resolve(response);
         });
     });
@@ -132,44 +181,26 @@ async function checkSafetyDomain(source, wrapper) {
     return response;
 }
 
-async function fillExtensionFeedback(response, source, wrapper) {
-    // const safetySpan = wrapper.querySelector("#safety ul");
-    // const resultDiv = document.createElement("li");
+async function fillExtensionFeedback(response, wrapper) {
+    console.log("response", response);
+    if(response.status === undefined){
+        response.status = "unknown";
+        response.message = "Er is een fout opgetreden bij het ophalen van de gegevens.";
+    }
 
-    // Add the result to the popup
-    // const resultSpan = document.createElement("span");
-    // resultSpan.textContent = response.result + " | Bron: ";
-
-    const status = response.matched ? 'success' : (response.unknown ? "warning" : "danger");
-
+    const status = response.status === 'unknown' ? 'default' : response.status;
+    // const status = "danger"; 
+    console.log(response.message);
+    status != "success" ? wrapper.querySelector("#statusText").textContent = response.message : null;
     document.body.classList.add(`${status}`);
-
-    // document.documentElement.style.setProperty('--color-status', `var(--color-${status})`);
-    // document.documentElement.style.setProperty('--color-status-btn', `var(--color-${status}-btn)`);
-    // document.documentElement.style.setProperty('--color-status-btn-hvr', `var(--color-${status}-hvr)`);
-
-    wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text());
-
-
-    // // Add the source link
-    // const anchorSource = document.createElement("a");
-    // anchorSource.href = response.source;
-
-    // anchorSource.target = "_blank";
-    // anchorSource.textContent = getRootDomain(source);
-    // anchorSource.style.display = "block";
-
-    // // Add the result to the list
-    // resultDiv.appendChild(resultSpan);
-    // resultDiv.appendChild(anchorSource);
-    // safetySpan.appendChild(resultDiv);
-    // wrapper.querySelector("#safety").style.display = "list-item";
-
-    // if(source === "checkVeiliginternetten") {
-    //     displayData(wrapper, "#date", response.date);
-    //     displayData(wrapper, "#KVK", response.kvkStatus);
-    // }
+    status != "default" ? wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text()) : null;
 }
+
+
+
+
+
+
 function displayData(wrapper, id, info) {
     const infoDiv = wrapper.querySelector(`${id}`);
     const newDiv = document.createElement("div");
@@ -212,13 +243,14 @@ function getWebsiteKvk(doc) {
             const parentEle = parentEle1.parentElement;
             const innerDiv = parentEle.querySelector("div:nth-child(2).flex.gap-2.w-full div:nth-child(2) p");
             if (innerDiv && innerDiv.classList.length === 0) {
-                const kvkStatus = innerDiv.textContent.trim();
-                return "Kamer van Koophandel: " + kvkStatus;
+                let kvkStatus;
+                innerDiv.textContent.trim() === "Geregistreerd" ? kvkStatus = true : kvkStatus = false;
+                return kvkStatus;
             }
         }
     }
 
-    return "Kamer van Koophandel: onbekend";
+    return false;
 }
 
 
@@ -239,27 +271,17 @@ function getWebsiteResults(doc) {
     console.log(content);
     
     const allDivs = content.querySelectorAll("div.flex.flex-col.gap-4");
+    const results = {};
     for (const div of allDivs) {
-        let topic = div.querySelector("a")
-        topic ? topic = topic.textContent.trim() : "No topic found";
+        let topic = div.querySelector("a");
+        topic = topic ? topic.textContent.trim().replace(/:$/, "") : "No topic found";
 
-        let result = div.querySelector("div:nth-child(2).flex.gap-2.w-full div:nth-child(2) p")
-        result ? result = result.textContent.trim() : "No result found";
-    
-        console.log(topic, result);
+        let result = div.querySelector("div:nth-child(2).flex.gap-2.w-full div:nth-child(2) p");
+        result = result ? result.textContent.trim() : "No result found";
 
-        // if (div.textContent.trim().includes("Kamer van Koophandel:")) {
-        //     const parentEle1 = div.parentElement;
-        //     const parentEle = parentEle1.parentElement;
-        //     const innerDiv = parentEle.querySelector("div:nth-child(2).flex.gap-2.w-full div:nth-child(2) p");
-        //     if (innerDiv && innerDiv.classList.length === 0) {
-        //         const kvkStatus = innerDiv.textContent.trim();
-        //         return "Kamer van Koophandel: " + kvkStatus;
-        //     }
-        // }
+        results[topic] = result;
     }
-
-    return "Kamer van Koophandel: onbekend";
+    return results;
 }
 
 

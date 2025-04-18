@@ -31,6 +31,7 @@ function injectUI() {
                                 // TODO zet het mooi neer zodat de gebruiker het mooi kan lezen. 
                             }
                         } else {
+                            console.log(object);
                             resultDiv.innerHTML += `
                             <p>Result: ${object.result}</p>
                             <a href="${object.source}" target="_blank">Source: ${object.source}</a>

@@ -33,12 +33,14 @@ async function injectUI() {
    
     const moveBtn = document.body.querySelector("#moveWebExtensionButtons");
     let right = false;
-    moveBtn.addEventListener("click", () => {        
-        wrapper.querySelector("#moveWebExtensionButtons").textContent = right ? "<" : ">";
-        document.body.querySelector("#coloredLine").classList.toggle("right");
-        wrapper.classList.toggle("right");
-        right = !right;
-    });
+    if(moveBtn){
+        moveBtn.addEventListener("click", () => {        
+            wrapper.querySelector("#moveWebExtensionButtons").textContent = right ? "<" : ">";
+            document.body.querySelector("#coloredLine").classList.toggle("right");
+            wrapper.classList.toggle("right");
+            right = !right;
+        });
+    }
 
     const closebtn = wrapper.querySelector("#closeBtn");
     closebtn.addEventListener("click", () => {
@@ -53,50 +55,84 @@ async function injectUI() {
     // }
 }
 
+const rules = [
+    {
+        condition: r => r.v.monthsDifference < 3 && r.v.matched && r.p.matched && !r.v.kvkStatus,
+        status: "warning",
+        message: "De website bestaat nog niet zo lang, pas op!"
+    },
+    {
+        condition: r => r.v.matched && r.p.matched,
+        status: "success",
+        message: "Betrouwbaar bevonden door beide bronnen"
+    },
+    {
+        condition: r => r.v.unknown && r.p.matched,
+        status: "warning",
+        message: "Het is mislukt om een advies te krijgen over deze website bij Veilig Internetten, hij komt echter niet voor als oplichting in de database van de politie. Wees wel voorzichtig met het klikken op linkjes en het invullen van gegevens."
+    },
+    {
+        condition: r => r.v.unknown && r.p.unknown,
+        status: "warning",
+        message: "Het is mislukt om een advies te krijgen over deze website bij beide bronnen. Wees voorzichtig met het klikken op linkjes en het invullen van gegevens."
+    },
+    {
+        condition: r => r.v.matched && r.p.unknown,
+        status: "success",
+        message: "Veilig bevonden door Veilig Internetten"
+    },
+    {
+        condition: r => r.v.danger || r.p.danger,
+        status: "danger",
+        message: "Mogelijk onbetrouwbaar bevonden door minimaal een van beide bronnen"
+    },
+    {
+        condition: r => true, // Default fallback
+        status: "unknown",
+        message: "Er is een fout opgetreden bij het ophalen van de gegevens."
+    }
+];
+function determineStatus(responseVeiligInternetten, responsePolitie) {
+    const context = {
+        v: responseVeiligInternetten,
+        p: responsePolitie
+    };
+
+    for (const rule of rules) {
+        if (rule.condition(context)) {
+            console.log(rule.status, rule.message);
+            
+            return {
+                status1: rule.status,
+                message1: rule.message
+            };
+        }
+    }
+}
 async function getAndStoreSafetyDomain(wrapper) {
     const data = await getStoredData(domain);
-    let responseMessage;
     let status;
+    let responseMessage;
 
     if(data === null) {
+        // TODO add loading animation
         const responseVeiligInternetten = await checkSafetyDomain("checkVeiliginternetten", wrapper);
         const responsePolitie = await checkSafetyDomain("politieControleerHandelspartij", wrapper);
 
-// TODO get text from externe json
-
-        // conclusie if statement structuur
-        if(responseVeiligInternetten.monthsDifference < 3 && responseVeiligInternetten.matched && responsePolitie.matched && !responseVeiligInternetten.kvkStatus){
-            status = "warning";
-            responseMessage = "De website bestaat nog niet zo lang, pas op!";
-        } else if(responseVeiligInternetten.matched && responsePolitie.matched){
-            status = "success";
-            responseMessage = "Betrouwbaar bevonden door beide bronnen";
-            // Check de veiliginternetten data
-        } else if (responseVeiligInternetten.unknown && responsePolitie.matched) {
-            status = "warning";
-            responseMessage = "Het is mislukt om een advies te krijgen over deze website bij Veilig Internetten, hij komt echter niet voor als oplichting in de database van de politie. Wees wel voorzichtig met het klikken op linkjes en het invullen van gegevens.";
-        } else if (responseVeiligInternetten.unknown && responsePolitie.unknown) {
-            status = "warning";
-            responseMessage = "Het is mislukt om een advies te krijgen over deze website bij beide bronnen. Wees voorzichtig met het klikken op linkjes en het invullen van gegevens.";
-        } else if (responseVeiligInternetten.matched && responsePolitie.unknown) {
-            status = "success";
-            responseMessage = "Veilig bevonden door Veilig Internetten";
-            // Check de veiliginternetten data
-        } else if (responseVeiligInternetten.danger || responsePolitie.danger) {
-            status = "danger";
-            responseMessage = "Mogelijk onbetrouwbaar bevonden door minimaal een van beide bronnen";
-            // Check de veiliginternetten data als deze bekend is
-        } else {
+        if (responseVeiligInternetten.error || responsePolitie.error) {
+            console.error(responseVeiligInternetten.error || responsePolitie.error);
             if(responseVeiligInternetten.error){
-                console.error(responseVeiligInternetten.error);
                 responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens van Veilig Internetten.";
             } else if (responsePolitie.error){
-                console.error(responsePolitie.error);
                 responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens van de Politie.";
             } else {
                 responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens.";
             }
             status = "unknown";
+        } else {
+            let { status1, message1 } = determineStatus(responseVeiligInternetten, responsePolitie);
+            status = status1;
+            responseMessage = message1;
         }
 
         responseVeiligInternetten.rawHtml = "";
@@ -122,12 +158,6 @@ async function getAndStoreSafetyDomain(wrapper) {
     } else {
         console.log("stored:", data);
         // TODO Check if the data is still valid
-        // TODO get conclusie van data en geef die en keer door 
-        // fillExtensionFeedback(data.politie, "politieControleerHandelspartij", wrapper);
-        // fillExtensionFeedback(data.veiligInternetten, "checkVeiliginternetten", wrapper);
-        // const responseData = {
-        //     message: "from stored data",
-        // };
         fillExtensionFeedback(data, wrapper);
     }   
 }
@@ -195,11 +225,6 @@ async function fillExtensionFeedback(response, wrapper) {
     document.body.classList.add(`${status}`);
     status != "default" ? wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text()) : null;
 }
-
-
-
-
-
 
 function displayData(wrapper, id, info) {
     const infoDiv = wrapper.querySelector(`${id}`);

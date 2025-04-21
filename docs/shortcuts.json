@@ -1,0 +1,152 @@
+{
+    "ios": {
+        "whatsapp": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "sms": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "email": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "gmail": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        }
+    },
+    "android": {
+        "whatsapp": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "sms": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "email": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "gmail": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        }
+    },
+    "windows": {
+        "whatsapp": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "sms": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "email": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        },
+        "gmail": {
+            "decideMyself": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            },
+            "customContact": {
+                "help": "https://example.com/help",
+                "decideMyself": "https://example.com/zelf-title",
+                "customTitle": "https://example.com/empty-title"
+            }
+        }
+    }
+  }

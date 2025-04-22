@@ -110,7 +110,7 @@ function determineStatus(responseVeiligInternetten, responsePolitie) {
     }
 }
 async function getAndStoreSafetyDomain(wrapper) {
-    const data = await getStoredData(domain);
+    let data = await getStoredData(domain);
     let status;
     let responseMessage;
 
@@ -139,7 +139,7 @@ async function getAndStoreSafetyDomain(wrapper) {
         responsePolitie.rawHtml = "";
 
         // Create a JSON structure for the responses
-        const responseData = {
+        data = {
             veiligInternetten: responseVeiligInternetten,
             politie: responsePolitie,
             message: responseMessage,
@@ -147,11 +147,11 @@ async function getAndStoreSafetyDomain(wrapper) {
         };
 
         // Pass the JSON structure and response message to the feedback function
-        fillExtensionFeedback(responseData, wrapper);
+        fillExtensionFeedback(data, wrapper);
 
         // Save the JSON structure in storage
         chrome.storage.local.set({
-            [domain]: responseData
+            [domain]: data
         }, () => {
             console.log(`Saved ${domain} result to storage.`);
         });
@@ -160,6 +160,16 @@ async function getAndStoreSafetyDomain(wrapper) {
         // TODO Check if the data is still valid
         fillExtensionFeedback(data, wrapper);
     }   
+
+    // Help button listener
+    const helpBtn = document.body.querySelector("#getHelp");
+    if(helpBtn){
+        helpBtn.addEventListener("click", () => {        
+            chrome.runtime.sendMessage({ type: "sendSafetyCheckResultsToMail", domain: domain, safetyCheckResult: data }, (response) => {
+                console.log(response);
+            });
+        });
+    }
 }
 
 async function getStoredData(domain) {

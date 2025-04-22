@@ -1,4 +1,15 @@
 :root {
+    --color-black: black;
+    --color-grey: grey;
+    --color-light-grey: #707070;
+    --color-white: #fff;
+    --color-blue: #2260ff;
+    --color-light-blue: #b5c9fc;
+    --color-border-grey: #b5bfd9;
+    --color-background-light: rgb(246, 244, 255);
+    /* --color-background-button: rgb(237, 233, 255); */
+    --standard-inline-padding: 1rem;
+    --standard-content-width: 50rem;
 }
 
 body {
@@ -6,6 +17,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 400; /* Value from 200 to 1000 */
     font-style: normal;
+    margin: 0;
 }
 
 .visually-hidden {
@@ -21,12 +33,27 @@ body {
     scale: 1.6;
 }
 
+header {
+    /* display: flex;
+    justify-content: center; */
+    div {
+        /* max-width: var(--standard-content-width);
+        width: 100%; */
+        padding-inline: var(--standard-inline-padding);
+    }
+}
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1em;
+    & section {
+        font-size: 1.2em;
+        padding-inline: var(--standard-inline-padding);
+        h2 {
+            margin: 0;
+        }
+    }
 }
 
 #device, #app, #who, .title {
@@ -40,11 +67,11 @@ main {
 }
 
 .shortcutQuestions {
-    max-width: 40em;
-    font-size: 1.2em;
+    max-width: var(--standard-content-width);
+    margin-bottom: 5em;
     & form {
-        border-top: solid 1px black;
-        border-bottom: solid 1px black;
+        border-top: solid 1px var(--color-black);
+        border-bottom: solid 1px var(--color-black);
         padding-top: 1em;
         padding-bottom: 1em;
         margin-top: 1.5em;
@@ -53,36 +80,25 @@ main {
         gap: 0.5em;
         & > div {
             padding: 0.5em;
-            background-color: rgb(246, 244, 255);
+            background-color: var(--color-background-light);
+            & > label {
+                font-weight: 600;
+                font-size: 1.1em;
+            }
         }
         & .littleText {
             font-size: 0.9em;
-            color: grey;
+            color: var(--color-grey);
             margin: 0;
             margin-top: 1.5em;
         }
-        & button[type="submit"] {
-            padding: 0.5em;
-            border: solid black 1px;
-            text-align: center;
-            width: fit-content;
-            border-radius: 3px;
-            font-size: 1.1em;
-            margin-top: 0.25em;
-            background-color: rgb(237, 233, 255);
-            transition: 150ms ease-in-out;
-            &:hover {
-                cursor: pointer;
-                background-color: rgb(255, 255, 255);
-            }
-        }
     }
     .linkDiv {
-        border: solid black 1px;
+        border: solid var(--color-black) 1px;
         display: flex;
         justify-content: space-between;
         padding-left: 1em;
-        color: gray;
+        color: var(--color-grey);
         div {
             display: flex;
             gap: 0.5em;
@@ -91,6 +107,49 @@ main {
                 padding: 0 1em 0 1em;
             }
         }
+    }
+}
+
+
+button {
+    padding: 0.6em;
+    border: none;
+    text-align: center;
+    width: fit-content;
+    border-radius: 3px;
+    font-size: 1em;
+    transition: 150ms ease-in-out;
+    border-radius: 0.5rem;
+    &:hover:not(:disabled) {
+        cursor: pointer;
+    }
+    &:disabled {
+        opacity: 0.5;
+        &:before {
+            content: "🔒 ";
+        }
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+}
+.btn-primary {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    &:hover:not(:disabled) {
+        background-color: var(--color-light-blue);
+        color: var(--color-black);
+    }
+}
+
+.btn-secondary {
+    border-radius: 0px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border: solid 2px var(--color-blue);
+    &:hover:not(:disabled) {
+        background-color: var(--color-light-blue);
     }
 }
 
@@ -105,7 +164,7 @@ main {
 
     & .checkbox-icon {
         transition: 0.375s ease;
-        color: #494949;
+        color: var(--color-light-grey);
         & img, svg {
             width: 3rem;
             height: 3rem;
@@ -128,23 +187,23 @@ main {
             opacity: 1;
         }        
         &:focus + .checkbox-tile {
-            border-color: #2260ff;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+            border-color: var(--color-blue);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px var(--color-light-blue);
         }
 
         &:checked + .checkbox-tile {
-            border-color: #2260ff;
+            border-color: var(--color-blue);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            color: #2260ff;
+            color: var(--color-blue);
             &:before {
                 transform: scale(1);
                 opacity: 1;
-                background-color: #2260ff;
-                border-color: #2260ff;
+                background-color: var(--color-blue);
+                border-color: var(--color-blue);
             }
             & .checkbox-icon,
             & .checkbox-label {
-                color: #2260ff;
+                color: var(--color-blue);
             }
         }
     }
@@ -157,8 +216,8 @@ main {
         width: 7rem;
         min-height: 7rem;
         border-radius: 0.5rem;
-        border: 2px solid #b5bfd9;
-        background-color: #fff;
+        border: 2px solid var(--color-border-grey);
+        background-color: var(--color-white);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         transition: 0.15s ease;
         cursor: pointer;
@@ -171,8 +230,8 @@ main {
             display: block;
             width: 1.25rem;
             height: 1.25rem;
-            border: 2px solid #b5bfd9;
-            background-color: #fff;
+            border: 2px solid var(--color-border-grey);
+            background-color: var(--color-white);
             border-radius: 50%;
             top: 0.25rem;
             left: 0.25rem;
@@ -185,7 +244,7 @@ main {
             background-position: 50% 50%;
         }
         &:hover {
-            border-color: #2260ff;
+            border-color: var(--color-blue);
             &:before {
                 transform: scale(1);
                 opacity: 1;
@@ -194,7 +253,7 @@ main {
         /* Text */
         & .checkbox-label {
             font-size: 0.8em;
-            color: #707070;
+            color: var(--color-light-grey);
             transition: 0.375s ease;
             text-align: center;
         }
@@ -207,14 +266,54 @@ main {
         flex-direction: row;
         & .checkbox-label {
             font-size: 1em;
-            color: black;
+            color: var(--color-black);
         }
     }
     & input[type="text"], input[type="email"] {
         font-size: 1em;
-        color: #2260ff;
+        color: var(--color-blue);
         &.blue-border {
-            border-color: #2260ff;
+            border-color: var(--color-blue);
+        }
+    }
+}
+
+.shortcutInfo {
+    background-color: var(--color-background-light);
+}
+
+.shortcutInfo, .webextensionInfo {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    padding-block: 5rem;
+    > div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-inline: var(--standard-inline-padding);
+        max-width: var(--standard-content-width);
+        > * {
+            width: 100%;
+        }
+    }
+}
+
+footer {
+    background-color: var(--color-border-grey);
+    padding: 1rem;
+    display: flex;
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 1em;
+        li a {
+            color: black;
+            transition: 150ms;
+            &:hover {
+                color: var(--color-blue);
+            }
         }
     }
 }

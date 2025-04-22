@@ -11,7 +11,9 @@
 </head>
 <body>
     <header>
-        <h1>Web alert <span class="visually-hidden">, genereer je snelkoppeling om makkelijker hulp te vragen over phishing.</span></h1>
+        <div>
+            <h1>Web alert <span class="visually-hidden">, genereer je snelkoppeling om makkelijker hulp te vragen over phishing.</span></h1>
+        </div>
     </header>
     <main>
         <section class="shortcutQuestions">
@@ -210,37 +212,62 @@
                 </div>
                
                 <p class="littleText">Door op de knop te drukken wordt er een link voor u aangemaakt. Deze link kan u vervolgens gebruiken om de snelkoppeling te installeren op uw apparaat. </p>
-                <button type="submit">Maak de snelkoppeling</button>
+                <button type="submit" class="btn-primary">Maak de snelkoppeling</button>
+                <!-- TODO progress meter in the button until it unlocks -->
             </form>
 
             <p>De link kan u ook delen met vrienden, familie of bekenden zodat zij ook gebruik kunnen maken van deze handige functie.</p>
             <div class="linkDiv">
                 <p class="placeholder">Er is nog geen link gegenereerd </p>
                 <div>
-                    <button disabled >Kopieer</button>
-                    <button disabled >Installeer</button>
+                    <button disabled class="btn-secondary">Kopieer</button>
                 </div>
             </div>
         </section>
     
-        <!-- <section>
-            <h2>Informatie over dit product</h2>
-            <p>Deze webextensie kijkt automatisch tijdens het browsen 
-                in bestaande data van de politie en de overheid of de website
-                waar je op zit veilig is of niet. Naast dat hij ook kijkt wat voor linkjes en formulieren er verder op de pagina staan…
-                De informatie over de bezochte websites worden op uw computer opgeslagen, databases komen hier niet aan te pas, hierdoor blijft uw informatie veilig. </p>
+        <section class="shortcutInfo">
+            <div>
+                <h2>Informatie over dit product</h2>
+                <p>Deze webextensie kijkt automatisch tijdens het browsen 
+                    in bestaande data van de politie en de overheid of de website
+                    waar je op zit veilig is of niet. Naast dat hij ook kijkt wat voor linkjes en formulieren er verder op de pagina staan…
+                    De informatie over de bezochte websites worden op uw computer opgeslagen, databases komen hier niet aan te pas, hierdoor blijft uw informatie veilig. 
+                </p>
+            </div>
         </section>
     
-        <section>
-            <h2>Automatisch phishing herkennen</h2>
-            <p>Check onze webextensie, deze checkt automatisch of de websites die u bezoekt op het internet veilig zijn of niet. Dit doet hij meteen als u de pagina binnenkomt en vergelijkt de inhoud en url met verschillende betrouwbare bronnen.</p>
-            <p>Als er niks mis is ziet u een groene streep rechts op de pagina. En als er toch wat mis is wordt dit aangegeven. 
-                …..
-            </p>
-            <a href="">Bezoek het product om het te kunnen installeren. [->]</a>
-        </section> -->
+        <section class="webextensionInfo">
+            <div>
+                <h2>Automatisch phishing herkennen</h2>
+                <p>Check onze webextensie, deze checkt automatisch of de websites die u bezoekt op het internet veilig zijn of niet. Dit doet hij meteen als u de pagina binnenkomt en vergelijkt de inhoud en url met verschillende betrouwbare bronnen.</p>
+                <p>Als er niks mis is ziet u een groene streep rechts op de pagina. En als er toch wat mis is wordt dit aangegeven. 
+                    …..
+                </p>
+                <a href="">Bezoek het product om het te kunnen installeren. 
+                    <span>(Opent een nieuwe pagina) 
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="28.567" height="28.577" viewBox="0 0 28.567 28.577">
+                            <g id="Group_3" data-name="Group 3" transform="translate(-9906.433 -297)">
+                            <path id="Icon_metro-arrow-up-right" data-name="Icon metro-arrow-up-right" d="M9.718,28.356,25.707,12.367V19.28a1.928,1.928,0,0,0,3.856,0V7.712a1.925,1.925,0,0,0-1.928-1.927H16.067a1.928,1.928,0,1,0,0,3.856H22.98L6.992,25.629a1.928,1.928,0,0,0,2.727,2.727Z" transform="translate(9905.437 291.216)"/>
+                            <path id="Path_18" data-name="Path 18" d="M9875.164,294h-9.231v23.37h23.38v-9.259" transform="translate(42 6.707)" fill="none" stroke="#000" stroke-width="3"/>
+                            </g>
+                        </svg> -->
+                    </span>
+                </a>
+            </div>
+        </section>
     </main>
-    
+    <footer>
+        <p>©2025 - WebAlert</p>
+        <nav>
+            <h3 class="visually-hidden">Linkjes</h3>
+            <ul>
+                <li><a href="">Neem contact op (suggesties)</a></li>
+                <!-- <li><a href=""></a>Neem contact op (bussiness)</li> -->
+                <li><a href="">Bekijk de hele lijst met shortcuts</a></li>
+                <li><a href="">Bekijk de bijhorende webextensie</a></li>
+            </ul>
+        </nav>
+    </footer>
     <script src="js/script.js"></script>
 </body>
 </html>

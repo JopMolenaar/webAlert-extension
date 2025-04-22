@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (whoInput.value.trim() !== "") {
         whoCheckbox.checked = false;
         whoInput.classList.add("blue-border");
+      } else {
+        whoInput.classList.remove("blue-border");
       }
     });
   
@@ -31,6 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
         title1.checked = false;
         title2.checked = false;
         title3.classList.add("blue-border");
+      } else {
+        title3.classList.remove("blue-border");
       }
     });
   
@@ -81,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
             a.textContent = link;
             document.querySelector(".placeholder").textContent = "";
             document.querySelector(".placeholder").appendChild(a);
+            document.querySelector(".linkDiv button").removeAttribute("disabled")
         } catch (err) {
             console.error(err);
             // TODO ALERT THE USER IN THE FORM

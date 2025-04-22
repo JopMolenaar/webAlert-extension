@@ -2,151 +2,151 @@
     "ios": {
         "whatsapp": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/ios/whatsapp/decideMyself/help",
+                "decideMyself": "https://example.com/ios/whatsapp/decideMyself/zelf-title",
+                "customTitle": "https://example.com/ios/whatsapp/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/ios/whatsapp/customContact/help",
+                "decideMyself": "https://example.com/ios/whatsapp/customContact/zelf-title",
+                "customTitle": "https://example.com/ios/whatsapp/customContact/custom-title"
             }
         },
         "sms": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/ios/sms/decideMyself/help",
+                "decideMyself": "https://example.com/ios/sms/decideMyself/zelf-title",
+                "customTitle": "https://example.com/ios/sms/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/ios/sms/customContact/help",
+                "decideMyself": "https://example.com/ios/sms/customContact/zelf-title",
+                "customTitle": "https://example.com/ios/sms/customContact/custom-title"
             }
         },
         "email": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/ios/email/decideMyself/help",
+                "decideMyself": "https://example.com/ios/email/decideMyself/zelf-title",
+                "customTitle": "https://example.com/ios/email/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/ios/email/customContact/help",
+                "decideMyself": "https://example.com/ios/email/customContact/zelf-title",
+                "customTitle": "https://example.com/ios/email/customContact/custom-title"
             }
         },
         "gmail": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/ios/gmail/decideMyself/help",
+                "decideMyself": "https://example.com/ios/gmail/decideMyself/zelf-title",
+                "customTitle": "https://example.com/ios/gmail/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/ios/gmail/customContact/help",
+                "decideMyself": "https://example.com/ios/gmail/customContact/zelf-title",
+                "customTitle": "https://example.com/ios/gmail/customContact/custom-title"
             }
         }
     },
     "android": {
         "whatsapp": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/android/whatsapp/decideMyself/help",
+                "decideMyself": "https://example.com/android/whatsapp/decideMyself/zelf-title",
+                "customTitle": "https://example.com/android/whatsapp/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/android/whatsapp/customContact/help",
+                "decideMyself": "https://example.com/android/whatsapp/customContact/zelf-title",
+                "customTitle": "https://example.com/android/whatsapp/customContact/custom-title"
             }
         },
         "sms": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/android/sms/decideMyself/help",
+                "decideMyself": "https://example.com/android/sms/decideMyself/zelf-title",
+                "customTitle": "https://example.com/android/sms/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/android/sms/customContact/help",
+                "decideMyself": "https://example.com/android/sms/customContact/zelf-title",
+                "customTitle": "https://example.com/android/sms/customContact/custom-title"
             }
         },
         "email": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/android/email/decideMyself/help",
+                "decideMyself": "https://example.com/android/email/decideMyself/zelf-title",
+                "customTitle": "https://example.com/android/email/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/android/email/customContact/help",
+                "decideMyself": "https://example.com/android/email/customContact/zelf-title",
+                "customTitle": "https://example.com/android/email/customContact/custom-title"
             }
         },
         "gmail": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/android/gmail/decideMyself/help",
+                "decideMyself": "https://example.com/android/gmail/decideMyself/zelf-title",
+                "customTitle": "https://example.com/android/gmail/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/android/gmail/customContact/help",
+                "decideMyself": "https://example.com/android/gmail/customContact/zelf-title",
+                "customTitle": "https://example.com/android/gmail/customContact/custom-title"
             }
         }
     },
     "windows": {
         "whatsapp": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/windows/whatsapp/decideMyself/help",
+                "decideMyself": "https://example.com/windows/whatsapp/decideMyself/zelf-title",
+                "customTitle": "https://example.com/windows/whatsapp/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/windows/whatsapp/customContact/help",
+                "decideMyself": "https://example.com/windows/whatsapp/customContact/zelf-title",
+                "customTitle": "https://example.com/windows/whatsapp/customContact/custom-title"
             }
         },
         "sms": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/windows/sms/decideMyself/help",
+                "decideMyself": "https://example.com/windows/sms/decideMyself/zelf-title",
+                "customTitle": "https://example.com/windows/sms/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/windows/sms/customContact/help",
+                "decideMyself": "https://example.com/windows/sms/customContact/zelf-title",
+                "customTitle": "https://example.com/windows/sms/customContact/custom-title"
             }
         },
         "email": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/windows/email/decideMyself/help",
+                "decideMyself": "https://example.com/windows/email/decideMyself/zelf-title",
+                "customTitle": "https://example.com/windows/email/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/windows/email/customContact/help",
+                "decideMyself": "https://example.com/windows/email/customContact/zelf-title",
+                "customTitle": "https://example.com/windows/email/customContact/custom-title"
             }
         },
         "gmail": {
             "decideMyself": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/windows/gmail/decideMyself/help",
+                "decideMyself": "https://example.com/windows/gmail/decideMyself/zelf-title",
+                "customTitle": "https://example.com/windows/gmail/decideMyself/custom-title"
             },
             "customContact": {
-                "help": "https://example.com/help",
-                "decideMyself": "https://example.com/zelf-title",
-                "customTitle": "https://example.com/empty-title"
+                "help": "https://example.com/windows/gmail/customContact/help",
+                "decideMyself": "https://example.com/windows/gmail/customContact/zelf-title",
+                "customTitle": "https://example.com/windows/gmail/customContact/custom-title"
             }
         }
     }
-  }
+}

@@ -138,12 +138,14 @@ async function getAndStoreSafetyDomain(wrapper) {
         responseVeiligInternetten.rawHtml = "";
         responsePolitie.rawHtml = "";
 
-        // Create a JSON structure for the responses
+        const formattedDate = getCurrentDate();
+
         data = {
             veiligInternetten: responseVeiligInternetten,
             politie: responsePolitie,
             message: responseMessage,
             status: status,
+            logDate: formattedDate
         };
 
         // Pass the JSON structure and response message to the feedback function
@@ -157,8 +159,18 @@ async function getAndStoreSafetyDomain(wrapper) {
         });
     } else {
         console.log("stored:", data);
-        // TODO Check if the data is still valid
+        
+        data.logDate = getCurrentDate();
+
+        // Update the feedback UI with the stored data
         fillExtensionFeedback(data, wrapper);
+
+        // Re-save the data with the updated logDate
+        chrome.storage.local.set({
+            [domain]: data
+        }, () => {
+            console.log(`Re-saved ${domain} result to storage with updated logDate.`);
+        });
     }   
 
     // Help button listener
@@ -170,6 +182,12 @@ async function getAndStoreSafetyDomain(wrapper) {
             });
         });
     }
+}
+
+function getCurrentDate() {
+        const currentDate = new Date();
+        const formattedDate = new Date(currentDate.getTime() + 2 * 60 * 60 * 1000).toISOString().slice(0, 19);
+        return formattedDate
 }
 
 async function getStoredData(domain) {

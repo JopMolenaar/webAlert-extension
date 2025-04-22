@@ -78,6 +78,7 @@ body {
         --color-status-btn-hvr: var(--color-warning-btn-hvr);
         & #statusText {
             color: black !important;
+            margin: 0;
         }
     }
 

@@ -7,9 +7,13 @@ function injectUI() {
 
     chrome.runtime.sendMessage({ type: "getStoredData" }, (response) => {
         const resultsContainer = document.querySelector("#results");
-        const items = response.data;
     
-        for (const [domain, response] of Object.entries(items)) {
+        const sortedItems = Object.entries(response.data).sort(([, a], [, b]) => {
+            const parseDate = (dateStr) => new Date(dateStr);
+            return parseDate(b.logDate) - parseDate(a.logDate);
+        });
+        
+        for (const [domain, response] of sortedItems) {
             if(response.politie && response.veiligInternetten){
                 const resultAndSourcesDiv = document.createElement("details");
                 const summary = document.createElement("summary");

@@ -117,16 +117,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const title1 = document.querySelector('#title1');
     const title2 = document.querySelector('#title2');
     const title3 = document.querySelector('#title3');
-  
+
+    if (!title1.checked && !title2.checked) {
+        title3.setAttribute("required", "required");
+    }
+
     whoInput.addEventListener("input", () => {
       if (whoInput.value.trim() !== "") {
         whoCheckbox.checked = false;
+        whoInput.classList.add("blue-border");
       }
     });
   
     whoCheckbox.addEventListener("change", () => {
       if (whoCheckbox.checked) {
         whoInput.value = "";
+        whoInput.classList.remove("blue-border");
       }
     });
   
@@ -134,6 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (title3.value.trim() !== "") {
         title1.checked = false;
         title2.checked = false;
+        title3.classList.add("blue-border");
       }
     });
   
@@ -141,6 +148,10 @@ document.addEventListener("DOMContentLoaded", function () {
       cb.addEventListener("change", () => {
         if (cb.checked) {
           title3.value = "";
+          title3.removeAttribute("required");
+          title3.classList.remove("blue-border");
+        } else if (!title1.checked && !title2.checked) {
+            title3.setAttribute("required", "required");
         }
       });
     });

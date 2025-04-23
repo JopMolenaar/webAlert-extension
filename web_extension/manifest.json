@@ -1,5 +1,4 @@
 {
-
     "description": "Een hulpmiddel om je te helpen om mogelijke online oplichting eerder te herkennen of juist gerust te stellen dat er niks kan gebeuren.",
     "manifest_version": 3,
     "name": "WebAlert - Oplichtingdetectie",

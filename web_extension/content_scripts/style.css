@@ -57,6 +57,15 @@ body {
     }
 }
 
+@keyframes turnAround {
+    0%{
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 body {
     &.danger {
         --color-status: var(--color-danger);
@@ -128,6 +137,18 @@ body {
             left: 0;
             right: auto;
             transform: translate(-45%, -45%);
+            &.loading {
+                width: 2.1em;
+                height: 2.1em;
+                overflow: hidden;
+                border-radius: 50%;
+                background-color: #474545;
+                & svg {
+                    width: 2.1em;
+                    height: 2.1em;
+                    animation: turnAround 500ms linear infinite;
+                }
+            }
         }
     }
     & > div{

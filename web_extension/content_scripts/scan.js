@@ -8,6 +8,10 @@ async function injectUI() {
     wrapper.innerHTML = html;
     wrapper.setAttribute("id", "webAlertDiv");
     wrapper.classList.add("right");
+
+    wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/loading.svg`)).then(r => r.text());
+    wrapper.querySelector("#visualStatus").classList.add("loading");
+
     document.body.insertBefore(wrapper, document.body.firstChild);
 
     // add colored line for feedback
@@ -159,7 +163,7 @@ async function getAndStoreSafetyDomain(wrapper) {
         });
     } else {
         console.log("stored:", data);
-        
+
         data.logDate = getCurrentDate();
 
         // Update the feedback UI with the stored data
@@ -247,11 +251,12 @@ async function fillExtensionFeedback(response, wrapper) {
     }
 
     const status = response.status === 'unknown' ? 'default' : response.status;
-    // const status = "danger"; 
+
     console.log(response.message);
     status != "success" ? wrapper.querySelector("#statusText").textContent = response.message : null;
     document.body.classList.add(`${status}`);
     status != "default" ? wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text()) : null;
+    wrapper.querySelector("#visualStatus").classList.remove("loading");
 }
 
 function displayData(wrapper, id, info) {

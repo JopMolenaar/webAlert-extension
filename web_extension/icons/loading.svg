@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="125" height="125" viewBox="0 0 125 125">
+  <defs>
+    <filter id="Ellipse_29" x="0" y="0" width="125" height="125" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_4" data-name="Group 4" transform="translate(-162 -591)">
+    <g transform="matrix(1, 0, 0, 1, 162, 591)" filter="url(#Ellipse_29)">
+      <g id="Ellipse_29-2" data-name="Ellipse 29" transform="translate(9 6)" fill="#474545" stroke="#000" stroke-width="1">
+        <circle cx="53.5" cy="53.5" r="53.5" stroke="none"/>
+        <circle cx="53.5" cy="53.5" r="53" fill="none"/>
+      </g>
+    </g>
+    <g id="Ellipse_34" data-name="Ellipse 34" transform="translate(221.274 697.191) rotate(-158)" fill="#fff" stroke="#707070" stroke-width="1" opacity="0.011">
+      <circle cx="15" cy="15" r="15" stroke="none"/>
+      <circle cx="15" cy="15" r="14.5" fill="none"/>
+    </g>
+    <circle id="Ellipse_36" data-name="Ellipse 36" cx="15" cy="15" r="15" transform="translate(231.86 696.72) rotate(-171)" fill="#fff" opacity="0.099"/>
+    <circle id="Ellipse_38" data-name="Ellipse 38" cx="15" cy="15" r="15" transform="translate(246.507 691.806) rotate(170)" fill="#fff" opacity="0.202"/>
+    <circle id="Ellipse_40" data-name="Ellipse 40" cx="15" cy="15" r="15" transform="matrix(-0.883, 0.469, -0.469, -0.883, 258.194, 682.984)" fill="#fff" opacity="0.299"/>
+    <circle id="Ellipse_42" data-name="Ellipse 42" cx="15" cy="15" r="15" transform="translate(265.453 673.156) rotate(137)" fill="#fff" opacity="0.4"/>
+    <circle id="Ellipse_44" data-name="Ellipse 44" cx="15" cy="15" r="15" transform="translate(270.288 660.192) rotate(120)" fill="#fff" opacity="0.502"/>
+    <circle id="Ellipse_46" data-name="Ellipse 46" cx="15" cy="15" r="15" transform="translate(270.949 644.757) rotate(101)" fill="#fff" opacity="0.601"/>
+    <circle id="Ellipse_48" data-name="Ellipse 48" cx="15" cy="15" r="15" transform="translate(267.567 632.177) rotate(85)" fill="#fff" opacity="0.703"/>
+    <circle id="Ellipse_50" data-name="Ellipse 50" cx="15" cy="15" r="15" transform="translate(261.357 621.654) rotate(70)" fill="#fff" opacity="0.804"/>
+    <circle id="Ellipse_52" data-name="Ellipse 52" cx="15" cy="15" r="15" transform="translate(251.978 612.613) rotate(54)" fill="#fff" opacity="0.898"/>
+    <circle id="Ellipse_54" data-name="Ellipse 54" cx="15" cy="15" r="15" transform="translate(242.751 607.402) rotate(41)" fill="#fff"/>
+  </g>
+</svg>

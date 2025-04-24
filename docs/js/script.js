@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Generated Link:", link);
             const a = document.createElement("a");
             a.href = link;
+            a.target = "_blank";
             a.textContent = link;
             document.querySelector(".placeholder").textContent = "";
             document.querySelector(".placeholder").appendChild(a);

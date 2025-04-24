@@ -71,7 +71,7 @@ main {
     margin-bottom: 5em;
     & form {
         border-top: solid 1px var(--color-black);
-        border-bottom: solid 1px var(--color-black);
+        /* border-bottom: solid 1px var(--color-black); */
         padding-top: 1em;
         padding-bottom: 1em;
         margin-top: 1.5em;

@@ -2,38 +2,39 @@
     "ios": {
         "whatsapp": {
             "decideMyself": {
-                "help": "https://example.com/ios/whatsapp/decideMyself/help",
-                "decideMyself": "https://example.com/ios/whatsapp/decideMyself/zelf-title",
-                "customTitle": "https://example.com/ios/whatsapp/decideMyself/custom-title"
+                "help": "https://www.icloud.com/shortcuts/4af7a384da8f45b1a5d64d1c75ff157b",
+                "decideMyself": "https://www.icloud.com/shortcuts/4af7a384da8f45b1a5d64d1c75ff157b",
+                "customTitle": "https://www.icloud.com/shortcuts/4af7a384da8f45b1a5d64d1c75ff157b"
             },
             "customContact": {
-                "help": "https://example.com/ios/whatsapp/customContact/help",
-                "decideMyself": "https://example.com/ios/whatsapp/customContact/zelf-title",
-                "customTitle": "https://example.com/ios/whatsapp/customContact/custom-title"
+                "help": "https://www.icloud.com/shortcuts/4af7a384da8f45b1a5d64d1c75ff157b",
+                "decideMyself": "https://www.icloud.com/shortcuts/4af7a384da8f45b1a5d64d1c75ff157b",
+                "customTitle": "https://www.icloud.com/shortcuts/4af7a384da8f45b1a5d64d1c75ff157b"
             }
         },
         "sms": {
             "decideMyself": {
-                "help": "https://example.com/ios/sms/decideMyself/help",
-                "decideMyself": "https://example.com/ios/sms/decideMyself/zelf-title",
-                "customTitle": "https://example.com/ios/sms/decideMyself/custom-title"
+                "help": "https://www.icloud.com/shortcuts/23541c11a837425b99a7f4939234b0e5",
+                "decideMyself": "https://www.icloud.com/shortcuts/23541c11a837425b99a7f4939234b0e5",
+                "customTitle": "Deze combinatie is niet mogelijk"
             },
             "customContact": {
-                "help": "https://example.com/ios/sms/customContact/help",
-                "decideMyself": "https://example.com/ios/sms/customContact/zelf-title",
-                "customTitle": "https://example.com/ios/sms/customContact/custom-title"
+                "help": "https://www.icloud.com/shortcuts/e13965b61e99400c85bb923e0300d735",
+                "decideMyself": "https://www.icloud.com/shortcuts/e13965b61e99400c85bb923e0300d735",
+                "customTitle": "Deze combinatie is niet mogelijk"
             }
         },
         "email": {
             "decideMyself": {
-                "help": "https://example.com/ios/email/decideMyself/help",
-                "decideMyself": "https://example.com/ios/email/decideMyself/zelf-title",
-                "customTitle": "https://example.com/ios/email/decideMyself/custom-title"
+                "help": "https://www.icloud.com/shortcuts/af1105f0b9d14d3aa932943c1e717cb6",
+                "decideMyself": "https://www.icloud.com/shortcuts/28295d21ad304bebb672e2203c926246",
+                "customTitle": "https://www.icloud.com/shortcuts/28295d21ad304bebb672e2203c926246"
+                
             },
             "customContact": {
-                "help": "https://example.com/ios/email/customContact/help",
-                "decideMyself": "https://example.com/ios/email/customContact/zelf-title",
-                "customTitle": "https://example.com/ios/email/customContact/custom-title"
+                "help": "https://www.icloud.com/shortcuts/af1105f0b9d14d3aa932943c1e717cb6",
+                "decideMyself": "https://www.icloud.com/shortcuts/28295d21ad304bebb672e2203c926246",
+                "customTitle": "https://www.icloud.com/shortcuts/28295d21ad304bebb672e2203c926246"
             }
         },
         "gmail": {

@@ -17,10 +17,20 @@
     </header>
     <main>
         <section class="shortcutQuestions">
-            <h2>Stel uw snelkoppeling in!</h2>
-            <p>Door deze vragen in te vullen wordt er uiteindelijk een link voor u klaar gezet om de snelkoppeling te installeren op uw apparaat. De snelkoppeling stelt u in staat om met een druk op de knop, of door bijvoorbeeld te schudden met uw apparaat een bericht klaar te zetten met een schermafbeelding van hetgeen waar je over twijfelt. U hoeft dan alleen nog op verzenden te drukken. De ontvanger krijgt hierdoor een goed beeld van waarover u twijfelt en kan een daardoor een beter advies geven.</p>
+            <h2>Het ideale hulpmiddel om hulp te vragen</h2>
+            <p><strong>Vul alstublieft de vragen in.</strong></p>
+            <p>Daarna krijgt u een link om iets handigs toe te voegen aan uw apparaat.</p>
+            <br>
+            <p>Op een <strong>computer of laptop</strong> komt er een <strong>icoontje bovenin uw scherm</strong> of in de balk onderin.</p>
+            <p>Op een <strong>telefoon of tablet</strong> kunt u bijvoorbeeld door te <strong>schudden of te tikken</strong> een bericht klaarzetten.</p>
+            <br>
+            <p>Er wordt dan automatisch een foto van uw scherm gemaakt, samen met een kort bericht.</p>
+            <p>U hoeft daarna alleen nog op "verzenden" te drukken.</p>
+            <br>
+            <p>Degene die u helpt, ziet zo precies waar u vragen over heeft en kan u beter advies geven.</p>
+
             <form>
-                <div>
+                <div id="question1">
                     <label for="device">Wat voor apparaat heeft u waar u deze snelkoppeling op wilt hebben?</label>
                     <div id="device">  
                         <div class="checkbox-wrapper-16">
@@ -105,7 +115,7 @@
                     </div>
                 </div>
                 
-                <div>
+                <div id="question2">
                     <label for="app">Via welke app wilt u advies vragen?</label>
                     <div id="app">  
                         <div class="checkbox-wrapper-16">
@@ -159,9 +169,7 @@
                             </label>
                         </div>
                     </div>
-                </div>
                
-                <div>
                     <label for="who">Aan wie wilt u het vragen?</label>
                     <div id="who">
                         <div class="checkbox-wrapper-16">
@@ -183,7 +191,7 @@
                     </div>
                 </div>
                
-                <div>
+                <div id="question3">
                     <label for="title">Wat wordt de titel van het bericht?</label>
                     <div class="title">
                         <div class="checkbox-wrapper-16">
@@ -209,33 +217,47 @@
                             </label>
                         </div>
                     </div>
-                </div>
-               
-                <p class="littleText">Door op de knop te drukken wordt er een link voor u aangemaakt. Deze link kan u vervolgens gebruiken om de snelkoppeling te installeren op uw apparaat. </p>
-                <button type="submit" class="btn-primary">Maak de snelkoppeling</button>
-                <!-- TODO progress meter in the button until it unlocks -->
-            </form>
 
-            <!-- <p>De link kan u ook delen met vrienden, familie of bekenden zodat zij ook gebruik kunnen maken van deze handige functie.</p> -->
-            <div class="linkDiv">
-                <p class="placeholder">Er is nog geen link gegenereerd </p>
-                <div>
-                    <button disabled class="btn-secondary">Kopieer</button>
+                    <p class="littleText">Door op de knop te drukken wordt er een link voor u aangemaakt. Deze link kan u vervolgens gebruiken om de snelkoppeling te installeren op uw apparaat. </p>
+                    <button type="submit" class="btn-primary">Maak de snelkoppeling</button>
                 </div>
+            </form>
+             <!-- TODO progress meter in the button until it unlocks -->
+            <div class="progress-meter">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="middle-line"></span>
             </div>
-            <p>Als u op de link klikt opent er een nieuwe pagina en zijn dit de volgende stappen:</p>
-            <!-- TODO voeg plaatjes toe -->
-            <ol id="appleSteps-english">
-                <li>Klik op de blauwe knop "Get shortcut"</li>
-                <li>Er opent zich een popup, klik op "Open Shortcuts"</li>
-                <li>Er opent zich een kleine popup van de app. Klik op "Add shortcut"</li>
-                <li>Er opent zich een kleine popup van de app. Klik op "Add shortcut"</li>
-                <li>U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.</li>
-                <li>Klik twee keer op: "Always allow". Dit versoepelt het proces en heeft geen gevaar voor u privacy. <a href="#"><span class="visually-hidden">Meer informatie over privacy </span>ⓘ</a></li>
-            </ol>
+            <div id="controls">
+                <button class="btn-secondary">Vorige vraag</button>
+                <button class="btn-primary">Volgende vraag</button>
+            </div>
+
+            <div id="output">
+                <!-- <p>De link kan u ook delen met vrienden, familie of bekenden zodat zij ook gebruik kunnen maken van deze handige functie.</p> -->
+                <div class="linkDiv">
+                    <p class="placeholder">Er is nog geen link gegenereerd </p>
+                    <div>
+                        <button disabled class="btn-secondary">Kopieer</button>
+                    </div>
+                </div>
+                <p>Als u op de link klikt opent er een nieuwe pagina en zijn dit de volgende stappen:</p>
+                <!-- TODO voeg plaatjes toe -->
+                <ol id="appleSteps-english">
+                    <li>Klik op de blauwe knop "Get shortcut"</li>
+                    <li>Er opent zich een popup, klik op "Open Shortcuts"</li>
+                    <li>Er opent zich een kleine popup van de app. Klik op "Add shortcut"</li>
+                    <li>Er opent zich een kleine popup van de app. Klik op "Add shortcut"</li>
+                    <li>U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.</li>
+                    <li>Klik twee keer op: "Always allow". Dit versoepelt het proces en heeft geen gevaar voor u privacy. <a href="#"><span class="visually-hidden">Meer informatie over privacy </span>ⓘ</a></li>
+                </ol>
+                <button id="reset" class="btn-secondary">Maak een nieuwe link</button>
+            </div>
         </section>
     
-        <section class="shortcutInfo">
+        <!-- <section class="shortcutInfo">
             <div>
                 <h2>Informatie over dit product</h2>
                 <p>Deze webextensie kijkt automatisch tijdens het browsen 
@@ -255,16 +277,11 @@
                 </p>
                 <a href="">Bezoek het product om het te kunnen installeren. 
                     <span>(Opent een nieuwe pagina) 
-                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="28.567" height="28.577" viewBox="0 0 28.567 28.577">
-                            <g id="Group_3" data-name="Group 3" transform="translate(-9906.433 -297)">
-                            <path id="Icon_metro-arrow-up-right" data-name="Icon metro-arrow-up-right" d="M9.718,28.356,25.707,12.367V19.28a1.928,1.928,0,0,0,3.856,0V7.712a1.925,1.925,0,0,0-1.928-1.927H16.067a1.928,1.928,0,1,0,0,3.856H22.98L6.992,25.629a1.928,1.928,0,0,0,2.727,2.727Z" transform="translate(9905.437 291.216)"/>
-                            <path id="Path_18" data-name="Path 18" d="M9875.164,294h-9.231v23.37h23.38v-9.259" transform="translate(42 6.707)" fill="none" stroke="#000" stroke-width="3"/>
-                            </g>
-                        </svg> -->
+  
                     </span>
                 </a>
             </div>
-        </section>
+        </section> -->
     </main>
     <footer>
         <p>©2025 - WebAlert</p>

@@ -1,5 +1,6 @@
+const form = document.querySelector("form");
+
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
   
     const whoCheckbox = document.querySelector('#who1');
     const whoInput = document.querySelector('#who2');
@@ -87,6 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".placeholder").textContent = "";
             document.querySelector(".placeholder").appendChild(a);
             document.querySelector(".linkDiv button").removeAttribute("disabled")
+
+            form.style.display = "none";
+            output.style.display = "block"
+            questionIndex = 4
         } catch (err) {
             console.error(err);
             // TODO ALERT THE USER IN THE FORM
@@ -95,27 +100,73 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
-  // Function to determine the final link
-  function getLink(linkMap, device, app, who, title) {
-    if (!device) throw new Error("Geen apparaat geselecteerd.");
-    if (!app) throw new Error("Geen app geselecteerd.");
-  
-    let platform = "windows";
-    if (device === "iphone") platform = "ios";
-    else if (["samsung", "huawei", "oppo", "onePlus"].includes(device)) platform = "android";
-  
-    const whoType = who.includes("decideMyself") ? "decideMyself" : who.length > 0 ? "customContact" : null;
-    if (!whoType) throw new Error("Geen ontvanger gekozen of ingevuld.");
-  
-    let titleType = "customTitle";
-    if (title.includes("help")) titleType = "help";
-    else if (title.includes("decideMyself")) titleType = "decideMyself";
-    else if (!title.includes("customTitle")) throw new Error("Geen titel geselecteerd of ingevuld.");
-  
-    const link = linkMap?.[platform]?.[app]?.[whoType]?.[titleType];
-    if (!link) {
-      throw new Error("Geen geldige combinatie gevonden in shortcuts.json.");
-    }
-  
-    return link;
+// Function to determine the final link
+function getLink(linkMap, device, app, who, title) {
+  if (!device) throw new Error("Geen apparaat geselecteerd.");
+  if (!app) throw new Error("Geen app geselecteerd.");
+
+  let platform = "windows";
+  if (device === "iphone") platform = "ios";
+  else if (["samsung", "huawei", "oppo", "onePlus"].includes(device)) platform = "android";
+
+  const whoType = who.includes("decideMyself") ? "decideMyself" : who.length > 0 ? "customContact" : null;
+  if (!whoType) throw new Error("Geen ontvanger gekozen of ingevuld.");
+
+  let titleType = "customTitle";
+  if (title.includes("help")) titleType = "help";
+  else if (title.includes("decideMyself")) titleType = "decideMyself";
+  else if (!title.includes("customTitle")) throw new Error("Geen titel geselecteerd of ingevuld.");
+
+  const link = linkMap?.[platform]?.[app]?.[whoType]?.[titleType];
+  if (!link) {
+    throw new Error("Geen geldige combinatie gevonden in shortcuts.json.");
   }
+
+  return link;
+}
+
+// <!-- <svg xmlns="http://www.w3.org/2000/svg" width="28.567" height="28.577" viewBox="0 0 28.567 28.577">
+// <g id="Group_3" data-name="Group 3" transform="translate(-9906.433 -297)">
+// <path id="Icon_metro-arrow-up-right" data-name="Icon metro-arrow-up-right" d="M9.718,28.356,25.707,12.367V19.28a1.928,1.928,0,0,0,3.856,0V7.712a1.925,1.925,0,0,0-1.928-1.927H16.067a1.928,1.928,0,1,0,0,3.856H22.98L6.992,25.629a1.928,1.928,0,0,0,2.727,2.727Z" transform="translate(9905.437 291.216)"/>
+// <path id="Path_18" data-name="Path 18" d="M9875.164,294h-9.231v23.37h23.38v-9.259" transform="translate(42 6.707)" fill="none" stroke="#000" stroke-width="3"/>
+// </g>
+// </svg> -->
+
+
+const backBtn = document.querySelector("#controls button:nth-of-type(1)");
+const nextBtn = document.querySelector("#controls button:nth-of-type(2)");
+const output = document.querySelector("#output");
+
+let questionIndex = 1
+
+function showCurrentQuestion(){
+  form.style.display = "block";
+  
+  if(!document.querySelector(`#question${questionIndex}`)){
+    questionIndex >= 3 ? questionIndex = 3 : questionIndex = 1;
+    return
+  }
+
+  output.style.display = "none"
+  const divs = document.querySelectorAll("form > div");
+  divs.forEach((div)=>{
+    div.style.display = "none";
+  })
+
+  questionIndex === 3 ? (nextBtn.style.opacity = "0", nextBtn.disabled = true) : (nextBtn.style.opacity = "1", nextBtn.disabled = false)
+  questionIndex === 1 ? (backBtn.style.opacity = "0", backBtn.disabled = true) : (backBtn.style.opacity = "1", backBtn.disabled = false)
+
+  document.querySelector(`#question${questionIndex}`).style.display = "flex";
+}
+
+nextBtn.addEventListener("click", () => {
+  questionIndex++
+  showCurrentQuestion()
+})
+
+backBtn.addEventListener("click", () => {
+  questionIndex--
+  showCurrentQuestion()
+})
+
+showCurrentQuestion()

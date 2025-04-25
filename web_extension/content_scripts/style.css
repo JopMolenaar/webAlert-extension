@@ -87,11 +87,13 @@ body {
         --color-status-btn-hvr: var(--color-warning-btn-hvr);
         & #statusText {
             color: black !important;
-            margin: 0;
         }
     }
 
     &.danger, &.warning, &.default {
+        & #statusText {
+            margin: 0;
+        }
         & #webAlertDiv > div.open {
             justify-content: space-between;
             animation: alertUser 300ms ease-in-out forwards;

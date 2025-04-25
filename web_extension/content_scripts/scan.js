@@ -219,6 +219,7 @@ function getRootDomain(hostname) {
 // updatye this
 async function checkSafetyDomain(source, wrapper) {
     const response = await new Promise((resolve) => {
+        //  TODO check full url voor beter advies, anders geeft het geen goed advies over bijvoorbeeld een github project
         chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
             if(source === "checkVeiliginternetten") {
                 const html =  cleanDom(response.rawHtml);

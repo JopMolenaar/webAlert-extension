@@ -69,8 +69,16 @@ main {
 .shortcutQuestions {
     max-width: var(--standard-content-width);
     margin-bottom: 5em;
+    h2 {
+        margin-bottom: 1em;
+    }
+    p {
+     margin: 0;   
+    }
+
     & form {
         border-top: solid 1px var(--color-black);
+        background-color: var(--color-background-light);
         /* border-bottom: solid 1px var(--color-black); */
         padding-top: 1em;
         padding-bottom: 1em;
@@ -78,9 +86,14 @@ main {
         display: flex;
         flex-direction: column;
         gap: 0.5em;
+        /* height: 23em; */
+        height: fit-content;
         & > div {
             padding: 0.5em;
-            background-color: var(--color-background-light);
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100%;
             & > label {
                 font-weight: 600;
                 font-size: 1.1em;
@@ -92,6 +105,18 @@ main {
             margin: 0;
             margin-top: 1.5em;
         }
+    }
+    .progress-meter {
+
+    }
+    #controls {
+        padding: 0.5em;
+        display: flex;
+        background-color: var(--color-background-light);
+        justify-content: space-between;
+    }
+    #output {
+        background-color: var(--color-background-light);
     }
     .linkDiv {
         border: solid var(--color-black) 1px;
@@ -125,12 +150,6 @@ button {
     }
     &:disabled {
         opacity: 0.5;
-        &:before {
-            content: "🔒 ";
-        }
-        &:hover {
-            cursor: not-allowed;
-        }
     }
 }
 .btn-primary {
@@ -142,9 +161,7 @@ button {
         color: var(--color-black);
     }
 }
-
 .btn-secondary {
-    border-radius: 0px;
     background-color: var(--color-white);
     color: var(--color-black);
     border: solid 2px var(--color-blue);
@@ -152,7 +169,6 @@ button {
         background-color: var(--color-light-blue);
     }
 }
-
 
 
 /* from: https://getcssscan.com/css-checkboxes-examples */

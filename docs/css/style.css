@@ -20,6 +20,7 @@ body {
     margin: 0;
 }
 
+/* classes */
 .visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -33,109 +34,7 @@ body {
     scale: 1.6;
 }
 
-header {
-    /* display: flex;
-    justify-content: center; */
-    div {
-        /* max-width: var(--standard-content-width);
-        width: 100%; */
-        padding-inline: var(--standard-inline-padding);
-    }
-}
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    & section {
-        font-size: 1.2em;
-        padding-inline: var(--standard-inline-padding);
-        h2 {
-            margin: 0;
-        }
-    }
-}
-
-#device, #app, #who, .title {
-    display: flex;
-    gap: 0.5em;
-    margin-top: 0.5em;
-    flex-wrap: wrap;
-}
-#who, .title {
-    flex-direction: column;
-}
-
-.shortcutQuestions {
-    max-width: var(--standard-content-width);
-    margin-bottom: 5em;
-    h2 {
-        margin-bottom: 1em;
-    }
-    p {
-     margin: 0;   
-    }
-
-    & form {
-        border-top: solid 1px var(--color-black);
-        background-color: var(--color-background-light);
-        /* border-bottom: solid 1px var(--color-black); */
-        padding-top: 1em;
-        padding-bottom: 1em;
-        margin-top: 1.5em;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
-        /* height: 23em; */
-        height: fit-content;
-        & > div {
-            padding: 0.5em;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            height: 100%;
-            & > label {
-                font-weight: 600;
-                font-size: 1.1em;
-            }
-        }
-        & .littleText {
-            font-size: 0.9em;
-            color: var(--color-grey);
-            margin: 0;
-            margin-top: 1.5em;
-        }
-    }
-    .progress-meter {
-
-    }
-    #controls {
-        padding: 0.5em;
-        display: flex;
-        background-color: var(--color-background-light);
-        justify-content: space-between;
-    }
-    #output {
-        background-color: var(--color-background-light);
-    }
-    .linkDiv {
-        border: solid var(--color-black) 1px;
-        display: flex;
-        justify-content: space-between;
-        padding-left: 1em;
-        color: var(--color-grey);
-        div {
-            display: flex;
-            gap: 0.5em;
-            button {
-                font-size: 0.9em;
-                padding: 0 1em 0 1em;
-            }
-        }
-    }
-}
-
-
+/* btn styles */
 button {
     padding: 0.6em;
     border: none;
@@ -171,147 +70,57 @@ button {
 }
 
 
-/* from: https://getcssscan.com/css-checkboxes-examples */
-.checkbox-wrapper-16 {
-    width: fit-content;
-    & *, *:after, *:before {
-        box-sizing: border-box;
-    }
 
-    & .checkbox-icon {
-        transition: 0.375s ease;
-        color: var(--color-light-grey);
-        & img, svg {
-            width: 3rem;
-            height: 3rem;
-            object-fit: contain;
-        }
-    }
-
-    & .checkbox-input {
-        clip: rect(0 0 0 0);
-        -webkit-clip-path: inset(100%);
-        clip-path: inset(100%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
-
-        &:focus + :before {
-            transform: scale(1);
-            opacity: 1;
-        }        
-        &:focus + .checkbox-tile {
-            border-color: var(--color-blue);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px var(--color-light-blue);
-        }
-
-        &:checked + .checkbox-tile {
-            border-color: var(--color-blue);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            color: var(--color-blue);
-            &:before {
-                transform: scale(1);
-                opacity: 1;
-                background-color: var(--color-blue);
-                border-color: var(--color-blue);
-            }
-            & .checkbox-icon,
-            & .checkbox-label {
-                color: var(--color-blue);
-            }
-        }
-    }
-
-    & .checkbox-tile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 7rem;
-        min-height: 7rem;
-        border-radius: 0.5rem;
-        border: 2px solid var(--color-border-grey);
-        background-color: var(--color-white);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        transition: 0.15s ease;
-        cursor: pointer;
-        position: relative;
-
-        /* Check circle top left */
-        &:before {
-            content: "";
-            position: absolute;
-            display: block;
-            width: 1.25rem;
-            height: 1.25rem;
-            border: 2px solid var(--color-border-grey);
-            background-color: var(--color-white);
-            border-radius: 50%;
-            top: 0.25rem;
-            left: 0.25rem;
-            opacity: 0;
-            transform: scale(0);
-            transition: 0.25s ease;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
-            background-size: 12px;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-        }
-        &:hover {
-            border-color: var(--color-blue);
-            &:before {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        /* Text */
-        & .checkbox-label {
-            font-size: 0.8em;
-            color: var(--color-light-grey);
-            transition: 0.375s ease;
-            text-align: center;
-        }
-    }
-    & .no-icon {
-        width: fit-content;
-        padding: 1em;
-        min-height: 4rem;
-        display: flex;
-        flex-direction: row;
-        & .checkbox-label {
-            font-size: 1em;
-            color: var(--color-black);
-        }
-    }
-    & input[type="text"], input[type="email"] {
-        font-size: 1em;
-        color: var(--color-blue);
-        &.blue-border {
-            border-color: var(--color-blue);
-        }
-    }
-}
-
-.shortcutInfo {
-    background-color: var(--color-background-light);
-}
-
-.shortcutInfo, .webextensionInfo {
-    width: 100%;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    padding-block: 5rem;
-    > div {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+/* main elements on the page */
+header {
+    /* display: flex;
+    justify-content: center; */
+    padding-block: 2em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    div {
+        /* max-width: var(--standard-content-width);
+        width: 100%; */
         padding-inline: var(--standard-inline-padding);
-        max-width: var(--standard-content-width);
-        > * {
-            width: 100%;
+        h1 {
+            font-size: 1.3em;
+            margin: 0;
+        }
+    }
+}
+main {
+    padding-top: 4em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    min-height: calc(100vh - 15.11em);
+    & section {
+        font-size: 1.2em;
+        padding-inline: var(--standard-inline-padding);
+        h2 {
+            margin: 0;
+            font-size: 1em;
+        }
+    }
+    .shortcutInfo {
+        background-color: var(--color-background-light);
+    }
+    
+    .shortcutInfo, .webextensionInfo {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        padding-block: 5rem;
+        > div {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding-inline: var(--standard-inline-padding);
+            max-width: var(--standard-content-width);
+            > * {
+                width: 100%;
+            }
         }
     }
 }
@@ -333,3 +142,5 @@ footer {
         }
     }
 }
+
+

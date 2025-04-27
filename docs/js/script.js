@@ -1,4 +1,10 @@
 const form = document.querySelector("form");
+const backBtn = document.querySelector("#controls button:nth-of-type(1)");
+const nextBtn = document.querySelector("#controls button:nth-of-type(2)");
+const output = document.querySelector("#output");
+const resetBtn = document.querySelector("#reset");
+const nextStepsText = document.querySelector(".endText")
+const startText = document.querySelector(".startText")
 
 document.addEventListener("DOMContentLoaded", function () {
   
@@ -87,10 +93,12 @@ document.addEventListener("DOMContentLoaded", function () {
             a.textContent = link;
             document.querySelector(".placeholder").textContent = "";
             document.querySelector(".placeholder").appendChild(a);
-            document.querySelector(".linkDiv button").removeAttribute("disabled")
 
             form.style.display = "none";
+            startText.style.display = "none";
             output.style.display = "block"
+            nextStepsText.style.display = "block"
+            resetBtn.style.display = "inline"
             questionIndex = 4
         } catch (err) {
             console.error(err);
@@ -133,9 +141,7 @@ function getLink(linkMap, device, app, who, title) {
 // </svg> -->
 
 
-const backBtn = document.querySelector("#controls button:nth-of-type(1)");
-const nextBtn = document.querySelector("#controls button:nth-of-type(2)");
-const output = document.querySelector("#output");
+
 
 let questionIndex = 1
 
@@ -148,6 +154,8 @@ function showCurrentQuestion(){
   }
 
   output.style.display = "none"
+  nextStepsText.style.display = "none"
+  resetBtn.style.display = "none"
   const divs = document.querySelectorAll("form > div");
   divs.forEach((div)=>{
     div.style.display = "none";

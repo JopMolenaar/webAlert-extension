@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/inputs.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
@@ -12,26 +14,27 @@
 <body>
     <header>
         <div>
-            <h1>Web alert <span class="visually-hidden">, genereer je snelkoppeling om makkelijker hulp te vragen over phishing.</span></h1>
+            <h1>Web alert, het ideale hulpmiddel om hulp te vragen.</h1>
         </div>
     </header>
     <main>
         <section class="shortcutQuestions">
-            <h2>Het ideale hulpmiddel om hulp te vragen</h2>
-            <p><strong>Vul alstublieft de vragen in.</strong></p>
-            <p>Daarna krijgt u een link om iets handigs toe te voegen aan uw apparaat.</p>
-            <br>
-            <p>Op een <strong>computer of laptop</strong> komt er een <strong>icoontje bovenin uw scherm</strong> of in de balk onderin.</p>
-            <p>Op een <strong>telefoon of tablet</strong> kunt u bijvoorbeeld door te <strong>schudden of te tikken</strong> een bericht klaarzetten.</p>
-            <br>
-            <p>Er wordt dan automatisch een foto van uw scherm gemaakt, samen met een kort bericht.</p>
-            <p>U hoeft daarna alleen nog op "verzenden" te drukken.</p>
-            <br>
-            <p>Degene die u helpt, ziet zo precies waar u vragen over heeft en kan u beter advies geven.</p>
-
+            <div class="startText">
+                <h2>Vul alstublieft de vragen in.</h2>
+                <p>Daarna krijgt u een link om iets handigs toe te voegen aan uw apparaat.</p>
+                <p>Op een <strong>computer of laptop</strong> komt er een <strong>icoontje bovenin uw scherm</strong> of in de balk onderin.
+                <br>
+                Op een <strong>telefoon of tablet</strong> kunt u bijvoorbeeld door te <strong>schudden of te tikken</strong> een bericht klaarzetten.
+                </p>
+                <p>Er wordt dan automatisch een foto van uw scherm gemaakt, samen met een kort bericht.
+                    <br>
+                    U hoeft daarna alleen nog op "verzenden" te drukken.
+                </p>
+                <p>Degene die u helpt, ziet zo precies waar u vragen over heeft en kan u beter advies geven.</p>    
+            </div>
             <form>
                 <div id="question1">
-                    <label for="device">Wat voor apparaat heeft u waar u deze snelkoppeling op wilt hebben?</label>
+                    <label for="device">Wat voor apparaat heeft u?</label>
                     <div id="device">  
                         <div class="checkbox-wrapper-16">
                             <label>
@@ -116,7 +119,8 @@
                 </div>
                 
                 <div id="question2">
-                    <label for="app">Via welke app wilt u advies vragen?</label>
+                    <label for="app">Via welke app wilt u hulp vragen?</label>
+                    <!-- Of: Welke app gebruikt u het meest om online te communiceren? -->
                     <div id="app">  
                         <div class="checkbox-wrapper-16">
                             <label>
@@ -170,7 +174,7 @@
                         </div>
                     </div>
                
-                    <label for="who">Aan wie wilt u het vragen?</label>
+                    <label for="who">En aan wie wilt u het vragen?</label>
                     <div id="who">
                         <div class="checkbox-wrapper-16">
                             <label>
@@ -182,7 +186,7 @@
                         </div>
                         <div class="checkbox-wrapper-16">
                             <label>
-                                Aan:
+                                Dat wil ik vragen aan:
                                 <!-- Change this type and validate it when the app requires another contact -->
                                 <!-- Show default text when first option is the only option -->
                                 <input type="email" class="checkbox-tile no-icon" id="who2" name="who" placeholder="example@email.com">
@@ -230,20 +234,17 @@
                 <span></span>
                 <span class="middle-line"></span>
             </div>
-            <div id="controls">
-                <button class="btn-secondary">Vorige vraag</button>
-                <button class="btn-primary">Volgende vraag</button>
-            </div>
 
             <div id="output">
                 <!-- <p>De link kan u ook delen met vrienden, familie of bekenden zodat zij ook gebruik kunnen maken van deze handige functie.</p> -->
+                <p>Uw link:</p>
                 <div class="linkDiv">
-                    <p class="placeholder">Er is nog geen link gegenereerd </p>
-                    <div>
-                        <button disabled class="btn-secondary">Kopieer</button>
-                    </div>
+                    <p class="placeholder">Er is nog geen link gegenereerd</p>
                 </div>
-                <p>Als u op de link klikt opent er een nieuwe pagina en zijn dit de volgende stappen:</p>
+            </div>
+
+            <div class="endText">
+                <p><strong>De volgende stappen</strong></p>
                 <!-- TODO voeg plaatjes toe -->
                 <ol id="appleSteps-english">
                     <li>Klik op de blauwe knop "Get shortcut"</li>
@@ -253,9 +254,16 @@
                     <li>U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.</li>
                     <li>Klik twee keer op: "Always allow". Dit versoepelt het proces en heeft geen gevaar voor u privacy. <a href="#"><span class="visually-hidden">Meer informatie over privacy </span>ⓘ</a></li>
                 </ol>
+            </div>
+
+            <div id="controls">
+                <button class="btn-secondary">Vorige vraag</button>
+                <button class="btn-primary">Volgende vraag</button>
                 <button id="reset" class="btn-secondary">Maak een nieuwe link</button>
             </div>
+
         </section>
+        
     
         <!-- <section class="shortcutInfo">
             <div>

@@ -3,234 +3,180 @@ const backBtn = document.querySelector("#controls button:nth-of-type(1)");
 const nextBtn = document.querySelector("#controls button:nth-of-type(2)");
 const output = document.querySelector("#output");
 const resetBtn = document.querySelector("#reset");
-const nextStepsText = document.querySelector(".endText")
-const startText = document.querySelector(".startText")
+const nextStepsText = document.querySelector(".endText");
+const startText = document.querySelector(".startText");
 const deviceInputs = document.querySelectorAll("input[name='device']");
 const appInputs = document.querySelectorAll("input[name='app']");
 const outputLink = document.querySelector(".placeholder");
-const whoCheckbox = document.querySelector('#who1');
-const whoInput = document.querySelector('#who2');
+const whoCheckbox = document.querySelector("#who1");
+const whoInput = document.querySelector("#who2");
 
+let questionIndex = 1;
 
+// Initialize event listeners
+function initializeEventListeners() {
+  whoInput.addEventListener("input", handleWhoInputChange);
+  whoCheckbox.addEventListener("change", handleWhoCheckboxChange);
+  deviceInputs.forEach((input) => input.addEventListener("click", handleDeviceSelection));
+  appInputs.forEach((input) => input.addEventListener("click", handleAppSelection));
+  form.addEventListener("submit", handleFormSubmission);
+  nextBtn.addEventListener("click", handleNextClick);
+  backBtn.addEventListener("click", handleBackClick);
+}
 
-whoInput.addEventListener("input", () => {
+// Handle input changes for "who" field
+function handleWhoInputChange() {
   if (whoInput.value.trim() !== "") {
     whoCheckbox.checked = false;
     whoInput.classList.add("blue-border");
   } else {
     whoInput.classList.remove("blue-border");
   }
-});
+}
 
-whoCheckbox.addEventListener("change", () => {
+function handleWhoCheckboxChange() {
   if (whoCheckbox.checked) {
     whoInput.value = "";
     whoInput.classList.remove("blue-border");
   }
-});
+}
 
-// Make button ready
-deviceInputs.forEach((input)=>{
-  input.addEventListener("click", () => {
-    const btn = document.querySelector(".index1");
-    btn.removeAttribute("disabled")
-    btn.style.opacity = "1"
-    // TODO add classlist and un disable the button
-    // checkBtnState(btn, questionIndex, input)
-  })
-});
+// Enable the next button when a device is selected
+function handleDeviceSelection() {
+  enableButton(".index1");
+}
 
-// Change the format of the next question
-appInputs.forEach((input)=>{
-  input.addEventListener("click", () => {
-    console.log(input.value);
-    let typeOfContact = "emailadres"
-    if (input.value === "sms" || input.value === "whatsapp") typeOfContact = "telefoonnummer";
-    document.querySelector("#formatWho").textContent = typeOfContact
-    const customInputReceiver = document.querySelector("input#who2");
-    
-    (input.value === "sms" || input.value === "whatsapp") ? customInputReceiver.setAttribute("type", "tel") : customInputReceiver.setAttribute("type", "email");
-    (input.value === "sms" || input.value === "whatsapp") ? customInputReceiver.setAttribute("placeholder", "06123456789") : customInputReceiver.setAttribute("placeholder", "voorbeeld@mail.com");
+// Update the format and enable the next button when an app is selected
+function handleAppSelection(event) {
+  const input = event.target;
+  const typeOfContact = input.value === "sms" || input.value === "whatsapp" ? "telefoonnummer" : "emailadres";
+  const customInputReceiver = document.querySelector("input#who2");
 
-    // Make button ready
-    const btn = document.querySelector(".index2")
-    btn.style.opacity = "1"
-    // TODO add classlist and un disable the button
+  document.querySelector("#formatWho").textContent = typeOfContact;
+  customInputReceiver.setAttribute("type", input.value === "sms" || input.value === "whatsapp" ? "tel" : "email");
+  customInputReceiver.setAttribute("placeholder", input.value === "sms" || input.value === "whatsapp" ? "06123456789" : "voorbeeld@mail.com");
 
-  })
-});
+  enableButton(".index2");
+}
 
+// Enable a button by selector
+function enableButton(selector) {
+  const btn = document.querySelector(selector);
+  btn.removeAttribute("disabled");
+  btn.style.opacity = "1";
+}
 
-// function checkBtnState(questionIndex, input) {
-//   if(!input){
-//     // add class to btn to disable it
-//   }
-//  console.log(   nextBtn.classList);
+// Handle form submission
+async function handleFormSubmission(event) {
+  event.preventDefault();
 
+  const deviceInput = document.querySelector('input[name="device"]:checked');
+  const appInput = document.querySelector('input[name="app"]:checked');
+  const device = deviceInput ? deviceInput.value : null;
+  const app = appInput ? appInput.value : null;
 
+  const who = [];
+  if (whoCheckbox.checked) who.push(whoCheckbox.value);
+  if (whoInput.value.trim() !== "") who.push(whoInput.value.trim());
 
+  const title = "help";
 
-// }
-// checkBtnState(btn, questionIndex)
-// TODO HANDJES MAKEN DIE AANGEVEN WAAR JE OP MOET KLIKKEN. 
+  try {
+    const res = await fetch("shortcuts.json");
+    if (!res.ok) throw new Error("shortcuts.json kon niet geladen worden.");
 
-// Form submission
-form.addEventListener("submit", async function (e) {
-    e.preventDefault();
+    const linkMap = await res.json();
+    const link = getLink(linkMap, device, app, who, title);
 
-    const deviceInput = document.querySelector('input[name="device"]:checked');
-    const appInput = document.querySelector('input[name="app"]:checked');
+    displayGeneratedLink(link);
+  } catch (err) {
+    alert("Er is een fout opgetreden: " + err.message);
+  }
+}
 
-    const device = deviceInput ? deviceInput.value : null;
-    const app = appInput ? appInput.value : null;
+// Display the generated link
+function displayGeneratedLink(link) {
+  const a = document.createElement("a");
+  a.href = link;
+  a.target = "_blank";
+  a.textContent = link;
 
-    const who = [];
-    if (whoCheckbox.checked) who.push(whoCheckbox.value);
-    if (whoInput.value.trim() !== "") who.push(whoInput.value.trim());
+  outputLink.textContent = "";
+  outputLink.appendChild(a);
 
-    const title = 'help';
-    // if (title1.checked) title.push(title1.value);
-    // if (title2.checked) title.push(title2.value);
-    // if (title3.value.trim() !== "") title.push("customTitle");
+  form.style.display = "none";
+  output.style.display = "block";
+  nextStepsText.style.display = "block";
+  resetBtn.style.display = "inline";
+  questionIndex = 4;
+}
 
-    try {
-        const res = await fetch('shortcuts.json');
-        if (!res.ok) {
-          throw new Error("shortcuts.json kon niet geladen worden.");
-        }
-  
-        const linkMap = await res.json();
-        const link = getLink(linkMap, device, app, who, title);
-
-        // Do something with the link
-        console.log("Generated Link:", link);
-        const a = document.createElement("a");
-        a.href = link;
-        a.target = "_blank";
-        a.textContent = link;
-        outputLink.textContent = "";
-        outputLink.appendChild(a);
-
-        form.style.display = "none";
-        output.style.display = "block"
-        nextStepsText.style.display = "block"
-        resetBtn.style.display = "inline"
-        questionIndex = 4
-    } catch (err) {
-        console.error(err);
-        // TODO ALERT THE USER IN THE FORM
-        alert("Er is een fout opgetreden: " + err.message);
-    }    
-});
-
-
-// Function to determine the final link
+// Determine the final link
 function getLink(linkMap, device, app, who, title) {
   if (!device) throw new Error("Geen apparaat geselecteerd.");
   if (!app) throw new Error("Geen app geselecteerd.");
 
-  let platform = "windows";
-  if (device === "iphone") platform = "ios";
-  else if (["samsung", "huawei", "oppo", "onePlus"].includes(device)) platform = "android";
-
+  const platform = device === "iphone" ? "ios" : ["samsung", "huawei", "oppo", "onePlus"].includes(device) ? "android" : "windows";
   const whoType = who.includes("decideMyself") ? "decideMyself" : who.length > 0 ? "customContact" : null;
   if (!whoType) throw new Error("Geen ontvanger gekozen of ingevuld.");
 
-  let titleType = "customTitle";
-  if (title.includes("help")) titleType = "help";
-  else if (title.includes("decideMyself")) titleType = "decideMyself";
-  else if (!title.includes("customTitle")) throw new Error("Geen titel geselecteerd of ingevuld.");
-
+  const titleType = title === "help" ? "help" : "customTitle";
   const link = linkMap?.[platform]?.[app]?.[whoType]?.[titleType];
-  if (!link) {
-    throw new Error("Geen geldige combinatie gevonden in shortcuts.json.");
-  }
+  if (!link) throw new Error("Geen geldige combinatie gevonden in shortcuts.json.");
 
   return link;
 }
 
-
-// Question click through logic
-let questionIndex = 1
-function showCurrentQuestion(){
+// Show the current question
+function showCurrentQuestion() {
   form.style.display = "block";
-  
-  if(!document.querySelector(`#question${questionIndex}`)){
-    questionIndex >= 3 ? questionIndex = 3 : questionIndex = 1;
-    return
+
+  if (!document.querySelector(`#question${questionIndex}`)) {
+    questionIndex = Math.min(Math.max(questionIndex, 1), 3);
+    return;
   }
 
-  output.style.display = "none"
-  nextStepsText.style.display = "none"
-  resetBtn.style.display = "none"
-  const divs = document.querySelectorAll("form > div");
-  divs.forEach((div)=>{
-    div.style.display = "none";
-  })
+  output.style.display = "none";
+  nextStepsText.style.display = "none";
+  resetBtn.style.display = "none";
 
-  startText.style.display = "none";
-  if(questionIndex === 1) startText.style.display = "block"
+  document.querySelectorAll("form > div").forEach((div) => (div.style.display = "none"));
+  startText.style.display = questionIndex === 1 ? "block" : "none";
 
-  const deviceInput = document.querySelector('input[name="device"]:checked');
-  const device = deviceInput ? true : false;
+  const deviceSelected = !!document.querySelector('input[name="device"]:checked');
+  const appSelected = !!document.querySelector('input[name="app"]:checked');
 
-  const appInput = document.querySelector('input[name="app"]:checked');
-  const app = appInput ? true : false;
-  
-  questionIndex === 3 ? (nextBtn.style.opacity = "0", nextBtn.disabled = true) : (nextBtn.style.opacity = "0.5", nextBtn.disabled = false)
-  questionIndex === 1 ? (backBtn.style.opacity = "0", backBtn.disabled = true) : (backBtn.style.opacity = "0.5", backBtn.disabled = false)
-  
-  if(device && questionIndex === 1) nextBtn.style.opacity = "1";
-  if(app && questionIndex === 2) nextBtn.style.opacity = "1";
+  nextBtn.style.opacity = questionIndex === 3 ? "0" : deviceSelected && questionIndex === 1 || appSelected && questionIndex === 2 ? "1" : "0.5";
+  nextBtn.disabled = questionIndex === 3;
+  backBtn.style.opacity = questionIndex === 1 ? "0" : "0.5";
+  backBtn.disabled = questionIndex === 1;
 
   document.querySelector(`#question${questionIndex}`).style.display = "flex";
 }
 
-nextBtn.addEventListener("click", () => {
-  nextBtn.classList.remove(`index${questionIndex}`)
-  questionIndex++
-  nextBtn.classList.add(`index${questionIndex}`)
-  showCurrentQuestion()
-})
+// Handle next button click
+function handleNextClick() {
+  updateQuestionIndex(1);
+}
 
-backBtn.addEventListener("click", () => {
-  nextBtn.classList.remove(`index${questionIndex}`)
-  questionIndex--
-  nextBtn.classList.add(`index${questionIndex}`)
-  showCurrentQuestion()
-})
+// Handle back button click
+function handleBackClick() {
+  updateQuestionIndex(-1);
+}
 
-nextBtn.classList.add(`index${questionIndex}`)
-showCurrentQuestion()
+// Update question index and refresh the view
+function updateQuestionIndex(delta) {
+  nextBtn.classList.remove(`index${questionIndex}`);
+  questionIndex += delta;
+  nextBtn.classList.add(`index${questionIndex}`);
+  showCurrentQuestion();
+}
 
+// Initialize the application
+function initialize() {
+  nextBtn.classList.add(`index${questionIndex}`);
+  showCurrentQuestion();
+  initializeEventListeners();
+}
 
-
-// const title1 = document.querySelector('#title1');
-// const title2 = document.querySelector('#title2');
-// const title3 = document.querySelector('#title3');
-
-// if (!title1.checked && !title2.checked) {
-//     title3.setAttribute("required", "required");
-// }
-
-// title3.addEventListener("input", () => {
-//   if (title3.value.trim() !== "") {
-//     title1.checked = false;
-//     title2.checked = false;
-//     title3.classList.add("blue-border");
-//   } else {
-//     title3.classList.remove("blue-border");
-//   }
-// });
-
-// [title1, title2].forEach(cb => {
-//   cb.addEventListener("change", () => {
-//     if (cb.checked) {
-//       title3.value = "";
-//       title3.removeAttribute("required");
-//       title3.classList.remove("blue-border");
-//     } else if (!title1.checked && !title2.checked) {
-//         title3.setAttribute("required", "required");
-//     }
-//   });
-// });
+initialize();

@@ -14,13 +14,13 @@
 <body>
     <header>
         <div>
-            <h1>Web alert, het ideale hulpmiddel om hulp te vragen.</h1>
+            <h1>Web alert</h1>
         </div>
     </header>
     <main>
         <section class="shortcutQuestions">
             <div class="startText">
-                <h2>Vul alstublieft de vragen in.</h2>
+                <h2>Vul alstublieft de vragen in om uw ideale hulpmiddel om hulp te vragen samen te stellen.</h2>
                 <p>Daarna krijgt u een link om iets handigs toe te voegen aan uw apparaat.</p>
                 <p>Op een <strong>computer of laptop</strong> komt er een <strong>icoontje bovenin uw scherm</strong> of in de balk onderin.
                 <br>
@@ -116,10 +116,12 @@
                             </label>
                         </div>
                     </div>
+                    <p class="littleText"></p>
+
                 </div>
                 
                 <div id="question2">
-                    <label for="app">Via welke app wilt u hulp vragen?</label>
+                    <label for="app">Via welke app wilt u hulp vragen als u twijfelt aan de veiligheid van de online situatie?</label>
                     <!-- Of: Welke app gebruikt u het meest om online te communiceren? -->
                     <div id="app">  
                         <div class="checkbox-wrapper-16">
@@ -173,7 +175,10 @@
                             </label>
                         </div>
                     </div>
-               
+                    <!-- <p class="littleText">Vaak is dit een app die u vaak gebruikt om te communiceren met familie of vrienden.</p> -->
+                </div>
+
+                <div id="question3">
                     <label for="who">En aan wie wilt u het vragen?</label>
                     <div id="who">
                         <div class="checkbox-wrapper-16">
@@ -186,23 +191,27 @@
                         </div>
                         <div class="checkbox-wrapper-16">
                             <label>
-                                Dat wil ik vragen aan:
+                                Dat wil ik vragen aan: (vul een <span id="formatWho">...</span> in)
                                 <!-- Change this type and validate it when the app requires another contact -->
                                 <!-- Show default text when first option is the only option -->
                                 <input type="email" class="checkbox-tile no-icon" id="who2" name="who" placeholder="example@email.com">
                             </label>
                         </div>
                     </div>
+
+                    <p class="littleText">Door op de knop te drukken wordt er een link voor u aangemaakt. Deze link kan u vervolgens gebruiken om de snelkoppeling te installeren op uw apparaat. </p>
+                    <button type="submit" class="btn-primary">Geef mij het hulpmiddel</button>
                 </div>
                
-                <div id="question3">
+                <!-- <div id="question4">
                     <label for="title">Wat wordt de titel van het bericht?</label>
+                    <p></p>
                     <div class="title">
                         <div class="checkbox-wrapper-16">
                             <label>
                                 <input type="radio" class="checkbox-input" id="title1" name="title" value="help" />
                                 <span class="checkbox-tile no-icon">
-                                    <span class="checkbox-label">Help! Is dit phishing?</span>
+                                    <span class="checkbox-label">Help! Is dit oplichting?</span>
                                 </span>
                             </label>
                         </div>
@@ -220,10 +229,8 @@
                                 <input type="text" id="title3" class="checkbox-tile no-icon" name="title" placeholder="Typ zelf iets...">
                             </label>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <p class="littleText">Door op de knop te drukken wordt er een link voor u aangemaakt. Deze link kan u vervolgens gebruiken om de snelkoppeling te installeren op uw apparaat. </p>
-                    <button type="submit" class="btn-primary">Maak de snelkoppeling</button>
                 </div>
             </form>
              <!-- TODO progress meter in the button until it unlocks -->
@@ -278,7 +285,7 @@
     
         <section class="webextensionInfo">
             <div>
-                <h2>Automatisch phishing herkennen</h2>
+                <h2>Automatisch mogelijke oplichting herkennen</h2>
                 <p>Check onze webextensie, deze checkt automatisch of de websites die u bezoekt op het internet veilig zijn of niet. Dit doet hij meteen als u de pagina binnenkomt en vergelijkt de inhoud en url met verschillende betrouwbare bronnen.</p>
                 <p>Als er niks mis is ziet u een groene streep rechts op de pagina. En als er toch wat mis is wordt dit aangegeven. 
                     …..

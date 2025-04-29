@@ -32,6 +32,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 isBetrouwbaar = false;
             } else if (isOnbetrouwbaar) {
                 result = "❌ Mogelijk onbetrouwbaar";
+                isBetrouwbaar = false;
             } else if (isBetrouwbaar) {
                 result = "✅ Betrouwbaar";
             }

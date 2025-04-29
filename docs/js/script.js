@@ -32,9 +32,11 @@ whoCheckbox.addEventListener("change", () => {
 // Make button ready
 deviceInputs.forEach((input)=>{
   input.addEventListener("click", () => {
-    const btn = document.querySelector(".index1")
-    btn.style.opacity = "0.6"
+    const btn = document.querySelector(".index1");
+    btn.removeAttribute("disabled")
+    btn.style.opacity = "1"
     // TODO add classlist and un disable the button
+    // checkBtnState(btn, questionIndex, input)
   })
 });
 
@@ -52,13 +54,25 @@ appInputs.forEach((input)=>{
 
     // Make button ready
     const btn = document.querySelector(".index2")
-    btn.style.opacity = "0.6"
+    btn.style.opacity = "1"
     // TODO add classlist and un disable the button
 
   })
 });
 
 
+// function checkBtnState(questionIndex, input) {
+//   if(!input){
+//     // add class to btn to disable it
+//   }
+//  console.log(   nextBtn.classList);
+
+
+
+
+// }
+// checkBtnState(btn, questionIndex)
+// TODO HANDJES MAKEN DIE AANGEVEN WAAR JE OP MOET KLIKKEN. 
 
 // Form submission
 form.addEventListener("submit", async function (e) {
@@ -157,8 +171,17 @@ function showCurrentQuestion(){
   startText.style.display = "none";
   if(questionIndex === 1) startText.style.display = "block"
 
-  questionIndex === 3 ? (nextBtn.style.opacity = "0", nextBtn.disabled = true) : (nextBtn.style.opacity = "1", nextBtn.disabled = false)
-  questionIndex === 1 ? (backBtn.style.opacity = "0", backBtn.disabled = true) : (backBtn.style.opacity = "1", backBtn.disabled = false)
+  const deviceInput = document.querySelector('input[name="device"]:checked');
+  const device = deviceInput ? true : false;
+
+  const appInput = document.querySelector('input[name="app"]:checked');
+  const app = appInput ? true : false;
+  
+  questionIndex === 3 ? (nextBtn.style.opacity = "0", nextBtn.disabled = true) : (nextBtn.style.opacity = "0.5", nextBtn.disabled = false)
+  questionIndex === 1 ? (backBtn.style.opacity = "0", backBtn.disabled = true) : (backBtn.style.opacity = "0.5", backBtn.disabled = false)
+  
+  if(device && questionIndex === 1) nextBtn.style.opacity = "1";
+  if(app && questionIndex === 2) nextBtn.style.opacity = "1";
 
   document.querySelector(`#question${questionIndex}`).style.display = "flex";
 }

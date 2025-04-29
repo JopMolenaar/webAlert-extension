@@ -64,6 +64,9 @@ label[for="who"] {
         display: flex;
         /* background-color: var(--color-background-light); */
         justify-content: space-between;
+        button:nth-of-type(2){
+            opacity: 0.6;
+        }
     }
     #output {
         /* background-color: var(--color-background-light); */

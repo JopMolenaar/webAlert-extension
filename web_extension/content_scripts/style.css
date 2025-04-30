@@ -1,9 +1,10 @@
-
+/* General body styling */
 body {
-    /* Make space for the colored line */
+    /* Adjust width to make space for the colored line */
     width: calc(100% - 10px) !important;
 }
 
+/* Visually hidden elements */
 .v-h {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -14,28 +15,30 @@ body {
     width: 1px;
 }
 
+/* Root variables for colors */
 :root {
     --color-danger: #DB0200;
     --color-danger-btn: rgb(99, 3, 3);
-    --color-danger-btn-hvr: rgb(99, 3, 3, 0.8);
+    --color-danger-btn-hvr: rgba(99, 3, 3, 0.8);
 
     --color-success: #0FA52C;
     --color-success-btn: rgb(3, 99, 14);
-    --color-success-btn-hvr: rgb(3, 99, 14, 0.8);
+    --color-success-btn-hvr: rgba(3, 99, 14, 0.8);
 
     --color-warning: #FFC033;
     --color-warning-btn: rgb(99, 99, 3);
-    --color-warning-btn-hvr: rgb(99, 99, 3, 0.8);
+    --color-warning-btn-hvr: rgba(99, 99, 3, 0.8);
 
     --color-default: #474545;
     --color-default-btn: rgb(99, 99, 99);
-    --color-default-btn-hvr: rgb(99, 99, 99, 0.8);
+    --color-default-btn-hvr: rgba(99, 99, 99, 0.8);
 
     --color-status: var(--color-default);
     --color-status-btn: var(--color-default-btn);
     --color-status-btn-hvr: var(--color-default-btn-hvr);
 }
 
+/* Keyframes for animations */
 @keyframes alertUser {
     from {
         width: 0;
@@ -46,60 +49,65 @@ body {
 }
 
 @keyframes jumpingVisualStatus {
-    0% {
+    0%, 100% {
         scale: 1;
     }
-    50%{
+    50% {
         scale: 1.1;
-    }
-    100% {
-        scale: 1;
     }
 }
 
 @keyframes turnAround {
-    0%{
+    from {
         transform: rotate(0deg);
     }
-    100% {
+    to {
         transform: rotate(360deg);
     }
 }
 
+/* Body states for danger, success, and warning */
 body {
     &.danger {
         --color-status: var(--color-danger);
         --color-status-btn: var(--color-danger-btn);
         --color-status-btn-hvr: var(--color-danger-btn-hvr);
-        & #visualStatus {
+
+        #visualStatus {
             animation: jumpingVisualStatus 1s ease-in-out infinite;
             animation-delay: 0.5s;
         }
     }
+
     &.success {
         --color-status: var(--color-success);
         --color-status-btn: var(--color-success-btn);
         --color-status-btn-hvr: var(--color-success-btn-hvr);
     }
+
     &.warning {
         --color-status: var(--color-warning);
         --color-status-btn: var(--color-warning-btn);
         --color-status-btn-hvr: var(--color-warning-btn-hvr);
-        & #statusText {
+
+        #statusText {
             color: black !important;
         }
     }
 
     &.danger, &.warning, &.default {
-        & #statusText {
+        #statusText {
             margin: 0;
         }
-        & #webAlertDiv > div.open {
+
+        #webAlertDiv > div.open {
             justify-content: space-between;
             animation: alertUser 300ms ease-in-out forwards;
-            & > div:nth-of-type(1) {
+
+            > div:nth-of-type(1) {
                 display: flex;
-                & p {
+
+                p {
                     font-size: 1rem;
                 }
             }
@@ -107,45 +115,66 @@ body {
     }
 }
 
+/* Web alert container styling */
 #webAlertDiv {
-    width: fit-content !important; 
+    width: fit-content !important;
     height: fit-content !important;
     background-color: var(--color-status);
     position: fixed;
     top: 50%;
     translate: 0% -50%;
     left: 0.125em;
-    right: auto;
     z-index: 99999999999999999;
-    color: white; 
+    color: white;
     padding: 1.25rem 0.5rem 0.5rem 0.25rem;
-    & button {
+
+    button {
         all: unset;
     }
+
     &.right {
         right: 0.125em;
         left: auto;
         padding: 1.25rem 0.25rem 0.5rem 0.5rem;
+
         > button {
             align-self: end !important;
         }
-        & > div > div:nth-of-type(2) {
-            order: 1;
+
+        > div > div:nth-of-type(2) {
+            order: -1 !important;
+            display: flex;
+            justify-content: center;
+            width: 1em;
+
+            button {
+                transform: rotate(-90deg) translateY(-50%);
+                width: 1em;
+                height: 1em;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50% !important;
+            }
         }
-        & .responseDiv button {
+
+        .responseDiv button {
             align-self: start;
         }
+
         #visualStatus {
             left: 0;
             right: auto;
             transform: translate(-45%, -45%);
+
             &.loading {
                 width: 2.1em;
                 height: 2.1em;
                 overflow: hidden;
                 border-radius: 50%;
                 background-color: #474545;
-                & svg {
+
+                svg {
                     width: 2.1em;
                     height: 2.1em;
                     animation: turnAround 500ms linear infinite;
@@ -153,24 +182,29 @@ body {
             }
         }
     }
-    & > div{
+
+    > div {
         display: flex;
         gap: 0.5rem;
         width: fit-content !important;
         max-width: 250px !important;
-        & > div:nth-of-type(1) {
+
+        > div:nth-of-type(1) {
             display: none;
-            & p {
+
+            p {
                 font-size: 1rem;
             }
         }
 
-        & > div:nth-of-type(2) {
+        > div:nth-of-type(2) {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             gap: 0.5rem;
-            order: -1;
-            & button {
+            order: 1;
+
+            button {
                 background-color: var(--color-status-btn) !important;
                 color: white !important;
                 padding: 0.5rem !important;
@@ -180,7 +214,12 @@ body {
                 aspect-ratio: 1 !important;
                 border-radius: 3px !important;
                 font-size: 1rem !important;
-                align-self: start !important;
+                transform: rotate(90deg) translateY(-50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50% !important;
+
                 &:hover {
                     background-color: var(--color-status-btn-hvr) !important;
                     cursor: pointer !important;
@@ -189,25 +228,30 @@ body {
             }
         }
     }
-    & .responseDiv {
+
+    .responseDiv {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        gap: 0.2em;
+
         button {
             width: fit-content;
-            padding: 0.25rem;
+            padding: 0.5rem;
             background-color: black;
             align-self: end;
+            border-radius: 10px;
             color: white;
         }
     }
+
     #visualStatus {
         position: absolute;
         top: 0;
         right: 0;
-        left: auto;
         transform: translate(45%, -45%);
         pointer-events: none;
+
         svg {
             width: 3rem;
             height: 3rem;
@@ -215,6 +259,7 @@ body {
     }
 }
 
+/* Colored line styling */
 #coloredLine {
     width: 10px;
     height: 100%;
@@ -222,8 +267,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    right: auto;
     z-index: 99999999999999999;
+
     &.right {
         right: 0;
         left: auto;

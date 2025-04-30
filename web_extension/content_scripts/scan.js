@@ -35,11 +35,11 @@ async function injectUI() {
 
     getAndStoreSafetyDomain(wrapper);
    
-    const moveBtn = document.body.querySelector("#moveWebExtensionButtons");
+    const moveBtn = document.body.querySelector("#moveWebExtensionButton");
     let right = false;
     if(moveBtn){
         moveBtn.addEventListener("click", () => {        
-            wrapper.querySelector("#moveWebExtensionButtons").textContent = right ? "<" : ">";
+            wrapper.querySelector("#moveWebExtensionButton span").textContent = right ? "links" : "rechts";
             document.body.querySelector("#coloredLine").classList.toggle("right");
             wrapper.classList.toggle("right");
             right = !right;

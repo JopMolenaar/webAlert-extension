@@ -147,7 +147,7 @@ function showCurrentQuestion() {
   const appSelected = !!document.querySelector('input[name="app"]:checked');
 
   nextBtn.style.opacity = questionIndex === 3 ? "0" : deviceSelected && questionIndex === 1 || appSelected && questionIndex === 2 ? "1" : "0.5";
-  nextBtn.disabled = questionIndex === 3;
+  nextBtn.disabled = questionIndex === 3 || (questionIndex === 1 && !deviceSelected) || (questionIndex === 2 && !appSelected);
   backBtn.style.opacity = questionIndex === 1 ? "0" : "0.5";
   backBtn.disabled = questionIndex === 1;
 

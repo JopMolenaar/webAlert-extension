@@ -103,6 +103,7 @@ function displayGeneratedLink(link) {
 
   outputLink.textContent = "";
   outputLink.appendChild(a);
+  document.querySelector(".progress-meter").style.display = "none"
 
   form.style.display = "none";
   output.style.display = "block";
@@ -168,14 +169,30 @@ function handleBackClick() {
 function updateQuestionIndex(delta) {
   nextBtn.classList.remove(`index${questionIndex}`);
   questionIndex += delta;
+  document.querySelector(".progress-meter").style.display = "flex"
+  updateProgress(questionIndex) 
   nextBtn.classList.add(`index${questionIndex}`);
   showCurrentQuestion();
+}
+
+const progressMeter = document.querySelector('.progress-meter');
+const spans = progressMeter.querySelectorAll('span:not(.middle-line)');
+
+function updateProgress(step) {
+    spans.forEach((span, index) => {
+        if (index < step) {
+            span.classList.add("active")
+        } else {
+            span.classList.remove("active")
+        }
+    });
 }
 
 // Initialize the application
 function initialize() {
   nextBtn.classList.add(`index${questionIndex}`);
   showCurrentQuestion();
+  updateProgress(1)
   initializeEventListeners();
 }
 

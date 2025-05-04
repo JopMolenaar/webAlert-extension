@@ -18,12 +18,12 @@ body {
 /* Root variables for colors */
 :root {
     --color-danger: #DB0200;
-    --color-danger-btn: rgb(99, 3, 3);
-    --color-danger-btn-hvr: rgba(99, 3, 3, 0.8);
+    --color-danger-btn: rgb(222, 42, 42);
+    --color-danger-btn-hvr: rgba(183, 72, 72, 0.8);
 
     --color-success: #0FA52C;
-    --color-success-btn: rgb(3, 99, 14);
-    --color-success-btn-hvr: rgba(3, 99, 14, 0.8);
+    --color-success-btn: rgb(39, 141, 51);
+    --color-success-btn-hvr: rgba(98, 205, 110, 0.8);
 
     --color-warning: #FFC033;
     --color-warning-btn: rgb(99, 99, 3);
@@ -95,9 +95,10 @@ body {
         }
     }
 
-    &.danger, &.warning, &.default {
+    &.danger, &.warning, &.default, &.success  {
         #statusText {
             margin: 0;
+            margin-bottom: 0.5em;
         }
 
         #webAlertDiv > div.open {
@@ -119,6 +120,9 @@ body {
 #webAlertDiv {
     width: fit-content !important;
     height: fit-content !important;
+    min-height: 6em;
+    display: flex;
+    justify-content: center;
     background-color: var(--color-status);
     position: fixed;
     top: 50%;
@@ -127,11 +131,59 @@ body {
     z-index: 99999999999999999;
     color: white;
     padding: 1.25rem 0.5rem 0.5rem 0.25rem;
-
+    border-radius: 0px 0px 0px 5px;
+    
     button {
         all: unset;
     }
 
+    > div {
+        display: flex;
+        gap: 0.5rem;
+        width: fit-content !important;
+        max-width: 250px !important;
+
+        > div:nth-of-type(1) {
+            display: none;
+
+            p {
+                font-size: 1rem;
+            }
+        }
+
+        > div:nth-of-type(2) {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 1em;
+
+
+            button {
+                background-color: var(--color-status-btn) !important;
+                color: white !important;
+                padding: 0.5rem !important;
+                border: solid black 1px !important;
+                width: 1rem;
+                height: 1em;
+                aspect-ratio: 1 !important;
+                font-size: 1rem !important;
+                transform: rotate(90deg) translateY(0%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center !important;
+                border-radius: 50% !important;
+
+                &:hover {
+                    background-color: var(--color-status-btn-hvr) !important;
+                    cursor: pointer !important;
+                    transition: all 0.2s ease-in-out !important;
+                }
+            }
+        }
+    }
+
+    /* When the extension is on the right side of the screen */
     &.right {
         right: 0.125em;
         left: auto;
@@ -143,18 +195,9 @@ body {
 
         > div > div:nth-of-type(2) {
             order: -1 !important;
-            display: flex;
-            justify-content: center;
-            width: 1em;
 
             button {
                 transform: rotate(-90deg) translateY(-50%);
-                width: 1em;
-                height: 1em;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50% !important;
             }
         }
 
@@ -178,52 +221,6 @@ body {
                     width: 2.1em;
                     height: 2.1em;
                     animation: turnAround 500ms linear infinite;
-                }
-            }
-        }
-    }
-
-    > div {
-        display: flex;
-        gap: 0.5rem;
-        width: fit-content !important;
-        max-width: 250px !important;
-
-        > div:nth-of-type(1) {
-            display: none;
-
-            p {
-                font-size: 1rem;
-            }
-        }
-
-        > div:nth-of-type(2) {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 0.5rem;
-            order: 1;
-
-            button {
-                background-color: var(--color-status-btn) !important;
-                color: white !important;
-                padding: 0.5rem !important;
-                border: solid black 1px !important;
-                text-align: center !important;
-                width: 1rem !important;
-                aspect-ratio: 1 !important;
-                border-radius: 3px !important;
-                font-size: 1rem !important;
-                transform: rotate(90deg) translateY(-50%);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50% !important;
-
-                &:hover {
-                    background-color: var(--color-status-btn-hvr) !important;
-                    cursor: pointer !important;
-                    transition: all 0.2s ease-in-out !important;
                 }
             }
         }

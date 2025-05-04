@@ -18,9 +18,14 @@ label[for="who"] {
 .shortcutQuestions {
     max-width: var(--standard-content-width);
     margin-bottom: 5em;
+    display: flex;
+    flex-direction: column;
     p {
         margin: 0;
         margin-bottom: 0.6em;   
+    }
+    .startText {
+        order: -1;
     }
 
     & form, #output {
@@ -28,7 +33,7 @@ label[for="who"] {
         background-color: var(--color-background-light);
         border-radius: 10px;
         padding: 1em;
-        margin-top: 1.5em;
+        margin-top: 0.5em;
         display: flex;
         flex-direction: column;
         gap: 0.5em;
@@ -57,7 +62,24 @@ label[for="who"] {
         }
     }
     .progress-meter {
-
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        order: -1;
+        gap: 2em;
+        & span:not(.middle-line) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var( --color-light-blue);
+        }
+        & span.active {
+            background-color: var(--color-blue);
+        }
     }
     #controls {
         padding-top: 0.5em;

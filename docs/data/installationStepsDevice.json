@@ -2,6 +2,10 @@
     "macOs": { 
         "english": [
             {
+                "description": "Zorg ervoor dat de Shortcut app is geinstalleerd. Dit is staat vaak standaard op uw apparaat, maar als dit niet zo is. Download hem via de App Store: <a href='https://apps.apple.com/nl/app/opdrachten/id1462947752' target='_blank'>Shortcuts app</a>",
+                "image": "shortcutAppLogoIos.png"
+            },
+            {
                 "description": "Klik op de blauwe knop 'Get shortcut'",
                 "image": "blueShortcutBtn.png"
             },
@@ -48,33 +52,37 @@
     "ios": { 
         "english": [
             {
-                "description": "Klik op de blauwe knop 'Get shortcut'",
-                "image": "blueShortcutBtn.png"
+                "description": "Zorg ervoor dat de Shortcut app is geinstalleerd. Dit is staat vaak standaard op uw apparaat, maar als dit niet zo is. Download hem via de App Store:",
+                "link": "https://apps.apple.com/nl/app/opdrachten/id1462947752",
+                "image": "shortcutAppLogoIos.png"
             },
             {
-                "description": "Er opent zich een popup, klik op 'Open Shortcuts'",
-                "image": "openShortcutsPopup.png"
+                "description": "Klik op de blauwe knop 'Voeg opdracht toe'.",
+                "image": "addShortcut.jpeg"
             },
             {
-                "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'",
-                "image": "appPopup.png"
+                "description": "U heeft hem geinstalleerd!. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken acterop uw scherm', Dit kunt u doen door naar uw 'Apple Instellingen' te gaan.",
+                "image": "settingsAppLogo.png"
             },
             {
-                "description": "U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.",
-                "image": "shortcutInMenu.png"
+                 "description": "Ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > scroll helemaal naar beneden en kies de naam van snelkoppeling die u zojuist heeft geinstalleerd [Naam toevoegen].",
+                "image": "settingsFlow.png"
             },
             {
-                "description": "Klik twee keer op: 'Always allow'. Dit versoepelt het proces en heeft geen gevaar voor u privacy.",
-                "image": "alwaysAllowPopup.png"
+                "description": "Als u nu drie keer tikt op de achterkant van uw telefoon, dan zal de snelkoppeling worden uitgevoerd. Dit kan een paar seconden duren.",
+                "image": "ticksBehind.png"
+            },{
+                "description": "U kunt twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en heeft geen gevaar voor u privacy. Om het proces te versoepelen, klikt u twee keer op 'Always allow'.",
+                "image": "privacyBtns.jpg"
             }
         ],
         "dutch": [
             {
-                "description": "Klik op de blauwe knop 'Get shortcut'",
+                "description": "Klik op de blauwe knop 'Get shortcut'.",
                 "image": "unbox_device.jpg"
             },
             {
-                "description": "Er opent zich een popup, klik op 'Open Shortcuts'",
+                "description": "Er opent zich een popup, klik op 'Open Shortcuts'.",
                 "image": "unbox_device.jpg"
             },
             {

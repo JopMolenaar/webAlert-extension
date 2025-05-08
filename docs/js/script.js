@@ -147,12 +147,19 @@ async function getSteps(platform) {
         li.textContent = step.description;
         img.src = `images/${platform}Steps/${step.image}`;
         // TODO ALT 
-        
+        if (step.link) {
+          const a = document.createElement("a");
+          a.href = step.link;
+          a.target = "_blank";
+          a.textContent = "Hier";
+          li.appendChild(a);
+        }
+
         li.appendChild(img);
         ol.appendChild(li);
       });
-
-      nextStepsText.appendChild(ol);
+      const prevOl = nextStepsText.querySelector("ol");
+      prevOl ? nextStepsText.replaceChild(ol, prevOl) : nextStepsText.appendChild(ol);
     } catch (err) {
       alert("Er is een fout opgetreden (getSteps): " + err.message);
     }

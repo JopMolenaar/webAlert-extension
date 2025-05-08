@@ -27,7 +27,7 @@ body {
 
     --color-warning: #FFC033;
     --color-warning-btn: rgb(99, 99, 3);
-    --color-warning-btn-hvr: rgba(99, 99, 3, 0.8);
+    --color-warning-btn-hvr: #ffae00;
 
     --color-default: #474545;
     --color-default-btn: rgb(99, 99, 99);
@@ -130,11 +130,15 @@ body {
     left: 0.125em;
     z-index: 99999999999999999;
     color: white;
-    padding: 1.25rem 0.5rem 0.5rem 0.25rem;
-    border-radius: 0px 0px 0px 5px;
+    border-radius: 5px 0px 0px 5px;
+    padding: 0.5rem 0.25rem 0.5rem 1.1rem;
+
     
     button {
         all: unset;
+    }
+    > div.open {
+        padding-block: 0.75rem;
     }
 
     > div {
@@ -159,10 +163,10 @@ body {
 
 
             button {
-                background-color: var(--color-status-btn) !important;
+                /* background-color: var(--color-status-btn) !important; */
                 color: white !important;
                 padding: 0.5rem !important;
-                border: solid black 1px !important;
+                border-bottom: solid black 1px !important; 
                 width: 1rem;
                 height: 1em;
                 aspect-ratio: 1 !important;
@@ -187,8 +191,10 @@ body {
     &.right {
         right: 0.125em;
         left: auto;
-        padding: 1.25rem 0.25rem 0.5rem 0.5rem;
-
+        /* padding: 1rem 0.25rem 1rem 1rem; */
+        > div.open {
+            padding-block: 0.75rem;
+        }
         > button {
             align-self: end !important;
         }
@@ -205,7 +211,7 @@ body {
             align-self: start;
         }
 
-        #visualStatus {
+        /* #visualStatus {
             left: 0;
             right: auto;
             transform: translate(-45%, -45%);
@@ -223,7 +229,7 @@ body {
                     animation: turnAround 500ms linear infinite;
                 }
             }
-        }
+        } */
     }
 
     .responseDiv {
@@ -236,7 +242,7 @@ body {
             width: fit-content;
             padding: 0.5rem;
             background-color: black;
-            align-self: end;
+            align-self: start;
             border-radius: 10px;
             color: white;
         }

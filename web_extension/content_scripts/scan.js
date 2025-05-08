@@ -9,8 +9,8 @@ async function injectUI() {
     wrapper.setAttribute("id", "webAlertDiv");
     wrapper.classList.add("right");
 
-    wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/loading.svg`)).then(r => r.text());
-    wrapper.querySelector("#visualStatus").classList.add("loading");
+    // wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/loading.svg`)).then(r => r.text());
+    // wrapper.querySelector("#visualStatus").classList.add("loading");
 
     document.body.insertBefore(wrapper, document.body.firstChild);
 
@@ -254,10 +254,10 @@ async function fillExtensionFeedback(response, wrapper) {
     const status = response.status === 'unknown' ? 'default' : response.status;
 
     console.log(response.message);
-    status != "success" ? wrapper.querySelector("#statusText").textContent = response.message : null;
+    status != "success" ? wrapper.querySelector("#statusText").textContent = response.message : wrapper.querySelector("div").classList.remove("open");
     document.body.classList.add(`${status}`);
-    status != "default" ? wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text()) : null;
-    wrapper.querySelector("#visualStatus").classList.remove("loading");
+    // status != "default" ? wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text()) : null;
+    // wrapper.querySelector("#visualStatus").classList.remove("loading");
 }
 
 function displayData(wrapper, id, info) {

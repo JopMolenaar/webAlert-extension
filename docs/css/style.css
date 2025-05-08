@@ -35,7 +35,7 @@ body {
 }
 
 /* btn styles */
-button {
+button, a.btn-primary {
     padding: 0.6em;
     border: none;
     text-align: center;
@@ -44,6 +44,7 @@ button {
     font-size: 1em;
     transition: 150ms ease-in-out;
     border-radius: 0.5rem;
+    text-decoration: none;
     &:hover:not(:disabled) {
         cursor: pointer;
     }
@@ -60,6 +61,7 @@ button {
         color: var(--color-black);
     }
 }
+
 .btn-secondary {
     background-color: var(--color-white);
     color: var(--color-black);

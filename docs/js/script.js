@@ -82,8 +82,8 @@ async function handleFormSubmission(event) {
   const title = "help";
 
   try {
-    const res = await fetch("shortcuts.json");
-    if (!res.ok) throw new Error("shortcuts.json kon niet geladen worden.");
+    const res = await fetch("data/shortcuts.json");
+    if (!res.ok) throw new Error("data/shortcuts.json kon niet geladen worden.");
 
     const linkMap = await res.json();
     const link = getLink(linkMap, device, app, who, title);
@@ -97,14 +97,15 @@ async function handleFormSubmission(event) {
 // Display the generated link
 function displayGeneratedLink(link) {
   const a = document.createElement("a");
+  a.classList.add("btn-primary");
   a.href = link;
   a.target = "_blank";
-  a.textContent = link;
+  a.textContent = "Voeg het hulpmiddel toe aan uw apparaat";
 
   outputLink.textContent = "";
   outputLink.appendChild(a);
   document.querySelector(".progress-meter").style.display = "none"
-
+  
   form.style.display = "none";
   output.style.display = "block";
   nextStepsText.style.display = "block";
@@ -123,9 +124,38 @@ function getLink(linkMap, device, app, who, title) {
 
   const titleType = title === "help" ? "help" : "customTitle";
   const link = linkMap?.[platform]?.[app]?.[whoType]?.[titleType];
+
+  getSteps(platform);
   if (!link) throw new Error("Geen geldige combinatie gevonden in shortcuts.json.");
 
   return link;
+}
+
+async function getSteps(platform) {
+    try {
+      const res = await fetch("data/installationStepsDevice.json");
+      if (!res.ok) throw new Error("data/installationStepsDevice.json kon niet geladen worden.");
+
+      const data = await res.json();
+      const steps = data[platform].english;
+
+      const ol = document.createElement("ol");
+      steps.forEach((step, index) => {
+        const li = document.createElement("li");
+        li.dataset.index = (index + 1) + ".";
+        const img = document.createElement("img");        
+        li.textContent = step.description;
+        img.src = `images/${platform}Steps/${step.image}`;
+        // TODO ALT 
+        
+        li.appendChild(img);
+        ol.appendChild(li);
+      });
+
+      nextStepsText.appendChild(ol);
+    } catch (err) {
+      alert("Er is een fout opgetreden (getSteps): " + err.message);
+    }
 }
 
 // Show the current question
@@ -142,14 +172,14 @@ function showCurrentQuestion() {
   resetBtn.style.display = "none";
 
   document.querySelectorAll("form > div").forEach((div) => (div.style.display = "none"));
-  startText.style.display = questionIndex === 1 ? "block" : "none";
+  questionIndex === 1 ? startText.classList.remove("hidden") : startText.classList.add("hidden");
 
   const deviceSelected = !!document.querySelector('input[name="device"]:checked');
   const appSelected = !!document.querySelector('input[name="app"]:checked');
 
   nextBtn.style.opacity = questionIndex === 3 ? "0" : deviceSelected && questionIndex === 1 || appSelected && questionIndex === 2 ? "1" : "0.5";
   nextBtn.disabled = questionIndex === 3 || (questionIndex === 1 && !deviceSelected) || (questionIndex === 2 && !appSelected);
-  backBtn.style.opacity = questionIndex === 1 ? "0" : "0.5";
+  backBtn.style.opacity = questionIndex === 1 ? "0" : "1";
   backBtn.disabled = questionIndex === 1;
 
   document.querySelector(`#question${questionIndex}`).style.display = "flex";
@@ -177,10 +207,13 @@ function updateQuestionIndex(delta) {
 
 const progressMeter = document.querySelector('.progress-meter');
 const spans = progressMeter.querySelectorAll('span:not(.middle-line)');
+const middleLine = progressMeter.querySelector('.middle-line span');
 
 function updateProgress(step) {
     spans.forEach((span, index) => {
         if (index < step) {
+            const precentage = (index + 1) / spans.length * 100;
+            step !== 1 ?middleLine.style.width = `${precentage}%` : middleLine.style.width = `0%`;
             span.classList.add("active")
         } else {
             span.classList.remove("active")

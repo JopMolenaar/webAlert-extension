@@ -115,23 +115,12 @@
         }
     }
     #output {
-        /* background-color: var(--color-background-light); */
-        /* padding: ; */
         padding: 0.5em;
     }
-    /* .linkDiv {
-        border: solid var(--color-black) 1px;
-        display: flex;
-        justify-content: space-between;
-        padding-left: 1em;
-        color: var(--color-grey);
-        background-color: white;
-        p {
-            margin: 0;
-        }
-    } */
     .endText {
         margin-top: 2em;
+        background-color: var(--color-background-light);
+        padding: 0.5em;
         ol {
             gap: 0.5em;
             display: flex;
@@ -142,17 +131,16 @@
                 overflow: visible;
                 position: relative;
                 img {
-                    width: 13rem;
+                    max-height: 12rem;
+                    max-width: 25rem;
+                    width: auto;
+                    object-fit: contain;
+                    align-self: start;
                 }
                 &::before {
                     content: attr(data-index);
                     position: absolute;
                     left: -1.5rem;
-                    /* display: block;
-                    width: 1.5rem;
-                    height: 1.5rem;
-                    background-color: var(--color-blue);
-                    border-radius: 50%; */
                 }
                 
             }

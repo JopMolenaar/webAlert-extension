@@ -1,55 +1,91 @@
 {
-    "ios": {
+    "macOs": { 
         "english": [
             {
-                "title": "Step 1: ...",
                 "description": "Klik op de blauwe knop 'Get shortcut'",
                 "image": "blueShortcutBtn.png"
             },
             {
-                "title": "Step 2: ...",
                 "description": "Er opent zich een popup, klik op 'Open Shortcuts'",
-                "image": "unbox_device.jpg"
+                "image": "openShortcutsPopup.png"
             },
             {
-                "title": "Step 3: ...",
                 "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'",
-                "image": "unbox_device.jpg"
+                "image": "appPopup.png"
             },
             {
-                "title": "Step 4: ...",
-                "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.",
-                "image": "unbox_device.jpg"
+                "description": "U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.",
+                "image": "shortcutInMenu.png"
             },
             {
-                "title": "Step 5: ...",
                 "description": "Klik twee keer op: 'Always allow'. Dit versoepelt het proces en heeft geen gevaar voor u privacy.",
-                "image": "unbox_device.jpg"
+                "image": "alwaysAllowPopup.png"
             }
         ],
         "dutch": [
             {
-                "title": "Step 1: ...",
                 "description": "Klik op de blauwe knop 'Get shortcut'",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 2: ...",
                 "description": "Er opent zich een popup, klik op 'Open Shortcuts'",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 3: ...",
                 "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 4: ...",
                 "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 5: ...",
+                "description": "Klik twee keer op: 'Always allow'. Dit versoepelt het proces en heeft geen gevaar voor u privacy.",
+                "image": "unbox_device.jpg"
+            }
+        ]
+    },
+    "ios": { 
+        "english": [
+            {
+                "description": "Klik op de blauwe knop 'Get shortcut'",
+                "image": "blueShortcutBtn.png"
+            },
+            {
+                "description": "Er opent zich een popup, klik op 'Open Shortcuts'",
+                "image": "openShortcutsPopup.png"
+            },
+            {
+                "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'",
+                "image": "appPopup.png"
+            },
+            {
+                "description": "U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.",
+                "image": "shortcutInMenu.png"
+            },
+            {
+                "description": "Klik twee keer op: 'Always allow'. Dit versoepelt het proces en heeft geen gevaar voor u privacy.",
+                "image": "alwaysAllowPopup.png"
+            }
+        ],
+        "dutch": [
+            {
+                "description": "Klik op de blauwe knop 'Get shortcut'",
+                "image": "unbox_device.jpg"
+            },
+            {
+                "description": "Er opent zich een popup, klik op 'Open Shortcuts'",
+                "image": "unbox_device.jpg"
+            },
+            {
+                "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'",
+                "image": "unbox_device.jpg"
+            },
+            {
+                "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'U heeft hem geinstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.",
+                "image": "unbox_device.jpg"
+            },
+            {
                 "description": "Klik twee keer op: 'Always allow'. Dit versoepelt het proces en heeft geen gevaar voor u privacy.",
                 "image": "unbox_device.jpg"
             }
@@ -58,54 +94,44 @@
     "android": {
         "english": [
             {
-                "title": "Step 1: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 2: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 3: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 4: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 5: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             }
         ],
         "dutch": [
             {
-                "title": "Step 1: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 2: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 3: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 4: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 5: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             }
@@ -114,54 +140,44 @@
     "windows": {
         "english": [
             {
-                "title": "Step 1: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 2: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 3: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 4: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 5: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             }
         ],
         "dutch": [
             {
-                "title": "Step 1: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 2: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 3: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 4: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             },
             {
-                "title": "Step 5: ...",
                 "description": "...",
                 "image": "unbox_device.jpg"
             }

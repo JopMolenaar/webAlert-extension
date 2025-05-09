@@ -104,7 +104,8 @@ function displayGeneratedLink(link) {
 
   outputLink.textContent = "";
   outputLink.appendChild(a);
-  document.querySelector(".progress-meter").style.display = "none"
+  updateProgress(4) 
+  // document.querySelector(".progress-meter").style.display = "none"
   
   form.style.display = "none";
   output.style.display = "block";
@@ -206,7 +207,7 @@ function handleBackClick() {
 function updateQuestionIndex(delta) {
   nextBtn.classList.remove(`index${questionIndex}`);
   questionIndex += delta;
-  document.querySelector(".progress-meter").style.display = "flex"
+  // document.querySelector(".progress-meter").style.display = "flex"
   updateProgress(questionIndex) 
   nextBtn.classList.add(`index${questionIndex}`);
   showCurrentQuestion();
@@ -220,7 +221,8 @@ function updateProgress(step) {
     spans.forEach((span, index) => {
         if (index < step) {
             const precentage = (index + 1) / spans.length * 100;
-            step !== 1 ?middleLine.style.width = `${precentage}%` : middleLine.style.width = `0%`;
+            step !== 1 ? middleLine.style.width = `${precentage}%` : middleLine.style.width = `0%`;
+            if(step === 4) middleLine.style.width = `100%`; 
             span.classList.add("active")
         } else {
             span.classList.remove("active")

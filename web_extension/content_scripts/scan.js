@@ -277,7 +277,7 @@ async function fillExtensionFeedback(response, wrapper) {
 
         // Explanation points
         const explanationPoints = wrapper.querySelector("#arguments");
-        const list = document.createElement("ul");
+        const list = document.createElement("div");
 
         chrome.runtime.sendMessage({ type: "cleanUpResults", data: response, format: "list"}, (response) => {
             if (chrome.runtime.lastError) {

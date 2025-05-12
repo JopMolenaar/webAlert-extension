@@ -220,6 +220,13 @@ body {
         }
         #arguments {
             display: none;
+            li {
+                color: rgb(255, 179, 179);
+            }
+            .highlight {
+                font-weight: 600;
+                color: white;
+            }
         }
     }
 

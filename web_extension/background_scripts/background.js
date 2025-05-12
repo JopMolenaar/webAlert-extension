@@ -163,27 +163,35 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             return;
         }
 
-        const kvkStatus = response.veiligInternetten.kvkStatus
+        const currentDate = new Date();
+        const responseDate = new Date(response.veiligInternetten.date);
+        const fiveMonthsAgo = new Date();
+        fiveMonthsAgo.setMonth(currentDate.getMonth() - 5);
+
+        const isOld = responseDate < fiveMonthsAgo;
+        const kvk = response.veiligInternetten.kvkStatus;
+        const trusted = response.veiligInternetten.Scamadviser.includes("hoge");
+        const noPhishing = response.veiligInternetten.APWG.includes("Niet gerapporteerd voor phishing");
+        const noMalware = response.veiligInternetten.Quad9.includes("Geen malware of virus gerapporteerd");
+
+        const kvkStatusText = kvk
             ? "Geregistreerd"
             : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
-        const trustScore = response.veiligInternetten.Scamadviser
+        const trustScoreText = response.veiligInternetten.Scamadviser
             ? response.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim()
             : "Geen gegevens beschikbaar";
 
-
-        const webAlertMessage = message.format === "list" ? "" : `<p>Bericht vanuit WebAlert: ${response.message}</p>`;
+        const webAlertMessage = message.format === "list" ? "" : `<p>${response.message}</p>`;
         
-        // TODO KIJK OF DE HOOFDPUNTEN DIKGEDRUKT KUNNEN WORDEN WEERGEGEVEN
         const html = `
             ${webAlertMessage}
             <ul>
-                <li>${response.veiligInternetten.date}</li>
-                <li>Kamer van Koophandel: ${kvkStatus}</li>
-                <li>Malware: ${response.veiligInternetten.Quad9}</li>
-                <li>Phishing: ${response.veiligInternetten.APWG}</li>
-                <li>Vertrouwensscore: ${trustScore}</li>
+                <li class="${!isOld ? 'highlight' : ''}">${response.veiligInternetten.date}</li>
+                <li class="${!kvk ? 'highlight' : ''}">Kamer van Koophandel: ${kvkStatusText}</li>
+                <li class="${!noMalware ? 'highlight' : ''}">Malware: ${response.veiligInternetten.Quad9}</li>
+                <li class="${!noPhishing ? 'highlight' : ''}">Phishing: ${response.veiligInternetten.APWG}</li>
+                <li class="${!trusted ? 'highlight' : ''}">Vertrouwensscore: ${trustScoreText}</li>
             </ul>
-           
         `;
 
         sendResponse({ success: true, html });

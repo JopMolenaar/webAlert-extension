@@ -1,3 +1,7 @@
+const showHistory = document.querySelector("#watchHistory")
+const backBtn = document.querySelector("header nav button")
+const history = document.querySelector(".history")
+
 function injectUI() {
     const params = new URLSearchParams(window.location.search);
     let domainParam = params.get("domain");
@@ -48,11 +52,16 @@ function injectUI() {
             }
         }
     });
+
+    history.classList.add("hidden");
 }
 
-document.querySelector("header nav button").addEventListener("click", (e) => {
+backBtn.addEventListener("click", (e) => {
     window.close();
 })
+showHistory.addEventListener("click", (e) => {
+    history.classList.toggle("hidden");
+});
 
 function addExtraInfo(data) {
     const expResultContainer = document.querySelector("#expResult");
@@ -67,12 +76,14 @@ function addExtraInfo(data) {
     <p>${data.message}</p>
     <p>${data.veiligInternetten.date}</p>
     <p>KvK: ${kvkStatus}</p>
-    <p>Malware gevonden: ${data.veiligInternetten.Quad9}</p>
+    <p>Malware: ${data.veiligInternetten.Quad9}</p>
     <p>Phishing: ${data.veiligInternetten.APWG}</p>
     <p>Vertrouwensscore: ${trustScore}</p>
     `;
 
     expResultContainer.appendChild(extraInfoDiv);
 }
+
+
 
 window.onload = injectUI;

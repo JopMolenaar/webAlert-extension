@@ -1,68 +1,75 @@
-:root {
-    --color-danger: #ffd9d8;
-    --color-danger-text: rgb(113, 13, 13);
-
-    --color-success: #e7ffec;
-    --color-success-text: rgb(3, 99, 14);
-
-    --color-warning: #fff2d5;
-    --color-warning-text: rgb(189, 117, 0);
-}
-
 body {
-    background-color: lightgrey;
+    background-color: rgb(234, 234, 234);
+    font-size: 1.1rem;
+    margin: 0;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    header nav {
+        padding: 2rem;
+        button {
+            font-size: 1.4rem;
+        }
+    }
 
     main {
         display: flex;
         justify-content: space-between;
-        width: 95%;
-        margin: 7em auto 0 auto;
+        padding-inline: 2rem;
+        gap: 2rem;
 
+        /* all direct divs */
         & > div {
-            gap: 2em;
+            gap: 2rem;
             & section {
-                background-color: white;
-                padding: 1em;
+                padding: 1rem;
                 border-radius: 5px;
+                max-width: 60rem;
+            }
+            & section:nth-of-type(1) {
+                background-color: white; 
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                max-width: 60em;
             }
         }
+
+        /* Main content */
         & > div:nth-of-type(1) {
             display: flex;
-            align-items: center;
             flex-direction: column;
             width: 100%;
-            section {
-                width: 100%;
-            }
         }
 
+        /* Other div with settings and history */
         & > div:nth-of-type(2) {
             display: flex;
             flex-direction: column;
-            max-height: calc(100dvh - 9em);
+            max-height: calc(100dvh - 9rem);
             section {
-                width: 33em;
+                width: 33rem;
             }
         }
 
-        .explDomain {
-       
-        }
+        /* .explDomain {
+        } */
 
         .settings {
             display: flex;
             flex-direction: column;
+            gap: 1rem;
+            h2 {
+                margin: 0;
+            }
         }
     
         .history {
             display: flex;
             flex-direction: column;
             max-height: 60%;
+
             & > div {
                 overflow-y: scroll;
-                gap: 0.5em;
+                gap: 0.5rem;
                 display: flex;
                 flex-direction: column;
                 & details {
@@ -128,12 +135,22 @@ body {
                     }
                 }
             }
+            &.hidden {
+                display: none;
+            }
         }
     }
 }
 
-header nav button {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
+
+@media (max-width: 1300px) {
+    body {
+        main {
+            flex-direction: column;
+            align-items: center;
+            & > div:nth-of-type(2) {
+                width: 100%;
+            }
+        }
+    }
 }

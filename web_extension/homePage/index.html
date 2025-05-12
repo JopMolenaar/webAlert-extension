@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/checkbox.css">
     <title>Home page</title>
     <script src="home.js" defer></script>
 </head>
@@ -11,7 +13,7 @@
 <!-- <h1>Home page</h1> -->
     <header>
         <nav>
-            <button>Back</button>
+            <button class="btn-secondary">Terug naar de website</button>
         </nav>
     </header>
      
@@ -53,18 +55,39 @@
                     <input type="radio" id="option3" name="settings" value="option3">
                     <label for="option3">Optie 3</label>
                 </div> -->
-                <label for="saveHistory">Sla geschiedenis op
+
+                <!-- <label for="saveHistory">Sla geschiedenis op
                     <input type="checkbox" name="saveHistory" id="saveHistory">
-                </label>
-                <label for="getHelpFunction">Om hulp kunnen vragen
-                    <input type="checkbox" name="getHelpFunction" id="getHelpFunction">
-                </label>
-                <label for="sendScreenshot">Schermafbeelding meesturen
+                </label> -->
+
+
+                <div class="checkbox-wrapper-8">
+                    <p>Om hulp kunnen vragen</p>
+                    <input class="inputHelp" id="cb3-8" type="checkbox"/>
+                    <label class="inputHelp-label" data-tg-off="Uit" data-tg-on="Aan" for="cb3-8"></label>
+                </div>
+
+                <!-- <label>
+                    Vraag hulp via <strong>Email</strong> of <strong>SMS</strong>:
+                </label> -->
+                <div class="checkbox-wrapper-16">
+                    <label>
+                        <div>
+                            Vraag hulp via <strong>Email</strong> of <strong>SMS</strong>:
+                        </div>
+                        <!-- Change this type and validate it when the app requires another contact -->
+                        <!-- Show default text when first option is the only option -->
+                        <input type="email" class="checkbox-tile no-icon" id="helpInput" name="helpInput" placeholder="Email of telefoonnummer">
+                    </label>
+                </div>
+               
+                <!-- <label for="sendScreenshot">Schermafbeelding meesturen
                     <input type="checkbox" name="sendScreenshot" id="sendScreenshot">
-                </label>
+                </label> -->
             </section>
+            <button id="watchHistory" class="btn-secondary">Bekijk uw eerder bezochte websites</button>
             <section class="history">
-                <h2>Eerder gefetchte bronnen (logboek):</h2>
+                <h2>Eerder bekeken bronnen en hun advies:</h2>
                 <div id="results"></div>
             </section>
         </div>

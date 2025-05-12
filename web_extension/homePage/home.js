@@ -1,6 +1,7 @@
 const showHistory = document.querySelector("#watchHistory")
 const backBtn = document.querySelector("header nav button")
 const history = document.querySelector(".history")
+const settings = document.querySelector(".settings")
 
 function injectUI() {
     const params = new URLSearchParams(window.location.search);
@@ -29,58 +30,44 @@ function injectUI() {
                 resultAndSourcesDiv.classList.add(status);
 
                 domainParam === domain ? addExtraInfo(response) : null; 
-
-                for (const [key, object] of Object.entries(response)) {
-                        if(key === "veiligInternetten"){
-                            for (const [key, obj] of Object.entries(object)) {
-                                if(key != "matched" && key != "unknown" && key != "monthsDifference"){
-                                    resultDiv.innerHTML += `<p>${obj}</p>`;
-                                }
-                                // TODO zet het mooi neer zodat de gebruiker het mooi kan lezen. 
-                            }
-                        } else {
-                            console.log(object);
-                            resultDiv.innerHTML += `
-                            <p>Result: ${object.result}</p>
-                            <a href="${object.source}" target="_blank">Source: ${object.source}</a>
-                            `;
-                        }
-                       
-                        resultAndSourcesDiv.appendChild(resultDiv);  
-                        resultsContainer.appendChild(resultAndSourcesDiv);  
+                
+                chrome.runtime.sendMessage({ type: "cleanUpResults", data: response}, (response) => {
+                    if (chrome.runtime.lastError) {
+                        console.error("Runtime error:", chrome.runtime.lastError.message);
+                        return;
                     }
+                    resultDiv.innerHTML = response.html
+                });
+
+                resultAndSourcesDiv.appendChild(resultDiv);  
+                resultsContainer.appendChild(resultAndSourcesDiv);  
             }
         }
     });
 
-    history.classList.add("hidden");
+    history.classList.add("v-h");
 }
 
 backBtn.addEventListener("click", (e) => {
     window.close();
 })
 showHistory.addEventListener("click", (e) => {
-    history.classList.toggle("hidden");
+    history.classList.toggle("v-h");
+    settings.classList.toggle("v-h");
 });
 
 function addExtraInfo(data) {
     const expResultContainer = document.querySelector("#expResult");
     const extraInfoDiv = document.createElement("div");
 
-    const kvkStatus = data.veiligInternetten.kvkStatus ? "Geregistreerd" : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
-    const trustScore = data.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
-
-    // TODO DIT DOEN IN EEN BACKGROUND SCRIPT
-    extraInfoDiv.innerHTML = `
-    <h3>Extra informatie</h3>
-    <p>${data.message}</p>
-    <p>${data.veiligInternetten.date}</p>
-    <p>KvK: ${kvkStatus}</p>
-    <p>Malware: ${data.veiligInternetten.Quad9}</p>
-    <p>Phishing: ${data.veiligInternetten.APWG}</p>
-    <p>Vertrouwensscore: ${trustScore}</p>
-    `;
-
+    chrome.runtime.sendMessage({ type: "cleanUpResults", data: data}, (response) => {
+        if (chrome.runtime.lastError) {
+            console.error("Runtime error:", chrome.runtime.lastError.message);
+            return;
+        }
+        extraInfoDiv.innerHTML = response.html
+    });
+    
     expResultContainer.appendChild(extraInfoDiv);
 }
 

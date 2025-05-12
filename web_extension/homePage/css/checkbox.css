@@ -65,7 +65,9 @@
             backface-visibility: hidden;
             transition: all 0.2s;
             font-family: sans-serif;
-            background: #888;
+            background: #ffffff;
+            border: solid black 1px;
+            border-radius: 5px;
 
             &:after,
             &:before {
@@ -76,22 +78,24 @@
                 position: absolute;
                 line-height: 2em;
                 font-weight: bold;
-                color: #fff;
-                text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+                color: black;
+                /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); */
             }
 
             &:after {
                 left: 100%;
+                color: green;
                 content: attr(data-tg-on);
             }
 
             &:before {
                 left: 0;
+                color: red;
                 content: attr(data-tg-off);
             }
 
             &:active {
-                background: #888;
+                background: #a0d390;
                 &:before {
                     left: -10%;
                 }

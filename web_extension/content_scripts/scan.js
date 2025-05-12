@@ -279,18 +279,16 @@ async function fillExtensionFeedback(response, wrapper) {
         const explanationPoints = wrapper.querySelector("#arguments");
         const list = document.createElement("ul");
 
-        const kvkStatus = response.veiligInternetten.kvkStatus ? "Geregistreerd" : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
-        const trustScore = response.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
-
-        // TODO DIT DOEN IN EEN BACKGROUND SCRIPT
-        list.innerHTML = 
-            `<li>${response.veiligInternetten.date}</li>
-            <li>KvK: ${kvkStatus}</li>
-            <li>Malware: ${response.veiligInternetten.Quad9}</li>
-            <li>Phishing: ${response.veiligInternetten.APWG}</li>
-            <li>Vertrouwensscore: ${trustScore}</li>`;
-            explanationPoints.appendChild(list);
-            explanationPoints.style.display = "block";
+        chrome.runtime.sendMessage({ type: "cleanUpResults", data: response, format: "list"}, (response) => {
+            if (chrome.runtime.lastError) {
+                console.error("Runtime error:", chrome.runtime.lastError.message);
+                return;
+            }
+            list.innerHTML = response.html
+        });
+        
+        explanationPoints.appendChild(list);
+        explanationPoints.style.display = "block";
     }
 }
 

@@ -154,6 +154,42 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     } 
 
 
+    if (message.type === "cleanUpResults") {
+        const response = message.data;
+
+        if (!response || !response.veiligInternetten) {
+            console.error("❌ Missing or invalid response data");
+            sendResponse({ success: false, error: "Missing or invalid response data" });
+            return;
+        }
+
+        const kvkStatus = response.veiligInternetten.kvkStatus
+            ? "Geregistreerd"
+            : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
+        const trustScore = response.veiligInternetten.Scamadviser
+            ? response.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim()
+            : "Geen gegevens beschikbaar";
+
+
+        const webAlertMessage = message.format === "list" ? "" : `<p>Bericht vanuit WebAlert: ${response.message}</p>`;
+        
+        // TODO KIJK OF DE HOOFDPUNTEN DIKGEDRUKT KUNNEN WORDEN WEERGEGEVEN
+        const html = `
+            ${webAlertMessage}
+            <ul>
+                <li>${response.veiligInternetten.date}</li>
+                <li>Kamer van Koophandel: ${kvkStatus}</li>
+                <li>Malware: ${response.veiligInternetten.Quad9}</li>
+                <li>Phishing: ${response.veiligInternetten.APWG}</li>
+                <li>Vertrouwensscore: ${trustScore}</li>
+            </ul>
+           
+        `;
+
+        sendResponse({ success: true, html });
+        return true;
+    }
+
     // if (message.type === "sendScreenshotToMail") {
     //     chrome.tabs.captureVisibleTab(null, { format: "png" }, (dataUrl) => {
     //         if (chrome.runtime.lastError || !dataUrl) {

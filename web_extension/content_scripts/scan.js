@@ -7,7 +7,6 @@ async function injectUI() {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = html;
     wrapper.setAttribute("id", "webAlertDiv");
-    wrapper.classList.add("right");
 
     // wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/loading.svg`)).then(r => r.text());
     // wrapper.querySelector("#visualStatus").classList.add("loading");
@@ -17,7 +16,6 @@ async function injectUI() {
     // add colored line for feedback
     const coloredLine = document.createElement("div");
     coloredLine.setAttribute("id", "coloredLine");
-    coloredLine.classList.add("right");
     document.body.insertBefore(coloredLine, document.body.firstChild);
     
     // Popup CSS
@@ -33,22 +31,27 @@ async function injectUI() {
         window.open(url, "_blank");
     });
 
+    const leavePageButton = wrapper.querySelector("#exitPage");
+    leavePageButton.addEventListener("click", () => {
+        chrome.runtime.sendMessage({ action: "closeActiveTab" });
+    });
+
     getAndStoreSafetyDomain(wrapper);
    
     const moveBtn = document.body.querySelector("#moveWebExtensionButton");
-    let right = false;
+    let left = false;
     if(moveBtn){
         moveBtn.addEventListener("click", () => {        
-            wrapper.querySelector("#moveWebExtensionButton span").textContent = right ? "links" : "rechts";
-            document.body.querySelector("#coloredLine").classList.toggle("right");
-            wrapper.classList.toggle("right");
-            right = !right;
+            wrapper.querySelector("#moveWebExtensionButton span").textContent = left ? "rechts" : "links";
+            document.body.querySelector("#coloredLine").classList.toggle("left");
+            wrapper.classList.toggle("left");
+            left = !left;
         });
     }
 
     const closebtn = wrapper.querySelector("#closeBtn");
     closebtn.addEventListener("click", () => {
-        wrapper.querySelector("div").classList.toggle("open");
+        wrapper.classList.toggle("open");
     });
 
     // Check all links, form actions and inputs of the webpage
@@ -216,7 +219,7 @@ function getRootDomain(hostname) {
     return parts.slice(-2).join('.');
 }
 
-// updatye this
+// update this
 async function checkSafetyDomain(source, wrapper) {
     const response = await new Promise((resolve) => {
         //  TODO check full url voor beter advies, anders geeft het geen goed advies over bijvoorbeeld een github project
@@ -254,10 +257,41 @@ async function fillExtensionFeedback(response, wrapper) {
     const status = response.status === 'unknown' ? 'default' : response.status;
 
     console.log(response.message);
-    status != "success" ? wrapper.querySelector("#statusText").textContent = response.message : wrapper.querySelector("div").classList.remove("open");
+    status != "success" ? (wrapper.querySelector("#statusText").textContent = response.message, wrapper.classList.add("open")) : wrapper.classList.remove("open");
     document.body.classList.add(`${status}`);
     // status != "default" ? wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text()) : null;
     // wrapper.querySelector("#visualStatus").classList.remove("loading");
+
+    if(status === "danger"){
+
+        // Let the user go to the page even if the status is 'danger'
+        const enterPageButton = document.createElement("button");
+        enterPageButton.textContent = "Ga toch naar de website";
+        enterPageButton.addEventListener("click", () => {
+            document.body.classList.remove("danger");
+            document.body.classList.add("danger-side");
+            enterPageButton.remove();
+            wrapper.querySelector("#arguments").style.display = "none";
+        });
+        wrapper.querySelector(".responseDiv div").appendChild(enterPageButton);
+
+        // Explanation points
+        const explanationPoints = wrapper.querySelector("#arguments");
+        const list = document.createElement("ul");
+
+        const kvkStatus = response.veiligInternetten.kvkStatus ? "Geregistreerd" : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
+        const trustScore = response.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
+
+        // TODO DIT DOEN IN EEN BACKGROUND SCRIPT
+        list.innerHTML = 
+            `<li>${response.veiligInternetten.date}</li>
+            <li>KvK: ${kvkStatus}</li>
+            <li>Malware: ${response.veiligInternetten.Quad9}</li>
+            <li>Phishing: ${response.veiligInternetten.APWG}</li>
+            <li>Vertrouwensscore: ${trustScore}</li>`;
+            explanationPoints.appendChild(list);
+            explanationPoints.style.display = "block";
+    }
 }
 
 function displayData(wrapper, id, info) {

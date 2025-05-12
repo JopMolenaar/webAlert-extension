@@ -57,14 +57,19 @@ document.querySelector("header nav button").addEventListener("click", (e) => {
 function addExtraInfo(data) {
     const expResultContainer = document.querySelector("#expResult");
     const extraInfoDiv = document.createElement("div");
+
+    const kvkStatus = data.veiligInternetten.kvkStatus ? "Geregistreerd" : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
+    const trustScore = data.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
+
+    // TODO DIT DOEN IN EEN BACKGROUND SCRIPT
     extraInfoDiv.innerHTML = `
     <h3>Extra informatie</h3>
     <p>${data.message}</p>
     <p>${data.veiligInternetten.date}</p>
-    <p>KvK: ${data.veiligInternetten.KamervanKoophandel}</p>
+    <p>KvK: ${kvkStatus}</p>
     <p>Malware gevonden: ${data.veiligInternetten.Quad9}</p>
-    <p>Gerapporteerd voor phishing: ${data.veiligInternetten.APWG}</p>
-    <p>${data.veiligInternetten.Scamadviser}</p>
+    <p>Phishing: ${data.veiligInternetten.APWG}</p>
+    <p>Vertrouwensscore: ${trustScore}</p>
     `;
 
     expResultContainer.appendChild(extraInfoDiv);

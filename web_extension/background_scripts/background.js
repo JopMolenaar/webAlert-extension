@@ -12,6 +12,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     //     });
     // }
 
+    if (message.action === "closeActiveTab") {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          if (tabs.length > 0) {
+            chrome.tabs.remove(tabs[0].id);
+          }
+        });
+    }
+
     if (message.type === "checkVeiliginternetten") {
         const url = `https://check.veiliginternetten.nl/controleer/${message.url}`;
         fetch(url, {
@@ -107,12 +115,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
         let mailContent = ""
         if(safetyCheckResult.veiligInternetten.date){
+
+            const kvkStatus = safetyCheckResult.veiligInternetten.kvkStatus ? "Geregistreerd" : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
+            const trustScore = safetyCheckResult.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
+
+            // TODO: aparte functie maken voor dit die de andere scripts ook kunnen gebruiken
             mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}.\n` +
             `${safetyCheckResult.veiligInternetten.date}\n` +
-            `KvK: ${safetyCheckResult.veiligInternetten.KamervanKoophandel}\n` +
-            `Malware gevonden: ${safetyCheckResult.veiligInternetten.Quad9}\n` +
+            `KvK: ${kvkStatus}\n` +
+            `Malware: ${safetyCheckResult.veiligInternetten.Quad9}\n` +
             `Phishing: ${safetyCheckResult.veiligInternetten.APWG}\n` +
-            `Scamadviser: ${safetyCheckResult.veiligInternetten.Scamadviser}\n\n`;
+            `Scamadviser: ${trustScore}\n\n`;
         } else {
             mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}\n` +
             `De bron Veilig Internetten kon niet worden gebruikt voor deze website.`;

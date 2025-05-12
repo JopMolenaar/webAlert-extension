@@ -74,10 +74,6 @@ body {
             justify-content: space-between;
             > div:nth-of-type(1) {
                 display: flex;
-
-                p {
-                    /* font-size: 1rem; */
-                }
             }
         }
     }
@@ -90,7 +86,9 @@ body {
             justify-content: center;    
             background-color: var(--color-danger-fullscreen);
             position: fixed;
-            
+            & * {
+                font-size: 1.4rem !important;
+            }
             > div {
                 height: fit-content;
                 align-self: center;
@@ -101,6 +99,7 @@ body {
                     div {
                         flex-direction: row;
                         flex-wrap: wrap;
+                        gap: 0.6rem;
                         button {
                             white-space: pre-wrap;
                         }
@@ -166,9 +165,6 @@ body {
             flex-direction: column;
             justify-content: space-between;
             gap: 0.2rem;
-            p {
-                /* font-size: 1rem; */
-            }
             div {
                 gap: 0.2rem;
                 display: flex;
@@ -185,6 +181,10 @@ body {
                         background-color: var(--color-status-btn-hvr) !important;
                         cursor: pointer !important;
                     }
+                }
+                
+                .bounce {
+                    animation: bounceb 1s ease-in-out infinite;
                 }
             }
         }
@@ -211,10 +211,8 @@ body {
                 border-radius: 50% !important;
                 transition: all 0.2s ease-in-out !important;
                 &:hover {
-                    /* background-color: var(--color-status-btn-hvr) !important; */
                     scale: 1.1;
                     cursor: pointer !important;
-
                 }
             }
         }
@@ -269,5 +267,15 @@ body {
     &.left {
         left: 0;
         right: auto;
+    }
+}
+
+
+@keyframes bounceb {
+    0%, 100% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
     }
 }

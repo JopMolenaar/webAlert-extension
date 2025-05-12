@@ -42,7 +42,7 @@ async function injectUI() {
     let left = false;
     if(moveBtn){
         moveBtn.addEventListener("click", () => {        
-            wrapper.querySelector("#moveWebExtensionButton span").textContent = left ? "rechts" : "links";
+            wrapper.querySelector("#moveWebExtensionButton span").textContent = left ? "links" : "rechts";
             document.body.querySelector("#coloredLine").classList.toggle("left");
             wrapper.classList.toggle("left");
             left = !left;
@@ -263,7 +263,6 @@ async function fillExtensionFeedback(response, wrapper) {
     // wrapper.querySelector("#visualStatus").classList.remove("loading");
 
     if(status === "danger"){
-
         // Let the user go to the page even if the status is 'danger'
         const enterPageButton = document.createElement("button");
         enterPageButton.textContent = "Ga toch naar de website";
@@ -272,6 +271,7 @@ async function fillExtensionFeedback(response, wrapper) {
             document.body.classList.add("danger-side");
             enterPageButton.remove();
             wrapper.querySelector("#arguments").style.display = "none";
+            wrapper.querySelector("#exitPage").classList.remove("bounce");
         });
         wrapper.querySelector(".responseDiv div").appendChild(enterPageButton);
 
@@ -286,6 +286,8 @@ async function fillExtensionFeedback(response, wrapper) {
             }
             list.innerHTML = response.html
         });
+
+        wrapper.querySelector("#exitPage").classList.add("bounce");
         
         explanationPoints.appendChild(list);
         explanationPoints.style.display = "block";

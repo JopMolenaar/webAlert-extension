@@ -53,6 +53,7 @@ backBtn.addEventListener("click", (e) => {
 })
 showHistory.addEventListener("click", (e) => {
     history.classList.toggle("v-h");
+    showHistory.textContent = history.classList.contains("v-h") ? "Bekijk uw eerder bezochte websites" : "Bekijk uw instellingen";
     settings.classList.toggle("v-h");
 });
 
@@ -67,7 +68,7 @@ function addExtraInfo(data) {
         }
         extraInfoDiv.innerHTML = response.html
     });
-    
+
     expResultContainer.appendChild(extraInfoDiv);
 }
 

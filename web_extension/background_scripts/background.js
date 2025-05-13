@@ -105,7 +105,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // const smstoUrl = `sms:?subject=${subject}&body=${body}`; werkt ook gewoon. Maar er wordt wel gevraagd om messages te openen
     if (message.type === "sendSafetyCheckResultsToMail") {
         const { domain, safetyCheckResult } = message;
-        const receiver = ""
 
         if (!domain || !safetyCheckResult) {
             console.error("❌ Missing domain or safety check result in message");
@@ -113,76 +112,93 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             return;
         }
 
-        let mailContent = ""
-        if(safetyCheckResult.veiligInternetten.date){
+        chrome.storage.local.get("helpInput", (result) => {
+            const receiver = result.helpInput || ""; // Default to empty string if not set
 
-            const kvkStatus = safetyCheckResult.veiligInternetten.kvkStatus ? "Geregistreerd" : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
-            const trustScore = safetyCheckResult.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
+            if (!receiver) {
+                console.error("❌ No receiver email address found in storage");
+                sendResponse({ success: false, error: "No receiver email address found" });
+                return;
+            }
 
-            // TODO: aparte functie maken voor dit die de andere scripts ook kunnen gebruiken
-            mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}.\n` +
-            `${safetyCheckResult.veiligInternetten.date}\n` +
-            `KvK: ${kvkStatus}\n` +
-            `Malware: ${safetyCheckResult.veiligInternetten.Quad9}\n` +
-            `Phishing: ${safetyCheckResult.veiligInternetten.APWG}\n` +
-            `Scamadviser: ${trustScore}\n\n`;
-        } else {
-            mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}\n` +
-            `De bron Veilig Internetten kon niet worden gebruikt voor deze website.`;
-        }
+            let mailContent = "";
+            if (safetyCheckResult.veiligInternetten.date) {
+                const kvkStatus = safetyCheckResult.veiligInternetten.kvkStatus
+                    ? "Geregistreerd"
+                    : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
+                const trustScore = safetyCheckResult.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
 
-        console.log("📋 Preparing safety check results email");
+                mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}.\n` +
+                    `${safetyCheckResult.veiligInternetten.date}\n` +
+                    `KvK: ${kvkStatus}\n` +
+                    `Malware: ${safetyCheckResult.veiligInternetten.Quad9}\n` +
+                    `Phishing: ${safetyCheckResult.veiligInternetten.APWG}\n` +
+                    `Scamadviser: ${trustScore}\n\n`;
+            } else {
+                mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}\n` +
+                    `De bron Veilig Internetten kon niet worden gebruikt voor deze website.`;
+            }
 
-        // Open mail client with safety check results
-        const subject = encodeURIComponent(`Help! Is dit phishing? Ik twijfel over: ${domain}`);
-        const body = encodeURIComponent(
-            `Voor uw context zijn dit de resultaten vanuit de gebruikte webextensie: WebAlert.\n\n` +
-            `Domein: ${domain}\n` +
-            `Link: https://${domain}\n\n` +
-            `Veiligheidscheck resultaten: \n\n` +
-            mailContent +
-            `Als u mij z.s.m. een berichtje wilt sturen over wat u denkt over wat ik moet doen zou dit heel fijn zijn.\n\n Groetjes!`
-        );
-        const mailtoUrl = `mailto:${receiver}?subject=${subject}&body=${body}`;
+            console.log("📋 Preparing safety check results email");
 
-        chrome.tabs.create({ url: mailtoUrl }, () => {
-            console.log("📬 Mail client opened with safety check results");
-            sendResponse({ success: true });
+            // Open mail client with safety check results
+            const subject = encodeURIComponent(`Help! Is dit phishing? Ik twijfel over: ${domain}`);
+            const body = encodeURIComponent(
+                `Voor uw context zijn dit de resultaten vanuit de gebruikte webextensie: WebAlert.\n\n` +
+                `Domein: ${domain}\n` +
+                `Link: https://${domain}\n\n` +
+                `Veiligheidscheck resultaten: \n\n` +
+                mailContent +
+                `Als u mij z.s.m. een berichtje wilt sturen over wat u denkt over wat ik moet doen zou dit heel fijn zijn.\n\n Groetjes!`
+            );
+            const mailtoUrl = `mailto:${receiver}?subject=${subject}&body=${body}`;
+
+            chrome.tabs.create({ url: mailtoUrl }, () => {
+                console.log("📬 Mail client opened with safety check results");
+                sendResponse({ success: true });
+            });
         });
 
         return true;
-    } 
+    }
 
 
     if (message.type === "cleanUpResults") {
         const response = message.data;
 
-        if (!response || !response.veiligInternetten) {
+        if (!response) {
             console.error("❌ Missing or invalid response data");
             sendResponse({ success: false, error: "Missing or invalid response data" });
             return;
         }
 
-        const currentDate = new Date();
-        const responseDate = new Date(response.veiligInternetten.date);
-        const fiveMonthsAgo = new Date();
-        fiveMonthsAgo.setMonth(currentDate.getMonth() - 5);
-
-        const isOld = responseDate < fiveMonthsAgo;
+        // Overwrite when it is not available
         const kvk = response.veiligInternetten.kvkStatus;
+        response.veiligInternetten.Scamadviser = response.veiligInternetten.Scamadviser || "Onbekend";
+        response.veiligInternetten.APWG = response.veiligInternetten.APWG || "Onbekend";
+        response.veiligInternetten.Quad9 = response.veiligInternetten.Quad9 || "Onbekend";
+        response.veiligInternetten.date = response.veiligInternetten.date || "Datum onbekend";
+
+        // Check if the date is older than 5 months
+        let isOld = false;
+        if(response.veiligInternetten.date !== "Onbekend"){
+            const currentDate = new Date();
+            const responseDate = new Date(response.veiligInternetten.date);
+            const fiveMonthsAgo = new Date();
+            fiveMonthsAgo.setMonth(currentDate.getMonth() - 5);
+            isOld = responseDate < fiveMonthsAgo;
+        }
+        
+        // Check the reason why the advice is given
         const trusted = response.veiligInternetten.Scamadviser.includes("hoge");
         const noPhishing = response.veiligInternetten.APWG.includes("Niet gerapporteerd voor phishing");
         const noMalware = response.veiligInternetten.Quad9.includes("Geen malware of virus gerapporteerd");
+        const kvkStatusText = kvk === undefined ? "Onbekend" : (kvk === true ? "Geregistreerd"
+            : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)");
+        const trustScoreText = response.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
 
-        const kvkStatusText = kvk
-            ? "Geregistreerd"
-            : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
-        const trustScoreText = response.veiligInternetten.Scamadviser
-            ? response.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim()
-            : "Geen gegevens beschikbaar";
-
+        // Give back the message and highlight the reasons
         const webAlertMessage = message.format === "list" ? "" : `<p>${response.message}</p>`;
-        
         const html = `
             ${webAlertMessage}
             <ul>
@@ -238,4 +254,53 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     
     //     return true;
     // }
+
+
+        if (message.type === "updateInputEnabled") {
+            chrome.storage.local.set({ inputEnabled: message.value }, () => {
+                sendResponse({ success: true });
+            });
+            return true;
+        }
+
+        if (message.type === "updateHelpInput") {
+            chrome.storage.local.set({ helpInput: message.value }, () => {
+                sendResponse({ success: true });
+            });
+            return true;
+        }
+
+        if (message.type === "updateHelpName") {
+            chrome.storage.local.set({ helpName: message.value }, () => {
+                sendResponse({ success: true });
+            });
+            return true;
+        }
+
+        if (message.type === "getInputEnabled") {
+            chrome.storage.local.get("inputEnabled", (result) => {
+                const value = result.inputEnabled || false; // Default to false if not set
+                console.log("ℹ️ Input enabled state retrieved:", value);
+                sendResponse({ success: true, value });
+            });
+            return true;
+        }
+
+        if (message.type === "getHelpInput") {
+            chrome.storage.local.get("helpInput", (result) => {
+                const value = result.helpInput || ""; // Default to empty string if not set
+                console.log("ℹ️ Help input value retrieved:", value);
+                sendResponse({ success: true, value });
+            });
+            return true;
+        }
+
+        if (message.type === "getHelpName") {
+            chrome.storage.local.get("helpName", (result) => {
+                const value = result.helpName || ""; // Default to empty string if not set
+                console.log("ℹ️ Help name value retrieved:", value);
+                sendResponse({ success: true, value });
+            });
+            return true;
+        }
 });

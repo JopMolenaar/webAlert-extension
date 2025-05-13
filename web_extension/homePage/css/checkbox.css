@@ -120,7 +120,13 @@
 /* from: https://getcssscan.com/css-checkboxes-examples */
 .checkbox-wrapper-16 {
     font-size: 0.9em;
-    width: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    h3 {
+        margin: 0;
+    }
 
     label {
         font-size: 1.1rem;
@@ -185,7 +191,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 7rem;
+        min-width: 60%;
         min-height: 7rem;
         border-radius: 0.5rem;
         border: 2px solid var(--color-border-grey);

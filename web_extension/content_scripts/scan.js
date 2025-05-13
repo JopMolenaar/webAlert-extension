@@ -183,6 +183,15 @@ async function getAndStoreSafetyDomain(wrapper) {
     // Help button listener
     const helpBtn = document.body.querySelector("#getHelp");
     if(helpBtn){
+        chrome.runtime.sendMessage({ type: "getHelpName" }, (response) => {
+            if (response && response.success) {
+                console.log("ℹ️ Help input name on load:", response.value);
+                helpBtn.querySelector("span").textContent = response.value;
+            } else {
+                console.error("❌ Failed to retrieve help input value.");
+            }
+        });
+        
         helpBtn.addEventListener("click", () => {        
             chrome.runtime.sendMessage({ type: "sendSafetyCheckResultsToMail", domain: domain, safetyCheckResult: data }, (response) => {
                 console.log(response);

@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/checkbox.css">
     <title>Home page</title>
-    <script src="home.js" defer></script>
 </head>
 <body>
-<!-- <h1>Home page</h1> -->
+<h1 class="v-h">WebAlert informatie en instellingen pagina</h1>
     <header>
         <nav>
             <button class="btn-secondary">Terug naar de website</button>
@@ -24,75 +23,89 @@
                 <div id="expResult"></div>
             </section>
     
-            <section class="explExtension">
-                <h2>Meer uitleg over de bronnen die zijn gebruikt voor dit advies:</h2>
-                <p>+features</p>
-                <p>Dit product controleerd terwijl u gebruik maakt van de zoekmachine de websites die u bezoekt op de veiligheid.</p>
-                <p>Dit doet hij door de url (zonder gevoelige informatie) te verifieren bij bestaande producten waar u handmatig en gratis de linkjes kan checken.</p>
-                <p>Dit zijn bronnen zoals de politie en veiligInternetten.nl</p>
-                <p>Veiliginternetten.nl is een gezamenlijk initiatief van het ministerie van Economische Zaken en Klimaat, het ministerie van Justitie en Veiligheid / Nationaal Cyber Security Centrum, ECP | Platform voor de InformatieSamenleving en het bedrijfsleven.</p>
-                <a href="https://check.veiliginternetten.nl/over-deze-check" target="_blank">check.veiliginternetten.nl/over-deze-check</a>
-                <br>
-                <p>Daarnaast kan dit product zelf ook nog bepaalde oplichtings technieken achterhalen en hier een advies over geven.</p>
-                <p>Net zoals de bronnen die dit product gebruikt, is dit product niet aansprakelijk voor een verkeerd advies. U dient zelf nog steeds voorzichtig te zijn en niet blind op dit product te vertrouwen.</p>
-                <p>Als u nog steeds twijfelt over het advies dat wordt gegeven kunt u altijd nog uw eigen conclusie trekken of gebruik maken van de functie om hulp te vragen aan iemand uit uw kring naar keuze.</p>
-                <p>De functie om hulp te vragen in dit product stelt u alleen in staat om dat te kunnen gebruiken tijdens het browsen, maar we hebben ook een andere tool waar u het mogelijk kan maken om het altijd te vragen op een andere online manier</p>
-                <p>Voor meer informatie <a href=""></a></p>
-
-                <p>Uw browse informatie wordt niet gelinkt aan persoonlijke informatie</p>
-            </section>
+            <div>
+                <button id="watchHistory" class="btn-secondary">Bekijk uw eerder bezochte websites</button>
+    
+                <section class="settings">
+                    <h2>Instellingen</h2>
+                    <!-- <label for="settings">De manier van feedback</label>
+                    <div id="settings">
+                        <input type="radio" id="option1" name="settings" value="option1">
+                        <label for="option1">Optie 1</label><br>
+                        <input type="radio" id="option2" name="settings" value="option2">
+                        <label for="option2">Optie 2</label><br>
+                        <input type="radio" id="option3" name="settings" value="option3">
+                        <label for="option3">Optie 3</label>
+                    </div> -->
+    
+                    <!-- <label for="saveHistory">Sla geschiedenis op
+                        <input type="checkbox" name="saveHistory" id="saveHistory">
+                    </label> -->
+    
+    
+                    <!-- <div class="checkbox-wrapper-8">
+                        <p>Om hulp kunnen vragen:</p>
+                        <input class="inputHelp" id="inputEnabled" type="checkbox" checked/>
+                        <label class="inputHelp-label" data-tg-off="Uit" data-tg-on="Aan" for="inputEnabled"></label>
+                    </div> -->
+    
+                    <!-- <label>
+                        Vraag hulp via <strong>Email</strong> of <strong>SMS</strong>:
+                    </label> -->
+                    <div class="checkbox-wrapper-16">
+                        <h3>Vraag hulp via aan:</h3>
+                        <label>
+                            <div>
+                                Vul een naam in:
+                            </div>
+                            <!-- Change this type and validate it when the app requires another contact -->
+                            <!-- Show default text when first option is the only option -->
+                            <input type="text" class="checkbox-tile no-icon" id="helpName" name="helpName">
+                        </label>
+                        <label>
+                            <div>
+                                Vul een <strong>Email</strong> of <strong>SMS</strong> in:
+                            </div>
+                            <!-- Change this type and validate it when the app requires another contact -->
+                            <!-- Show default text when first option is the only option -->
+                            <input type="text" class="checkbox-tile no-icon" id="helpInput" name="helpInput" placeholder="Email of telefoonnummer">
+                        </label>
+                    </div>
+                   
+                    <!-- <label for="sendScreenshot">Schermafbeelding meesturen
+                        <input type="checkbox" name="sendScreenshot" id="sendScreenshot">
+                    </label> -->
+                </section>
+    
+                <section class="history">
+                    <h2>Eerder bekeken bronnen en hun advies:</h2>
+                    <div id="results"></div>
+                </section>
+            </div>
         </div>
  
-        <div>
-            <button id="watchHistory" class="btn-secondary">Bekijk uw eerder bezochte websites</button>
+       
+        <section class="explExtension">
+            <h2>Uitleg over dit automatische hulpmiddel:</h2>
 
-            <section class="settings">
-                <h2>Instellingen</h2>
-                <!-- <label for="settings">De manier van feedback</label>
-                <div id="settings">
-                    <input type="radio" id="option1" name="settings" value="option1">
-                    <label for="option1">Optie 1</label><br>
-                    <input type="radio" id="option2" name="settings" value="option2">
-                    <label for="option2">Optie 2</label><br>
-                    <input type="radio" id="option3" name="settings" value="option3">
-                    <label for="option3">Optie 3</label>
-                </div> -->
+            <p>Dit product controleerd terwijl u gebruik maakt van de zoekmachine de websites die u bezoekt op de veiligheid. 
+            Dit doet hij door de url (zonder gevoelige informatie) te verifieren bij bestaande producten waar u handmatig en gratis de linkjes kan checken. 
+            Dit zijn bronnen zoals de politie en veiligInternetten.nl</p>
 
-                <!-- <label for="saveHistory">Sla geschiedenis op
-                    <input type="checkbox" name="saveHistory" id="saveHistory">
-                </label> -->
+            <p>Veiliginternetten.nl is een gezamenlijk initiatief van het ministerie van Economische Zaken en Klimaat, het ministerie van Justitie en Veiligheid / Nationaal Cyber Security Centrum, ECP | Platform voor de InformatieSamenleving en het bedrijfsleven.
+            <a href="https://check.veiliginternetten.nl/over-deze-check" target="_blank">check.veiliginternetten.nl/over-deze-check</a></p>
 
+            <p>Daarnaast kan dit product zelf ook nog bepaalde oplichtings technieken achterhalen en hier een advies over geven. 
+            <strong>Net zoals de bronnen die dit product gebruikt, is dit product niet aansprakelijk voor een verkeerd advies. U dient zelf nog steeds voorzichtig te zijn en niet blind op dit product te vertrouwen.</strong> 
+            Als u nog steeds twijfelt over het advies dat wordt gegeven kunt u altijd nog uw eigen conclusie trekken of gebruik maken van de functie om hulp te vragen aan iemand uit uw kring naar keuze.</p>
+            <p>De functie om hulp te vragen in dit product stelt u alleen in staat om dat te kunnen gebruiken tijdens het browsen, maar we hebben ook een andere tool waar u het mogelijk kan maken om het altijd te vragen op een andere online manier</p>
+            <p>Voor meer informatie: <a href="https://jopmolenaar.github.io/webAlert-extension/" target="_blank">Maak het makkelijker om online hulp te vragen</a>.</p>
 
-                <div class="checkbox-wrapper-8">
-                    <p>Om hulp kunnen vragen:</p>
-                    <input class="inputHelp" id="cb3-8" type="checkbox"/>
-                    <label class="inputHelp-label" data-tg-off="Uit" data-tg-on="Aan" for="cb3-8"></label>
-                </div>
-
-                <!-- <label>
-                    Vraag hulp via <strong>Email</strong> of <strong>SMS</strong>:
-                </label> -->
-                <div class="checkbox-wrapper-16">
-                    <label>
-                        <div>
-                            Vraag hulp via <strong>Email</strong> of <strong>SMS</strong>:
-                        </div>
-                        <!-- Change this type and validate it when the app requires another contact -->
-                        <!-- Show default text when first option is the only option -->
-                        <input type="email" class="checkbox-tile no-icon" id="helpInput" name="helpInput" placeholder="Email of telefoonnummer">
-                    </label>
-                </div>
-               
-                <!-- <label for="sendScreenshot">Schermafbeelding meesturen
-                    <input type="checkbox" name="sendScreenshot" id="sendScreenshot">
-                </label> -->
-            </section>
-
-            <section class="history">
-                <h2>Eerder bekeken bronnen en hun advies:</h2>
-                <div id="results"></div>
-            </section>
-        </div>
+            <p>Daarnaast slaan wij instellingen en uw browse geschiedenis op in dit product. Dit wordt echter alleen lokaal opgeslagen (dus in uw eigen browser en niet in lek-gevoelige databases) en wordt dit allemaal niet met uw persoonlijke informatie gelinkt.</p>
+        </section>
     </main>
+
+    <script src="js/home.js" defer></script>
+    <script src="js/settings.js" defer></script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 // });
 
 document.querySelector("#helpInput").addEventListener("input", (e) => {
+        // TODO VALIDATE EMAIL OF NUMBER -> IF NOT VALID, SEND ERROR MESSAGE
     chrome.runtime.sendMessage({ type: "updateHelpInput", value: e.target.value });
 });
 document.querySelector("#helpName").addEventListener("input", (e) => {

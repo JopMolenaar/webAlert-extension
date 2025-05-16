@@ -118,31 +118,45 @@
     }
     .endText {
         margin-top: 2em;
-        background-color: var(--color-background-light);
         padding: 0.5em;
         ol {
-            gap: 0.5em;
+            margin-top: 2.5rem;
+            gap: 1.75em;
             display: flex;
             flex-direction: column;
+            padding-left: 0;
+            li:nth-of-type(2n) {
+                background-color: var(--color-background-light2);
+            }
+            li:nth-of-type(2n+1) {
+                background-color: var(--color-background-light);
+            }
             li {
-                display: flex;
-                flex-direction: column;
+                border-radius: 10px;
+                display: grid;
+                grid-template-columns: 18rem 1fr;
+                gap: 1rem;
                 overflow: visible;
                 position: relative;
+                padding: 1rem;
                 a {
                     width: fit-content;
                 }
                 img {
+                    order: -1;
                     max-height: 20rem;
-                    max-width: 25rem;
+                    max-width: 18rem;
+                    align-self: center;
                     width: auto;
                     object-fit: contain;
-                    align-self: start;
+                    place-self: center;
                 }
                 &::before {
                     content: attr(data-index);
+                    text-decoration: underline;
+                    text-underline-offset: 0.2rem;
                     position: absolute;
-                    left: -1.5rem;
+                    top: -1.75rem;
                 }
                 
             }

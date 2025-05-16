@@ -143,22 +143,28 @@ async function getSteps(platform) {
       const ol = document.createElement("ol");
       steps.forEach((step, index) => {
         const li = document.createElement("li");
-        li.dataset.index = (index + 1) + ".";
-        const img = document.createElement("img");        
-        li.textContent = step.description;
+        li.dataset.index = "Stap: " + (index + 1) + ".";
+
+        const p = document.createElement("p");
+        p.textContent = step.description;
+
+        const img = document.createElement("img");   
         img.src = `images/${platform}Steps/${step.image}`;
         // TODO ALT 
         if (step.link) {
-          const a = document.createElement("a");
-          a.href = step.link;
-          a.target = "_blank";
-          a.textContent = "Hier";
-          li.appendChild(a);
+            const a = document.createElement("a");
+            a.href = step.link;
+            a.target = "_blank";
+            a.textContent = "Hier";
+            p.appendChild(document.createTextNode(" "));
+            p.appendChild(a);
         }
-
+        li.appendChild(p);
         li.appendChild(img);
         ol.appendChild(li);
       });
+
+      // Replce the new list for the old one
       const prevOl = nextStepsText.querySelector("ol");
       prevOl ? nextStepsText.replaceChild(ol, prevOl) : nextStepsText.appendChild(ol);
     } catch (err) {

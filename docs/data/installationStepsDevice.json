@@ -2,7 +2,7 @@
     "macOs": { 
         "english": [
             {
-                "description": "Zorg ervoor dat de Shortcut app is geinstalleerd. Dit is staat vaak standaard op uw apparaat, maar als dit niet zo is. Download hem via de App Store: <a href='https://apps.apple.com/nl/app/opdrachten/id1462947752' target='_blank'>Shortcuts app</a>",
+                "description": "Zorg ervoor dat de Shortcut app is geinstalleerd. Dit is staat vaak standaard op uw apparaat, maar als dit niet zo is; download hem via de App Store: <a href='https://apps.apple.com/nl/app/opdrachten/id1462947752' target='_blank'>Shortcuts app</a>",
                 "image": "shortcutAppLogoIos.png"
             },
             {
@@ -52,7 +52,7 @@
     "ios": { 
         "english": [
             {
-                "description": "Zorg ervoor dat de Shortcut app is geinstalleerd. Dit is staat vaak standaard op uw apparaat, maar als dit niet zo is. Download hem via de App Store:",
+                "description": "Zorg ervoor dat de Shortcut app is geinstalleerd. Dit is staat vaak standaard op uw apparaat, maar als dit niet zo is; download hem via de App Store:",
                 "link": "https://apps.apple.com/nl/app/opdrachten/id1462947752",
                 "image": "shortcutAppLogoIos.png"
             },

@@ -113,55 +113,6 @@
             opacity: 0.6;
         }
     }
-    #output {
-        padding: 0.5em;
-    }
-    .endText {
-        margin-top: 2em;
-        padding: 0.5em;
-        ol {
-            margin-top: 2.5rem;
-            gap: 1.75em;
-            display: flex;
-            flex-direction: column;
-            padding-left: 0;
-            li:nth-of-type(2n) {
-                background-color: var(--color-background-light2);
-            }
-            li:nth-of-type(2n+1) {
-                background-color: var(--color-background-light);
-            }
-            li {
-                border-radius: 10px;
-                display: grid;
-                grid-template-columns: 18rem 1fr;
-                gap: 1rem;
-                overflow: visible;
-                position: relative;
-                padding: 1rem;
-                a {
-                    width: fit-content;
-                }
-                img {
-                    order: -1;
-                    max-height: 20rem;
-                    max-width: 18rem;
-                    align-self: center;
-                    width: auto;
-                    object-fit: contain;
-                    place-self: center;
-                }
-                &::before {
-                    content: attr(data-index);
-                    text-decoration: underline;
-                    text-underline-offset: 0.2rem;
-                    position: absolute;
-                    top: -1.75rem;
-                }
-                
-            }
-        }
-    }
 }
 
 

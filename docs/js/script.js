@@ -150,6 +150,7 @@ async function getSteps(platform) {
 
         const img = document.createElement("img");   
         img.src = `images/${platform}Steps/${step.image}`;
+        if(step.logo) img.classList.add("logo");
         // TODO ALT 
         if (step.link) {
             const a = document.createElement("a");

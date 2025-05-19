@@ -3,7 +3,8 @@
         "english": [
             {
                 "description": "Zorg ervoor dat de Shortcut app is geinstalleerd. Dit is staat vaak standaard op uw apparaat, maar als dit niet zo is; download hem via de App Store: <a href='https://apps.apple.com/nl/app/opdrachten/id1462947752' target='_blank'>Shortcuts app</a>",
-                "image": "shortcutAppLogoIos.png"
+                "image": "shortcutAppLogoIos.png",
+                "logo": true
             },
             {
                 "description": "Klik op de blauwe knop 'Get shortcut'",
@@ -54,7 +55,8 @@
             {
                 "description": "Zorg ervoor dat de Shortcut app is geinstalleerd. Dit is staat vaak standaard op uw apparaat, maar als dit niet zo is; download hem via de App Store:",
                 "link": "https://apps.apple.com/nl/app/opdrachten/id1462947752",
-                "image": "shortcutAppLogoIos.png"
+                "image": "shortcutAppLogoIos.png",
+                "logo": true
             },
             {
                 "description": "Klik op de blauwe knop 'Voeg opdracht toe'.",
@@ -62,7 +64,8 @@
             },
             {
                 "description": "U heeft hem geinstalleerd!. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken acterop uw scherm', Dit kunt u doen door naar uw 'Apple Instellingen' te gaan.",
-                "image": "settingsAppLogo.png"
+                "image": "settingsAppLogo.png",
+                "logo": true
             },
             {
                  "description": "Ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > scroll helemaal naar beneden en kies de naam van snelkoppeling die u zojuist heeft geinstalleerd [Naam toevoegen].",

@@ -72,11 +72,15 @@
                 "image": "settingsFlow.png"
             },
             {
-                "description": "Als u nu drie keer tikt op de achterkant van uw telefoon, dan zal de snelkoppeling worden uitgevoerd. Dit kan een paar seconden duren.",
+                "description": "Om te kijken of het nu werkt gaan we het even testen. Als u nu drie keer tikt op de achterkant van uw telefoon, dan zal de snelkoppeling worden uitgevoerd. Dit kan een paar seconden duren.",
                 "image": "ticksBehind.png"
             },{
-                "description": "U kunt twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en heeft geen gevaar voor u privacy. Om het proces te versoepelen, klikt u twee keer op 'Always allow'.",
+                "description": "U kunt twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en heeft geen gevaar voor u privacy want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Always allow'.",
                 "image": "privacyBtns.jpg"
+            },
+            {
+                "description": "Als het goed is werkt het nu! Gefeliciteerd! Als u ooit dus hulp nodig heeft als u het niet meer weet en twijfelt, dan kunt u nu altijd hulp vragen door drie keer op de achterkant van uw telefoon te tikken. Dit kan een paar seconden duren.",
+                "image": "final.jpg"
             }
         ],
         "dutch": [

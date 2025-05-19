@@ -14,9 +14,9 @@
 }
 
 body {
-    font-family: "Nunito", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400; /* Value from 200 to 1000 */
+    font-weight: 400; /* 100 - 900 */
     font-style: normal;
     margin: 0;
 }

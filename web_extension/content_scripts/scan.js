@@ -18,12 +18,15 @@ async function injectUI() {
     coloredLine.setAttribute("id", "coloredLine");
     document.body.insertBefore(coloredLine, document.body.firstChild);
     
-    // Popup CSS
-    const css = await fetch(chrome.runtime.getURL("content_scripts/style.css")).then(r => r.text());
-    const styleEl = document.createElement("style");
-    styleEl.textContent = css;
-    document.head.appendChild(styleEl);
-    
+    // CSS
+    const cssFiles = ["style", "buttons"]
+    cssFiles.forEach( async (file) => {
+        const css = await fetch(chrome.runtime.getURL(`content_scripts/${file}.css`)).then(r => r.text());
+        const styleEl = document.createElement("style");
+        styleEl.textContent = css;
+        document.head.appendChild(styleEl);
+    })
+   
     // Open settings page
     const homeButton = wrapper.querySelector("#openHomeBtn");
     homeButton.addEventListener("click", () => {
@@ -99,6 +102,7 @@ const rules = [
         message: "Er is een fout opgetreden bij het ophalen van de gegevens."
     }
 ];
+
 function determineStatus(responseVeiligInternetten, responsePolitie) {
     const context = {
         v: responseVeiligInternetten,
@@ -275,6 +279,7 @@ async function fillExtensionFeedback(response, wrapper) {
         // Let the user go to the page even if the status is 'danger'
         const enterPageButton = document.createElement("button");
         enterPageButton.textContent = "Ga toch naar de website";
+        enterPageButton.classList.add("btn-tertiary");
         enterPageButton.addEventListener("click", () => {
             document.body.classList.remove("danger");
             document.body.classList.add("danger-side");
@@ -300,6 +305,35 @@ async function fillExtensionFeedback(response, wrapper) {
         
         explanationPoints.appendChild(list);
         explanationPoints.style.display = "block";
+    }
+    addBtnHierarchy(wrapper, status);
+}
+
+function addBtnHierarchy(wrapper, status) {
+    const infoBtn = wrapper.querySelector("#openHomeBtn");
+    const getHelp = wrapper.querySelector("#getHelp");
+    const exitPage = wrapper.querySelector("#exitPage");
+    
+    infoBtn.classList.remove("btn-secondary", "hidden");
+    getHelp.classList.remove("btn-secondary", "hidden");
+    exitPage.classList.remove("btn-secondary", "hidden");
+
+    switch (status) {
+        case "success": 
+            // infoBtn is primary
+            getHelp.classList.add("btn-secondary");
+            exitPage.classList.add("hidden");
+            break;
+        case "warning":
+            infoBtn.classList.add("btn-secondary");
+            // getHelp is primary
+            exitPage.classList.add("btn-secondary");
+            break;
+        case "danger":  
+            infoBtn.classList.add("btn-secondary");
+            getHelp.classList.add("btn-secondary");
+            // exitPage is primary
+            break;
     }
 }
 

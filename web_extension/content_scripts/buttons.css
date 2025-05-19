@@ -1,0 +1,105 @@
+#webAlertDiv {
+    button {
+        all: unset;
+    }
+
+    > div {
+        .responseDiv {
+            div {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 3rem;
+                button {
+                    width: fit-content;
+                    padding: 0.5rem;
+                    background-color: black;
+                    border-radius: 10px;
+                    color: white;
+                    transition: all 0.2s;
+                    &:hover {
+                        background-color: var(--color-status-btn-hvr);
+                        cursor: pointer;
+                    }
+                    &.btn-secondary {
+                        order: 1;
+                        background: none;
+                        border: solid 1px var(--color-text);
+                        color: var(--color-text);
+                        transition: 200ms;
+                        &:hover {
+                            border: solid 1px  var(--color-status-btn-hvr);
+                            background-color: none;
+                        }
+                    }
+                    &.btn-tertiary {
+                        order: 4;
+                        background: none;
+                        color: var(--color-text);
+                        text-decoration: underline;
+                        text-underline-offset: 0.1rem;
+                        margin: 0;
+                        margin-top: 2rem;
+                        padding: 0;
+                        align-self: end;
+                    }
+                    &.hidden {
+                        display: none;
+                    }
+                }
+                #moveWebExtensionButton {
+                    position: absolute;
+                    bottom: 0.3em;
+                }
+                
+                /* Let the important button bounce */
+                .bounce {
+                    animation: bounceb 1s ease-in-out infinite;
+                }
+            }
+        }
+        /* Open and close button */
+        > div:nth-of-type(2) {
+            button {
+                color: white !important;
+                padding: 0.5rem !important;
+                border-bottom: solid black 1px; 
+                width: 1rem;
+                height: 1em;
+                aspect-ratio: 1 !important;
+                transform: rotate(-90deg) translateY(-50%);
+        
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center !important;
+                border-radius: 50% !important;
+                transition: all 0.2s ease-in-out !important;
+                &:hover {
+                    scale: 1.1;
+                    cursor: pointer !important;
+                }
+            }
+        }
+    }
+}
+
+@keyframes bounceb {
+    0%, 100% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.07;
+    }
+}
+
+body {
+    /* Whole screen becomes red */
+    &.danger #webAlertDiv {
+        #closeBtn {
+            display: none;
+        }
+        #moveWebExtensionButton {
+            display: none;
+        }
+    }
+}

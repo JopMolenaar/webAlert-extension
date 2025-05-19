@@ -29,7 +29,7 @@ body {
 
     --color-danger-fullscreen: #db0400ee;
 
-    --color-success: #0FA52C;
+    --color-success: #11BB33;
     --color-success-btn: rgb(39, 141, 51);
     --color-success-btn-hvr: #1a792d;
 
@@ -51,13 +51,19 @@ body {
     &.danger, &.danger-side {
         --color-status: var(--color-danger);
         --color-status-btn: var(--color-danger-btn);
-        --color-status-btn-hvr: var(--color-danger-btn-hvr);
+        --color-status-btn-hvr: var(--color-danger-btn-hvr); 
+        --color-text: white;
     }
 
     &.success {
         --color-status: var(--color-success);
         --color-status-btn: var(--color-success-btn);
         --color-status-btn-hvr: var(--color-success-btn-hvr);
+        
+        #statusText {
+            color: black !important;
+        }
+        --color-text: black;
     }
 
     &.warning {
@@ -68,6 +74,7 @@ body {
         #statusText {
             color: black !important;
         }
+        --color-text: black;
     }
 
     &.warning, &.default, &.success, &.danger-side {
@@ -111,13 +118,7 @@ body {
                             white-space: pre-wrap;
                         }
                     }
-                }    
-                #closeBtn {
-                    display: none;
-                }
-                #moveWebExtensionButton {
-                    display: none;
-                }
+                }   
             }
         }
     }
@@ -142,9 +143,7 @@ body {
     padding: 1rem 0.5rem 1rem 1rem;
     transform: translateX(87%);
     transition: 0.3s ease-out;
-    button {
-        all: unset;
-    }
+
     &.open {
         padding-block: 0.75rem;
         transform: translateX(0%);
@@ -168,11 +167,10 @@ body {
                 gap: 0.2rem;
                 display: flex;
                 flex-direction: column;
-                button {
+                /* button {
                     width: fit-content;
                     padding: 0.5rem;
                     background-color: black;
-                    /* align-self: start; */
                     border-radius: 10px;
                     color: white;
                     transition: all 0.2s;
@@ -180,27 +178,29 @@ body {
                         background-color: var(--color-status-btn-hvr) !important;
                         cursor: pointer !important;
                     }
-                }
+                } */
                 
-                .bounce {
+                /* Let the important button bounce */
+                /* .bounce {
                     animation: bounceb 1s ease-in-out infinite;
-                }
+                } */
             }
         }
+
+        /* Div with the open and close button */
         > div:nth-of-type(2) {
             display: flex;
             justify-content: center;
             flex-direction: column;
             width: 1rem;
             order: -1;
-            button {
+            /* button {
                 color: white !important;
                 padding: 0.5rem !important;
                 border-bottom: solid black 1px; 
                 width: 1rem;
                 height: 1em;
                 aspect-ratio: 1 !important;
-                /* font-size: 1rem !important; */
                 transform: rotate(-90deg) translateY(-50%);
 
                 display: flex;
@@ -213,8 +213,10 @@ body {
                     scale: 1.1;
                     cursor: pointer !important;
                 }
-            }
+            } */
         }
+
+        /* argument list (only visible on donger state and in history list) */
         #arguments {
             display: none;
             li {
@@ -227,7 +229,7 @@ body {
         }
     }
 
-    /* When the extension is on the right side of the screen */
+    /* When the extension is on the left side of the screen */
     &.left {
         left: 0.125rem;
         right: auto;
@@ -270,11 +272,11 @@ body {
 }
 
 
-@keyframes bounceb {
+/* @keyframes bounceb {
     0%, 100% {
         scale: 1;
     }
     50% {
         scale: 1.1;
     }
-}
+} */

@@ -60,9 +60,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return true;
     }
 
+    // ref=r198_r1_r1_r1 op 20-05-2025 veranderd naar r196_r1_r1_r1
+    // TODO: Kijken of dit vaker moet veranderen
     if (message.type === "politieControleerHandelspartij") {
         const url = "https://www.politie.nl/aangifte-of-melding-doen/controleer-handelspartij.html";
-        fetch(`${url}?_hn:type=action&_hn:ref=r198_r1_r1_r1&query=${message.url}`, {
+        fetch(`${url}?_hn:type=action&_hn:ref=r196_r1_r1_r1&query=${message.url}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" }
         })
@@ -255,7 +257,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     //     return true;
     // }
 
-
+// TODO maak dit korter
         if (message.type === "updateInputEnabled") {
             chrome.storage.local.set({ inputEnabled: message.value }, () => {
                 sendResponse({ success: true });

@@ -59,22 +59,22 @@ body {
         --color-status: var(--color-success);
         --color-status-btn: var(--color-success-btn);
         --color-status-btn-hvr: var(--color-success-btn-hvr);
+        --color-text: black;
         
         #statusText {
             color: black !important;
         }
-        --color-text: black;
     }
 
     &.warning {
         --color-status: var(--color-warning);
         --color-status-btn: var(--color-warning-btn);
         --color-status-btn-hvr: var(--color-warning-btn-hvr);
+        --color-text: black;
 
         #statusText {
             color: black !important;
         }
-        --color-text: black;
     }
 
     &.warning, &.default, &.success, &.danger-side {
@@ -155,11 +155,10 @@ body {
     color: white;
     border-radius: 5px 0px 0px 5px;
     padding: 1rem 0.5rem 1rem 1rem;
-    transform: translateX(87%);
+    transform: translateX(90%);
     transition: 0.3s ease-out;
 
     &.open {
-        /* padding-block: 0.75rem; */
         transform: translateX(0%);
         #closeBtn {
             transform: rotate(90deg) translateY(40%);
@@ -169,7 +168,7 @@ body {
     }
 
     > div {
-        max-width: 15.6rem;
+        max-width: 20rem;
         display: flex;
         gap: 0.5rem;
         .responseDiv {
@@ -181,23 +180,6 @@ body {
                 gap: 0.2rem;
                 display: flex;
                 flex-direction: column;
-                /* button {
-                    width: fit-content;
-                    padding: 0.5rem;
-                    background-color: black;
-                    border-radius: 10px;
-                    color: white;
-                    transition: all 0.2s;
-                    &:hover {
-                        background-color: var(--color-status-btn-hvr) !important;
-                        cursor: pointer !important;
-                    }
-                } */
-                
-                /* Let the important button bounce */
-                /* .bounce {
-                    animation: bounceb 1s ease-in-out infinite;
-                } */
             }
         }
 
@@ -208,26 +190,6 @@ body {
             flex-direction: column;
             width: 1rem;
             order: -1;
-            /* button {
-                color: white !important;
-                padding: 0.5rem !important;
-                border-bottom: solid black 1px; 
-                width: 1rem;
-                height: 1em;
-                aspect-ratio: 1 !important;
-                transform: rotate(-90deg) translateY(-50%);
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center !important;
-                border-radius: 50% !important;
-                transition: all 0.2s ease-in-out !important;
-                &:hover {
-                    scale: 1.1;
-                    cursor: pointer !important;
-                }
-            } */
         }
 
         /* argument list (only visible on donger state and in history list) */
@@ -247,7 +209,7 @@ body {
     &.left {
         left: 0.125rem;
         right: auto;
-        transform: translateX(-86%);
+        transform: translateX(-88%);
         border-radius: 0px 5px 5px 0px;
         padding: 1rem 1rem 1rem 0.5rem;
         > div > div:nth-of-type(2) {
@@ -260,7 +222,7 @@ body {
         &.open {
             transform: translateX(0%);
             #closeBtn {
-                transform: rotate(-90deg) translateY(-20%);
+                transform: rotate(-90deg) translateY(-10%);
                 border-bottom: none;
                 border-top: solid black 1px;
             }
@@ -287,13 +249,3 @@ body {
         right: auto;
     }
 }
-
-
-/* @keyframes bounceb {
-    0%, 100% {
-        scale: 1;
-    }
-    50% {
-        scale: 1.1;
-    }
-} */

@@ -3,6 +3,7 @@ const backBtn = document.querySelector("header nav button")
 const history = document.querySelector(".history")
 const settings = document.querySelector(".settings")
 
+// Get the history and place it on the page
 function injectUI() {
     const params = new URLSearchParams(window.location.search);
     let domainParam = params.get("domain");
@@ -48,15 +49,7 @@ function injectUI() {
     history.classList.add("v-h");
 }
 
-backBtn.addEventListener("click", (e) => {
-    window.close();
-})
-showHistory.addEventListener("click", (e) => {
-    history.classList.toggle("v-h");
-    showHistory.textContent = history.classList.contains("v-h") ? "Bekijk uw eerder bezochte websites" : "Bekijk uw instellingen";
-    settings.classList.toggle("v-h");
-});
-
+// Function to add extra information about the current website
 function addExtraInfo(data) {
     const expResultContainer = document.querySelector("#expResult");
     const extraInfoDiv = document.createElement("div");
@@ -72,6 +65,16 @@ function addExtraInfo(data) {
     expResultContainer.appendChild(extraInfoDiv);
 }
 
+// Close the page and go back to the previous page
+backBtn.addEventListener("click", (e) => {
+    window.close();
+})
 
+// Show the history and hide the settings or the other way around
+showHistory.addEventListener("click", (e) => {
+    history.classList.toggle("v-h");
+    showHistory.textContent = history.classList.contains("v-h") ? "Bekijk uw eerder bezochte websites" : "Bekijk uw instellingen";
+    settings.classList.toggle("v-h");
+});
 
 window.onload = injectUI;

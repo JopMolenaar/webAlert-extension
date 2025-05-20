@@ -140,6 +140,8 @@ async function getAndStoreSafetyDomain(wrapper) {
                 responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens.";
             }
             status = "unknown";
+        } else if (responsePolitie.result === "❓ Onbekend") {
+            console.debug("POLICE RESPONSE UNKNOWN --> check fetch url -> backgroundscript");
         } else {
             let { status1, message1 } = determineStatus(responseVeiligInternetten, responsePolitie);
             status = status1;

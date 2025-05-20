@@ -3,10 +3,11 @@ const backBtn = document.querySelector("header nav button")
 const history = document.querySelector(".history")
 const settings = document.querySelector(".settings")
 
+const params = new URLSearchParams(window.location.search);
+let domainParam = params.get("domain");
+
 // Get the history and place it on the page
 function injectUI() {
-    const params = new URLSearchParams(window.location.search);
-    let domainParam = params.get("domain");
     const domainInput = document.querySelector("#domain");
     domainParam ? domainInput.style.display = "block" : domainInput.style.display = "none";
     domainParam ? domainInput.querySelector("strong").textContent = domainParam : "Geen domein gevonden";
@@ -75,6 +76,23 @@ function addExtraInfo(data) {
 backBtn.addEventListener("click", (e) => {
     window.close();
 })
+
+const adviceBtn = document.querySelector("#changeAdviceBtn")
+adviceBtn.addEventListener("click", () => {
+    adviceBtn.querySelector("span").classList.toggle("warning");
+    adviceBtn.querySelector("span").classList.toggle("success");
+    adviceBtn.querySelector("span").textContent = adviceBtn.querySelector("span").classList.contains("warning") ? "Waarschuwing" : "Succes";
+    const status = adviceBtn.querySelector("span").classList.contains("warning") ? "success" : "warning";
+
+    chrome.runtime.sendMessage({ type: "changeStatus", status: status, domain: domainParam}, (response) => {
+        if (response && response.success) {
+            console.log("status changed");
+            // TODO add line that status is changed
+        } else {
+            console.error("❌ Failed to change status.");
+        }
+    });
+});
 
 // Show the history and hide the settings or the other way around
 showHistory.addEventListener("click", (e) => {

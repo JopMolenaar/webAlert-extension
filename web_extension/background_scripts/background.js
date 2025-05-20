@@ -216,6 +216,40 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return true;
     }
 
+
+    if (message.type === "changeStatus") {        
+        const { status, domain } = message;
+
+        if (!status || !domain) {
+            console.error("❌ Missing or invalid status or domain");
+            sendResponse({ success: false, error: "Missing or invalid status or domain" });
+            return;
+        }
+
+        chrome.storage.local.get(null, (items) => {
+            console.log(items);
+            
+            if (items) {
+                const result = items[domain];
+
+                result.status = status;
+                const currentDate = new Date();
+                result.logDate = new Date(currentDate.getTime() + 2 * 60 * 60 * 1000).toISOString().slice(0, 19);
+
+                 // Re-save the data with the updated logDate
+                chrome.storage.local.set({
+                    [domain]: result
+                }, () => {
+                    console.log(`Re-saved ${domain} result to storage with updated logDate.`);
+                    sendResponse({ success: true });
+
+                });
+            }
+        });
+
+        return true;
+    }
+    
     // if (message.type === "sendScreenshotToMail") {
     //     chrome.tabs.captureVisibleTab(null, { format: "png" }, (dataUrl) => {
     //         if (chrome.runtime.lastError || !dataUrl) {

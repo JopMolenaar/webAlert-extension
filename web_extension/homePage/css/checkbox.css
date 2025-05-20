@@ -248,6 +248,7 @@
         }
     }
     & input[type="text"], input[type="email"], input[type="tel"] {
+        width: 100%;
         font-size: 1em;
         color: var(--color-blue);
         &.blue-border {

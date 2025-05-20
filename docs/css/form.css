@@ -89,6 +89,7 @@
         }
         & span.active {
             background-color: var(--color-blue);
+            color: white;
         }
         & span.middle-line, span.middle-line span {
             position: absolute;

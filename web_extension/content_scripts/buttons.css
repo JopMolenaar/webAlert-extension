@@ -1,6 +1,9 @@
 #webAlertDiv {
     button {
         all: unset;
+        &:active {
+            scale: 0.97
+        }
     }
 
     > div {
@@ -52,7 +55,7 @@
             #moveWebExtensionButton {
                 position: absolute;
                 bottom: 1rem;
-                left: 2.5rem;
+                left: 2.8rem;
             }
             
             /* Let the important button bounce */

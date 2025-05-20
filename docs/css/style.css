@@ -52,6 +52,9 @@ button, a.btn-primary {
     &:disabled {
         opacity: 0.5;
     }
+    &:active {
+        scale: 0.97
+    }
 }
 .btn-primary {
     background-color: var(--color-blue);

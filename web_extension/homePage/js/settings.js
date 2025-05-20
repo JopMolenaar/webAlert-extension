@@ -37,3 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+const adviceBtn = document.querySelector("#changeAdviceBtn")
+adviceBtn.addEventListener("click", () => {
+    adviceBtn.querySelector("span").classList.toggle("warning");
+    adviceBtn.querySelector("span").classList.toggle("success");
+    adviceBtn.querySelector("span").textContent = adviceBtn.querySelector("span").classList.contains("warning") ? "Waarschuwing" : "Succes";
+});

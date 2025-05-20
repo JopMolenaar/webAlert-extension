@@ -60,6 +60,12 @@ function addExtraInfo(data) {
             return;
         }
         extraInfoDiv.innerHTML = response.html
+        
+        // change the text of the button
+        const changeAdviceBtn = document.querySelector("#changeAdviceBtn span");
+        data.status === "success" ? changeAdviceBtn.classList.remove("success") : changeAdviceBtn.classList.add("success");
+        data.status === "warning" ? changeAdviceBtn.classList.remove("warning") : changeAdviceBtn.classList.add("warning");
+        changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Succes";
     });
 
     expResultContainer.appendChild(extraInfoDiv);

@@ -10,14 +10,14 @@
 }
 
 :root {
-    --color-danger: #ffd9d8;
-    --color-danger-text: rgb(113, 13, 13);
+    --color-danger: #DB0200;
+    /* --color-danger-text: rgb(113, 13, 13); */
 
-    --color-success: #e7ffec;
-    --color-success-text: rgb(3, 99, 14);
+    --color-success: #20C541;
+    /* --color-success-text: rgb(3, 99, 14); */
 
-    --color-warning: #fff2d5;
-    --color-warning-text: rgb(189, 117, 0);
+    --color-warning: #FFC033;
+    /* --color-warning-text: rgb(189, 117, 0); */
 
     --color-black: black;
     --color-grey: grey;
@@ -46,6 +46,9 @@ button, a.btn-primary {
     }
     &:disabled {
         opacity: 0.5;
+    }
+    &:active {
+        scale: 0.97
     }
 }
 .btn-primary {

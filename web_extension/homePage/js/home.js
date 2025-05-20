@@ -69,6 +69,13 @@ function addExtraInfo(data) {
         changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Succes";
     });
 
+    // Add line if advice is changed
+    if(data.changedStatus && data.originalStatus !== data.status) {
+        const p = document.createElement("p")
+        p.textContent = `U heeft het advies veranderd`
+        document.querySelector(".explDomain div:nth-of-type(2)").appendChild(p)
+    }
+
     expResultContainer.appendChild(extraInfoDiv);
 }
 
@@ -86,8 +93,15 @@ adviceBtn.addEventListener("click", () => {
 
     chrome.runtime.sendMessage({ type: "changeStatus", status: status, domain: domainParam}, (response) => {
         if (response && response.success) {
-            console.log("status changed");
-            // TODO add line that status is changed
+            if(response.result.originalStatus !== response.result.status ){
+                const p = document.createElement("p")
+                p.textContent = `U heeft het advies veranderd`
+                document.querySelector(".explDomain div:nth-of-type(2)").appendChild(p)
+            } else {
+                document.querySelector(".explDomain div:nth-of-type(2) p:nth-of-type(2)").remove()
+            }
+
+            // TODO CHANGE STATUS IN LOGBOEK
         } else {
             console.error("❌ Failed to change status.");
         }

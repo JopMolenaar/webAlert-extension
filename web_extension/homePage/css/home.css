@@ -66,24 +66,28 @@ body {
             .highlight {
                 font-weight: 600;
             }
-            #changeAdviceBtn {
-                margin-top: 1.5rem;
-                border: solid black 1px;
-                padding: 0;
-                padding-left: 1rem;
-                height: 3rem;
-                span {
-                    &.warning {
-                        background-color: var(--color-warning);
+            > div {
+                #changeAdviceBtn {
+                    border: solid black 1px;
+                    padding: 0;
+                    padding-left: 1rem;
+                    height: 3rem;
+                    span {
+                        &.warning {
+                            background-color: var(--color-warning);
+                        }
+                        &.success {
+                            background-color: var(--color-success);
+                        }
+                        height: 100%;
+                        padding: 0.8rem;
+                        padding-left: 0.4rem;
+                        border-radius: 0px 0.5rem 0.5rem 0px;
                     }
-                    &.success {
-                        background-color: var(--color-success);
-                    }
-                    height: 100%;
-                    padding: 0.8rem;
-                    padding-left: 0.4rem;
-                    border-radius: 0px 0.5rem 0.5rem 0px;
                 }
+            }
+            > div:nth-of-type(2) {
+                margin-top: 2.5rem;
             }
         }
 

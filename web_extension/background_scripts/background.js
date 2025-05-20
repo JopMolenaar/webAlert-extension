@@ -227,29 +227,28 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }
 
         chrome.storage.local.get(null, (items) => {
-            console.log(items);
-            
             if (items) {
                 const result = items[domain];
 
+                if(!result.changedStatus) {
+                    result.originalStatus = result.status;    
+                }
                 result.status = status;
-                const currentDate = new Date();
-                result.logDate = new Date(currentDate.getTime() + 2 * 60 * 60 * 1000).toISOString().slice(0, 19);
+                result.changedStatus = true;
 
-                 // Re-save the data with the updated logDate
+                // Re-save the data with the updated logDate
                 chrome.storage.local.set({
                     [domain]: result
                 }, () => {
                     console.log(`Re-saved ${domain} result to storage with updated logDate.`);
-                    sendResponse({ success: true });
-
+                    sendResponse({ success: true, result: result });
                 });
             }
         });
 
         return true;
     }
-    
+
     // if (message.type === "sendScreenshotToMail") {
     //     chrome.tabs.captureVisibleTab(null, { format: "png" }, (dataUrl) => {
     //         if (chrome.runtime.lastError || !dataUrl) {

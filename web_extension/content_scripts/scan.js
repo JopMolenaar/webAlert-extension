@@ -287,7 +287,7 @@ async function fillExtensionFeedback(response, wrapper) {
             wrapper.querySelector("#arguments").style.display = "none";
             wrapper.querySelector("#exitPage").classList.remove("bounce");
         });
-        wrapper.querySelector(".responseDiv div").appendChild(enterPageButton);
+        wrapper.querySelector(".responseDiv").appendChild(enterPageButton);
 
         // Explanation points
         const explanationPoints = wrapper.querySelector("#arguments");

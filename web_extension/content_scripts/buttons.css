@@ -9,52 +9,55 @@
                 display: flex;
                 flex-direction: column;
                 margin-bottom: 3rem;
-                button {
-                    width: fit-content;
-                    padding: 0.5rem;
-                    background-color: black;
-                    border-radius: 10px;
-                    color: white;
-                    transition: all 0.2s;
+            }
+            button {
+                width: fit-content;
+                padding: 0.5rem;
+                background-color: black;
+                border-radius: 10px;
+                color: white;
+                transition: 200ms;
+                &:hover {
+                    background-color: var(--color-status-btn-hvr);
+                    cursor: pointer;
+                }
+                &.btn-secondary {
+                    order: 1;
+                    background: none;
+                    border: solid 1px var(--color-text);
+                    color: var(--color-text);
                     &:hover {
-                        background-color: var(--color-status-btn-hvr);
+                        border: solid 1px  var(--color-status-btn-hvr);
+                        background-color: none;
+                    }
+                }
+                &.btn-tertiary {
+                    order: 4;
+                    background: none;
+                    color: var(--color-text);
+                    text-decoration: underline;
+                    text-underline-offset: 0.1rem;
+                    margin: 0;
+                    margin-top: 2rem;
+                    padding: 0;
+                    &:hover {
+                        text-decoration: none;
                         cursor: pointer;
                     }
-                    &.btn-secondary {
-                        order: 1;
-                        background: none;
-                        border: solid 1px var(--color-text);
-                        color: var(--color-text);
-                        transition: 200ms;
-                        &:hover {
-                            border: solid 1px  var(--color-status-btn-hvr);
-                            background-color: none;
-                        }
-                    }
-                    &.btn-tertiary {
-                        order: 4;
-                        background: none;
-                        color: var(--color-text);
-                        text-decoration: underline;
-                        text-underline-offset: 0.1rem;
-                        margin: 0;
-                        margin-top: 2rem;
-                        padding: 0;
-                        align-self: end;
-                    }
-                    &.hidden {
-                        display: none;
-                    }
                 }
-                #moveWebExtensionButton {
-                    position: absolute;
-                    bottom: 0.3em;
+                &.hidden {
+                    display: none;
                 }
-                
-                /* Let the important button bounce */
-                .bounce {
-                    animation: bounceb 1s ease-in-out infinite;
-                }
+            }
+            #moveWebExtensionButton {
+                position: absolute;
+                bottom: 1rem;
+                left: 2.5rem;
+            }
+            
+            /* Let the important button bounce */
+            .bounce {
+                animation: bounceb 1s ease-in-out infinite;
             }
         }
         /* Open and close button */

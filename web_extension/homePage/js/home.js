@@ -69,11 +69,13 @@ function addExtraInfo(data) {
         changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Succes";
     });
 
+    if(data.status === "danger"){
+        document.querySelector(".explDomain div:nth-of-type(2)").remove()
+    }
+
     // Add line if advice is changed
     if(data.changedStatus && data.originalStatus !== data.status) {
-        const p = document.createElement("p")
-        p.textContent = `U heeft het advies veranderd`
-        document.querySelector(".explDomain div:nth-of-type(2)").appendChild(p)
+        changeTextChangeStatus(data.status)
     }
 
     expResultContainer.appendChild(extraInfoDiv);
@@ -94,9 +96,7 @@ adviceBtn.addEventListener("click", () => {
     chrome.runtime.sendMessage({ type: "changeStatus", status: status, domain: domainParam}, (response) => {
         if (response && response.success) {
             if(response.result.originalStatus !== response.result.status ){
-                const p = document.createElement("p")
-                p.textContent = `U heeft het advies veranderd`
-                document.querySelector(".explDomain div:nth-of-type(2)").appendChild(p)
+                changeTextChangeStatus(response.result.status)
             } else {
                 document.querySelector(".explDomain div:nth-of-type(2) p:nth-of-type(2)").remove()
             }
@@ -107,6 +107,15 @@ adviceBtn.addEventListener("click", () => {
         }
     });
 });
+
+function changeTextChangeStatus(status) {
+    const p = document.createElement("p")
+    const prev = status === "success" ? "Waarschuwing" : "Veilig"
+    const now = status === "success" ? "Veilig" : "Waarschuwing"
+
+    p.textContent = `U heeft het advies veranderd van "${prev}" naar "${now}"`
+    document.querySelector(".explDomain div:nth-of-type(2)").appendChild(p)
+}
 
 // Show the history and hide the settings or the other way around
 showHistory.addEventListener("click", (e) => {

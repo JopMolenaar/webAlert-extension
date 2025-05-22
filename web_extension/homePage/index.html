@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/checkbox.css">
-    <title>Home page</title>
+    <title>Informatiepagina - WebAlert</title>
 </head>
 <body>
 <h1 class="v-h">WebAlert informatie en instellingen pagina</h1>
@@ -19,8 +19,10 @@
     <main>
         <div>
             <section class="explDomain">
-                <h2 id="domain">Meer uitleg over <strong></strong>:</h2>
-                <div id="expResult"></div>
+                <div>
+                    <h2 id="domain">Meer uitleg over <strong></strong>:</h2>
+                    <div id="expResult"></div>
+                </div>
                 <div>
                     <p>Als u wilt kunt u ook het gegeven advies handmatig aanpassen. 
                         U kunt hem bijvoorbeeld naar "Veilig" veranderen wanneer de extensie het niet weet, en u de website wel kent en hem vaak gebruikt.</p>
@@ -30,29 +32,76 @@
 
             <section class="explExtension">
                 <h2>Uitleg over dit automatische hulpmiddel:</h2>
-
-                <p>Dit product controleerd terwijl u gebruik maakt van de zoekmachine de websites die u bezoekt op de veiligheid. 
-                Dit doet hij door de url (zonder gevoelige informatie) te verifieren bij bestaande producten waar u handmatig en gratis de linkjes kan checken. 
-                Dit zijn bronnen zoals de politie en veiligInternetten.nl</p>
-
-                <p>Veiliginternetten.nl is een gezamenlijk initiatief van het ministerie van Economische Zaken en Klimaat, het ministerie van Justitie en Veiligheid / Nationaal Cyber Security Centrum, ECP | Platform voor de InformatieSamenleving en het bedrijfsleven.
-                <a href="https://check.veiliginternetten.nl/over-deze-check" target="_blank">check.veiliginternetten.nl/over-deze-check</a></p>
-
-                <p>Daarnaast kan dit product zelf ook nog bepaalde oplichtings technieken achterhalen en hier een advies over geven. 
-                <strong>Net zoals de bronnen die dit product gebruikt, is dit product niet aansprakelijk voor een verkeerd advies. U dient zelf nog steeds voorzichtig te zijn en niet blind op dit product te vertrouwen.</strong> 
-                Als u nog steeds twijfelt over het advies dat wordt gegeven kunt u altijd nog uw eigen conclusie trekken of gebruik maken van de functie om hulp te vragen aan iemand uit uw kring naar keuze.</p>
-                <p>De functie om hulp te vragen in dit product stelt u alleen in staat om dat te kunnen gebruiken tijdens het browsen, maar we hebben ook een andere tool waar u het mogelijk kan maken om het altijd te vragen op een andere online manier</p>
-                <p>Voor meer informatie: <a href="https://jopmolenaar.github.io/webAlert-extension/" target="_blank">Maak het makkelijker om online hulp te vragen</a>.</p>
-
-                <p>Daarnaast slaan wij instellingen en uw browse geschiedenis op in dit product. Dit wordt echter alleen lokaal opgeslagen (dus in uw eigen browser en niet in lek-gevoelige databases) en wordt dit allemaal niet met uw persoonlijke informatie gelinkt.</p>
-            </section>
+              
+                <details>
+                  <summary>Wat dit product doet en hoe het werkt</summary>
+                  <p>Dit product controleert websites automatisch op hun veiligheid.</p>
+                  <p>Het controleert onder andere:</p>
+                  <ul>
+                    <li>Hoelang de website al bestaat. Oplichtingswebsites bestaan vaak niet lang; na voldoende klachten en aangiftes wordt geprobeerd deze offline te halen.</li>
+                    <li>Of de website geregistreerd is bij de Kamer van Koophandel. Als u iets koopt op een Nederlandse website zonder KvK-nummer, kan het lastiger zijn om uw geld terug te krijgen.</li>
+                    <li>De vertrouwensscore van de website. Als veel mensen aangeven dat een website oplichting is, daalt de vertrouwensscore. Een lage score is vaak een slecht teken.</li>
+                    <li>Of mensen hebben aangegeven dat de website malware bevat of probeert gegevens te stelen.</li>
+                  </ul>
+              
+                  <p>
+                    Het voordeel van deze automatische controle is dat u dit niet handmatig hoeft te doen. De domeinnaam van een website (die u ziet in de adresbalk) kan soms veranderen zonder dat u het merkt. Als u altijd handmatig controleert, kunt u daardoor op een verkeerd advies vertrouwen.
+                  </p>
+                  <p>
+                    Websites bezoeken is vaak veilig, maar acties uitvoeren op deze websites is dat niet altijd. Doordat de statusbalk – rood, oranje of groen – altijd in beeld is, wordt u gewaarschuwd, aangemoedigd om de pagina te verlaten of juist gerustgesteld dat u de website veilig kunt gebruiken zoals bedoeld.
+                  </p>
+                </details>
+              
+                <details>
+                  <summary>Waar het product zijn informatie vandaan haalt</summary>
+                  <p>
+                    Dit product haalt zijn informatie uit twee bronnen: politie.nl en check.veiliginternetten.nl. Deze bevatten veel informatie over verdachte websites waarmee een betrouwbaar advies kan worden samengesteld.
+                  </p>
+                  <p>
+                    Veiliginternetten is een gezamenlijk initiatief van het ministerie van Economische Zaken en Klimaat, het ministerie van Justitie en Veiligheid / Nationaal Cyber Security Centrum, ECP | Platform voor de InformatieSamenleving en het bedrijfsleven.
+                    Meer informatie over deze bron: 
+                    <a href="https://check.veiliginternetten.nl/over-deze-check" target="_blank">check.veiliginternetten.nl/over-deze-check</a>.
+                  </p>
+                </details>
+              
+                <p>
+                  <strong>Disclaimer:</strong> Net als de bronnen die dit product gebruikt, is ook dit product <strong>niet aansprakelijk</strong> voor een verkeerd advies. U dient nog steeds voorzichtig te zijn en niet blind op dit product te vertrouwen.
+                </p>
+              
+                <p>Als u twijfelt over het gegeven advies, kunt u altijd:</p>
+                <ul>
+                  <li>De veilige optie kiezen. Dit betekent dat u niets invult, niets koopt en geen bestanden downloadt.</li>
+                  <li>Hulp vragen via de knop [vraag hulp aan ...]</li>
+                  <li>Hulp vragen via het hulpmiddel op uw telefoon dat u heeft ingesteld op <a href="https://jopmolenaar.github.io/webAlert-extension/" target="_blank">WebAlert – Installeer uw ideale hulpmiddel</a></li>
+                  <li>Fysiek hulp vragen aan iemand in uw omgeving.</li>
+                  <li>Uw eigen conclusie trekken.</li>
+                </ul>
+              
+                <p>
+                  De functie om hulp te vragen binnen dit product is alleen beschikbaar tijdens het browsen. We bieden daarnaast ook een andere tool waarmee u altijd online hulp kunt vragen.
+                </p>
+                <p>
+                  Voor meer informatie: <a href="https://jopmolenaar.github.io/webAlert-extension/" target="_blank">Maak het makkelijker om online hulp te vragen</a>.
+                </p>
+              
+                <details>
+                  <summary>Hoe wij uw privacy respecteren</summary>
+                  <p>
+                    Wij slaan uw browsegeschiedenis met bijbehorende adviezen lokaal op in uw browser, net zoals uw normale browsegeschiedenis. Deze informatie wordt niet verzonden naar andere websites voor langdurige opslag. Dat is niet nodig en brengt alleen maar extra risico’s met zich mee.
+                  </p>
+                  <p>
+                    Uw ingestelde contactpersoon slaan wij wél op voor een langere tijd, zodat u deze niet steeds opnieuw hoeft in te stellen. Dit is echter niet gekoppeld aan uw persoonlijke gegevens. We doen dit door een unieke code te genereren die gekoppeld is aan uw zoekmachine.
+                  </p>
+                </details>
+              </section>              
         </div>
 
         <div>
             <button id="watchHistory" class="btn-secondary">Bekijk uw eerder bezochte websites</button>
 
             <section class="settings">
-                <h2>Instellingen</h2>
+                <h2>Vertrouwens-contact</h2>
+                <p>Stel uw vertrouwens contact in die u snel hulp kunt vragen </p>
                 <div class="checkbox-wrapper-16">
                     <h3>Vraag hulp via aan:</h3>
                     <label>

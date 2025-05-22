@@ -66,7 +66,7 @@ function addExtraInfo(data) {
         const changeAdviceBtn = document.querySelector("#changeAdviceBtn span");
         data.status === "success" ? changeAdviceBtn.classList.remove("success") : changeAdviceBtn.classList.add("success");
         data.status === "warning" ? changeAdviceBtn.classList.remove("warning") : changeAdviceBtn.classList.add("warning");
-        changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Succes";
+        changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Veilig";
     });
 
     if(data.status === "danger"){
@@ -90,7 +90,7 @@ const adviceBtn = document.querySelector("#changeAdviceBtn")
 adviceBtn.addEventListener("click", () => {
     adviceBtn.querySelector("span").classList.toggle("warning");
     adviceBtn.querySelector("span").classList.toggle("success");
-    adviceBtn.querySelector("span").textContent = adviceBtn.querySelector("span").classList.contains("warning") ? "Waarschuwing" : "Succes";
+    adviceBtn.querySelector("span").textContent = adviceBtn.querySelector("span").classList.contains("warning") ? "Waarschuwing" : "Veilig";
     const status = adviceBtn.querySelector("span").classList.contains("warning") ? "success" : "warning";
 
     chrome.runtime.sendMessage({ type: "changeStatus", status: status, domain: domainParam}, (response) => {

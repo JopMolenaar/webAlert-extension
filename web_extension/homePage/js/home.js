@@ -67,6 +67,14 @@ function addExtraInfo(data) {
         data.status === "success" ? changeAdviceBtn.classList.remove("success") : changeAdviceBtn.classList.add("success");
         data.status === "warning" ? changeAdviceBtn.classList.remove("warning") : changeAdviceBtn.classList.add("warning");
         changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Veilig";
+
+
+        const colorStatus = data.status === "success" 
+            ? "var(--color-success)" 
+            : data.status === "warning" 
+            ? "var(--color-warning)" 
+            : "var(--color-danger)";
+        document.documentElement.style.setProperty('--color-status', colorStatus);
     });
 
     if(data.status === "danger"){
@@ -95,11 +103,12 @@ adviceBtn.addEventListener("click", () => {
 
     chrome.runtime.sendMessage({ type: "changeStatus", status: status, domain: domainParam}, (response) => {
         if (response && response.success) {
-            if(response.result.originalStatus !== response.result.status ){
-                changeTextChangeStatus(response.result.status)
+            if (response.result.originalStatus !== response.result.status) {
+                changeTextChangeStatus(response.result.status);
             } else {
-                document.querySelector(".explDomain div:nth-of-type(2) p:nth-of-type(2)").remove()
+                document.querySelector(".explDomain div:nth-of-type(2) p:nth-of-type(2)").remove();
             }
+            document.documentElement.style.setProperty('--color-status', response.result.status === "success" ? "var(--color-success)" : "var(--color-warning)");
 
             // TODO CHANGE STATUS IN LOGBOEK
         } else {

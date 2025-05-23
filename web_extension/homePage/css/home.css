@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(234, 234, 234);
+    background-color: var(--color-status);
     font-size: 1.1rem;
     margin: 0;
     gap: 5rem;
@@ -43,6 +43,7 @@ body {
         /* Other div with settings and history */
         & > div:nth-of-type(2) {
             min-height: 30rem;
+            justify-content: space-between;
             gap: 1.5rem;
             display: flex;
             flex-direction: column;

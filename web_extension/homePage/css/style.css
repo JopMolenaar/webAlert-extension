@@ -33,13 +33,13 @@
     --color-status-btn-hvr: var(--color-default-btn-hvr); */
 
 
-    --color-danger: #ffd9d8;
+    --color-danger: #fae4e4;
     --color-danger-text: rgb(113, 13, 13);
 
-    --color-success: #e7ffec;
+    --color-success: #ecf7ee;
     --color-success-text: rgb(3, 99, 14);
 
-    --color-warning: #fff2d5;
+    --color-warning: #fff5df;
     --color-warning-text: rgb(189, 117, 0);
 
     --color-black: black;
@@ -50,6 +50,11 @@
     --color-light-blue: #cddbfd;
     --color-border-grey: #b5bfd9;
     --color-background-light: rgb(246, 244, 255);
+
+    --color-status: var(--color-background-light);
+    /* --color-status: var(--color-success); */
+    /* --color-status: var(--color-warning); */
+    /* --color-status: var(--color-danger); */
 }
 
 /* btn styles */

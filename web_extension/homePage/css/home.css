@@ -9,7 +9,12 @@ body {
     header nav {
         padding: 2rem;
         button {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            svg {
+                order: -1;
+            }
         }
     }
 
@@ -69,10 +74,20 @@ body {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            .highlight {
-                font-weight: 600;
+
+            .highlighted-section {
+                margin-bottom: 1rem;
             }
-       
+            ul {
+                padding-left: 1.25rem;
+                display: flex;
+                flex-direction: column;
+                .highlight {
+                    font-weight: 600;
+                    order: -1;
+                }
+            }
+            
             > div:nth-of-type(2) {
                 display: flex;
                 flex-direction: column;
@@ -115,7 +130,7 @@ body {
         .history {
             display: flex;
             flex-direction: column;
-            height: 37em;
+            /* height: 37em; */
 
             & > div {
                 overflow-y: scroll;
@@ -173,7 +188,7 @@ body {
                             transition: 0.2s;
                         } 
                     }
-                    & div {
+                    & > div {
                         padding: 10px 15px;
                         overflow-x: hidden;
                         .highlight {
@@ -214,8 +229,11 @@ body {
         main {
             flex-direction: column;
             & > div:nth-of-type(2) {
-                width: 100%;
+                /* width: 100%; */
                 max-width: 44em;
+            }
+            .settings, .history {
+                width: 100%;
             }
         }
     }

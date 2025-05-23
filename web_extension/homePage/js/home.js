@@ -53,21 +53,22 @@ function injectUI() {
 // Function to add extra information about the current website
 function addExtraInfo(data) {
     const expResultContainer = document.querySelector("#expResult");
-    const extraInfoDiv = document.createElement("div");
+    // const extraInfoDiv = document.createElement("div");
 
     chrome.runtime.sendMessage({ type: "cleanUpResults", data: data}, (response) => {
         if (chrome.runtime.lastError) {
             console.error("Runtime error:", chrome.runtime.lastError.message);
             return;
         }
-        extraInfoDiv.innerHTML = response.html
+        expResultContainer.innerHTML = response.html
         
-        // change the text of the button
-        const changeAdviceBtn = document.querySelector("#changeAdviceBtn span");
-        data.status === "success" ? changeAdviceBtn.classList.remove("success") : changeAdviceBtn.classList.add("success");
-        data.status === "warning" ? changeAdviceBtn.classList.remove("warning") : changeAdviceBtn.classList.add("warning");
-        changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Veilig";
-
+        if(data.status === "success" || data.status === "warning"){
+            // change the text of the button
+            const changeAdviceBtn = document.querySelector("#changeAdviceBtn span");
+            data.status === "success" ? changeAdviceBtn.classList.remove("success") : changeAdviceBtn.classList.add("success");
+            data.status === "warning" ? changeAdviceBtn.classList.remove("warning") : changeAdviceBtn.classList.add("warning");
+            changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Veilig";
+        }
 
         const colorStatus = data.status === "success" 
             ? "var(--color-success)" 
@@ -86,7 +87,7 @@ function addExtraInfo(data) {
         changeTextChangeStatus(data.status)
     }
 
-    expResultContainer.appendChild(extraInfoDiv);
+    // expResultContainer.appendChild(extraInfoDiv);
 }
 
 // Close the page and go back to the previous page

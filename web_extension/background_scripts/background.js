@@ -201,15 +201,39 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
         // Give back the message and highlight the reasons
         const webAlertMessage = message.format === "list" ? "" : `<p>${response.message}</p>`;
+        let highlightedItems = '';
+        let nonHighlightedItems = '';
+
+        const items = [
+            { content: response.veiligInternetten.date, highlight: !isOld },
+            { content: `Kamer van Koophandel: ${kvkStatusText}`, highlight: !kvk },
+            { content: `Malware: ${response.veiligInternetten.Quad9}`, highlight: !noMalware },
+            { content: `Phishing: ${response.veiligInternetten.APWG}`, highlight: !noPhishing },
+            { content: `Vertrouwensscore: ${trustScoreText}`, highlight: !trusted }
+        ];
+
+        items.forEach(item => {
+            const li = `<li class="${item.highlight ? 'highlight' : ''}">${item.content}</li>`;
+            if (item.highlight) {
+            highlightedItems += li;
+            } else {
+            nonHighlightedItems += li;
+            }
+        });
+
         const html = `
             ${webAlertMessage}
-            <ul>
-                <li class="${!isOld ? 'highlight' : ''}">${response.veiligInternetten.date}</li>
-                <li class="${!kvk ? 'highlight' : ''}">Kamer van Koophandel: ${kvkStatusText}</li>
-                <li class="${!noMalware ? 'highlight' : ''}">Malware: ${response.veiligInternetten.Quad9}</li>
-                <li class="${!noPhishing ? 'highlight' : ''}">Phishing: ${response.veiligInternetten.APWG}</li>
-                <li class="${!trusted ? 'highlight' : ''}">Vertrouwensscore: ${trustScoreText}</li>
-            </ul>
+            ${highlightedItems ? `
+                <div class="highlighted-section">
+                    <p>Dit advies is gebaseerd op:</p>
+                    <ul>${highlightedItems}</ul>
+                </div>
+                ` : ''}
+            ${nonHighlightedItems ? `
+                <p>Deze aspecten vormen geen bedreiging:</p>
+                <ul>${nonHighlightedItems}</ul>
+                ` : ``
+            }
         `;
 
         sendResponse({ success: true, html });

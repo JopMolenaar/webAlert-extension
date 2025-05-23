@@ -108,7 +108,7 @@ function displayGeneratedLink(link) {
   // document.querySelector(".progress-meter").style.display = "none"
   
   form.style.display = "none";
-  output.style.display = "block";
+  output.style.display = "flex";
   nextStepsText.style.display = "block";
   resetBtn.style.display = "inline";
   questionIndex = 4;
@@ -225,16 +225,15 @@ const spans = progressMeter.querySelectorAll('span:not(.middle-line)');
 const middleLine = progressMeter.querySelector('.middle-line span');
 
 function updateProgress(step) {
-    spans.forEach((span, index) => {
-        if (index < step) {
-            const precentage = (index + 1) / spans.length * 100;
-            step !== 1 ? middleLine.style.width = `${precentage}%` : middleLine.style.width = `0%`;
-            if(step === 4) middleLine.style.width = `100%`; 
-            span.classList.add("active")
-        } else {
-            span.classList.remove("active")
-        }
-    });
+  spans.forEach((span, index) => {
+    if (index < step) {
+      const percentage = 10 + (step - 1) * 20; // Start at 10% and increment by 20% for each step
+      middleLine.style.width = `${percentage}%`;
+      span.classList.add("active");
+    } else {
+      span.classList.remove("active");
+    }
+  });
 }
 
 // Initialize the application

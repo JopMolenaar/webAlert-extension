@@ -4,14 +4,14 @@ body {
     width: calc(100% - 10px) !important;
 
     /* Font */
-    & #webAlertDiv * {
+    & #webAlertDiv-wa20250624 * {
         font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
         font-size: 1.1rem !important;
     }
 }
 
 /* Visually hidden elements */
-.v-h {
+.v-h-wa20250624 {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
     height: 1px;
@@ -48,60 +48,60 @@ body {
 
 /* Body states for danger, success, and warning */
 body {
-    &.danger, &.danger-side {
+    &.danger-wa20250624, &.danger-side-wa20250624 {
         --color-status: var(--color-danger);
         --color-status-btn: var(--color-danger-btn);
         --color-status-btn-hvr: var(--color-danger-btn-hvr); 
         --color-text: white;
     }
 
-    &.success {
+    &.success-wa20250624 {
         --color-status: var(--color-success);
         --color-status-btn: var(--color-success-btn);
         --color-status-btn-hvr: var(--color-success-btn-hvr);
         --color-text: black;
         
-        #statusText {
+        #statusText-wa20250624 {
             color: black !important;
         }
     }
 
-    &.warning {
+    &.warning-wa20250624 {
         --color-status: var(--color-warning);
         --color-status-btn: var(--color-warning-btn);
         --color-status-btn-hvr: var(--color-warning-btn-hvr);
         --color-text: black;
 
-        #statusText {
+        #statusText-wa20250624 {
             color: black !important;
         }
     }
 
-    &.warning, &.default, &.success, &.danger-side {
-        #statusText {
+    &.warning-wa20250624, &.default-wa20250624, &.success-wa20250624, &.danger-side-wa20250624 {
+        #statusText-wa20250624 {
             margin: 0;
             margin-bottom: 0.5rem;
         }
 
-        #webAlertDiv > div.open {
+        #webAlertDiv-wa20250624 > div.open-wa20250624 {
             justify-content: space-between;
             > div:nth-of-type(1) {
                 display: flex;
             }
         }
     }
-    &.danger-side {
-        #webAlertDiv, #webAlertDiv.open {
-            #closeBtn {
+    /* &.danger-side-wa20250624 {
+        #webAlertDiv-wa20250624, #webAlertDiv.open-wa20250624 {
+            #closeBtn-wa20250624 {
                 fill: white;
                 border-top: solid 1px white;
             }
         }
-    }
+    } */
 
     /* Whole screen becomes red */
-    &.danger {
-        #webAlertDiv {
+    &.danger-wa20250624 {
+        #webAlertDiv-wa20250624 {
             width: 100% !important;
             height: 100% !important;
             min-height: 6rem;
@@ -117,7 +117,7 @@ body {
                 align-self: center;
                 width: fit-content;
                 max-width: 40rem;
-                > .responseDiv {
+                > .responseDiv-wa20250624 {
                     height: fit-content;
                     div {
                         flex-direction: row;
@@ -126,7 +126,7 @@ body {
                         button {
                             white-space: pre-wrap;
                         }
-                        #moveWebExtensionButton {
+                        #moveWebExtensionButton-wa20250624 {
                             align-self: start;
                         }
                     }
@@ -137,7 +137,7 @@ body {
 }
 
 /* Web alert container styling */
-#webAlertDiv {  
+#webAlertDiv-wa20250624 {  
     width: fit-content !important;
     height: fit-content !important;
     min-height: 6rem;
@@ -156,9 +156,9 @@ body {
     transform: translateX(88%);
     transition: 0.3s ease-out;
 
-    &.open {
+    &.open-wa20250624 {
         transform: translateX(0%);
-        #closeBtn {
+        #closeBtn-wa20250624 {
             transform: rotate(90deg) translateY(40%);
             border-bottom: none;
             border-top: solid black 1px;
@@ -169,7 +169,7 @@ body {
         max-width: 20rem;
         display: flex;
         gap: 0.8rem;
-        .responseDiv {
+        .responseDiv-wa20250624 {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -191,12 +191,12 @@ body {
         }
 
         /* argument list (only visible on donger state and in history list) */
-        #arguments {
+        #arguments-wa20250624 {
             display: none;
             li {
                 color: rgb(255, 179, 179);
             }
-            .highlight {
+            .highlight-wa20250624 {
                 font-weight: 600;
                 color: white;
             }
@@ -204,7 +204,7 @@ body {
     }
 
     /* When the extension is on the left side of the screen */
-    &.left {
+    &.left-wa20250624 {
         left: 0.125rem;
         right: auto;
         transform: translateX(-88%);
@@ -214,25 +214,25 @@ body {
             order: 1;
        
         }
-        #closeBtn {
+        #closeBtn-wa20250624 {
             transform: rotate(90deg) translateY(7%);
         }
-        &.open {
+        &.open-wa20250624 {
             transform: translateX(0%);
-            #closeBtn {
+            #closeBtn-wa20250624 {
                 transform: rotate(-90deg) translateY(-10%);
                 border-bottom: none;
                 border-top: solid black 1px;
             }
         }
-        #moveWebExtensionButton {
+        #moveWebExtensionButton-wa20250624 {
             left: 0.5em !important;
         }
     }
 }
 
 /* Colored line styling */
-#coloredLine {
+#coloredLine-wa20250624 {
     width: 10px;
     height: 100%;
     background-color: var(--color-status);
@@ -242,7 +242,7 @@ body {
     right: 0;
     z-index: 99999999999999999;
 
-    &.left {
+    &.left-wa20250624 {
         left: 0;
         right: auto;
     }

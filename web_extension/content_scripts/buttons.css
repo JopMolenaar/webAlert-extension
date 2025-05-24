@@ -1,13 +1,19 @@
-#webAlertDiv {
+#webAlertDiv-wa20250624 {
     button {
         all: unset;
+        button:hover:after {
+            content: none !important;
+            background-color: none !important;
+            background: none !important;
+            transition: 0ms !important;
+        }
         &:active {
             scale: 0.97
         }
     }
 
     > div {
-        .responseDiv {
+        .responseDiv-wa20250624 {
             div {
                 display: flex;
                 flex-direction: column;
@@ -24,7 +30,7 @@
                     background-color: var(--color-status-btn-hvr);
                     cursor: pointer;
                 }
-                &.btn-secondary {
+                &.btn-secondary-wa20250624 {
                     order: 1;
                     background: none;
                     border: solid 1px var(--color-text);
@@ -34,7 +40,7 @@
                         background-color: none;
                     }
                 }
-                &.btn-tertiary {
+                &.btn-tertiary-wa20250624 {
                     order: 4;
                     background: none;
                     color: var(--color-text);
@@ -48,18 +54,18 @@
                         cursor: pointer;
                     }
                 }
-                &.hidden {
+                &.hidden-wa20250624 {
                     display: none;
                 }
             }
-            #moveWebExtensionButton {
+            #moveWebExtensionButton-wa20250624 {
                 position: absolute;
                 bottom: 1rem;
                 left: 2.8rem;
             }
             
             /* Let the important button bounce */
-            .bounce {
+            .bounce-wa20250624 {
                 animation: bounceb 1s ease-in-out infinite;
             }
         }
@@ -100,11 +106,11 @@
 
 body {
     /* Whole screen becomes red */
-    &.danger #webAlertDiv {
-        #closeBtn {
+    &.danger-wa20250624 #webAlertDiv-wa20250624 {
+        #closeBtn-wa20250624 {
             display: none;
         }
-        #moveWebExtensionButton {
+        #moveWebExtensionButton-wa20250624 {
             display: none;
         }
     }

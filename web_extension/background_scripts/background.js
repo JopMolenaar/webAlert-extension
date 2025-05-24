@@ -124,6 +124,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }
 
             let mailContent = "";
+
             if (safetyCheckResult.veiligInternetten.date) {
                 const kvkStatus = safetyCheckResult.veiligInternetten.kvkStatus
                     ? "Geregistreerd"
@@ -138,7 +139,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     `Scamadviser: ${trustScore}\n\n`;
             } else {
                 mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}\n` +
-                    `De bron Veilig Internetten kon niet worden gebruikt voor deze website.`;
+                    `De bron Veilig Internetten kon niet worden gebruikt voor deze website. De resultaten of het malware, phishing of een KvK nummer bevat zijn onbekend.`;
             }
 
             console.log("📋 Preparing safety check results email");
@@ -213,7 +214,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         ];
 
         items.forEach(item => {
-            const li = `<li class="${item.highlight ? 'highlight' : ''}">${item.content}</li>`;
+            const li = `<li class="${item.highlight ? 'highlight-wa20250624' : ''}">${item.content}</li>`;
             if (item.highlight) {
             highlightedItems += li;
             } else {
@@ -224,7 +225,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const html = `
             ${webAlertMessage}
             ${highlightedItems ? `
-                <div class="highlighted-section">
+                <div class="highlighted-section-wa20250624">
                     <p>Dit advies is gebaseerd op:</p>
                     <ul>${highlightedItems}</ul>
                 </div>

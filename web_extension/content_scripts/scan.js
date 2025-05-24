@@ -1,12 +1,15 @@
 const hostname = window.location.hostname;
 const domain = getRootDomain(hostname);
 
+// Class and Id specifier in order to have no matching classes with the website it gets add to
+const classSpecifier = "-wa20250624";
+
 async function injectUI() {    
     // Popup HTML
     const html = await fetch(chrome.runtime.getURL("content_scripts/ui.html")).then(r => r.text());
     const wrapper = document.createElement("div");
     wrapper.innerHTML = html;
-    wrapper.setAttribute("id", "webAlertDiv");
+    wrapper.setAttribute("id", `webAlertDiv${classSpecifier}`);
 
     // wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/loading.svg`)).then(r => r.text());
     // wrapper.querySelector("#visualStatus").classList.add("loading");
@@ -15,7 +18,7 @@ async function injectUI() {
 
     // add colored line for feedback
     const coloredLine = document.createElement("div");
-    coloredLine.setAttribute("id", "coloredLine");
+    coloredLine.setAttribute("id", `coloredLine${classSpecifier}`);
     document.body.insertBefore(coloredLine, document.body.firstChild);
     
     // CSS
@@ -28,33 +31,33 @@ async function injectUI() {
     })
    
     // Open settings page
-    const homeButton = wrapper.querySelector("#openHomeBtn");
+    const homeButton = wrapper.querySelector(`#openHomeBtn${classSpecifier}`);
     homeButton.addEventListener("click", () => {
         const url = chrome.runtime.getURL("homePage/index.html?domain=" + encodeURIComponent(domain));
         window.open(url, "_blank");
     });
 
-    const leavePageButton = wrapper.querySelector("#exitPage");
+    const leavePageButton = wrapper.querySelector(`#exitPage${classSpecifier}`);
     leavePageButton.addEventListener("click", () => {
         chrome.runtime.sendMessage({ action: "closeActiveTab" });
     });
 
     getAndStoreSafetyDomain(wrapper);
    
-    const moveBtn = document.body.querySelector("#moveWebExtensionButton");
+    const moveBtn = document.body.querySelector(`#moveWebExtensionButton${classSpecifier}`);
     let left = false;
     if(moveBtn){
         moveBtn.addEventListener("click", () => {        
-            wrapper.querySelector("#moveWebExtensionButton span").textContent = left ? "links" : "rechts";
-            document.body.querySelector("#coloredLine").classList.toggle("left");
-            wrapper.classList.toggle("left");
+            wrapper.querySelector(`#moveWebExtensionButton${classSpecifier} span`).textContent = left ? "links" : "rechts";
+            document.body.querySelector(`#coloredLine${classSpecifier}`).classList.toggle(`left${classSpecifier}`);
+            wrapper.classList.toggle(`left${classSpecifier}`);
             left = !left;
         });
     }
 
-    const closebtn = wrapper.querySelector("#closeBtn");
+    const closebtn = wrapper.querySelector(`#closeBtn${classSpecifier}`);
     closebtn.addEventListener("click", () => {
-        wrapper.classList.toggle("open");
+        wrapper.classList.toggle(`open${classSpecifier}`);
     });
 
     // Check all links, form actions and inputs of the webpage
@@ -187,7 +190,7 @@ async function getAndStoreSafetyDomain(wrapper) {
     }   
 
     // Help button listener
-    const helpBtn = document.body.querySelector("#getHelp");
+    const helpBtn = document.body.querySelector(`#getHelp${classSpecifier}`);
     if(helpBtn){
         chrome.runtime.sendMessage({ type: "getHelpName" }, (response) => {
             if (response && response.success) {
@@ -272,8 +275,8 @@ async function fillExtensionFeedback(response, wrapper) {
     const status = response.status === 'unknown' ? 'default' : response.status;
 
     console.log(response.message);
-    status != "success" ? (wrapper.querySelector("#statusText").textContent = response.message, wrapper.classList.add("open")) : wrapper.classList.remove("open");
-    document.body.classList.add(`${status}`);
+    status != "success" ? (wrapper.querySelector(`#statusText${classSpecifier}`).textContent = response.message, wrapper.classList.add(`open${classSpecifier}`)) : wrapper.classList.remove(`open${classSpecifier}`);
+    document.body.classList.add(`${status}${classSpecifier}`);
     // status != "default" ? wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/${status}.svg`)).then(r => r.text()) : null;
     // wrapper.querySelector("#visualStatus").classList.remove("loading");
 
@@ -281,18 +284,18 @@ async function fillExtensionFeedback(response, wrapper) {
         // Let the user go to the page even if the status is 'danger'
         const enterPageButton = document.createElement("button");
         enterPageButton.textContent = "Ga toch naar de website";
-        enterPageButton.classList.add("btn-tertiary");
+        enterPageButton.classList.add(`btn-tertiary${classSpecifier}`);
         enterPageButton.addEventListener("click", () => {
-            document.body.classList.remove("danger");
-            document.body.classList.add("danger-side");
+            document.body.classList.remove(`danger${classSpecifier}`);
+            document.body.classList.add(`danger-side${classSpecifier}`);
             enterPageButton.remove();
-            wrapper.querySelector("#arguments").style.display = "none";
-            wrapper.querySelector("#exitPage").classList.remove("bounce");
+            wrapper.querySelector(`#arguments${classSpecifier}`).style.display = "none";
+            wrapper.querySelector(`#exitPage${classSpecifier}`).classList.remove(`bounce${classSpecifier}`);
         });
-        wrapper.querySelector(".responseDiv").appendChild(enterPageButton);
+        wrapper.querySelector(`.responseDiv${classSpecifier}`).appendChild(enterPageButton);
 
         // Explanation points
-        const explanationPoints = wrapper.querySelector("#arguments");
+        const explanationPoints = wrapper.querySelector(`#arguments${classSpecifier}`);
         const list = document.createElement("div");
 
         chrome.runtime.sendMessage({ type: "cleanUpResults", data: response, format: "list"}, (response) => {
@@ -303,7 +306,7 @@ async function fillExtensionFeedback(response, wrapper) {
             list.innerHTML = response.html
         });
 
-        wrapper.querySelector("#exitPage").classList.add("bounce");
+        wrapper.querySelector(`#exitPage${classSpecifier}`).classList.add(`bounce${classSpecifier}`);
         
         explanationPoints.appendChild(list);
         explanationPoints.style.display = "block";
@@ -312,28 +315,28 @@ async function fillExtensionFeedback(response, wrapper) {
 }
 
 function addBtnHierarchy(wrapper, status) {
-    const infoBtn = wrapper.querySelector("#openHomeBtn");
-    const getHelp = wrapper.querySelector("#getHelp");
-    const exitPage = wrapper.querySelector("#exitPage");
+    const infoBtn = wrapper.querySelector(`#openHomeBtn${classSpecifier}`);
+    const getHelp = wrapper.querySelector(`#getHelp${classSpecifier}`);
+    const exitPage = wrapper.querySelector(`#exitPage${classSpecifier}`);
     
-    infoBtn.classList.remove("btn-secondary", "hidden");
-    getHelp.classList.remove("btn-secondary", "hidden");
-    exitPage.classList.remove("btn-secondary", "hidden");
+    infoBtn.classList.remove(`btn-secondary${classSpecifier}`, `hidden${classSpecifier}`);
+    getHelp.classList.remove(`btn-secondary${classSpecifier}`, `hidden${classSpecifier}`);
+    exitPage.classList.remove(`btn-secondary${classSpecifier}`, `hidden${classSpecifier}`);
 
     switch (status) {
         case "success": 
             // infoBtn is primary
-            getHelp.classList.add("btn-secondary");
-            exitPage.classList.add("hidden");
+            getHelp.classList.add(`btn-secondary${classSpecifier}`);
+            exitPage.classList.add(`hidden${classSpecifier}`);
             break;
         case "warning":
-            infoBtn.classList.add("btn-secondary");
+            infoBtn.classList.add(`btn-secondary${classSpecifier}`);
             // getHelp is primary
-            exitPage.classList.add("btn-secondary");
+            exitPage.classList.add(`btn-secondary${classSpecifier}`);
             break;
         case "danger":  
-            infoBtn.classList.add("btn-secondary");
-            getHelp.classList.add("btn-secondary");
+            infoBtn.classList.add(`btn-secondary${classSpecifier}`);
+            getHelp.classList.add(`btn-secondary${classSpecifier}`);
             // exitPage is primary
             break;
     }
@@ -396,13 +399,13 @@ function getWebsiteKvk(doc) {
 function getWebsiteResults(doc) {
     console.log(doc);
     
-    let content = doc.querySelectorAll(".w-check-content");
+    let content = doc.querySelectorAll(`.w-check-content${classSpecifier}`);
     if(content === null){
         console.log("No content found, probably on downtime");
         return
     }
     content.forEach((ele) => {
-        if (ele.classList.contains("w-check-content") && ele.classList.length === 1) {
+        if (ele.classList.contains(`w-check-content${classSpecifier}`) && ele.classList.length === 1) {
             content = ele;
         }
     });

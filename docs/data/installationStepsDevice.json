@@ -29,29 +29,24 @@
         ],
         "dutch": [
             {
-                "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is, download hem dan via de App Store: <a href='https://apps.apple.com/nl/app/opdrachten/id1462947752' target='_blank'>Shortcuts app</a>",
-                "image": "shortcutAppLogoIos.png",
-                "logo": true
-            },
-            {
                 "description": "Klik op de blauwe knop 'Get shortcut'.",
-                "image": "blueShortcutBtn.png"
+                "image": "unbox_device.jpg"
             },
             {
                 "description": "Er opent zich een pop-up. Klik op 'Open Shortcuts'.",
-                "image": "openShortcutsPopup.png"
+                "image": "unbox_device.jpg"
             },
             {
                 "description": "Er opent zich een kleine pop-up van de app. Klik op 'Add shortcut'.",
-                "image": "appPopup.png"
+                "image": "unbox_device.jpg"
             },
             {
                 "description": "U heeft hem geïnstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt, krijgt u nog twee meldingen die te maken hebben met privacy.",
-                "image": "shortcutInMenu.png"
+                "image": "unbox_device.jpg"
             },
             {
                 "description": "Klik twee keer op 'Always allow'. Dit versoepelt het proces en vormt geen gevaar voor uw privacy.",
-                "image": "alwaysAllowPopup.png"
+                "image": "unbox_device.jpg"
             }
         ]
     },
@@ -64,115 +59,97 @@
                 "logo": true
             },
             {
-                "description": "Als u op de knop onderaan deze pagina drukt, wordt u doorgeschakeld naar de opdrachten app. U ziet hier een blauwe knop 'Voeg opdracht toe'. Klik hierop. Dit zorgt ervoor dat hij wordt toegevoegd aan uw app.",
+                "description": "Klik op de blauwe knop 'Voeg opdracht toe'.",
                 "image": "addShortcut.jpeg"
             },
             {
-                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm.",
+                "description": "U heeft hem geïnstalleerd! Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan.",
                 "image": "settingsAppLogo.png",
                 "logo": true
             },
             {
-                "description": "In de instellingen app, ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > en scroll helemaal naar beneden en kies de naam van de snelkoppeling die u zojuist heeft geïnstalleerd [Naam toevoegen].",
+                "description": "Ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > scroll helemaal naar beneden en kies de naam van de snelkoppeling die u zojuist heeft geïnstalleerd [Naam toevoegen].",
                 "image": "settingsFlow.png"
             },
             {
-                "description": "Als de naam achter 'Driemaal tikken' staat is het gelukt. Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
+                "description": "Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
                 "image": "ticksBehind.png"
             },
             {
-                "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunt u twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe'.",
+                "description": "U kunt twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Altijd toestaan'.",
                 "image": "privacyBtns.jpg"
             },
             {
-                "description": "Als het goed is werkt het nu, u heeft automatisch een bericht klaarstaan dat u in staat  Gefeliciteerd! Als u ooit hulp nodig heeft als u het even niet meer weet, kunt u nu altijd hulp vragen door drie keer op de achterkant van uw telefoon te tikken. Dit kan een paar seconden duren.",
+                "description": "Als het goed is werkt het nu. Gefeliciteerd! Als u ooit hulp nodig heeft als u het even niet meer weet, kunt u nu altijd hulp vragen door drie keer op de achterkant van uw telefoon te tikken. Dit kan een paar seconden duren.",
                 "image": "final.jpg"
             }
         ],
         "dutch": [
             {
-                "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is: download hem dan via de App Store:",
-                "link": "https://apps.apple.com/nl/app/opdrachten/id1462947752",
-                "image": "shortcutAppLogoIos.png",
-                "logo": true
+                "description": "Klik op de blauwe knop 'Get shortcut'.",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "Als u op de knop onderaan deze pagina drukt, wordt u doorgeschakeld naar de opdrachten app. U ziet hier een blauwe knop 'Voeg opdracht toe'. Klik hierop. Dit zorgt ervoor dat hij wordt toegevoegd aan uw app.",
-                "image": "addShortcut.jpeg"
+                "description": "Er opent zich een popup, klik op 'Open Shortcuts'.",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm.",
-                "image": "settingsAppLogo.png",
-                "logo": true
+                "description": "Er opent zich een kleine popup van de app. Klik op 'Add shortcut'.",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "In de instellingen app, ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > en scroll helemaal naar beneden en kies de naam van de snelkoppeling die u zojuist heeft geïnstalleerd [Naam toevoegen].",
-                "image": "settingsFlow.png"
+                "description": "U heeft hem geïnstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt krijgt u nog twee meldingen die te maken hebben met privacy.",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "Als de naam achter 'Driemaal tikken' staat is het gelukt. Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
-                "image": "ticksBehind.png"
-            },
-            {
-                "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunt u twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe'.",
-                "image": "privacyBtns.jpg"
-            },
-            {
-                "description": "Als het goed is werkt het nu, u heeft automatisch een bericht klaarstaan dat u in staat  Gefeliciteerd! Als u ooit hulp nodig heeft als u het even niet meer weet, kunt u nu altijd hulp vragen door drie keer op de achterkant van uw telefoon te tikken. Dit kan een paar seconden duren.",
-                "image": "final.jpg"
+                "description": "Klik twee keer op: 'Always allow'. Dit versoepelt het proces en heeft geen gevaar voor uw privacy.",
+                "image": "unbox_device.jpg"
             }
         ]
     },
     "android": {
         "english": [
             {
-                "description": "Zorg ervoor dat de Automate-app is geïnstalleerd. Deze staat niet standaard op uw apparaat, download hem als u hem nog niet heeft via de Play Store",
-                "link": "https://play.google.com/store/apps/details?id=com.llamalab.automate",
-                "image": "automateLogo.png",
-                "logo": true
+                "description": "...",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "Open uw gegenereerde bestand, deze knop opent een popup die u deze laat importeren in de Automate app.",
-                "image": "...jpeg",
-                "download": true
+                "description": "...",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "",
-                "image": "...jpeg",
-                "download": true
+                "description": "...",
+                "image": "unbox_device.jpg"
+            },
+            {
+                "description": "...",
+                "image": "unbox_device.jpg"
+            },
+            {
+                "description": "...",
+                "image": "unbox_device.jpg"
             }
         ],
         "dutch": [
             {
-                "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is: download hem dan via de App Store:",
-                "link": "https://apps.apple.com/nl/app/opdrachten/id1462947752",
-                "image": "shortcutAppLogoIos.png",
-                "logo": true
+                "description": "...",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "Als u op de knop onderaan deze pagina drukt, wordt u doorgeschakeld naar de opdrachten app. U ziet hier een blauwe knop 'Voeg opdracht toe'. Klik hierop. Dit zorgt ervoor dat hij wordt toegevoegd aan uw app.",
-                "image": "addShortcut.jpeg"
+                "description": "...",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm.",
-                "image": "settingsAppLogo.png",
-                "logo": true
+                "description": "...",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "In de instellingen app, ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > en scroll helemaal naar beneden en kies de naam van de snelkoppeling die u zojuist heeft geïnstalleerd [Naam toevoegen].",
-                "image": "settingsFlow.png"
+                "description": "...",
+                "image": "unbox_device.jpg"
             },
             {
-                "description": "Als de naam achter 'Driemaal tikken' staat is het gelukt. Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
-                "image": "ticksBehind.png"
-            },
-            {
-                "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunt u twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe'.",
-                "image": "privacyBtns.jpg"
-            },
-            {
-                "description": "Als het goed is werkt het nu, u heeft automatisch een bericht klaarstaan dat u in staat  Gefeliciteerd! Als u ooit hulp nodig heeft als u het even niet meer weet, kunt u nu altijd hulp vragen door drie keer op de achterkant van uw telefoon te tikken. Dit kan een paar seconden duren.",
-                "image": "final.jpg"
+                "description": "...",
+                "image": "unbox_device.jpg"
             }
         ]
     },

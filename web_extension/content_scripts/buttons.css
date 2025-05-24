@@ -1,15 +1,23 @@
 #webAlertDiv-wa20250624 {
     button {
         all: unset;
-        button:hover:after {
-            content: none !important;
-            background-color: none !important;
-            background: none !important;
-            transition: 0ms !important;
+        &:hover {
+            &:after {
+                content: none !important;
+                background-color: none !important;
+                background: none !important;
+                transition: 0ms !important;   
+            }
+            svg {
+                fill: black !important;
+            }
         }
+        
+        
         &:active {
             scale: 0.97
         }
+        
     }
 
     > div {
@@ -72,7 +80,7 @@
         /* Open and close button */
         > div:nth-of-type(2) {
             button {
-                color: white !important;
+                color: rgb(0, 0, 0) !important;
                 padding: 0.5rem !important;
                 border-bottom: solid black 1px; 
                 width: 1rem;
@@ -87,6 +95,7 @@
                 border-radius: 50% !important;
                 transition: all 0.2s ease-in-out !important;
                 &:hover {
+                    color: black !important;
                     scale: 1.1;
                     cursor: pointer !important;
                 }

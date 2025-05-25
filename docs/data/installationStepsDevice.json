@@ -132,15 +132,37 @@
                 "logo": true
             },
             {
-                "description": "Open uw gegenereerde bestand, deze knop opent een popup die u deze laat importeren in de Automate app.",
-                "image": "...jpeg",
+                "description": "Open uw gegenereerde bestand, deze knop opent een popup die u deze laat toevoegen in de Automate app.",
+                "image": "step1.png",
                 "download": true
             },
             {
-                "description": "",
-                "image": "...jpeg",
-                "download": true
+                "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
+                "image": "step3.png"
+            },
+            {
+                "description": "Op deze pagina drukt u nu weer op de blauwe knop, alleen heeft deze nu een plusje erin staan. Dit opent weer een nieuwe pagina.",
+                "image": "step4.png"
+            },
+            {
+                "description": "Op deze pagina klikt u nu op de omcircelde knop, 'INSTALL HOME SCREEN SHORTCUT'. Dit voegt een icoon toe aan uw home pagina van uw telefoon. Deze actie geeft twee popups die worden beschreven in stap 6.",
+                "image": "step5.png"
+            },
+            {
+                "description": "Hier links zie je de twee popups die je te zien krijgt. Klik op 'OK' en 'Toevoegen' (beide omcirkelt in de afbeelding hier links). Na deze acties krijgt u een korte melding met een donkere achtergrond te zien. Dit betekend dat hij ergens op je home scherm tussen andere apps staat.",
+                "image": "step6.png"
+            },
+            {
+                "description": "De knop ziet er zo uit (zie de afbeelding links). U kunt deze verplaatsen als u wilt door hem lang ingedrukt te houden en te slepen met uw vinger waar u hem wilt hebben.",
+                "image": "step7.png",
+                "logo": true
+            },
+            {
+                "description": "Hoe de actie werkt om makkelijker hulp te vragen:",
+                "image": "storyboard.png",
+                "big": true
             }
+
         ],
         "dutch": [
             {

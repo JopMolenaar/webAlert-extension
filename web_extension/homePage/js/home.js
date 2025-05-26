@@ -79,7 +79,8 @@ function addExtraInfo(data) {
     });
 
     if(data.status === "danger"){
-        document.querySelector(".explDomain div:nth-of-type(2)").remove()
+        document.querySelector(".explDomain div:nth-of-type(2)").innerHTML = `<p>U kunt dit advies niet aanpassen, wij verzoeken u naar het advies te luisteren en de website te verlaten.</p>`;
+        
     }
 
     // Add line if advice is changed
@@ -130,7 +131,7 @@ function changeTextChangeStatus(status) {
 // Show the history and hide the settings or the other way around
 showHistory.addEventListener("click", (e) => {
     history.classList.toggle("v-h");
-    showHistory.textContent = history.classList.contains("v-h") ? "Bekijk uw eerder bezochte websites" : "Bekijk uw instellingen";
+    showHistory.textContent = history.classList.contains("v-h") ? "Bekijk uw eerder bezochte websites" : "Stel uw vertrouwens-contact in";
     settings.classList.toggle("v-h");
 });
 

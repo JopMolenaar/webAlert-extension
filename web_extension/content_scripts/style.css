@@ -5,7 +5,11 @@ body {
 
     /* Font */
     & #webAlertDiv-wa20250624 * {
-        font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+        font-family: "Noto Sans", sans-serif !important;
+        font-optical-sizing: auto;
+        font-weight: 400; /* 100 - 900 */
+        font-style: normal;
+        /* font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important; */
         font-size: 1.1rem !important;
     }
 }
@@ -119,10 +123,12 @@ body {
                 max-width: 40rem;
                 > .responseDiv-wa20250624 {
                     height: fit-content;
+                    
                     div {
                         flex-direction: row;
                         flex-wrap: wrap;
                         gap: 0.6rem;
+                        margin-bottom: 0rem;
                         button {
                             white-space: pre-wrap;
                         }
@@ -193,6 +199,10 @@ body {
         /* argument list (only visible on donger state and in history list) */
         #arguments-wa20250624 {
             display: none;
+            p {
+                margin: 0;
+                margin-bottom: 1rem;
+            }
             li {
                 color: rgb(255, 179, 179);
             }

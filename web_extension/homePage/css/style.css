@@ -57,6 +57,28 @@
     /* --color-status: var(--color-danger); */
 }
 
+/* body and header */
+body {
+    background-color: var(--color-status);
+    font-size: 1.1rem;
+    margin: 0;
+    gap: 5rem;
+    display: flex;
+    flex-direction: column;
+
+    header nav {
+        padding: 2rem;
+        button {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            svg {
+                order: -1;
+            }
+        }
+    }
+}
+
 /* btn styles */
 button, a.btn-primary {
     padding: 0.6em;

@@ -198,7 +198,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const noMalware = response.veiligInternetten.Quad9.includes("Geen malware of virus gerapporteerd");
         const kvkStatusText = kvk === undefined ? "Onbekend" : (kvk === true ? "Geregistreerd"
             : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)");
-        const trustScoreText = response.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
+        const trustScoreText = response.veiligInternetten.Scamadviser.replace(/trust/gi, "").split("(volledig rapport")[0].trim();
 
         // Give back the message and highlight the reasons
         const webAlertMessage = message.format === "list" ? "" : `<p>${response.message}</p>`;
@@ -210,7 +210,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             { content: `Kamer van Koophandel: ${kvkStatusText}`, highlight: !kvk },
             { content: `Malware: ${response.veiligInternetten.Quad9}`, highlight: !noMalware },
             { content: `Phishing: ${response.veiligInternetten.APWG}`, highlight: !noPhishing },
-            { content: `Vertrouwensscore: ${trustScoreText}`, highlight: !trusted }
+            { content: `Vertrouwensscore (hoeveel mensen dit vertrouwen): ${trustScoreText}`, highlight: !trusted }
         ];
 
         items.forEach(item => {

@@ -14,6 +14,8 @@ async function injectUI() {
     // wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/loading.svg`)).then(r => r.text());
     // wrapper.querySelector("#visualStatus").classList.add("loading");
 
+    addFont();
+
     document.body.insertBefore(wrapper, document.body.firstChild);
 
     // add colored line for feedback
@@ -467,6 +469,25 @@ function getMonthDifference(dateString) {
     }
 
     return null; // Als de datum niet goed is geparsed
+}
+
+function addFont() {
+    // Add Google Fonts preconnect and stylesheet links to the head of the page
+    const preconnect1 = document.createElement("link");
+    preconnect1.rel = "preconnect";
+    preconnect1.href = "https://fonts.googleapis.com";
+    document.head.appendChild(preconnect1);
+
+    const preconnect2 = document.createElement("link");
+    preconnect2.rel = "preconnect";
+    preconnect2.href = "https://fonts.gstatic.com";
+    preconnect2.crossOrigin = "anonymous";
+    document.head.appendChild(preconnect2);
+
+    const fontStylesheet = document.createElement("link");
+    fontStylesheet.rel = "stylesheet";
+    fontStylesheet.href = "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap";
+    document.head.appendChild(fontStylesheet);
 }
 
 // todo

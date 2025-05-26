@@ -160,6 +160,11 @@ async function getSteps(platform) {
             p.appendChild(document.createTextNode(" "));
             p.appendChild(a);
         }
+
+        if(step.download){
+          console.log("download the link or file in this step", step);
+        }
+        
         li.appendChild(p);
         li.appendChild(img);
         ol.appendChild(li);
@@ -219,6 +224,20 @@ function updateQuestionIndex(delta) {
   nextBtn.classList.add(`index${questionIndex}`);
   showCurrentQuestion();
 }
+
+
+// TODO maak mooier
+document.querySelector("button[type='submit']").disabled = true; // Disable the submit button initially
+const inputWho = document.querySelector("#who1");
+const radioBtnWho = document.querySelector("#who2");
+
+inputWho.addEventListener("input", () => {  
+  document.querySelector("button[type='submit']").disabled = false; // Disable the submit button initially
+});
+radioBtnWho.addEventListener("click", () => {  
+  document.querySelector("button[type='submit']").disabled = false; // Disable the submit button initially
+});
+
 
 const progressMeter = document.querySelector('.progress-meter');
 const spans = progressMeter.querySelectorAll('span:not(.middle-line)');

@@ -156,13 +156,9 @@ async function getSteps(platform) {
             const a = document.createElement("a");
             a.href = step.link;
             a.target = "_blank";
-            a.textContent = "Hier";
+            a.textContent = "hier.";
             p.appendChild(document.createTextNode(" "));
             p.appendChild(a);
-        }
-
-        if(step.download){
-          console.log("download the link or file in this step", step);
         }
 
         li.appendChild(p);

@@ -29,7 +29,6 @@
                 "help": "https://www.icloud.com/shortcuts/af1105f0b9d14d3aa932943c1e717cb6",
                 "decideMyself": "https://www.icloud.com/shortcuts/28295d21ad304bebb672e2203c926246",
                 "customTitle": "https://www.icloud.com/shortcuts/28295d21ad304bebb672e2203c926246"
-                
             },
             "customContact": {
                 "help": "https://www.icloud.com/shortcuts/af1105f0b9d14d3aa932943c1e717cb6",
@@ -53,50 +52,50 @@
     "android": {
         "whatsapp": {
             "decideMyself": {
-                "help": "https://example.com/android/whatsapp/decideMyself/help",
-                "decideMyself": "https://example.com/android/whatsapp/decideMyself/zelf-title",
-                "customTitle": "https://example.com/android/whatsapp/decideMyself/custom-title"
+                "help": "shortcuts/helpMailAndroid.flo",
+                "decideMyself": "shortcuts/helpMailAndroid.flo",
+                "customTitle": "shortcuts/helpMailAndroid.flo"
             },
             "customContact": {
-                "help": "https://example.com/android/whatsapp/customContact/help",
-                "decideMyself": "https://example.com/android/whatsapp/customContact/zelf-title",
-                "customTitle": "https://example.com/android/whatsapp/customContact/custom-title"
+                "help": "shortcuts/helpMailAndroid.flo",
+                "decideMyself": "shortcuts/helpMailAndroid.flo",
+                "customTitle": "shortcuts/helpMailAndroid.flo"
             }
         },
         "sms": {
             "decideMyself": {
-                "help": "https://example.com/android/sms/decideMyself/help",
-                "decideMyself": "https://example.com/android/sms/decideMyself/zelf-title",
-                "customTitle": "https://example.com/android/sms/decideMyself/custom-title"
+                "help": "shortcuts/helpMailAndroid.flo",
+                "decideMyself": "shortcuts/helpMailAndroid.flo",
+                "customTitle": "shortcuts/helpMailAndroid.flo"
             },
             "customContact": {
-                "help": "https://example.com/android/sms/customContact/help",
-                "decideMyself": "https://example.com/android/sms/customContact/zelf-title",
-                "customTitle": "https://example.com/android/sms/customContact/custom-title"
+                "help": "shortcuts/helpMailAndroid.flo",
+                "decideMyself": "shortcuts/helpMailAndroid.flo",
+                "customTitle": "shortcuts/helpMailAndroid.flo"
             }
         },
         "email": {
             "decideMyself": {
-                "help": "https://example.com/android/email/decideMyself/help",
-                "decideMyself": "https://example.com/android/email/decideMyself/zelf-title",
-                "customTitle": "https://example.com/android/email/decideMyself/custom-title"
+                "help": "shortcuts/helpMailAndroid.flo",
+                "decideMyself": "shortcuts/helpMailAndroid.flo",
+                "customTitle": "shortcuts/helpMailAndroid.flo"
             },
             "customContact": {
-                "help": "https://example.com/android/email/customContact/help",
-                "decideMyself": "https://example.com/android/email/customContact/zelf-title",
-                "customTitle": "https://example.com/android/email/customContact/custom-title"
+                "help": "shortcuts/helpMailAndroid.flo",
+                "decideMyself": "shortcuts/helpMailAndroid.flo",
+                "customTitle": "shortcuts/helpMailAndroid.flo"
             }
         },
         "gmail": {
             "decideMyself": {
-                "help": "https://example.com/android/gmail/decideMyself/help",
-                "decideMyself": "https://example.com/android/gmail/decideMyself/zelf-title",
-                "customTitle": "https://example.com/android/gmail/decideMyself/custom-title"
+                "help": "shortcuts/helpMailAndroid.flo",
+                "decideMyself": "shortcuts/helpMailAndroid.flo",
+                "customTitle": "shortcuts/helpMailAndroid.flo"
             },
             "customContact": {
-                "help": "https://example.com/android/gmail/customContact/help",
-                "decideMyself": "https://example.com/android/gmail/customContact/zelf-title",
-                "customTitle": "https://example.com/android/gmail/customContact/custom-title"
+                "help": "shortcuts/helpMailAndroid.flo",
+                "decideMyself": "shortcuts/helpMailAndroid.flo",
+                "customTitle": "shortcuts/helpMailAndroid.flo"
             }
         }
     },

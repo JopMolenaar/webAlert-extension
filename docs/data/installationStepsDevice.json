@@ -133,8 +133,7 @@
             },
             {
                 "description": "Open uw gegenereerde bestand, deze knop opent een popup die u deze laat toevoegen in de Automate app.",
-                "image": "step1.png",
-                "download": true
+                "image": "step1.png"
             },
             {
                 "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",

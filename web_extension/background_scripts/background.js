@@ -198,6 +198,23 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         let isOld = false;
         if(response.veiligInternetten.date !== "Onbekend"){
             const currentDate = new Date();
+
+            // replace Dutch month names with English equivalents
+            response.veiligInternetten.date = response.veiligInternetten.date.replace(
+                /\b(maart|mei|juni|juli|augustus|oktober)\b/gi,
+                (match) => {
+                    const months = {
+                        maart: "March",
+                        mei: "May",
+                        juni: "June",
+                        juli: "July",
+                        augustus: "August",
+                        oktober: "October",
+                    };
+                    return months[match.toLowerCase()];
+                }
+            );
+            
             const responseDate = new Date(response.veiligInternetten.date);
             const fiveMonthsAgo = new Date();
             fiveMonthsAgo.setMonth(currentDate.getMonth() - 5);

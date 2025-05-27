@@ -68,7 +68,7 @@ const rules = [
     {
         condition: r => r.v.matched && r.p.matched,
         status: "success",
-        message: "Betrouwbaar bevonden door beide bronnen"
+        message: "Betrouwbaar bevonden door beide bronnen."
     },
     {
         condition: r => r.v.unknown && r.p.matched,

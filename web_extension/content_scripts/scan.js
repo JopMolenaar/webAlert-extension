@@ -79,7 +79,7 @@ const rules = [
     {
         condition: r => r.v.matched && r.p.matched,
         status: "success",
-        message: "Betrouwbaar bevonden door beide bronnen"
+        message: "Betrouwbaar bevonden door beide bronnen."
     },
     {
         condition: r => r.v.unknown && r.p.matched,
@@ -94,12 +94,12 @@ const rules = [
     {
         condition: r => r.v.matched && r.p.unknown,
         status: "success",
-        message: "Veilig bevonden door Veilig Internetten"
+        message: "Veilig bevonden door Veilig Internetten."
     },
     {
         condition: r => r.v.danger || r.p.danger,
         status: "danger",
-        message: "Mogelijk onbetrouwbaar bevonden door minimaal een van beide bronnen"
+        message: "Mogelijk onbetrouwbaar bevonden door minimaal een van beide bronnen."
     },
     {
         condition: r => true, // Default fallback

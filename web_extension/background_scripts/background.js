@@ -115,7 +115,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }
 
         chrome.storage.local.get("helpInput", (result) => {
-            const receiver = result.helpInput || ""; // Default to empty string if not set
+            let receiver = result.helpInput || ""; // Default to empty string if not set
+
+            // Check if the receiver is an email or phone number
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phoneRegex = /^06\d{8}$/; // Dutch phone number format starting with 06
+
+            if (!emailRegex.test(receiver) && !phoneRegex.test(receiver)) {
+                receiver = "";
+                // TODO GEEF MELDING DAT HET NIET KAN
+            }
 
             if (!receiver) {
                 console.error("❌ No receiver email address found in storage");
@@ -154,7 +163,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 mailContent +
                 `Als u mij z.s.m. een berichtje wilt sturen over wat u denkt over wat ik moet doen zou dit heel fijn zijn.\n\n Groetjes!`
             );
-            const mailtoUrl = `mailto:${receiver}?subject=${subject}&body=${body}`;
+
+            const mailOrSms = emailRegex.test(receiver) ? "mailto" : (phoneRegex.test(receiver) ? "sms" : "mailto");
+
+            const mailtoUrl = `${mailOrSms}:${receiver}?subject=${subject}&body=${body}`;
 
             chrome.tabs.create({ url: mailtoUrl }, () => {
                 console.log("📬 Mail client opened with safety check results");

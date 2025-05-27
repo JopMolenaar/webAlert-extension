@@ -1,6 +1,9 @@
 #output {
     padding: 0.5em;
 }
+p.placeholder {
+    margin-bottom: 0;
+}
 .endText {
     margin-top: 2em;
     ol {
@@ -55,6 +58,32 @@
         /* Odd */
         li:nth-of-type(2n+1) { 
             background-color: var(--color-background-light);
+        }
+    }
+}
+
+
+@media (max-width: 60em) {
+    .endText {
+        ol {
+            li {
+               grid-template-columns: auto 1fr;
+            }
+        }
+    }
+}
+
+@media (max-width: 40em) {
+    .endText {
+        ol {
+            li {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                img, img.logo {
+                    align-self: start;
+                }
+            }
         }
     }
 }

@@ -60,6 +60,8 @@ button, a.btn-primary {
     background-color: var(--color-blue);
     color: var(--color-white);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: nowrap;
     &:hover:not(:disabled) {
         background-color: var(--color-light-blue);
         color: var(--color-black);

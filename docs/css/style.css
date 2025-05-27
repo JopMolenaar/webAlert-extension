@@ -137,10 +137,14 @@ footer {
     background-color: var(--color-border-grey);
     padding: 1rem;
     display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
     ul {
         list-style: none;
         display: flex;
         gap: 1em;
+        flex-wrap: wrap;
+        padding: 0;
         li a {
             color: black;
             transition: 150ms;

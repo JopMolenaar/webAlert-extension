@@ -164,7 +164,7 @@ async function getSteps(platform) {
         if(step.download){
           console.log("download the link or file in this step", step);
         }
-        
+
         li.appendChild(p);
         li.appendChild(img);
         ol.appendChild(li);
@@ -246,8 +246,7 @@ const middleLine = progressMeter.querySelector('.middle-line span');
 function updateProgress(step) {
   spans.forEach((span, index) => {
     if (index < step) {
-      //       const percentage = step === 1 ? 0 : 10 + (step - 2) * 20; // Start at 0% for step 1, then add 10% after the first step and increment by 20% for each subsequent step
-      const percentage = 10 + (step - 1) * 20; // Start at 10% and increment by 20% for each step
+      const percentage = step === 1 ? 0 : 10 + (step - 1) * 20; 
       middleLine.style.width = `${percentage}%`;
       span.classList.add("active");
     } else {

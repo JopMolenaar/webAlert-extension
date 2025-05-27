@@ -151,7 +151,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     `De bron Veilig Internetten kon niet worden gebruikt voor deze website. De resultaten of het malware, phishing of een KvK nummer bevat zijn onbekend.`;
             }
 
-            console.log("📋 Preparing safety check results email");
+            // console.log("📋 Preparing safety check results email");
 
             // Open mail client with safety check results
             const subject = encodeURIComponent(`Help! Is dit phishing? Ik twijfel over: ${domain}`);
@@ -169,7 +169,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             const mailtoUrl = `${mailOrSms}:${receiver}?subject=${subject}&body=${body}`;
 
             chrome.tabs.create({ url: mailtoUrl }, () => {
-                console.log("📬 Mail client opened with safety check results");
+                // console.log("📬 Mail client opened with safety check results");
                 sendResponse({ success: true });
             });
         });
@@ -294,7 +294,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 chrome.storage.local.set({
                     [domain]: result
                 }, () => {
-                    console.log(`Re-saved ${domain} result to storage with updated logDate.`);
+                    // console.log(`Re-saved ${domain} result to storage with updated logDate.`);
                     sendResponse({ success: true, result: result });
                 });
             }
@@ -369,7 +369,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (message.type === "getInputEnabled") {
             chrome.storage.local.get("inputEnabled", (result) => {
                 const value = result.inputEnabled || false; // Default to false if not set
-                console.log("ℹ️ Input enabled state retrieved:", value);
+                // console.log("ℹ️ Input enabled state retrieved:", value);
                 sendResponse({ success: true, value });
             });
             return true;
@@ -378,7 +378,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (message.type === "getHelpInput") {
             chrome.storage.local.get("helpInput", (result) => {
                 const value = result.helpInput || ""; // Default to empty string if not set
-                console.log("ℹ️ Help input value retrieved:", value);
+                // console.log("ℹ️ Help input value retrieved:", value);
                 sendResponse({ success: true, value });
             });
             return true;
@@ -387,7 +387,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (message.type === "getHelpName") {
             chrome.storage.local.get("helpName", (result) => {
                 const value = result.helpName || ""; // Default to empty string if not set
-                console.log("ℹ️ Help name value retrieved:", value);
+                // console.log("ℹ️ Help name value retrieved:", value);
                 sendResponse({ success: true, value });
             });
             return true;

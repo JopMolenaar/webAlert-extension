@@ -132,7 +132,7 @@
                 "logo": true
             },
             {
-                "description": "Open uw gegenereerde bestand, deze knop opent een popup die u deze laat toevoegen in de Automate app.",
+                "description": "Open uw gegenereerde bestand helemaal onderaan de pagina, deze knop opent een popup die u deze laat toevoegen in de Automate app.",
                 "image": "step1.png"
             },
             {
@@ -161,39 +161,43 @@
                 "image": "storyboard.png",
                 "big": true
             }
-
         ],
         "dutch": [
             {
-                "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is: download hem dan via de App Store:",
-                "link": "https://apps.apple.com/nl/app/opdrachten/id1462947752",
-                "image": "shortcutAppLogoIos.png",
+                "description": "Zorg ervoor dat de Automate-app is geïnstalleerd. Deze staat niet standaard op uw apparaat, download hem als u hem nog niet heeft via de Play Store",
+                "link": "https://play.google.com/store/apps/details?id=com.llamalab.automate",
+                "image": "automateLogo.png",
                 "logo": true
             },
             {
-                "description": "Als u op de knop onderaan deze pagina drukt, wordt u doorgeschakeld naar de opdrachten app. U ziet hier een blauwe knop 'Voeg opdracht toe'. Klik hierop. Dit zorgt ervoor dat hij wordt toegevoegd aan uw app.",
-                "image": "addShortcut.jpeg"
+                "description": "Open uw gegenereerde bestand helemaal onderaan de pagina, deze knop opent een popup die u deze laat toevoegen in de Automate app.",
+                "image": "step1.png"
             },
             {
-                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm.",
-                "image": "settingsAppLogo.png",
+                "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
+                "image": "step3.png"
+            },
+            {
+                "description": "Op deze pagina drukt u nu weer op de blauwe knop, alleen heeft deze nu een plusje erin staan. Dit opent weer een nieuwe pagina.",
+                "image": "step4.png"
+            },
+            {
+                "description": "Op deze pagina klikt u nu op de omcircelde knop, 'INSTALL HOME SCREEN SHORTCUT'. Dit voegt een icoon toe aan uw home pagina van uw telefoon. Deze actie geeft twee popups die worden beschreven in stap 6.",
+                "image": "step5.png"
+            },
+            {
+                "description": "Hier links zie je de twee popups die je te zien krijgt. Klik op 'OK' en 'Toevoegen' (beide omcirkelt in de afbeelding hier links). Na deze acties krijgt u een korte melding met een donkere achtergrond te zien. Dit betekend dat hij ergens op je home scherm tussen andere apps staat.",
+                "image": "step6.png"
+            },
+            {
+                "description": "De knop ziet er zo uit (zie de afbeelding links). U kunt deze verplaatsen als u wilt door hem lang ingedrukt te houden en te slepen met uw vinger waar u hem wilt hebben.",
+                "image": "step7.png",
                 "logo": true
             },
             {
-                "description": "In de instellingen app, ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > en scroll helemaal naar beneden en kies de naam van de snelkoppeling die u zojuist heeft geïnstalleerd [Naam toevoegen].",
-                "image": "settingsFlow.png"
-            },
-            {
-                "description": "Als de naam achter 'Driemaal tikken' staat is het gelukt. Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
-                "image": "ticksBehind.png"
-            },
-            {
-                "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunt u twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe'.",
-                "image": "privacyBtns.jpg"
-            },
-            {
-                "description": "Het werkt nu! U heeft automatisch een bericht klaarstaan dat u in staat  Gefeliciteerd! Als u ooit hulp nodig heeft als u het even niet meer weet, kunt u nu altijd hulp vragen door drie keer op de achterkant van uw telefoon te tikken. Dit kan een paar seconden duren.",
-                "image": "final.jpg"
+                "description": "Hoe de actie werkt om makkelijker hulp te vragen:",
+                "image": "storyboard.png",
+                "big": true
             }
         ]
     },

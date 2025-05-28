@@ -8,6 +8,12 @@ body main {
     gap: 4em;
     margin-bottom: 4em;
     justify-content: center;
+
+    /* TODO MAKE NICE ANIMATIONS WHEN THINGS CHANGE ON THE PAGE */
+    /* - LOGBOEK ITEMS SLOWLY FADE IN, one at the time */
+    /* Zelfde geldt voor het inrenderen van de stappen op de website */
+    /* Hover dialog dat de after iets kantelt, en de onderste lijn iets naar beneden gaat */
+    /* Icoontjes subtiel toevoegen voor betere uitstraling */
     
     .explDomain {
         max-width: 44em;

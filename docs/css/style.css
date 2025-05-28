@@ -83,15 +83,19 @@ button, a.btn-primary {
 header {
     /* display: flex;
     justify-content: center; */
-    padding-block: 2em;
+    padding-top: 1em;
+    padding-bottom: 0.6em;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     div {
         /* max-width: var(--standard-content-width);
         width: 100%; */
         padding-inline: var(--standard-inline-padding);
-        h1 {
+        /* h1 {
             font-size: 1.3em;
             margin: 0;
+        } */
+        img {
+            height: 2.5em;
         }
     }
 }

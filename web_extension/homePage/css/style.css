@@ -62,20 +62,23 @@ body {
     background-color: var(--color-status);
     font-size: 1.1rem;
     margin: 0;
-    gap: 5rem;
+    gap: 5em;
     display: flex;
     flex-direction: column;
 
-    header nav {
-        padding: 2rem;
-        button {
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            svg {
-                order: -1;
+    header {
+        padding: 2em;
+        padding-left: 10vw;
+        nav {
+            button {
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                svg {
+                    order: -1;
+                }
             }
-        }
+        } 
     }
 }
 
@@ -88,7 +91,7 @@ button, a.btn-primary {
     border-radius: 3px;
     font-size: 1em;
     transition: 150ms ease-in-out;
-    border-radius: 0.5rem;
+    border-radius: 0.5em;
     text-decoration: none;
     background-color: var(--color-white);
     &:hover:not(:disabled) {
@@ -120,20 +123,51 @@ button, a.btn-primary {
     }
 }
 
-.explExtension {
-    details {
-        border-bottom: solid 1px black;
-        border-top: solid 1px black;
-        padding: 1rem;
-        margin-block: 0.75rem;
+/* Details styling */
+details {
+    padding-block: 0.5em;
+    transition: 0.2s linear;
+    width: 96%;
+    background: #e3e3e3;
+    border-radius: 5px;
+    & summary {
+        transition: color 1s;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        font-weight: bold;
+        overflow-x: hidden;
+        border-radius: 5px;
+        color: #30353b;
+        &:hover {
+            cursor: pointer;
+        }
+        &::-webkit-details-marker {
+            display: none;
+        }
+        &::after {
+            content: '';
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid #15171b;
+            border-inline: 7px solid transparent;
+            transition: 0.2s;
+        } 
     }
-}
-
-.settings {
-    p {
-        margin: 0;
-    }
-    input {
-        margin-block: 0.5rem;
+    & > div {
+        padding: 10px 15px;
+        overflow-x: hidden;
+        .highlight-wa20250624 {
+            font-weight: 600;
+        }
+    } 
+}         
+details[open] > summary {
+    border-bottom: 2px solid #525252;
+    border-radius: 5px 5px 0 0;
+    &::after {
+        transform: rotate(-180deg);
     }
 }

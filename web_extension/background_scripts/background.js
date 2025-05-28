@@ -200,7 +200,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             const currentDate = new Date();
 
             // replace Dutch month names with English equivalents
-            response.veiligInternetten.date = response.veiligInternetten.date.replace(
+            const date = response.veiligInternetten.date.replace(
                 /\b(maart|mei|juni|juli|augustus|oktober)\b/gi,
                 (match) => {
                     const months = {
@@ -215,7 +215,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 }
             );
             
-            const responseDate = new Date(response.veiligInternetten.date);
+            const responseDate = new Date(date);
             const fiveMonthsAgo = new Date();
             fiveMonthsAgo.setMonth(currentDate.getMonth() - 5);
             isOld = responseDate < fiveMonthsAgo;

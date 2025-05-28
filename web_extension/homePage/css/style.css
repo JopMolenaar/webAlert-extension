@@ -52,6 +52,7 @@
     --color-background-light: rgb(246, 244, 255);
 
     --color-status: var(--color-background-light);
+    --color-status-text: black;
     /* --color-status: var(--color-success); */
     /* --color-status: var(--color-warning); */
     /* --color-status: var(--color-danger); */

@@ -23,6 +23,9 @@ body main {
         h2, ul {
             margin: 0;
         }
+        h2 strong {
+            color: var(--color-status-text);
+        }
         .highlighted-section-wa20250624 {
             margin-bottom: 1em;
         }

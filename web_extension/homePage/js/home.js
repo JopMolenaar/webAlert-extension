@@ -64,18 +64,18 @@ function addExtraInfo(data) {
         
         if(data.status === "success" || data.status === "warning"){
             // change the text of the button
-            const changeAdviceBtn = document.querySelector("#changeAdviceBtn span");
-            data.status === "success" ? changeAdviceBtn.classList.remove("success") : changeAdviceBtn.classList.add("success");
-            data.status === "warning" ? changeAdviceBtn.classList.remove("warning") : changeAdviceBtn.classList.add("warning");
-            changeAdviceBtn.textContent = changeAdviceBtn.classList.contains("warning") ? "Waarschuwing" : "Veilig";
+            const warningTextContent = 'Wel zeker? Zet dit advies op <span class="success">Veilig</span> voor extra zekerheid';
+            const changeAdviceBtn = document.querySelector("#changeAdviceBtn");
+            data.status === "warning" ? changeAdviceBtn.innerHTML = warningTextContent : null;
         }
 
         const colorStatus = data.status === "success" 
-            ? "var(--color-success)" 
+            ? "var(--color-success" 
             : data.status === "warning" 
-            ? "var(--color-warning)" 
-            : "var(--color-danger)";
-        document.documentElement.style.setProperty('--color-status', colorStatus);
+            ? "var(--color-warning" 
+            : "var(--color-danger";
+        document.documentElement.style.setProperty('--color-status', `${colorStatus})`);
+        document.documentElement.style.setProperty('--color-status-text', `${colorStatus}-text)`);
     });
 
     if(data.status === "danger"){
@@ -98,19 +98,25 @@ backBtn.addEventListener("click", (e) => {
 
 const adviceBtn = document.querySelector("#changeAdviceBtn")
 adviceBtn.addEventListener("click", () => {
-    adviceBtn.querySelector("span").classList.toggle("warning");
-    adviceBtn.querySelector("span").classList.toggle("success");
-    adviceBtn.querySelector("span").textContent = adviceBtn.querySelector("span").classList.contains("warning") ? "Waarschuwing" : "Veilig";
-    const status = adviceBtn.querySelector("span").classList.contains("warning") ? "success" : "warning";
+
+    const succesTextContent = 'Niet zeker? Zet dit advies op <span class="warning">Waarschuwing</span> voor de zekerheid';
+    const warningTextContent = 'Wel zeker? Zet dit advies op <span class="success">Veilig</span> voor extra zekerheid';
+    const span = adviceBtn.querySelector("span")    
+    span.classList.contains("warning") ? adviceBtn.innerHTML = warningTextContent :  adviceBtn.innerHTML = succesTextContent;
+    const status = span.classList.contains("warning") ? "warning" : "success";
+    
 
     chrome.runtime.sendMessage({ type: "changeStatus", status: status, domain: domainParam}, (response) => {
         if (response && response.success) {
             if (response.result.originalStatus !== response.result.status) {
                 changeTextChangeStatus(response.result.status);
             } else {
-                document.querySelector(".explDomain div:nth-of-type(2) p:nth-of-type(2)").remove();
+                if(document.querySelector(".explDomain div:nth-of-type(2) p:nth-of-type(2)")){
+                    document.querySelector(".explDomain div:nth-of-type(2) p:nth-of-type(2)").remove();
+                }
             }
             document.documentElement.style.setProperty('--color-status', response.result.status === "success" ? "var(--color-success)" : "var(--color-warning)");
+            document.documentElement.style.setProperty('--color-status-text', response.result.status === "success" ? "var(--color-success-text)" : "var(--color-warning-text)");
 
             // TODO CHANGE STATUS IN LOGBOEK
         } else {

@@ -231,6 +231,8 @@ async function getStoredData(domain) {
 }
 
 function getRootDomain(hostname) {
+    console.log("hostname", hostname);
+    
     const parts = hostname.split('.');
     if (parts.length <= 2 || /^[0-9.]+$/.test(hostname) || hostname === 'localhost') {
       return hostname;

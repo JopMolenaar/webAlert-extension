@@ -12,6 +12,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     //     });
     // }
 
+    // TODO geen data gevonden, geef waarschuwing
+    // TODO check hele url zonder http of https, dus wel met subdomeinen
+
     if (message.action === "closeActiveTab") {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
           if (tabs.length > 0) {
@@ -137,7 +140,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             if (safetyCheckResult.veiligInternetten.date) {
                 const kvkStatus = safetyCheckResult.veiligInternetten.kvkStatus
                     ? "Geregistreerd"
-                    : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen.)";
+                    : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen. Dit kunt u negeren als de website niet van een nederlands bedrijf is.)";
                 const trustScore = safetyCheckResult.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
 
                 mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}.\n` +

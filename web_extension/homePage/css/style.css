@@ -94,6 +94,8 @@ button, a.btn-primary {
     border-radius: 0.5em;
     text-decoration: none;
     background-color: var(--color-white);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
     &:hover:not(:disabled) {
         cursor: pointer;
     }

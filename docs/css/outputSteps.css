@@ -85,3 +85,8 @@ p.placeholder {
         }
     }
 }
+@media (max-width: 30em) {
+    .endText ol li img {
+        max-width: 100%;
+    }
+}

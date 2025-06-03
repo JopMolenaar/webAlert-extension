@@ -64,6 +64,9 @@ function enableButton(selector) {
   const btn = document.querySelector(selector);
   btn.removeAttribute("disabled");
   btn.style.opacity = "1";
+
+  // Scroll to the button using the target mechanism
+  btn.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 // Handle form submission
@@ -199,6 +202,8 @@ function showCurrentQuestion() {
   backBtn.disabled = questionIndex === 1;
 
   document.querySelector(`#question${questionIndex}`).style.display = "flex";
+
+  questionIndex !== 1 ? window.scrollTo({ top: 0, behavior: "smooth" }) : null;
 }
 
 // Handle next button click
@@ -229,9 +234,11 @@ const radioBtnWho = document.querySelector("#who2");
 
 inputWho.addEventListener("input", () => {  
   document.querySelector("button[type='submit']").disabled = false; // Disable the submit button initially
+  document.querySelector("button[type='submit']").scrollIntoView({ behavior: "smooth", block: "center" });
 });
 radioBtnWho.addEventListener("click", () => {  
   document.querySelector("button[type='submit']").disabled = false; // Disable the submit button initially
+  document.querySelector("button[type='submit']").scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
 const resetButton = document.querySelector("#reset")

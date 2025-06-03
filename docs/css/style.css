@@ -95,7 +95,7 @@ header {
             margin: 0;
         } */
         img {
-            height: 2.5em;
+            height: 1.5em;
         }
     }
 }
@@ -159,9 +159,12 @@ footer {
 }
 
 @media (min-width: 40em) {
-   main section {
-        font-size: 1.2em;
-   }
+    header div img{
+        height: 2.5em;
+    }
+    main section {
+            font-size: 1.2em;
+    }
 }
 @media (min-width: 60em) {
     main section {

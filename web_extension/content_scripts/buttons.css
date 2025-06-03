@@ -25,13 +25,13 @@
             div {
                 display: flex;
                 flex-direction: column;
-                margin-bottom: 3rem;
+                margin-bottom: 3em;
             }
             button {
                 width: fit-content;
-                padding: 0.5rem;
+                padding: 0.5em;
                 background-color: black;
-                border-radius: 0.5rem;
+                border-radius: 0.5em;
                 color: white;
                 transition: 200ms;
                 &:hover {
@@ -53,9 +53,9 @@
                     background: none;
                     color: var(--color-text);
                     text-decoration: underline;
-                    text-underline-offset: 0.1rem;
+                    text-underline-offset: 0.1em;
                     margin: 0;
-                    margin-top: 2rem;
+                    margin-top: 2em;
                     padding: 0;
                     &:hover {
                         text-decoration: none;
@@ -68,8 +68,8 @@
             }
             #moveWebExtensionButton-wa20250624 {
                 position: absolute;
-                bottom: 1rem;
-                left: 2.8rem;
+                bottom: 1em;
+                left: 2.8em;
             }
             
             /* Let the important button bounce */
@@ -81,9 +81,9 @@
         > div:nth-of-type(2) {
             button {
                 color: rgb(0, 0, 0) !important;
-                padding: 0.5rem !important;
+                padding: 0.5em !important;
                 border-bottom: solid black 1px; 
-                width: 1rem;
+                width: 1em;
                 height: 1em;
                 aspect-ratio: 1 !important;
                 transform: rotate(-90deg) translateY(-50%);

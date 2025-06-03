@@ -60,7 +60,7 @@
 
 /* body and header */
 body {
-    background-color: var(--color-status);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-status) 50%, white 50%) 0px, rgba(255, 255, 255, 1) 55em);
     font-size: 1.1rem;
     margin: 0;
     gap: 5em;

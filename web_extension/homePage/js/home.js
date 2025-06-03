@@ -74,7 +74,7 @@ function addExtraInfo(data) {
             : data.status === "warning" 
             ? "var(--color-warning" 
             : "var(--color-danger";
-        document.documentElement.style.setProperty('--color-status', `${colorStatus})`);
+        document.documentElement.style.setProperty('--color-status', `${colorStatus}-text)`);
         document.documentElement.style.setProperty('--color-status-text', `${colorStatus}-text)`);
     });
 
@@ -115,7 +115,7 @@ adviceBtn.addEventListener("click", () => {
                     document.querySelector(".explDomain div:nth-of-type(2) p:nth-of-type(2)").remove();
                 }
             }
-            document.documentElement.style.setProperty('--color-status', response.result.status === "success" ? "var(--color-success)" : "var(--color-warning)");
+            document.documentElement.style.setProperty('--color-status', response.result.status === "success" ? "var(--color-success-text)" : "var(--color-warning-text)");
             document.documentElement.style.setProperty('--color-status-text', response.result.status === "success" ? "var(--color-success-text)" : "var(--color-warning-text)");
 
             // TODO CHANGE STATUS IN LOGBOEK

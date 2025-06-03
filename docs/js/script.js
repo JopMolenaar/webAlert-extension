@@ -234,6 +234,11 @@ radioBtnWho.addEventListener("click", () => {
   document.querySelector("button[type='submit']").disabled = false; // Disable the submit button initially
 });
 
+const resetButton = document.querySelector("#reset")
+resetButton.addEventListener("click", (e) => {
+  location.reload();
+});
+
 
 const progressMeter = document.querySelector('.progress-meter');
 const spans = progressMeter.querySelectorAll('span:not(.middle-line)');

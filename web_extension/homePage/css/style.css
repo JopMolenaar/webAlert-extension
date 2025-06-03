@@ -80,6 +80,13 @@ body {
                 }
             }
         } 
+        img {
+            height: 2.4em;
+            position: absolute;
+            align-self: start;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }
 

@@ -158,7 +158,7 @@ body {
     z-index: 99999999999999999;
     color: white;
     border-radius: 5px 0px 0px 5px;
-    padding: 1em 0.5em 1em 1em;
+    padding: 1em;
     transform: translateX(88%);
     transition: 0.3s ease-out;
 
@@ -219,7 +219,7 @@ body {
         right: auto;
         transform: translateX(-88%);
         border-radius: 0px 5px 5px 0px;
-        padding: 1em 1em 1em 0.5em;
+        padding: 1em;
         > div > div:nth-of-type(2) {
             order: 1;
        
@@ -236,7 +236,7 @@ body {
             }
         }
         #moveWebExtensionButton-wa20250624 {
-            left: 0.5em !important;
+            left: 1em !important;
         }
     }
 }

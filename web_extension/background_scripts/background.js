@@ -12,8 +12,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     //     });
     // }
 
-    // TODO check hele url zonder http of https, dus wel met subdomeinen
-
     if (message.action === "closeActiveTab") {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
           if (tabs.length > 0) {
@@ -105,8 +103,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         return true;
     }
 
-    // TODO ook via sms?
-    // const smstoUrl = `sms:?subject=${subject}&body=${body}`; werkt ook gewoon. Maar er wordt wel gevraagd om messages te openen
     if (message.type === "sendSafetyCheckResultsToMail") {
         const { domain, safetyCheckResult } = message;
 
@@ -125,7 +121,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
             if (!emailRegex.test(receiver) && !phoneRegex.test(receiver)) {
                 receiver = "";
-                // TODO GEEF MELDING DAT HET NIET KAN
             }
 
 
@@ -342,51 +337,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // }
 
 // TODO maak dit korter
-        if (message.type === "updateInputEnabled") {
-            chrome.storage.local.set({ inputEnabled: message.value }, () => {
-                sendResponse({ success: true });
-            });
-            return true;
-        }
+        const storageActions = {
+            updateInputEnabled: () => chrome.storage.local.set({ inputEnabled: message.value }, () => sendResponse({ success: true })),
+            updateHelpInput: () => chrome.storage.local.set({ helpInput: message.value }, () => sendResponse({ success: true })),
+            updateHelpName: () => chrome.storage.local.set({ helpName: message.value }, () => sendResponse({ success: true })),
+            getInputEnabled: () => chrome.storage.local.get("inputEnabled", (result) => sendResponse({ success: true, value: result.inputEnabled || false })),
+            getHelpInput: () => chrome.storage.local.get("helpInput", (result) => sendResponse({ success: true, value: result.helpInput || "" })),
+            getHelpName: () => chrome.storage.local.get("helpName", (result) => sendResponse({ success: true, value: result.helpName || "" })),
+        };
 
-        if (message.type === "updateHelpInput") {
-            chrome.storage.local.set({ helpInput: message.value }, () => {
-                sendResponse({ success: true });
-            });
-            return true;
-        }
-
-        if (message.type === "updateHelpName") {
-            chrome.storage.local.set({ helpName: message.value }, () => {
-                sendResponse({ success: true });
-            });
-            return true;
-        }
-
-        if (message.type === "getInputEnabled") {
-            chrome.storage.local.get("inputEnabled", (result) => {
-                const value = result.inputEnabled || false; // Default to false if not set
-                // console.log("ℹ️ Input enabled state retrieved:", value);
-                sendResponse({ success: true, value });
-            });
-            return true;
-        }
-
-        if (message.type === "getHelpInput") {
-            chrome.storage.local.get("helpInput", (result) => {
-                const value = result.helpInput || ""; // Default to empty string if not set
-                // console.log("ℹ️ Help input value retrieved:", value);
-                sendResponse({ success: true, value });
-            });
-            return true;
-        }
-
-        if (message.type === "getHelpName") {
-            chrome.storage.local.get("helpName", (result) => {
-                const value = result.helpName || ""; // Default to empty string if not set
-                // console.log("ℹ️ Help name value retrieved:", value);
-                sendResponse({ success: true, value });
-            });
+        if (storageActions[message.type]) {
+            storageActions[message.type]();
             return true;
         }
 });

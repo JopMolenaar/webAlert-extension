@@ -12,6 +12,7 @@ helpInput.addEventListener("blur", (e) => {
             statusDiv.remove();
         }
         chrome.runtime.sendMessage({ type: "updateHelpInput", value });
+        return
     }
     const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || /^\d{10}$/.test(value); // Validate email or exactly 10-digit number
 

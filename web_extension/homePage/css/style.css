@@ -113,6 +113,9 @@ button, a.btn-primary {
     &:active {
         scale: 0.97;
     }
+    &:focus {
+        background-color: rgb(248, 255, 53);
+    }
 }
 .btn-primary {
     background-color: var(--color-blue);

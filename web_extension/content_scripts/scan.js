@@ -245,7 +245,6 @@ function getRootDomain(hostname) {
 // update this
 async function checkSafetyDomain(source, wrapper) {
     const response = await new Promise((resolve) => {
-        //  TODO check full url voor beter advies, anders geeft het geen goed advies over bijvoorbeeld een github project
         chrome.runtime.sendMessage({ type: source, url: domain }, (response) => {
             if(source === "checkVeiliginternetten") {
                 const html =  cleanDom(response.rawHtml);
@@ -497,7 +496,7 @@ function addFont() {
     document.head.appendChild(fontStylesheet);
 }
 
-// todo
+// TODO check content on the page, forms, payment, links to another domain
 function checkWebContents() {
     const forms = document.body.querySelectorAll("form");
     // console.log("Found forms:", forms);

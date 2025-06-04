@@ -336,18 +336,17 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     //     return true;
     // }
 
-// TODO maak dit korter
-        const storageActions = {
-            updateInputEnabled: () => chrome.storage.local.set({ inputEnabled: message.value }, () => sendResponse({ success: true })),
-            updateHelpInput: () => chrome.storage.local.set({ helpInput: message.value }, () => sendResponse({ success: true })),
-            updateHelpName: () => chrome.storage.local.set({ helpName: message.value }, () => sendResponse({ success: true })),
-            getInputEnabled: () => chrome.storage.local.get("inputEnabled", (result) => sendResponse({ success: true, value: result.inputEnabled || false })),
-            getHelpInput: () => chrome.storage.local.get("helpInput", (result) => sendResponse({ success: true, value: result.helpInput || "" })),
-            getHelpName: () => chrome.storage.local.get("helpName", (result) => sendResponse({ success: true, value: result.helpName || "" })),
-        };
+    const storageActions = {
+        updateInputEnabled: () => chrome.storage.local.set({ inputEnabled: message.value }, () => sendResponse({ success: true })),
+        updateHelpInput: () => chrome.storage.local.set({ helpInput: message.value }, () => sendResponse({ success: true })),
+        updateHelpName: () => chrome.storage.local.set({ helpName: message.value }, () => sendResponse({ success: true })),
+        getInputEnabled: () => chrome.storage.local.get("inputEnabled", (result) => sendResponse({ success: true, value: result.inputEnabled || false })),
+        getHelpInput: () => chrome.storage.local.get("helpInput", (result) => sendResponse({ success: true, value: result.helpInput || "" })),
+        getHelpName: () => chrome.storage.local.get("helpName", (result) => sendResponse({ success: true, value: result.helpName || "" })),
+    };
 
-        if (storageActions[message.type]) {
-            storageActions[message.type]();
-            return true;
-        }
+    if (storageActions[message.type]) {
+        storageActions[message.type]();
+        return true;
+    }
 });

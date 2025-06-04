@@ -130,7 +130,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 const kvkStatus = safetyCheckResult.veiligInternetten.kvkStatus
                     ? "Geregistreerd"
                     : "Niet geregistreerd (als u dingen koopt op deze website kan het lastiger zijn om uw geld terug te krijgen. Dit kunt u negeren als de website niet van een nederlands bedrijf is.)";
-                const trustScore = safetyCheckResult.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim();
+                const trustScore = safetyCheckResult.veiligInternetten.Scamadviser.includes("(volledig rapport") ? safetyCheckResult.veiligInternetten.Scamadviser.split("(volledig rapport")[0].trim(): safetyCheckResult.veiligInternetten.Scamadviser;
 
                 mailContent = `Bericht vanuit WebAlert: ${safetyCheckResult.message}.\n` +
                     `${safetyCheckResult.veiligInternetten.date}\n` +

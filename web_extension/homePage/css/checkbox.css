@@ -134,6 +134,7 @@
         flex-direction: column;
         gap: 0.2em;
         width: 100%;
+        position: relative;
     }
     & *, *:after, *:before {
         box-sizing: border-box;
@@ -246,6 +247,20 @@
             font-size: 1em;
             color: var(--color-black);
         }
+    }
+
+    div.feedback {
+        position: absolute;
+        top: 32%;
+        left: 1em;
+        font-size: 1rem;
+        color: red;
+    }
+    & .valid {
+        border-color: green;
+    }
+    & .invalid {
+        border-color: red;
     }
     & input[type="text"], input[type="email"], input[type="tel"] {
         width: 100%;

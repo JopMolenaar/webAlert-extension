@@ -135,6 +135,7 @@ function getLink(linkMap, device, app, who, title) {
   return link;
 }
 
+// Fetch the steps matching the answers from the form.
 async function getSteps(platform) {
     try {
       const res = await fetch("data/installationStepsDevice.json");
@@ -226,27 +227,31 @@ function updateQuestionIndex(delta) {
   showCurrentQuestion();
 }
 
-
-// TODO maak mooier
-document.querySelector("button[type='submit']").disabled = true; // Disable the submit button initially
 const inputWho = document.querySelector("#who1");
 const radioBtnWho = document.querySelector("#who2");
+const submitBtn = document.querySelector("button[type='submit']");
+submitBtn.disabled = true; // Disable the submit button initially
+
+// Separate target function to help the user find the next action
+function targetSubmitButton() {
+  submitBtn.disabled = false;
+  submitBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+}
 
 inputWho.addEventListener("input", () => {  
-  document.querySelector("button[type='submit']").disabled = false; // Disable the submit button initially
-  document.querySelector("button[type='submit']").scrollIntoView({ behavior: "smooth", block: "center" });
+  targetSubmitButton()
 });
 radioBtnWho.addEventListener("click", () => {  
-  document.querySelector("button[type='submit']").disabled = false; // Disable the submit button initially
-  document.querySelector("button[type='submit']").scrollIntoView({ behavior: "smooth", block: "center" });
+  targetSubmitButton()
 });
 
+// Reset the form and start over
 const resetButton = document.querySelector("#reset")
 resetButton.addEventListener("click", (e) => {
   location.reload();
 });
 
-
+// Update the progress in the progress bar
 const progressMeter = document.querySelector('.progress-meter');
 const spans = progressMeter.querySelectorAll('span:not(.middle-line)');
 const middleLine = progressMeter.querySelector('.middle-line span');

@@ -55,7 +55,6 @@ async function injectUI() {
     // const dangerousContent = checkWebContents();
     // if(dangerousContent){
     //     console.log("Pas op! Er zijn verdachte elementen op deze pagina gevonden.");
-    //     // TODO markeer de elementen die verdacht zijn
     // }
 }
 
@@ -368,7 +367,7 @@ function getMonthDifference(dateString) {
     return null; // Als de datum niet goed is geparsed
 }
 
-// todo
+
 function checkWebContents() {
     const forms = document.body.querySelectorAll("form");
     // console.log("Found forms:", forms);

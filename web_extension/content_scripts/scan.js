@@ -1,5 +1,6 @@
 const hostname = window.location.hostname;
-const domain = getRootDomain(hostname);
+// const domain = getRootDomain(hostname);
+const domain = hostname;
 
 // Class and Id specifier in order to have no matching classes with the website it gets add to
 const classSpecifier = "-wa20250624";
@@ -10,9 +11,6 @@ async function injectUI() {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = html;
     wrapper.setAttribute("id", `webAlertDiv${classSpecifier}`);
-
-    // wrapper.querySelector("#visualStatus").innerHTML =  await fetch(chrome.runtime.getURL(`icons/loading.svg`)).then(r => r.text());
-    // wrapper.querySelector("#visualStatus").classList.add("loading");
 
     addFont();
 
@@ -71,6 +69,11 @@ async function injectUI() {
 }
 
 const rules = [
+    {
+        condition: r => r.v.monthsDifference === "Onbekend" && r.v.matched && r.p.matched && !r.v.kvkStatus,
+        status: "warning",
+        message: "We weten niet wanneer deze website is gemaakt, wees voorzichtig."
+    },
     {
         condition: r => r.v.monthsDifference < 3 && r.v.matched && r.p.matched && !r.v.kvkStatus,
         status: "warning",
@@ -135,12 +138,10 @@ async function getAndStoreSafetyDomain(wrapper) {
         const responseVeiligInternetten = await checkSafetyDomain("checkVeiliginternetten", wrapper);
         const responsePolitie = await checkSafetyDomain("politieControleerHandelspartij", wrapper);
 
-        if (responseVeiligInternetten.error || responsePolitie.error) {
+        if (responseVeiligInternetten.error || (responsePolitie.error && responseVeiligInternetten.error)) {
             console.error(responseVeiligInternetten.error || responsePolitie.error);
             if(responseVeiligInternetten.error){
                 responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens van Veilig Internetten.";
-            } else if (responsePolitie.error){
-                responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens van de Politie.";
             } else {
                 responseMessage = "Er is een fout opgetreden bij het ophalen van de gegevens.";
             }
@@ -432,6 +433,10 @@ function getWebsiteResults(doc) {
 
 
 function getMonthDifference(dateString) {
+    console.log("date string", dateString);
+    if(dateString.includes("onbekend")){
+        return "Onbekend"
+    }
     // Maanden vertalen van Nederlandse maand naar numerieke waarde
     const monthMap = {
         'januari': 0,

@@ -12,7 +12,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     //     });
     // }
 
-    // TODO geen data gevonden, geef waarschuwing
     // TODO check hele url zonder http of https, dus wel met subdomeinen
 
     if (message.action === "closeActiveTab") {

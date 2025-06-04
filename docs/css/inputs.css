@@ -15,6 +15,18 @@
             height: 3em;
             object-fit: contain;
         }
+        &.macbook-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            svg:nth-of-type(1) {
+                width: 1.4em;
+                height: 1.4em;
+            }
+            svg:nth-of-type(2) {
+                width: 4em;
+            }
+        }
     }
 
     & .checkbox-input {

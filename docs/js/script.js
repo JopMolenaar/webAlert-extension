@@ -122,7 +122,12 @@ function getLink(linkMap, device, app, who, title) {
   if (!device) throw new Error("Geen apparaat geselecteerd.");
   if (!app) throw new Error("Geen app geselecteerd.");
 
-  const platform = device === "iphone" ? "ios" : ["samsung", "huawei", "oppo", "onePlus"].includes(device) ? "android" : "windows";
+  const platform = device === "iphone" ? "ios" 
+                  : ["samsung", "huawei", "oppo", "onePlus"].includes(device) ? "android" 
+                  : device === "mac" ? "macOs" 
+                  : "windows";
+
+                  
   const whoType = who.includes("decideMyself") ? "decideMyself" : who.length > 0 ? "customContact" : null;
   if (!whoType) throw new Error("Geen ontvanger gekozen of ingevuld.");
 

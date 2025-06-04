@@ -19,6 +19,14 @@ helpInput.addEventListener("blur", (e) => {
         chrome.runtime.sendMessage({ type: "updateHelpInput", value }, (response) => {
             helpInput.classList.remove("invalid");
             helpInput.classList.add("valid");
+
+            const inputFeedback = document.createElement("img");
+            inputFeedback.src = "../icons/success.svg";
+            inputFeedback.classList.add("feedback");
+
+            if (!helpInput.parentNode.querySelector("div.feedback")) {
+                helpInput.parentNode.appendChild(inputFeedback);
+            }
             
             const statusDiv = helpInput.parentNode.querySelector("div.feedback");
             if(statusDiv){
@@ -28,6 +36,7 @@ helpInput.addEventListener("blur", (e) => {
             // Remove feedback after a few seconds
             setTimeout(() => {
                 helpInput.classList.remove("valid");
+                inputFeedback.remove();
 
             }, 7000);
         });

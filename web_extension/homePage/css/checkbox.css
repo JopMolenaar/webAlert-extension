@@ -256,6 +256,13 @@
         font-size: 1rem;
         color: red;
     }
+    img.feedback {
+        position: absolute;
+        top: 35%;
+        right: 0.2em;
+        width: 2em;
+        height: 2em;
+    }
     & .valid {
         border-color: green;
     }

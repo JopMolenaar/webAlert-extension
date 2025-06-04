@@ -55,6 +55,9 @@ button, a.btn-primary {
     &:active {
         scale: 0.97
     }
+    &:focus-visible {
+        scale: 1.05;
+    }
 }
 .btn-primary {
     background-color: var(--color-blue);
@@ -66,14 +69,18 @@ button, a.btn-primary {
         background-color: var(--color-light-blue);
         color: var(--color-black);
     }
+    &:focus-visible {
+        background-color: rgb(113, 40, 121);
+    }
 }
 
 .btn-secondary {
     background-color: var(--color-white);
     color: var(--color-black);
     border: solid 2px var(--color-blue);
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled), &:focus-visible {
         background-color: var(--color-light-blue);
+        outline-width: medium;
     }
 }
 

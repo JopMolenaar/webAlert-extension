@@ -43,6 +43,7 @@ async function injectUI() {
     });
 
     getAndStoreSafetyDomain(wrapper);
+    checkFocus(wrapper);
    
     const moveBtn = document.body.querySelector(`#moveWebExtensionButton${classSpecifier}`);
     let left = false;
@@ -227,6 +228,19 @@ async function getStoredData(domain) {
             } else {
                 resolve(result[domain] ?? null); // return value OR null if undefined
             }
+        });
+    });
+}
+
+// Open the extension when the user focus in it
+function checkFocus(wrapper) {
+    const buttons = wrapper.querySelectorAll("button");
+    buttons.forEach(btn => {
+        btn.addEventListener('focusin', () => {
+            wrapper.classList.add(`open${classSpecifier}`);
+        });
+        btn.addEventListener('focusout', () => {
+            wrapper.classList.remove(`open${classSpecifier}`);
         });
     });
 }

@@ -34,7 +34,7 @@
                 border-radius: 0.5em;
                 color: white;
                 transition: 200ms;
-                &:hover {
+                &:hover, &:focus-visible {
                     background-color: var(--color-status-btn-hvr);
                     cursor: pointer;
                 }
@@ -43,7 +43,7 @@
                     background: none;
                     border: solid 1px var(--color-text);
                     color: var(--color-text);
-                    &:hover {
+                    &:hover, &:focus-visible {
                         border: solid 1px  var(--color-status-btn-hvr);
                         background-color: none;
                     }
@@ -57,10 +57,15 @@
                     margin: 0;
                     margin-top: 2em;
                     padding: 0;
-                    &:hover {
+                    &:hover, &:focus-visible {
                         text-decoration: none;
                         cursor: pointer;
                     }
+                }
+                &:focus-visible {
+                    outline-width: medium;
+                    outline-color: rgb(0, 38, 255);
+                    outline-style: auto;
                 }
                 &.hidden-wa20250624 {
                     display: none;
@@ -94,10 +99,13 @@
                 text-align: center !important;
                 border-radius: 50% !important;
                 transition: all 0.2s ease-in-out !important;
-                &:hover {
+                &:hover, &:focus-visible {
                     color: black !important;
                     scale: 1.1;
                     cursor: pointer !important;
+                }
+                &:focus-visible {
+                    outline-style: auto;
                 }
             }
         }

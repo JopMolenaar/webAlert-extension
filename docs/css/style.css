@@ -137,7 +137,7 @@ main {
 }
 
 footer {
-    background-color: var(--color-border-grey);
+    background-color: var(--color-background-light);
     padding: 1em;
     display: flex;
     flex-wrap: wrap;
@@ -148,12 +148,19 @@ footer {
         gap: 1em;
         flex-wrap: wrap;
         padding: 0;
-        li a {
+        li a, li button {
+            background: none;
+            color: var(--color-text);
+            text-decoration: underline;
+            text-underline-offset: 0.1em;
+            margin: 0;
+            padding: 0;
+            &:hover {
+                text-decoration: none;
+                cursor: pointer;
+            }
             color: black;
             transition: 150ms;
-            &:hover {
-                color: var(--color-blue);
-            }
         }
     }
 }

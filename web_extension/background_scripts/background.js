@@ -129,11 +129,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 // TODO GEEF MELDING DAT HET NIET KAN
             }
 
-            if (!receiver) {
-                console.error("❌ No receiver email address found in storage");
-                sendResponse({ success: false, error: "No receiver email address found" });
-                return;
-            }
 
             let mailContent = "";
 

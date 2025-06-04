@@ -403,13 +403,13 @@ function getWebsiteKvk(doc) {
 function getWebsiteResults(doc) {
     console.log(doc);
     
-    let content = doc.querySelectorAll(`.w-check-content${classSpecifier}`);
+    let content = doc.querySelectorAll(`.w-check-content`);
     if(content === null){
         console.log("No content found, probably on downtime");
         return
     }
     content.forEach((ele) => {
-        if (ele.classList.contains(`w-check-content${classSpecifier}`) && ele.classList.length === 1) {
+        if (ele.classList.contains(`w-check-content`) && ele.classList.length === 1) {
             content = ele;
         }
     });

@@ -159,7 +159,7 @@ body {
     color: white;
     border-radius: 5px 0px 0px 5px;
     padding: 1em;
-    transform: translateX(88%);
+    transform: translateX(89%);
     transition: 0.3s ease-out;
 
     &.open-wa20250624 {
@@ -217,7 +217,7 @@ body {
     &.left-wa20250624 {
         left: 0.125em;
         right: auto;
-        transform: translateX(-88%);
+        transform: translateX(-89%);
         border-radius: 0px 5px 5px 0px;
         padding: 1em;
         > div > div:nth-of-type(2) {

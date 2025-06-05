@@ -1,7 +1,13 @@
 const helpInput = document.querySelector("#helpInput");
+let storedInput;
 
 helpInput.addEventListener("blur", (e) => {
     const value = e.target.value;
+
+    if(storedInput === value) {
+        return
+    }
+    storedInput = value;
 
     if (value === ""){
         helpInput.classList.remove("valid");
@@ -39,7 +45,7 @@ helpInput.addEventListener("blur", (e) => {
                 helpInput.classList.remove("valid");
                 inputFeedback.remove();
 
-            }, 7000);
+            }, 6000);
         });
     } else {
             helpInput.classList.remove("valid");
@@ -58,8 +64,12 @@ helpInput.addEventListener("blur", (e) => {
 });
 helpInput.addEventListener("click", (e) => {
     const statusDiv = helpInput.parentNode.querySelector("div.feedback");
+    const statusImg = helpInput.parentNode.querySelector("img.feedback");
     if(statusDiv){
         statusDiv.remove();
+    }
+    if(statusImg){
+        statusImg.remove();
     }
 })
 
@@ -72,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (response && response.success) {
             console.log("ℹ️ Help input value on load:", response.value);
             document.querySelector("#helpInput").value = response.value;
+            storedInput = response.value;
         } else {
             console.error("❌ Failed to retrieve help input value.");
         }

@@ -8,6 +8,8 @@
     --color-border-grey: #b5bfd9;
     --color-background-light: rgb(246, 244, 255);
     --color-background-light2: rgb(244, 249, 255);
+    --color-focus-btn-primary: rgb(113, 40, 121);
+    --color-focus-btn-secondary: rgb(248, 255, 53);
     /* --color-background-button: rgb(237, 233, 255); */
     --standard-inline-padding: 1em;
     --standard-content-width: 43em;
@@ -70,7 +72,7 @@ button, a.btn-primary {
         color: var(--color-black);
     }
     &:focus-visible {
-        background-color: rgb(113, 40, 121);
+        background-color: var(--color-focus-btn-primary);
     }
 }
 
@@ -78,12 +80,14 @@ button, a.btn-primary {
     background-color: var(--color-white);
     color: var(--color-black);
     border: solid 2px var(--color-blue);
-    &:hover:not(:disabled), &:focus-visible {
+    &:hover:not(:disabled) {
         background-color: var(--color-light-blue);
+    }
+    &:focus-visible {
         outline-width: medium;
+        background-color: var(--color-focus-btn-secondary);
     }
 }
-
 
 
 /* main elements on the page */
@@ -162,6 +166,7 @@ footer {
             text-underline-offset: 0.1em;
             margin: 0;
             padding: 0;
+            border-radius: 0px;
             &:hover {
                 text-decoration: none;
                 cursor: pointer;

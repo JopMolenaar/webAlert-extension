@@ -46,6 +46,12 @@
         &:focus + .checkbox-tile {
             border-color: var(--color-blue);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px var(--color-light-blue);
+            background-color: var(--color-focus-btn-secondary);
+        }
+        &:focus:checked + .checkbox-tile {
+            border-color: var(--color-blue);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px var(--color-light-blue);
+            background-color: var(--color-focus-btn-secondary);
         }
 
         &:checked + .checkbox-tile {
@@ -125,6 +131,9 @@
         & .checkbox-label {
             font-size: 1em;
             color: var(--color-black);
+        }
+        &:focus {
+            background-color: var(--color-focus-btn-secondary);
         }
     }
     & input[type="text"], input[type="email"], input[type="tel"] {

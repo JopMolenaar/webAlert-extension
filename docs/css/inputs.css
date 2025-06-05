@@ -39,16 +39,16 @@
         white-space: nowrap;
         width: 1px;
 
-        &:focus + :before {
+        &:focus-visible + :before {
             transform: scale(1);
             opacity: 1;
         }        
-        &:focus + .checkbox-tile {
+        &:focus-visible + .checkbox-tile {
             border-color: var(--color-blue);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px var(--color-light-blue);
             background-color: var(--color-focus-btn-secondary);
         }
-        &:focus:checked + .checkbox-tile {
+        &:focus-visible:checked + .checkbox-tile {
             border-color: var(--color-blue);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px var(--color-light-blue);
             background-color: var(--color-focus-btn-secondary);
@@ -132,7 +132,7 @@
             font-size: 1em;
             color: var(--color-black);
         }
-        &:focus {
+        &:focus-visible {
             background-color: var(--color-focus-btn-secondary);
         }
     }

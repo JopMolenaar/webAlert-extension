@@ -102,50 +102,50 @@
     "android": {
         "whatsapp": {
             "decideMyself": {
-                "help": "shortcuts/helpMailAndroid.flo",
-                "decideMyself": "shortcuts/helpMailAndroid.flo",
-                "customTitle": "shortcuts/helpMailAndroid.flo"
+                "help": "shortcuts/helpMailAndroidLeeg.flo",
+                "decideMyself": "shortcuts/helpMailAndroidLeeg.flo",
+                "customTitle": "shortcuts/helpMailAndroidLeeg.flo"
             },
             "customContact": {
-                "help": "shortcuts/helpMailAndroid.flo",
-                "decideMyself": "shortcuts/helpMailAndroid.flo",
-                "customTitle": "shortcuts/helpMailAndroid.flo"
+                "help": "shortcuts/helpMailAndroidLeeg.flo",
+                "decideMyself": "shortcuts/helpMailAndroidLeeg.flo",
+                "customTitle": "shortcuts/helpMailAndroidLeeg.flo"
             }
         },
         "sms": {
             "decideMyself": {
-                "help": "shortcuts/helpMailAndroid.flo",
-                "decideMyself": "shortcuts/helpMailAndroid.flo",
-                "customTitle": "shortcuts/helpMailAndroid.flo"
+                "help": "shortcuts/helpMailAndroidLeeg.flo",
+                "decideMyself": "shortcuts/helpMailAndroidLeeg.flo",
+                "customTitle": "shortcuts/helpMailAndroidLeeg.flo"
             },
             "customContact": {
-                "help": "shortcuts/helpMailAndroid.flo",
-                "decideMyself": "shortcuts/helpMailAndroid.flo",
-                "customTitle": "shortcuts/helpMailAndroid.flo"
+                "help": "shortcuts/helpMailAndroidLeeg.flo",
+                "decideMyself": "shortcuts/helpMailAndroidLeeg.flo",
+                "customTitle": "shortcuts/helpMailAndroidLeeg.flo"
             }
         },
         "email": {
             "decideMyself": {
-                "help": "shortcuts/helpMailAndroid.flo",
-                "decideMyself": "shortcuts/helpMailAndroid.flo",
-                "customTitle": "shortcuts/helpMailAndroid.flo"
+                "help": "shortcuts/helpMailAndroidLeeg.flo",
+                "decideMyself": "shortcuts/helpMailAndroidLeeg.flo",
+                "customTitle": "shortcuts/helpMailAndroidLeeg.flo"
             },
             "customContact": {
-                "help": "shortcuts/helpMailAndroid.flo",
-                "decideMyself": "shortcuts/helpMailAndroid.flo",
-                "customTitle": "shortcuts/helpMailAndroid.flo"
+                "help": "shortcuts/helpMailAndroidLeeg.flo",
+                "decideMyself": "shortcuts/helpMailAndroidLeeg.flo",
+                "customTitle": "shortcuts/helpMailAndroidLeeg.flo"
             }
         },
         "gmail": {
             "decideMyself": {
-                "help": "shortcuts/helpMailAndroid.flo",
-                "decideMyself": "shortcuts/helpMailAndroid.flo",
-                "customTitle": "shortcuts/helpMailAndroid.flo"
+                "help": "shortcuts/helpMailAndroidLeeg.flo",
+                "decideMyself": "shortcuts/helpMailAndroidLeeg.flo",
+                "customTitle": "shortcuts/helpMailAndroidLeeg.flo"
             },
             "customContact": {
-                "help": "shortcuts/helpMailAndroid.flo",
-                "decideMyself": "shortcuts/helpMailAndroid.flo",
-                "customTitle": "shortcuts/helpMailAndroid.flo"
+                "help": "shortcuts/helpMailAndroidLeeg.flo",
+                "decideMyself": "shortcuts/helpMailAndroidLeeg.flo",
+                "customTitle": "shortcuts/helpMailAndroidLeeg.flo"
             }
         }
     },

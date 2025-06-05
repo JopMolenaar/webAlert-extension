@@ -20,6 +20,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 400; /* 100 - 900 */
     font-style: normal;
+    font-display: swap;
     margin: 0;
 }
 
@@ -107,6 +108,7 @@ header {
         } */
         img {
             height: 1.5em;
+            aspect-ratio: 5 / 1;
         }
     }
 }

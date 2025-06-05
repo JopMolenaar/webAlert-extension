@@ -101,11 +101,13 @@
                 "logo": true
             },
             {
+                "mainStep": "Druk op de blauwe knop hierboven en klik vervolgens op 'Voeg opdracht toe' in de opdrachten app.",
                 "description": "Als u op de knop in stap 2 drukt wordt u doorgeschakeld naar de opdrachten app. U ziet hier een blauwe knop 'Voeg opdracht toe'. Klik hierop. Dit zorgt ervoor dat hij wordt toegevoegd aan uw app.",
                 "image": "addShortcut.jpeg"
             },
             {
-                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm.",
+                "mainStep": "Ga naar uw homescherm, en open de instellingen app.",
+                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm en ziet er ongeveer als het plaatje hiernaast uit.",
                 "image": "settingsAppLogo.png",
                 "logo": true
             },
@@ -114,10 +116,12 @@
                 "image": "settingsFlow.png"
             },
             {
+                "mainStep": "Om te testen of het werkt kunt u drie keer tikken achter op uw mobiel waardoor er een popup opent zoals in stap 7. Dit kan een paar seconden duren.",
                 "description": "Als de naam achter 'Driemaal tikken' staat is het gelukt. Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
                 "image": "ticksBehind.png"
             },
             {
+                "mainStep": "U krijgt twee meldingen die gaan over privacy, klik twee keer op 'sta altijd toe', of 'always allow'.",
                 "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunt u twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe'.",
                 "image": "privacyBtns.jpg"
             },
@@ -144,25 +148,41 @@
                 "image": "step2.png"
             },
             {
+                "mainStep": "Klik op de blauwe knop rechts onder in het scherm, en klik vervolgens op het witte knopje dat verschijnt boven de blauwe knop.",
                 "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
                 "image": "step3.png"
             },
             {
+                "mainStep": "Klik op het bovenste grijze vlak.",
                 "description": "Op deze pagina drukt u op het boventste grijze vlak. Dit opent een nieuwe pagina waar je een knop krijgt om het hulpmiddel tussen uw andere apps te plaatsen.",
                 "image": "step4.png"
             },
             {
+                "mainStep": "Klik op 'Intsall home screen shortcut'.",
                 "description": "Op deze pagina klikt u nu op de omcircelde knop, 'INSTALL HOME SCREEN SHORTCUT'. Dit voegt een icoon toe aan uw home pagina van uw telefoon. Deze actie geeft twee popups die worden beschreven in stap 6.",
                 "image": "step5.png"
             },
             {
+                "mainStep": "Klik op 'OK' en 'Toevoegen' in de opkomende popups.",
                 "description": "Hier links zie je de twee popups die je te zien krijgt. Klik op 'OK' en 'Toevoegen' (beide omcirkelt in de afbeelding hier links). Na deze acties krijgt u een korte melding met een donkere achtergrond te zien. Dit betekend dat hij ergens op je home scherm tussen andere apps staat.",
                 "image": "step6.png"
             },
             {
-                "description": "De knop ziet er zo uit (zie de afbeelding links). U kunt deze verplaatsen als u wilt door hem lang ingedrukt te houden en te slepen met uw vinger waar u hem wilt hebben.",
+                "description": "Deze knop (links) verschijnt op uw homescherm tussen uw andere apps.",
                 "image": "step7.png",
                 "logo": true
+            },
+            {
+                "description": "Nu gaan we het testen. Als u hulp wilt vragen klikt u op deze knop, navigeer naar het beeldscherm waarover u twijfelt en leg de telefoon neer op iets rechts.",
+                "image": "step8.png"
+            },
+            {
+                "description": "Dit opent een melding, klik op 'Toestaan'",
+                "image": "step9.png"
+            },
+            {
+                "description": "Nu is de mail geopent met een afbeelding en een titel, u hoeft alleen nog op verzenden te drukken om hulp te vragen via de mail",
+                "image": "step10.png"
             }
         ],
         "dutch": [
@@ -181,23 +201,42 @@
                 "image": "step2.png"
             },
             {
+                "mainStep": "Klik op de blauwe knop rechts onder in het scherm, en klik vervolgens op het witte knopje dat verschijnt boven de blauwe knop.",
                 "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
                 "image": "step3.png"
             },
             {
+                "mainStep": "Klik op het bovenste grijze vlak.",
                 "description": "Op deze pagina drukt u op het boventste grijze vlak. Dit opent een nieuwe pagina waar je een knop krijgt om het hulpmiddel tussen uw andere apps te plaatsen.",
                 "image": "step4.png"
             },
             {
+                "mainStep": "Klik op 'Intsall home screen shortcut'.",
                 "description": "Op deze pagina klikt u nu op de omcircelde knop, 'INSTALL HOME SCREEN SHORTCUT'. Dit voegt een icoon toe aan uw home pagina van uw telefoon. Deze actie geeft twee popups die worden beschreven in stap 6.",
                 "image": "step5.png"
             },
             {
+                "mainStep": "Klik op 'OK' en 'Toevoegen' in de opkomende popups.",
                 "description": "Hier links zie je de twee popups die je te zien krijgt. Klik op 'OK' en 'Toevoegen' (beide omcirkelt in de afbeelding hier links). Na deze acties krijgt u een korte melding met een donkere achtergrond te zien. Dit betekend dat hij ergens op je home scherm tussen andere apps staat.",
                 "image": "step6.png"
             },
             {
-                "description": "De knop ziet er zo uit (zie de afbeelding links). U kunt deze verplaatsen als u wilt door hem lang ingedrukt te houden en te slepen met uw vinger waar u hem wilt hebben.",
+                "description": "Deze knop (links) verschijnt op uw homescherm tussen uw andere apps.",
+                "image": "step7.png",
+                "logo": true
+            },
+            {
+                "description": "Nu gaan we het testen. Als u hulp wilt vragen klikt u op deze knop, navigeer naar het beeldscherm waarover u twijfelt en leg de telefoon neer op iets rechts.",
+                "image": "step8.png",
+                "logo": true
+            },
+            {
+                "description": "Dit opent een melding, klik op 'Toestaan'",
+                "image": "step7.png",
+                "logo": true
+            },
+            {
+                "description": "Nu is de mail geopent met een afbeelding en een titel, u hoeft alleen nog op verzenden te drukken om hulp te vragen via de mail",
                 "image": "step7.png",
                 "logo": true
             }

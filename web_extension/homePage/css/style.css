@@ -68,6 +68,11 @@ body {
     display: flex;
     flex-direction: column;
 
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* 100 - 900 */
+    font-style: normal;
+
     header {
         background-color: white;
         padding-top: 1em;

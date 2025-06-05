@@ -31,7 +31,7 @@
                 width: fit-content;
                 padding: 0.5em;
                 background-color: black;
-                border-radius: 0.5em;
+                border-radius: var(--border-r);
                 color: white;
                 transition: 200ms;
                 &:hover, &:focus-visible {

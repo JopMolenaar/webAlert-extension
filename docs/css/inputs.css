@@ -79,7 +79,7 @@
         justify-content: center;
         width: 7em;
         min-height: 7em;
-        border-radius: 0.5em;
+        border-radius: var(--border-r);
         border: 2px solid var(--color-border-grey);
         background-color: var(--color-white);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);

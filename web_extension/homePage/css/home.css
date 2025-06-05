@@ -1,14 +1,5 @@
 
 body main {
-    display: grid;
-    grid-template-rows: 33em 1fr;
-    grid-template-columns: 3fr 2fr;
-    padding-left: 10vw;
-    padding-right: 2em;
-    gap: 4em;
-    margin-bottom: 4em;
-    justify-content: center;
-
     /* TODO MAKE NICE ANIMATIONS WHEN THINGS CHANGE ON THE PAGE */
     /* - LOGBOEK ITEMS SLOWLY FADE IN, one at the time */
     /* Zelfde geldt voor het inrenderen van de stappen op de website */
@@ -16,16 +7,18 @@ body main {
     /* Icoontjes subtiel toevoegen voor betere uitstraling */
     
     .explDomain {
-        gap: 2em;
+        /* gap: 2em; */
         max-width: 44em;
         padding: 1.5em;
-        border-radius: 5px;
+        border-radius: var(--border-r);
         background-color: white; 
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         min-height: 31em;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        grid-column: 1/2;
+        grid-row: 2/3;
 
         h2, ul {
             margin: 0;
@@ -76,15 +69,14 @@ body main {
     & > div {
         max-width: 44em;
         grid-column: 2/3;
-        grid-row: 1/3;
+        grid-row: 2/4;
         min-height: 31em;
         justify-content: space-between;
-        gap: 0.8em;
         display: flex;
         flex-direction: column;
         height: fit-content;
         padding: 1.5em;
-        border-radius: 5px;
+        border-radius: var(--border-r);
         background-color: white; 
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -100,7 +92,7 @@ body main {
                 margin: 0;
             }
             input {
-                margin-block: 0.5em;
+                margin-top: 0.5em;
             }
             > div {
                 margin-top: 1.5em;
@@ -143,9 +135,10 @@ body main {
     }
 
     .explExtension {
+        margin-top: 3em;
         max-width: 44em;
         grid-column: 1/2;
-        grid-row: 2/3;
+        grid-row: 3/4;
         h2 {
             margin-top: 0;
         }
@@ -213,6 +206,9 @@ body main {
             & .explDomain {
                 order: -1;
                 min-height: 24em;
+            }
+            & nav {
+                order: -1;
             }
         }
     }

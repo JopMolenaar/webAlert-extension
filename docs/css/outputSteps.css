@@ -5,21 +5,20 @@ p.placeholder {
     margin-bottom: 0;
 }
 .endText {
-    margin-top: 2em;
+    margin-top: 1.5em;
     ol {
         margin-top: 2.5em;
-        gap: 1.5em;
+        gap: 1.2em;
         display: flex;
         flex-direction: column;
         padding-left: 0;
 
         li {
-            border-radius: 10px;
+            border-radius: var(--border-r);
             display: grid;
-            gap: 0.5em;
+            gap: 0.8em;
             grid-template-columns: 18em 1fr;
             grid-template-rows: fit-content 1fr;
-            gap: 1em;
             overflow: visible;
             position: relative;
             padding: 1em;

@@ -1,16 +1,28 @@
 
-#device, #app, #who, .title {
+#device, #app, #who {
     display: flex;
-    gap: 0.5em;
-    margin-top: 0.5em;
+    gap: 0.8em;
     flex-wrap: wrap;
+    & input, & input + span{
+        margin-top: 0.5em;
+    }
 }
+#device, #app {
+    gap: 0.5em;
+}
+
+
 #who, .title {
     flex-direction: column;
 }
 
 #formatWho {
     font-weight: 700;
+}
+
+.littleText {
+    font-size: 0.9em;
+    color: var(--color-grey);
 }
 
 .shortcutQuestions {
@@ -38,7 +50,7 @@
     & form, #output {
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         background-color: var(--color-background-light);
-        border-radius: 10px;
+        border-radius: var(--border-r);
         margin-top: 0.8em;
         display: flex;
         flex-direction: column;
@@ -59,10 +71,11 @@
             }
         }
         & .littleText {
-            font-size: 0.9em;
-            color: var(--color-grey);
             margin: 0;
-            margin-top: 0.5em;
+            margin-top: 0.2em;
+        }
+        #who + .littleText {
+            margin-top: 1.2em;
         }
         .btn-primary {
             margin-top: 0.3em;

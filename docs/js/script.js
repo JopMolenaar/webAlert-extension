@@ -156,7 +156,7 @@ async function getSteps(platform, link) {
         if(index === 1){
           fillOutputLink(link)
           const outputLi = document.createElement("li");
-          outputLi.dataset.index = "Stap: " + (index + 1) + ".";
+          outputLi.dataset.index = "Stap: " + (index + 1);
           Array.from(output.children).forEach((child) => {
             outputLi.appendChild(child.cloneNode(true));
           });
@@ -166,7 +166,7 @@ async function getSteps(platform, link) {
 
         const li = document.createElement("li");
         index = index > 0 ? index + 2 : index + 1;
-        li.dataset.index = "Stap: " + (index) + ".";
+        li.dataset.index = "Stap: " + (index);
 
         const p = document.createElement("p");
         p.textContent = step.description;

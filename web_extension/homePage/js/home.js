@@ -1,5 +1,5 @@
 const showHistory = document.querySelector("#watchHistory")
-const backBtn = document.querySelector("header nav button")
+const backBtn = document.querySelector("main nav button")
 const history = document.querySelector(".history")
 const settings = document.querySelector(".settings")
 

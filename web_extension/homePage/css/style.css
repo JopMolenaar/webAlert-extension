@@ -43,16 +43,17 @@
     --color-warning-text: rgb(189, 117, 0);
 
     --color-black: black;
-    --color-grey: grey;
+    --color-grey: #636363;
     --color-light-grey: #707070;
     --color-white: #fff;
     --color-blue: #2260ff;
     --color-light-blue: #cddbfd;
     --color-border-grey: #b5bfd9;
     --color-background-light: rgb(246, 244, 255);
-
+    --border-r: 0.3em;
     --color-status: var(--color-background-light);
     --color-status-text: black;
+    --standard-inline-padding: 1em;
     /* --color-status: var(--color-success); */
     /* --color-status: var(--color-warning); */
     /* --color-status: var(--color-danger); */
@@ -61,15 +62,38 @@
 /* body and header */
 body {
     background: linear-gradient(180deg, color-mix(in srgb, var(--color-status) 50%, white 50%) 0px, rgba(255, 255, 255, 1) 55em);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin: 0;
-    gap: 5em;
+    gap: 2em;
     display: flex;
     flex-direction: column;
 
     header {
-        padding: 2em;
+        background-color: white;
+        padding-top: 1em;
+        padding-bottom: 0.6em;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        div {
+            padding-inline: var(--standard-inline-padding);
+            img {
+                height: 1.5em;
+                aspect-ratio: 5 / 1;
+            }
+        }
+    }
+
+    main {
+        display: grid;
+        grid-template-rows: auto 34em 1fr;
+        grid-template-columns: 3fr 2fr;
         padding-left: 10vw;
+        padding-right: 2em;
+        gap: 2em;
+        margin-bottom: 4em;
+        justify-content: center;
+
+        max-width: 68em;
+        align-self: center;
         nav {
             button {
                 font-size: 1.2rem;
@@ -80,13 +104,6 @@ body {
                 }
             }
         } 
-        img {
-            height: 2.4em;
-            position: absolute;
-            align-self: start;
-            left: 50%;
-            transform: translateX(-50%);
-        }
     }
 }
 
@@ -96,10 +113,9 @@ button, a.btn-primary {
     border: none;
     text-align: center;
     width: fit-content;
-    border-radius: 3px;
+    border-radius: var(--border-r);
     font-size: 1em;
     transition: 150ms ease-in-out;
-    border-radius: 0.5em;
     text-decoration: none;
     background-color: var(--color-white);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -113,7 +129,7 @@ button, a.btn-primary {
     &:active {
         scale: 0.97;
     }
-    &:focus {
+    &:focus-visible {
         background-color: rgb(248, 255, 53);
     }
 }
@@ -142,7 +158,7 @@ details {
     transition: 0.2s linear;
     width: 96%;
     background: #e3e3e3;
-    border-radius: 5px;
+    border-radius: var(--border-r);
     & summary {
         transition: color 1s;
         list-style: none;
@@ -152,7 +168,7 @@ details {
         padding: 10px 15px;
         font-weight: bold;
         overflow-x: hidden;
-        border-radius: 5px;
+        border-radius: var(--border-r);
         color: #30353b;
         &:hover {
             cursor: pointer;
@@ -179,8 +195,14 @@ details {
 }         
 details[open] > summary {
     border-bottom: 2px solid #525252;
-    border-radius: 5px 5px 0 0;
+    border-radius: var(--border-r) var(--border-r) 0 0;
     &::after {
         transform: rotate(-180deg);
+    }
+}
+
+@media (min-width: 40em) {
+    body header div img{
+        height: 2em;
     }
 }

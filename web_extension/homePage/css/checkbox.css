@@ -67,7 +67,7 @@
             font-family: sans-serif;
             background: #ffffff;
             border: solid black 1px;
-            border-radius: 5px;
+            border-radius: var(--border-r);
 
             &:after,
             &:before {
@@ -160,11 +160,11 @@
         white-space: nowrap;
         width: 1px;
 
-        &:focus + :before {
+        &:focus-visible + :before {
             transform: scale(1);
             opacity: 1;
         }        
-        &:focus + .checkbox-tile {
+        &:focus-visible + .checkbox-tile {
             border-color: var(--color-blue);
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px var(--color-light-blue);
         }
@@ -194,7 +194,7 @@
         justify-content: center;
         min-width: 60%;
         min-height: 7em;
-        border-radius: 0.5em;
+        border-radius: var(--border-r);
         border: 2px solid var(--color-border-grey);
         background-color: var(--color-white);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);

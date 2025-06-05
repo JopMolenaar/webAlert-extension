@@ -157,7 +157,7 @@ body {
     translate: 0% -50%;
     z-index: 99999999999999999;
     color: white;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: var(--border-r) 0px 0px var(--border-r);
     padding: 1em;
     transform: translateX(89%);
     transition: 0.3s ease-out;
@@ -218,7 +218,7 @@ body {
         left: 0.125em;
         right: auto;
         transform: translateX(-89%);
-        border-radius: 0px 5px 5px 0px;
+        border-radius: 0px var(--border-r) var(--border-r) 0px;
         padding: 1em;
         > div > div:nth-of-type(2) {
             order: 1;

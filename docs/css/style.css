@@ -181,7 +181,7 @@ footer {
 
 @media (min-width: 40em) {
     header div img{
-        height: 2.5em;
+        height: 2em;
     }
     main section {
             font-size: 1.2em;

@@ -136,11 +136,15 @@
                 "image": "step1.png"
             },
             {
+                "description": "Zorg ervoor dat de eerste drie vakjes in de lijst zijn aangevinkt. Dit is nodig om het hulpmiddel te laten werken.",
+                "image": "step2.png"
+            },
+            {
                 "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
                 "image": "step3.png"
             },
             {
-                "description": "Op deze pagina drukt u nu weer op de blauwe knop, alleen heeft deze nu een plusje erin staan. Dit opent weer een nieuwe pagina.",
+                "description": "Op deze pagina drukt u op het boventste grijze vlak. Dit opent een nieuwe pagina waar je een knop krijgt om het hulpmiddel tussen uw andere apps te plaatsen.",
                 "image": "step4.png"
             },
             {
@@ -169,11 +173,15 @@
                 "image": "step1.png"
             },
             {
+                "description": "Zorg ervoor dat de eerste drie vakjes in de lijst zijn aangevinkt. Dit is nodig om het hulpmiddel te laten werken.",
+                "image": "step2.png"
+            },
+            {
                 "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
                 "image": "step3.png"
             },
             {
-                "description": "Op deze pagina drukt u nu weer op de blauwe knop, alleen heeft deze nu een plusje erin staan. Dit opent weer een nieuwe pagina.",
+                "description": "Op deze pagina drukt u op het boventste grijze vlak. Dit opent een nieuwe pagina waar je een knop krijgt om het hulpmiddel tussen uw andere apps te plaatsen.",
                 "image": "step4.png"
             },
             {
@@ -188,11 +196,6 @@
                 "description": "De knop ziet er zo uit (zie de afbeelding links). U kunt deze verplaatsen als u wilt door hem lang ingedrukt te houden en te slepen met uw vinger waar u hem wilt hebben.",
                 "image": "step7.png",
                 "logo": true
-            },
-            {
-                "description": "Hoe de actie werkt om makkelijker hulp te vragen:",
-                "image": "storyboard.png",
-                "big": true
             }
         ]
     },

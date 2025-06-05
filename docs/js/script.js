@@ -91,31 +91,31 @@ async function handleFormSubmission(event) {
     const linkMap = await res.json();
     const link = getLink(linkMap, device, app, who, title);
 
-    displayGeneratedLink(link);
+    // displayGeneratedLink(link);
   } catch (err) {
     alert("Er is een fout opgetreden: " + err.message);
   }
 }
 
-// Display the generated link
-function displayGeneratedLink(link) {
-  const a = document.createElement("a");
-  a.classList.add("btn-primary");
-  a.href = link;
-  a.target = "_blank";
-  a.textContent = "Voeg het hulpmiddel toe aan uw apparaat";
+// // Display the generated link
+// function displayGeneratedLink(link) {
+//   const a = document.createElement("a");
+//   a.classList.add("btn-primary");
+//   a.href = link;
+//   a.target = "_blank";
+//   a.textContent = "Voeg het hulpmiddel toe aan uw apparaat";
 
-  outputLink.textContent = "";
-  outputLink.appendChild(a);
-  updateProgress(4) 
-  // document.querySelector(".progress-meter").style.display = "none"
+//   outputLink.textContent = "";
+//   outputLink.appendChild(a);
+//   updateProgress(4) 
+//   // document.querySelector(".progress-meter").style.display = "none"
   
-  form.style.display = "none";
-  output.style.display = "flex";
-  nextStepsText.style.display = "block";
-  resetBtn.style.display = "inline";
-  questionIndex = 4;
-}
+//   form.style.display = "none";
+//   output.style.display = "flex";
+//   nextStepsText.style.display = "block";
+//   resetBtn.style.display = "inline";
+//   questionIndex = 4;
+// }
 
 // Determine the final link
 function getLink(linkMap, device, app, who, title) {
@@ -134,31 +134,46 @@ function getLink(linkMap, device, app, who, title) {
   const titleType = title === "help" ? "help" : "customTitle";
   const link = linkMap?.[platform]?.[app]?.[whoType]?.[titleType];
 
-  getSteps(platform);
+  getSteps(platform, link);
   if (!link) throw new Error("Geen geldige combinatie gevonden in shortcuts.json.");
 
   return link;
 }
 
 // Fetch the steps matching the answers from the form.
-async function getSteps(platform) {
+async function getSteps(platform, link) {
     try {
-      const res = await fetch("data/installationStepsDevice.json");
-      if (!res.ok) throw new Error("data/installationStepsDevice.json kon niet geladen worden.");
+        const res = await fetch("data/installationStepsDevice.json");
+        if (!res.ok) throw new Error("data/installationStepsDevice.json kon niet geladen worden.");
 
-      const data = await res.json();
-      const steps = data[platform].english;
+        const data = await res.json();
+        const steps = data[platform].english;
 
-      const ol = document.createElement("ol");
-      steps.forEach((step, index) => {
+        const ol = document.createElement("ol");
+        steps.forEach((step, index) => {
+
+        // Place the output link in step 2
+        if(index === 1){
+          fillOutputLink(link)
+          const outputLi = document.createElement("li");
+          outputLi.dataset.index = "Stap: " + (index + 1) + ".";
+          Array.from(output.children).forEach((child) => {
+            outputLi.appendChild(child.cloneNode(true));
+          });
+          ol.appendChild(outputLi);
+          output.remove()
+        }
+
         const li = document.createElement("li");
-        li.dataset.index = "Stap: " + (index + 1) + ".";
+        index = index > 0 ? index + 2 : index + 1;
+        li.dataset.index = "Stap: " + (index) + ".";
 
         const p = document.createElement("p");
         p.textContent = step.description;
 
         const img = document.createElement("img");   
         img.src = `images/${platform}Steps/${step.image}`;
+
         if(step.logo) img.classList.add("logo");
         // TODO ALT 
         if (step.link) {
@@ -181,6 +196,24 @@ async function getSteps(platform) {
     } catch (err) {
       alert("Er is een fout opgetreden (getSteps): " + err.message);
     }
+}
+
+function fillOutputLink(link) {
+   const a = document.createElement("a");
+   a.classList.add("btn-primary");
+   a.href = link;
+   a.target = "_blank";
+   a.textContent = "Voeg het hulpmiddel toe aan uw apparaat";
+
+   outputLink.textContent = "";
+   outputLink.appendChild(a);
+   updateProgress(4) 
+   
+   form.style.display = "none";
+   output.style.display = "flex";
+   nextStepsText.style.display = "block";
+   resetBtn.style.display = "inline";
+   questionIndex = 4;
 }
 
 // Show the current question

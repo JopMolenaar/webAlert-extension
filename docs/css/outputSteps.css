@@ -18,21 +18,36 @@ p.placeholder {
             display: grid;
             gap: 0.8em;
             grid-template-columns: 18em 1fr;
-            grid-template-rows: fit-content 1fr;
+            grid-template-rows: auto 1fr auto;
             overflow: visible;
             position: relative;
             padding: 1em;
             a {
                 width: fit-content;
             }
+            > div {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8em;
+            }
+            p {
+                margin: 0;
+                /* font-size: 1.6rem; */
+                /* Groter en dikker??? */
+            }
             img {
                 order: -1;
                 max-height: 20em;
                 max-width: 18em;
-                align-self: center;
                 width: auto;
                 object-fit: contain;
-                place-self: center;
+                justify-self: center;
+            }
+            details {
+                grid-column: 2 / 3;
+                summary {
+                    color: var(--color-grey);
+                }
             }
             img.logo {
                 max-height: 5em;

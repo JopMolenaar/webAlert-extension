@@ -168,26 +168,61 @@ async function getSteps(platform, link) {
         index = index > 0 ? index + 2 : index + 1;
         li.dataset.index = "Stap: " + (index);
 
-        const p = document.createElement("p");
-        p.textContent = step.description;
+        if(step.mainStep) {
+          const details = document.createElement("details");
+          const sum = document.createElement("summary");
+          const detailsContent = document.createElement("p");
+          const div = document.createElement("div");
+          const p = document.createElement("p");
+          sum.textContent = "Meer informatie";
+          detailsContent.textContent = step.description;
+          p.textContent = step.mainStep;
 
-        const img = document.createElement("img");   
-        img.src = `images/${platform}Steps/${step.image}`;
+          const img = document.createElement("img");   
+          img.src = `images/${platform}Steps/${step.image}`;
+  
+          if(step.logo) img.classList.add("logo");
+          // TODO ALT 
+          if (step.link) {
+              const a = document.createElement("a");
+              a.href = step.link;
+              a.target = "_blank";
+              a.textContent = "hier.";
+              p.appendChild(document.createTextNode(" "));
+              p.appendChild(a);
+          }
 
-        if(step.logo) img.classList.add("logo");
-        // TODO ALT 
-        if (step.link) {
-            const a = document.createElement("a");
-            a.href = step.link;
-            a.target = "_blank";
-            a.textContent = "hier.";
-            p.appendChild(document.createTextNode(" "));
-            p.appendChild(a);
+          details.appendChild(sum)
+          details.appendChild(detailsContent)
+          // p.appendChild(details)
+          div.appendChild(p);
+          div.appendChild(details);
+          li.appendChild(div);
+          li.appendChild(img);
+          ol.appendChild(li);
+        } else {
+
+          const p = document.createElement("p");
+          p.textContent = step.description;
+  
+          const img = document.createElement("img");   
+          img.src = `images/${platform}Steps/${step.image}`;
+  
+          if(step.logo) img.classList.add("logo");
+          // TODO ALT 
+          if (step.link) {
+              const a = document.createElement("a");
+              a.href = step.link;
+              a.target = "_blank";
+              a.textContent = "hier.";
+              p.appendChild(document.createTextNode(" "));
+              p.appendChild(a);
+          }
+  
+          li.appendChild(p);
+          li.appendChild(img);
+          ol.appendChild(li);
         }
-
-        li.appendChild(p);
-        li.appendChild(img);
-        ol.appendChild(li);
       });
 
       // Replce the new list for the old one

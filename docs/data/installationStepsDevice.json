@@ -64,11 +64,13 @@
                 "logo": true
             },
             {
+                "mainStep": "Druk op de blauwe knop hierboven en klik vervolgens op 'Voeg opdracht toe' in de opdrachten app.",
                 "description": "Als u op de knop in stap 2 drukt wordt u doorgeschakeld naar de opdrachten app. U ziet hier een blauwe knop 'Voeg opdracht toe'. Klik hierop. Dit zorgt ervoor dat hij wordt toegevoegd aan uw app.",
                 "image": "addShortcut.jpeg"
             },
             {
-                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm.",
+                "mainStep": "Ga naar uw homescherm, en open de instellingen app.",
+                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm en ziet er ongeveer als het plaatje hiernaast uit.",
                 "image": "settingsAppLogo.png",
                 "logo": true
             },
@@ -77,10 +79,12 @@
                 "image": "settingsFlow.png"
             },
             {
+                "mainStep": "Om te testen of het werkt kunt u drie keer tikken achter op uw mobiel waardoor er een popup opent zoals in stap 7. Dit kan een paar seconden duren.",
                 "description": "Als de naam achter 'Driemaal tikken' staat is het gelukt. Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
                 "image": "ticksBehind.png"
             },
             {
+                "mainStep": "U krijgt twee meldingen die gaan over privacy, klik twee keer op 'sta altijd toe', of 'always allow'.",
                 "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunt u twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe'.",
                 "image": "privacyBtns.jpg"
             },

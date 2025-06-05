@@ -28,6 +28,9 @@ body main {
         }
         .highlighted-section-wa20250624 {
             margin-bottom: 1em;
+            p {
+                margin-bottom: 0.5em;
+            }
         }
         ul {
             padding-left: 1.25em;
@@ -60,6 +63,9 @@ body main {
                 }
                 &:active {
                     scale: 0.98;
+                }
+                & + p {
+                    margin-bottom: 0.5em;
                 }
             }
         }

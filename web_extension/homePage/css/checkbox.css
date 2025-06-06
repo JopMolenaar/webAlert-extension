@@ -251,14 +251,14 @@
 
     div.feedback {
         position: absolute;
-        top: 47%;
+        top: 35%;
         left: 1.2em;
         font-size: 1rem;
         color: red;
     }
     img.feedback {
         position: absolute;
-        top: 50%;
+        top: 40%;
         right: 0.2em;
         width: 2em;
         height: 2em;

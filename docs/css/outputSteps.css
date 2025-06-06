@@ -4,6 +4,44 @@
 p.placeholder {
     margin-bottom: 0;
 }
+
+details {
+    & summary {
+        transition: color 1s;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        &:after {
+            order: -1;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        &::-webkit-details-marker {
+            display: none;
+        }
+        &::after {
+            content: '';
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid var(--color-grey);
+            border-inline: 7px solid transparent;
+            transition: 0.2s;
+        } 
+    }
+    &:not([open]):hover {
+        summary:after {
+            transform: rotate(-25deg);
+        }
+    }
+    &[open] > summary {
+        &::after {
+            transform: rotate(-180deg);
+        }
+    }
+}       
+
 .endText {
     margin-top: 1.5em;
     ol {

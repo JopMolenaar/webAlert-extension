@@ -150,7 +150,6 @@ body main {
             margin-top: 0;
         }
      
-
         details {
             border-bottom: solid 1px black;
             border-top: solid 1px black;
@@ -163,7 +162,7 @@ body main {
                 padding-left: 0;
                 border-bottom: 0;
                 justify-content: start;
-                gap: 1em;
+                gap: 0.5em;
                 &:after {
                     order: -1;
                 }

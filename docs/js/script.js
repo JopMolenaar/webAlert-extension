@@ -17,7 +17,7 @@ let questionIndex = 1;
 function initializeEventListeners() {
   whoInput.addEventListener("input", handleWhoInputChange);
   whoCheckbox.addEventListener("change", handleWhoCheckboxChange);
-  deviceInputs.forEach((input) => input.addEventListener("click", handleDeviceSelection));
+  deviceInputs.forEach((input) => input.addEventListener("click", () => handleDeviceSelection(input)));
   appInputs.forEach((input) => input.addEventListener("click", handleAppSelection));
   form.addEventListener("submit", handleFormSubmission);
   nextBtn.addEventListener("click", handleNextClick);
@@ -42,8 +42,13 @@ function handleWhoCheckboxChange() {
 }
 
 // Enable the next button when a device is selected
-function handleDeviceSelection() {
+function handleDeviceSelection(input) {
   enableButton(".index1");
+
+  appInputs.forEach((app) => app.parentElement.parentElement.style.display = "flex");
+  if(input.value !== "mac" && input.value !== "iphone"){
+    appInputs.forEach((app) => (app.value === "sms" || app.value === "whatsapp") ? (app.parentElement.parentElement.style.display = "none", app.parentElement.parentElement.style.order = "1") : null);    
+  }
 }
 
 // Update the format and enable the next button when an app is selected

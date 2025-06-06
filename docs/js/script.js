@@ -48,6 +48,9 @@ function handleDeviceSelection(input) {
   appInputs.forEach((app) => app.parentElement.parentElement.style.display = "flex");
   if(input.value !== "mac" && input.value !== "iphone"){
     appInputs.forEach((app) => (app.value === "sms" || app.value === "whatsapp") ? (app.parentElement.parentElement.style.display = "none", app.parentElement.parentElement.style.order = "1") : null);    
+  } else if(input.value === "mac"){
+    appInputs.forEach((app) => (app.value === "whatsapp") ? (app.parentElement.parentElement.style.display = "none", app.parentElement.parentElement.style.order = "1") : null);    
+ 
   }
 }
 

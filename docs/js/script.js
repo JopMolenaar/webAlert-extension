@@ -308,7 +308,7 @@ function updateQuestionIndex(delta) {
 const inputWho = document.querySelector("#who1");
 const radioBtnWho = document.querySelector("#who2");
 const submitBtn = document.querySelector("button[type='submit']");
-submitBtn.disabled = true; // Disable the submit button initially
+// submitBtn.disabled = true; // Disable the submit button initially
 
 // Separate target function to help the user find the next action
 function targetSubmitButton() {

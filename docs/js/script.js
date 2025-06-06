@@ -152,7 +152,7 @@ async function getSteps(platform, link) {
         if (!res.ok) throw new Error("data/installationStepsDevice.json kon niet geladen worden.");
 
         const data = await res.json();
-        const steps = data[platform].english;
+        const steps = data[platform].dutch;
 
         const ol = document.createElement("ol");
         steps.forEach((step, index) => {

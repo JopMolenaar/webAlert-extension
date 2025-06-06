@@ -1,48 +1,22 @@
 {
     "macOs": {
-        "english": [
-            {
-                "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is, download hem dan via de App Store: <a href='https://apps.apple.com/nl/app/opdrachten/id1462947752' target='_blank'>Shortcuts app</a>",
-                "image": "shortcutAppLogoIos.png",
-                "logo": true
-            },
-            {
-                "description": "Klik op de blauwe knop 'Get shortcut'.",
-                "image": "blueShortcutBtn.png"
-            },
-            {
-                "description": "Er opent zich een pop-up. Klik op 'Open Shortcuts'.",
-                "image": "openShortcutsPopup.png"
-            },
-            {
-                "description": "Er opent zich een kleine pop-up van de app. Klik op 'Add shortcut'.",
-                "image": "appPopup.png"
-            },
-            {
-                "description": "U heeft hem geïnstalleerd! Helemaal bovenaan vindt u de snelkoppeling. Als u daar op klikt, krijgt u nog twee meldingen die te maken hebben met privacy.",
-                "image": "shortcutInMenu.png"
-            },
-            {
-                "description": "Klik twee keer op 'Always allow'. Dit versoepelt het proces en vormt geen gevaar voor uw privacy.",
-                "image": "alwaysAllowPopup.png"
-            }
-        ],
         "dutch": [
             {
-                "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is, download hem dan via de App Store: <a href='https://apps.apple.com/nl/app/opdrachten/id1462947752' target='_blank'>Shortcuts app</a>",
+                "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is, download hem dan via de App Store:",
+                "link": "https://apps.apple.com/nl/app/opdrachten/id1462947752",
                 "image": "shortcutAppLogoIos.png",
                 "logo": true
             },
             {
-                "description": "Klik op de blauwe knop 'Get shortcut'.",
+                "description": "Er opent zich een nieuwe pagina, klik op de blauwe knop 'Get shortcut' onderaan de pagina.",
                 "image": "blueShortcutBtn.png"
             },
             {
-                "description": "Er opent zich een pop-up. Klik op 'Open Shortcuts'.",
+                "description": "Er verschijnt een pop-up. Klik op 'Open Shortcuts'.",
                 "image": "openShortcutsPopup.png"
             },
             {
-                "description": "Er opent zich een kleine pop-up van de app. Klik op 'Add shortcut'.",
+                "description": "Er verschijnt een kleine pop-up van de app. Klik op 'Add shortcut'.",
                 "image": "appPopup.png"
             },
             {
@@ -50,49 +24,13 @@
                 "image": "shortcutInMenu.png"
             },
             {
-                "description": "Klik twee keer op 'Always allow'. Dit versoepelt het proces en vormt geen gevaar voor uw privacy.",
+                "mainStep": "Klik twee keer op 'Always Allow' of 'Sta altijd toe'. Dit versoepelt het proces en vormt geen risico voor uw privacy.",
+                "description": "Dit is normaal en vormt geen risico voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe' of 'Always Allow'.",
                 "image": "alwaysAllowPopup.png"
             }
         ]
     },
     "ios": {
-        "english": [
-            {
-                "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is: download hem dan via de App Store:",
-                "link": "https://apps.apple.com/nl/app/opdrachten/id1462947752",
-                "image": "shortcutAppLogoIos.png",
-                "logo": true
-            },
-            {
-                "mainStep": "Druk op de blauwe knop hierboven en klik vervolgens op 'Voeg opdracht toe' in de opdrachten app.",
-                "description": "Als u op de knop in stap 2 drukt wordt u doorgeschakeld naar de opdrachten app. U ziet hier een blauwe knop 'Voeg opdracht toe'. Klik hierop. Dit zorgt ervoor dat hij wordt toegevoegd aan uw app.",
-                "image": "addShortcut.jpeg"
-            },
-            {
-                "mainStep": "Ga naar uw homescherm, en open de instellingen app.",
-                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm en ziet er ongeveer als het plaatje hiernaast uit.",
-                "image": "settingsAppLogo.png",
-                "logo": true
-            },
-            {
-                "description": "In de instellingen app, ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > en scroll helemaal naar beneden en kies de naam van de snelkoppeling die u zojuist heeft geïnstalleerd [Naam toevoegen].",
-                "image": "settingsFlow.png"
-            },
-            {
-                "mainStep": "Om te testen of het werkt kunt u drie keer tikken achter op uw mobiel waardoor er een popup opent zoals in stap 7. Dit kan een paar seconden duren.",
-                "description": "Als de naam achter 'Driemaal tikken' staat is het gelukt. Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
-                "image": "ticksBehind.png"
-            },
-            {
-                "mainStep": "U krijgt twee meldingen die gaan over privacy, klik twee keer op 'sta altijd toe', of 'always allow'.",
-                "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunt u twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe'.",
-                "image": "privacyBtns.jpg"
-            },
-            {
-                "description": "Het werkt nu! U heeft automatisch een bericht klaarstaan dat u in staat  Gefeliciteerd! Als u ooit hulp nodig heeft als u het even niet meer weet, kunt u nu altijd hulp vragen door drie keer op de achterkant van uw telefoon te tikken. Dit kan een paar seconden duren.",
-                "image": "final.png"
-            }
-        ],
         "dutch": [
             {
                 "description": "Zorg ervoor dat de Opdrachten-app is geïnstalleerd. Deze staat vaak standaard op uw apparaat, maar als dat niet zo is: download hem dan via de App Store:",
@@ -101,90 +39,36 @@
                 "logo": true
             },
             {
-                "mainStep": "Druk op de blauwe knop hierboven en klik vervolgens op 'Voeg opdracht toe' in de opdrachten app.",
-                "description": "Als u op de knop in stap 2 drukt wordt u doorgeschakeld naar de opdrachten app. U ziet hier een blauwe knop 'Voeg opdracht toe'. Klik hierop. Dit zorgt ervoor dat hij wordt toegevoegd aan uw app.",
+                "description": "Druk op de blauwe knop in stap 2 en klik vervolgens op 'Voeg opdracht toe' in de Opdrachten-app.",
                 "image": "addShortcut.jpeg"
             },
             {
-                "mainStep": "Ga naar uw homescherm, en open de instellingen app.",
-                "description": "Als u de vorige stap gedaan heeft, heeft u hem geïnstalleerd. Voeg nu de snelkoppeling toe aan de actie 'Drie keer tikken achter op uw scherm'. Dit kunt u doen door naar uw Apple-instellingen te gaan. Deze bevind zich op uw home scherm en ziet er ongeveer als het plaatje hiernaast uit.",
+                "mainStep": "Ga naar uw beginscherm en open de Instellingen-app.",
+                "description": "Als u de vorige stap heeft uitgevoerd, is de snelkoppeling geïnstalleerd. Voeg deze nu toe aan de actie ‘Drie keer tikken achter op uw scherm’. Dit doet u via de Apple-instellingen. De Instellingen-app bevindt zich op uw beginscherm en ziet eruit zoals in het plaatje hiernaast.",
                 "image": "settingsAppLogo.png",
                 "logo": true
             },
             {
-                "description": "In de instellingen app, ga naar Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken > en scroll helemaal naar beneden en kies de naam van de snelkoppeling die u zojuist heeft geïnstalleerd [Naam toevoegen].",
+                "description": "Ga in de Instellingen-app naar: Toegankelijkheid > Aanraken > Tik op achterkant > Driemaal tikken. Scroll vervolgens helemaal naar beneden en kies de naam van de snelkoppeling die u zojuist heeft geïnstalleerd [Naam toevoegen].",
                 "image": "settingsFlow.png"
             },
             {
-                "mainStep": "Om te testen of het werkt kunt u drie keer tikken achter op uw mobiel waardoor er een popup opent zoals in stap 7. Dit kan een paar seconden duren.",
-                "description": "Als de naam achter 'Driemaal tikken' staat is het gelukt. Om te testen of het werkt, gaan we het even proberen. Als u nu drie keer tikt op de achterkant van uw telefoon, wordt de snelkoppeling uitgevoerd. Dit kan een paar seconden duren.",
+                "mainStep": "Test of het werkt door drie keer op de achterkant van uw toestel te tikken. Er zou een pop-up moeten verschijnen, zoals in stap 7. Dit kan enkele seconden duren.",
+                "description": "Als de naam van de snelkoppeling achter ‘Driemaal tikken’ staat, is alles goed ingesteld. Test het vervolgens door drie keer op de achterkant van uw toestel te tikken. Er zou een pop-up moeten verschijnen, zoals in stap 7. Dit kan enkele seconden duren.",
                 "image": "ticksBehind.png"
             },
             {
-                "mainStep": "U krijgt twee meldingen die gaan over privacy, klik twee keer op 'sta altijd toe', of 'always allow'.",
-                "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunt u twee meldingen krijgen die te maken hebben met privacy. Dit is normaal en vormt geen gevaar voor uw privacy, want deze app is van Apple zelf. Om het proces te versoepelen, klikt u twee keer op 'Sta altijd toe'.",
+                "mainStep": "U krijgt twee meldingen over privacy. Klik twee keer op 'Sta altijd toe' of 'Always allow'.",
+                "description": "Wanneer de snelkoppeling wordt uitgevoerd, kunnen er twee meldingen verschijnen die te maken hebben met privacy. Dit is normaal en vormt geen risico, want deze app is afkomstig van Apple zelf. Klik twee keer op 'Sta altijd toe' of 'Always allow' om het proces soepel te laten verlopen.",
                 "image": "privacyBtns.jpg"
             },
             {
-                "description": "Het werkt nu! U heeft automatisch een bericht klaarstaan dat u in staat  Gefeliciteerd! Als u ooit hulp nodig heeft als u het even niet meer weet, kunt u nu altijd hulp vragen door drie keer op de achterkant van uw telefoon te tikken. Dit kan een paar seconden duren.",
+                "description": "De e-mail met uw hulpvraag is nu geopend. U hoeft alleen nog op 'Verzenden' te drukken en te wachten op een reactie. Heeft u later nog eens hulp nodig? Tik dan drie keer op de achterkant van uw telefoon om hulp te vragen. Dit kan een paar seconden duren.",
                 "image": "final.png"
             }
         ]
     },
     "android": {
-        "english": [
-            {
-                "description": "Zorg ervoor dat de Automate-app is geïnstalleerd. Deze staat niet standaard op uw apparaat, download hem als u hem nog niet heeft via de Play Store",
-                "link": "https://play.google.com/store/apps/details?id=com.llamalab.automate",
-                "image": "automateLogo.png",
-                "logo": true
-            },
-            {
-                "description": "Open uw gegenereerde bestand boven deze stap, deze knop opent een popup die u deze laat toevoegen in de Automate app.",
-                "image": "step1.png"
-            },
-            {
-                "description": "Zorg ervoor dat de eerste drie vakjes in de lijst zijn aangevinkt. Dit is nodig om het hulpmiddel te laten werken.",
-                "image": "step2.png"
-            },
-            {
-                "mainStep": "Klik op de blauwe knop rechts onder in het scherm, en klik vervolgens op het witte knopje dat verschijnt boven de blauwe knop.",
-                "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
-                "image": "step3.png"
-            },
-            {
-                "mainStep": "Klik op het bovenste grijze vlak.",
-                "description": "Op deze pagina drukt u op het boventste grijze vlak. Dit opent een nieuwe pagina waar je een knop krijgt om het hulpmiddel tussen uw andere apps te plaatsen.",
-                "image": "step4.png"
-            },
-            {
-                "mainStep": "Klik op 'Intsall home screen shortcut'.",
-                "description": "Op deze pagina klikt u nu op de omcircelde knop, 'INSTALL HOME SCREEN SHORTCUT'. Dit voegt een icoon toe aan uw home pagina van uw telefoon. Deze actie geeft twee popups die worden beschreven in stap 6.",
-                "image": "step5.png"
-            },
-            {
-                "mainStep": "Klik op 'OK' en 'Toevoegen' in de opkomende popups.",
-                "description": "Hier links zie je de twee popups die je te zien krijgt. Klik op 'OK' en 'Toevoegen' (beide omcirkelt in de afbeelding hier links). Na deze acties krijgt u een korte melding met een donkere achtergrond te zien. Dit betekend dat hij ergens op je home scherm tussen andere apps staat.",
-                "image": "step6.png"
-            },
-            {
-                "description": "Deze knop (links) verschijnt op uw homescherm tussen uw andere apps.",
-                "image": "step7.png",
-                "logo": true
-            },
-            {
-                "description": "Nu gaan we het testen. Als u hulp wilt vragen klikt u op deze knop, navigeer naar het beeldscherm waarover u twijfelt en leg de telefoon neer op iets rechts.",
-                "image": "step8.png"
-            },
-            {
-                "description": "Dit opent een melding, klik op 'Toestaan'",
-                "image": "step9.png"
-            },
-            {
-                "description": "Nu is de mail geopent met een afbeelding en een titel, u hoeft alleen nog op verzenden te drukken om hulp te vragen via de mail",
-                "image": "step10.png"
-            }
-        ],
         "dutch": [
             {
                 "description": "Zorg ervoor dat de Automate-app is geïnstalleerd. Deze staat niet standaard op uw apparaat, download hem als u hem nog niet heeft via de Play Store",
@@ -193,57 +77,59 @@
                 "logo": true
             },
             {
-                "description": "Open uw gegenereerde bestand boven deze stap, deze knop opent een popup die u deze laat toevoegen in de Automate app.",
+                "description": "Klik op de blauwe knop in stap 2 en klik op 'Openen'.",
+                "image": "step2-2.png"
+            },
+            {
+                "description": "Klik op 'Import'.",
                 "image": "step1.png"
             },
             {
-                "description": "Zorg ervoor dat de eerste drie vakjes in de lijst zijn aangevinkt. Dit is nodig om het hulpmiddel te laten werken.",
+                "mainStep": "Zorg ervoor dat de eerste drie vakjes in de lijst zijn aangevinkt. Dit is nodig om het hulpmiddel te laten werken.",
+                "description": "Het kan voorkomen dat u naar de instellingen app wordt gebracht om het daar ook aan te zetten. Ga daarna weer terug door op het driehoekje links onderin het scherm te drukken.",
                 "image": "step2.png"
             },
             {
-                "mainStep": "Klik op de blauwe knop rechts onder in het scherm, en klik vervolgens op het witte knopje dat verschijnt boven de blauwe knop.",
-                "description": "Nu u de actie heeft toegevoegd aan de app moet u de activerings knop tussen uw apps krijgen op uw home scherm. Hoe u dat doet is door op het scherm onderaan de pagina een ronde blauwe knop met een potlood in te klikken. Hierdoor verschijnenen twee ronde knopjes erboven, klik hier op de ronde knop boven de blauwe (Omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
+                "mainStep": "Klik op de blauwe knop rechtsonder in het scherm, en klik vervolgens op het witte knopje dat boven de blauwe knop verschijnt.",
+                "description": "Nu u de actie heeft toegevoegd aan de app, moet u de activeringsknop op uw startscherm tussen uw apps plaatsen. Hoe u dat doet: klik onderaan de pagina op de ronde blauwe knop met een potlood. Er verschijnen twee ronde knopjes erboven; klik op het middelste ronde knopje (omcirkeld met een rode lijn). Dit opent een nieuwe pagina met blokjes.",
                 "image": "step3.png"
             },
             {
                 "mainStep": "Klik op het bovenste grijze vlak.",
-                "description": "Op deze pagina drukt u op het boventste grijze vlak. Dit opent een nieuwe pagina waar je een knop krijgt om het hulpmiddel tussen uw andere apps te plaatsen.",
+                "description": "Op deze pagina drukt u op het bovenste grijze vlak. Dit opent een nieuwe pagina waar u een knop krijgt om het hulpmiddel tussen uw andere apps te plaatsen.",
                 "image": "step4.png"
             },
             {
-                "mainStep": "Klik op 'Intsall home screen shortcut'.",
-                "description": "Op deze pagina klikt u nu op de omcircelde knop, 'INSTALL HOME SCREEN SHORTCUT'. Dit voegt een icoon toe aan uw home pagina van uw telefoon. Deze actie geeft twee popups die worden beschreven in stap 6.",
+                "mainStep": "Klik op 'Install home screen shortcut'.",
+                "description": "Op deze pagina klikt u nu op de omcirkelde knop 'INSTALL HOME SCREEN SHORTCUT'. Dit voegt een icoon toe aan uw startscherm. Deze actie veroorzaakt twee pop-ups, die worden beschreven in stap 9.",
                 "image": "step5.png"
             },
             {
-                "mainStep": "Klik op 'OK' en 'Toevoegen' in de opkomende popups.",
-                "description": "Hier links zie je de twee popups die je te zien krijgt. Klik op 'OK' en 'Toevoegen' (beide omcirkelt in de afbeelding hier links). Na deze acties krijgt u een korte melding met een donkere achtergrond te zien. Dit betekend dat hij ergens op je home scherm tussen andere apps staat.",
+                "mainStep": "Klik op 'OK' en 'Toevoegen' in de opkomende pop-ups.",
+                "description": "Hier links ziet u de twee pop-ups die verschijnen. Klik op 'OK' en 'Toevoegen' (beide omcirkeld in de afbeelding hier links). Na deze acties krijgt u een korte melding met een donkere achtergrond te zien. Dit betekent dat het icoon ergens op uw startscherm tussen de andere apps staat.",
                 "image": "step6.png"
             },
             {
-                "description": "Deze knop (links) verschijnt op uw homescherm tussen uw andere apps.",
+                "description": "De installatie is klaar! Deze knop (links) is verschenen op uw startscherm tussen uw andere apps. In de volgende stappen leggen wij uit hoe u het hulpmiddel kunt gebruiken.",
                 "image": "step7.png",
                 "logo": true
             },
             {
-                "description": "Nu gaan we het testen. Als u hulp wilt vragen klikt u op deze knop, navigeer naar het beeldscherm waarover u twijfelt en leg de telefoon neer op iets rechts.",
-                "image": "step8.png",
-                "logo": true
+                "description": "Nu gaan we het testen. Als u hulp wilt, klik dan op de knop, ga terug naar het scherm waarover u twijfelt, en leg de telefoon plat neer.",
+                "image": "step8.png"
             },
             {
-                "description": "Dit opent een melding, klik op 'Toestaan'",
-                "image": "step7.png",
-                "logo": true
+                "description": "Er verschijnt een melding. Klik op 'Toestaan' of 'Nu beginnen'.",
+                "image": "step9.png"
             },
             {
-                "description": "Nu is de mail geopent met een afbeelding en een titel, u hoeft alleen nog op verzenden te drukken om hulp te vragen via de mail",
-                "image": "step7.png",
-                "logo": true
+                "description": "Nu is de e-mail met de hulpvraag geopend. U hoeft alleen nog op 'Verzenden' te drukken en te wachten op een reactie.",
+                "image": "step10.png"
             }
         ]
     },
     "windows": {
-        "english": [
+        "dutch": [
             {
                 "description": "...",
                 "image": "unbox_device.jpg"

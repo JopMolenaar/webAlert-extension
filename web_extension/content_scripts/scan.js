@@ -199,7 +199,9 @@ async function getAndStoreSafetyDomain(wrapper) {
         chrome.runtime.sendMessage({ type: "getHelpName" }, (response) => {
             if (response && response.success) {
                 console.log("ℹ️ Help input name on load:", response.value);
-                helpBtn.querySelector("span").textContent = response.value;
+                if(response.value !== ""){
+                    helpBtn.querySelector("span").textContent = "aan " + response.value;
+                } 
             } else {
                 console.error("❌ Failed to retrieve help input value.");
             }

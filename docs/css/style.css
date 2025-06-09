@@ -75,7 +75,8 @@ button, a.btn-primary {
         color: var(--color-black);
     }
     &:focus-visible {
-        background-color: var(--color-focus-btn-primary);
+        background-color: var(--color-focus-btn-secondary);
+        color: black;
     }
 }
 

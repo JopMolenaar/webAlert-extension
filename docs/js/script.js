@@ -182,7 +182,7 @@ async function getSteps(platform, link) {
           const detailsContent = document.createElement("p");
           const div = document.createElement("div");
           const p = document.createElement("p");
-          sum.textContent = "Meer informatie";
+          sum.textContent = "Klik hier voor een uitgebreide uitleg";
           detailsContent.textContent = step.description;
           p.textContent = step.mainStep;
 

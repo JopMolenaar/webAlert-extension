@@ -54,6 +54,7 @@ details {
         li {
             border-radius: var(--border-r);
             display: grid;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             gap: 0.8em;
             grid-template-columns: 18em 1fr;
             grid-template-rows: auto 1fr auto;

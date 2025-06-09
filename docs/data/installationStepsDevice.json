@@ -77,7 +77,8 @@
                 "logo": true
             },
             {
-                "description": "Klik op de blauwe knop in stap 2 en klik op 'Openen'.",
+                "mainStep": "Klik op de blauwe knop in stap 2 en klik op 'Openen'.",
+                "description": "ALs u op de blauwe knop in stap 2 drukt, is er op het scherm kort het woord 'Openen' onderaan of helemaal bovenaan de pagina te zien. Klik hierop en u zult hetzelfde zien als wat er in stap 3 staat.",
                 "image": "step2-2.png"
             },
             {

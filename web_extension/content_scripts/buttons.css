@@ -69,7 +69,7 @@
                     outline-style: auto;
                 }
                 &.hidden-wa20250624 {
-                    display: none;
+                    display: none !important;
                 }
             }
             #moveWebExtensionButton-wa20250624 {

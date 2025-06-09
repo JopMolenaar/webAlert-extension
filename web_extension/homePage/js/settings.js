@@ -62,6 +62,7 @@ helpInput.addEventListener("blur", (e) => {
             }
     }
 });
+
 helpInput.addEventListener("click", (e) => {
     const statusDiv = helpInput.parentNode.querySelector("div.feedback");
     const statusImg = helpInput.parentNode.querySelector("img.feedback");

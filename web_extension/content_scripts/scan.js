@@ -237,11 +237,14 @@ function checkFocus(wrapper) {
     const buttons = wrapper.querySelectorAll("button");
     buttons.forEach(btn => {
         btn.addEventListener('focusin', () => {
-            wrapper.classList.add(`open${classSpecifier}`);
+            if(btn.id !== `closeBtn${classSpecifier}`){
+                wrapper.classList.add(`open${classSpecifier}`);
+            }
+            
         });
-        btn.addEventListener('focusout', () => {
-            wrapper.classList.remove(`open${classSpecifier}`);
-        });
+        // btn.addEventListener('focusout', () => {
+        //     wrapper.classList.remove(`open${classSpecifier}`);
+        // });
     });
 }
 

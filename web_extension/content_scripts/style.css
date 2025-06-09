@@ -44,7 +44,7 @@ body {
     --color-default: #474545;
     --color-default-btn: rgb(99, 99, 99);
     --color-default-btn-hvr: rgba(99, 99, 99, 0.8);
-
+    --border-r: 0.3em;
     --color-status: var(--color-default);
     --color-status-btn: var(--color-default-btn);
     --color-status-btn-hvr: var(--color-default-btn-hvr);

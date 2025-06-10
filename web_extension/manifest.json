@@ -5,7 +5,7 @@
     "version": "0.1",
     "homepage_url": "https://github.com/JopMolenaar/webAlert-extension",
     "icons": {
-      "48": "icons/border-48.png"
+      "48": "icons/wa.png"
     },
     "action": {
          "default_popup": "popup/popup.html",

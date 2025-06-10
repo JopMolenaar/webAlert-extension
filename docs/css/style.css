@@ -23,6 +23,7 @@ body {
     font-style: normal;
     font-display: swap;
     margin: 0;
+    overflow-x: hidden;
 }
 
 /* classes */

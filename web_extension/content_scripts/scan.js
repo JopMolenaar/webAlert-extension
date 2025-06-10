@@ -349,15 +349,23 @@ function addBtnHierarchy(wrapper, status) {
     switch (status) {
         case "success": 
             // infoBtn is primary
+            infoBtn.tabIndex = 2;
+            getHelp.tabIndex = 3;
             getHelp.classList.add(`btn-secondary${classSpecifier}`);
             exitPage.classList.add(`hidden${classSpecifier}`);
             break;
         case "warning":
+            getHelp.tabIndex = 2;
+            infoBtn.tabIndex = 3;
+            exitPage.tabIndex = 3;
             infoBtn.classList.add(`btn-secondary${classSpecifier}`);
             // getHelp is primary
             exitPage.classList.add(`btn-secondary${classSpecifier}`);
             break;
         case "danger":  
+            exitPage.tabIndex = 2;
+            infoBtn.tabIndex = 3;
+            getHelp.tabIndex = 3;
             infoBtn.classList.add(`btn-secondary${classSpecifier}`);
             getHelp.classList.add(`btn-secondary${classSpecifier}`);
             // exitPage is primary

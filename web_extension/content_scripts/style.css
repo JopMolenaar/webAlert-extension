@@ -94,17 +94,13 @@ body {
             }
         }
     }
-    /* &.danger-side-wa20250624 {
-        #webAlertDiv-wa20250624, #webAlertDiv.open-wa20250624 {
-            #closeBtn-wa20250624 {
-                fill: white;
-                border-top: solid 1px white;
-            }
-        }
-    } */
 
     /* Whole screen becomes red */
     &.danger-wa20250624 {
+        #statusText-wa20250624 {
+            font-size: 1.7rem !important;
+            font-weight: bold;
+        }
         #webAlertDiv-wa20250624 {
             width: 100% !important;
             height: 100% !important;

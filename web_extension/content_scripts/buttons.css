@@ -29,7 +29,7 @@
             }
             button {
                 width: fit-content;
-                padding: 0.5em;
+                padding: 0.6em;
                 background-color: black;
                 border-radius: var(--border-r);
                 color: white;

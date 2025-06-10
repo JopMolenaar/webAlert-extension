@@ -34,7 +34,7 @@
 
 
     --color-danger: #fae4e4;
-    --color-danger-text: rgb(113, 13, 13);
+    --color-danger-text: rgb(156, 20, 20);
 
     --color-success: #ecf7ee;
     --color-success-text: rgb(3, 99, 14);
@@ -155,6 +155,9 @@ button, a.btn-primary {
     &:hover:not(:disabled) {
         background-color: var(--color-light-blue);
     }
+}
+a:hover {
+    text-decoration: none;
 }
 
 /* Details styling */

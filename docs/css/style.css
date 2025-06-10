@@ -121,7 +121,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: calc(100vh - 13.71em);
+    min-height: calc(100vh - 13.3em);
     & section {
         font-size: 1rem;
         padding-inline: var(--standard-inline-padding);

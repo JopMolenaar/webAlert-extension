@@ -119,14 +119,50 @@ body main {
                 }
                 &.warning {
                     background-color: var(--color-warning);
+                    display: flex;
                     & summary {
                         color: var(--color-warning-text);
+                        width: 100%;
+                    }
+                    &::before {
+                        content: '!';
+                        color: var(--color-warning-text);
+                        font-weight: 700;
+                        align-self: center;
+                        margin-left: 0.8em;
+                    }
+                    &[open] {
+                        display: block;
+                        & summary {
+                            width: auto;
+                        }
+                        &::before {
+                            display: none;
+                        }
                     }
                 }
                 &.danger {
                     background-color: var(--color-danger);
+                    display: flex;
                     & summary {
                         color: var(--color-danger-text);
+                        width: 100%;
+                    }
+                    &::before {
+                        content: '!';
+                        color: var(--color-danger-text);
+                        font-weight: 700;
+                        align-self: center;
+                        margin-left: 0.8em;
+                    }
+                    &[open] {
+                        display: block;
+                        & summary {
+                            width: auto;
+                        }
+                        &::before {
+                            display: none;
+                        }
                     }
                 }
             }
